@@ -2,7 +2,7 @@
   "name": "sherlock-backend",
   "version": "0.1.0",
   "private": true,
-  "description": "Sherlock Research report generation backend on Cloudflare",
+  "description": "Sherlock Research data + admin backend on Cloudflare",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
@@ -10,9 +10,6 @@
     "migrate:local": "wrangler d1 migrations apply sherlock-research --local",
     "migrate:remote": "wrangler d1 migrations apply sherlock-research --remote",
     "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@cloudflare/puppeteer": "^0.0.14"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250101.0",

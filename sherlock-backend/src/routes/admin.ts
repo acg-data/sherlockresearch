@@ -1,6 +1,6 @@
 import type { Env } from '../lib/env';
-import { isAuthed, setAuthCookie, clearAuthCookie, unauthorized } from '../lib/auth';
-import { html, json, redirect, escape, layout } from '../lib/html';
+import { isAuthed, setAuthCookie, clearAuthCookie } from '../lib/auth';
+import { html, redirect, escape, layout } from '../lib/html';
 import {
   listIndustries, getIndustryBySlug, getIndustry,
   listLocations, getLocation,
@@ -8,10 +8,10 @@ import {
   createSurvey, saveResponses, listSurveys, getSurvey, getSurveyByKey, responsesForSurvey,
   createReport, nextReportVersion, listReports, getReport, updateReportStatus,
 } from '../lib/d1';
-import { fetchPdf } from '../lib/r2';
+import { uploadPdf, fetchPdf } from '../lib/r2';
+import { buildClaudeExport } from '../lib/export';
 
 export async function handleAdmin(req: Request, env: Env, url: URL): Promise<Response> {
-  // Login is public; everything else is gated.
   const path = url.pathname;
 
   if (path === '/admin/login' && req.method === 'GET') return loginForm();
@@ -24,8 +24,18 @@ export async function handleAdmin(req: Request, env: Env, url: URL): Promise<Res
   if (path === '/admin/surveys' && req.method === 'POST') return createSurveyHandler(req, env);
   if (path === '/admin/surveys/new') return newSurveyPicker(env, url);
   if (path === '/admin/surveys/edit') return editSurveyForm(env, url);
+
+  const surveyExport = path.match(/^\/admin\/surveys\/(\d+)\/export$/);
+  if (surveyExport) return surveyExportPage(env, parseInt(surveyExport[1], 10));
+
+  const surveyExportRaw = path.match(/^\/admin\/surveys\/(\d+)\/export\.md$/);
+  if (surveyExportRaw) return surveyExportRawHandler(env, parseInt(surveyExportRaw[1], 10));
+
+  const surveyUploadPage = path.match(/^\/admin\/surveys\/(\d+)\/upload$/);
+  if (surveyUploadPage && req.method === 'GET') return uploadPdfForm(env, parseInt(surveyUploadPage[1], 10));
+  if (surveyUploadPage && req.method === 'POST') return uploadPdfHandler(req, env, parseInt(surveyUploadPage[1], 10));
+
   if (path === '/admin/reports' && req.method === 'GET') return reportsList(env);
-  if (path === '/admin/reports/generate' && req.method === 'POST') return triggerReport(req, env);
 
   const reportDetail = path.match(/^\/admin\/reports\/(\d+)$/);
   if (reportDetail) return reportDetailPage(env, parseInt(reportDetail[1], 10));
@@ -87,14 +97,15 @@ async function dashboard(env: Env): Promise<Response> {
           <td class="muted">${new Date(s.created_at * 1000).toLocaleDateString()}</td>
           <td class="row-actions">
             <a class="btn ghost" href="/admin/surveys/edit?id=${s.id}">Edit</a>
-            <form method="post" action="/admin/reports/generate" style="display:inline"><input type="hidden" name="survey_id" value="${s.id}"><button class="btn" type="submit">Generate report</button></form>
+            <a class="btn ghost" href="/admin/surveys/${s.id}/export">Export for Claude</a>
+            <a class="btn" href="/admin/surveys/${s.id}/upload">Upload PDF</a>
           </td>
         </tr>`).join('')
       }</tbody></table>`;
 
   const recentReports = reports.slice(0, 8);
   const reportRows = recentReports.length === 0
-    ? `<div class="empty">No reports generated yet.</div>`
+    ? `<div class="empty">No PDFs uploaded yet.</div>`
     : `<table><thead><tr><th>Report</th><th>Industry × Location</th><th>v</th><th>Status</th><th></th></tr></thead><tbody>${
         recentReports.map(r => `<tr>
           <td>#${r.id}</td>
@@ -123,6 +134,8 @@ async function dashboard(env: Env): Promise<Response> {
   const body = `
     <h1>Dashboard</h1>
     <p class="muted">${industries.length} ${industries.length === 1 ? 'industry' : 'industries'} · ${locations.length} locations · ${surveys.length} surveys · ${reports.length} reports</p>
+    <h2>Workflow</h2>
+    <p class="muted" style="max-width:60em">For each survey: <b>1.</b> Enter responses · <b>2.</b> "Export for Claude" copies a markdown blob with everything Claude needs — paste it into a Claude.ai conversation along with sample report PDFs · <b>3.</b> Lay out the report in your design tool, export as PDF · <b>4.</b> "Upload PDF" stores the finished report and gives you a download link for Payhip.</p>
     <h2>Surveys</h2>
     ${surveyRows}
     <h2>Recent reports</h2>
@@ -146,7 +159,6 @@ async function newSurveyPicker(env: Env, url: URL): Promise<Response> {
   const location = (await listLocations(env)).find(l => l.slug === locationSlug);
   if (!location) return new Response('Location not found', { status: 404 });
 
-  // If a survey already exists for this combo, jump to the edit form.
   const existing = await getSurveyByKey(env, industry.id, location.id, period);
   if (existing) return redirect(`/admin/surveys/edit?id=${existing.id}`);
 
@@ -199,6 +211,18 @@ async function surveyFormResponse(
       </label>
     `).join('')}`).join('');
 
+  const afterSaveActions = surveyId
+    ? `<div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn" type="submit">Save survey</button>
+        <a class="btn ghost" href="/admin/surveys/${surveyId}/export">Export for Claude</a>
+        <a class="btn ghost" href="/admin/surveys/${surveyId}/upload">Upload PDF</a>
+        <a class="btn ghost" href="/admin">Back</a>
+      </div>`
+    : `<div style="display:flex;gap:10px;margin-top:14px">
+        <button class="btn" type="submit">Save survey</button>
+        <a class="btn ghost" href="/admin">Cancel</a>
+      </div>`;
+
   const body = `
     <h1>${escape(industry.name)} survey — ${escape(location.city)}, ${escape(location.state)}</h1>
     <p class="muted">Period: <b>${escape(period)}</b>${surveyId ? ` · editing survey #${surveyId}` : ' · new survey'}</p>
@@ -208,13 +232,10 @@ async function surveyFormResponse(
       <input type="hidden" name="period" value="${escape(period)}">
       ${surveyId ? `<input type="hidden" name="survey_id" value="${surveyId}">` : ''}
       <label>Notes (optional)
-        <textarea name="notes" rows="2">${escape(responses.get('__notes') ?? '')}</textarea>
+        <textarea name="notes" rows="2"></textarea>
       </label>
       ${sections}
-      <div style="display:flex;gap:10px;margin-top:14px">
-        <button class="btn" type="submit">Save survey</button>
-        <a class="btn ghost" href="/admin">Cancel</a>
-      </div>
+      ${afterSaveActions}
     </form>`;
 
   return html(layout('Survey', body));
@@ -240,7 +261,98 @@ async function createSurveyHandler(req: Request, env: Env): Promise<Response> {
   }
   await saveResponses(env, surveyId, answers);
 
-  return redirect('/admin');
+  return redirect(`/admin/surveys/edit?id=${surveyId}`);
+}
+
+// ----------------------- export for Claude -----------------------
+
+async function surveyExportPage(env: Env, surveyId: number): Promise<Response> {
+  const survey = await getSurvey(env, surveyId);
+  if (!survey) return new Response('Survey not found', { status: 404 });
+  const markdown = await buildClaudeExport(env, surveyId);
+
+  const body = `
+    <h1>Export for Claude — Survey #${survey.id}</h1>
+    <p class="muted" style="max-width:60em">Copy the markdown block below and paste it into a fresh Claude.ai conversation. Then attach 1–2 sample Sherlock report PDFs so Claude can match the structure and tone. The output will be a complete report draft you can paste into your design tool for layout.</p>
+    <div style="display:flex;gap:10px;margin:14px 0">
+      <button class="btn" type="button" onclick="navigator.clipboard.writeText(document.getElementById('exp').value).then(()=>this.textContent='Copied ✓')">Copy to clipboard</button>
+      <a class="btn ghost" href="/admin/surveys/${survey.id}/export.md" download="survey-${survey.id}-export.md">Download .md</a>
+      <a class="btn ghost" href="/admin/surveys/edit?id=${survey.id}">Back to survey</a>
+    </div>
+    <textarea id="exp" style="width:100%;min-height:60vh;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.55;padding:18px;border:1px solid #E6DECF;border-radius:8px;background:#fff" readonly>${escape(markdown)}</textarea>`;
+
+  return html(layout(`Export #${survey.id}`, body));
+}
+
+async function surveyExportRawHandler(env: Env, surveyId: number): Promise<Response> {
+  const survey = await getSurvey(env, surveyId);
+  if (!survey) return new Response('Not found', { status: 404 });
+  const markdown = await buildClaudeExport(env, surveyId);
+  return new Response(markdown, {
+    headers: {
+      'Content-Type': 'text/markdown; charset=utf-8',
+      'Content-Disposition': `attachment; filename="survey-${surveyId}-export.md"`,
+    },
+  });
+}
+
+// ----------------------- upload finished PDF -----------------------
+
+async function uploadPdfForm(env: Env, surveyId: number): Promise<Response> {
+  const survey = await getSurvey(env, surveyId);
+  if (!survey) return new Response('Survey not found', { status: 404 });
+  const [industry, location] = await Promise.all([
+    getIndustry(env, survey.industry_id),
+    getLocation(env, survey.location_id),
+  ]);
+  const nextV = await nextReportVersion(env, survey.industry_id, survey.location_id);
+
+  const body = `
+    <h1>Upload finished PDF</h1>
+    <p class="muted">${escape(industry?.name ?? '?')} · ${escape(location?.city ?? '?')}, ${escape(location?.state ?? '?')} · ${escape(survey.period)}</p>
+    <p class="muted">This will be saved as <b>v${nextV}</b> of this report.</p>
+    <form class="stack" method="post" enctype="multipart/form-data" action="/admin/surveys/${survey.id}/upload" style="max-width:520px;margin-top:20px">
+      <label>PDF file
+        <input type="file" name="pdf" accept="application/pdf" required>
+      </label>
+      <div style="display:flex;gap:10px">
+        <button class="btn" type="submit">Upload</button>
+        <a class="btn ghost" href="/admin">Cancel</a>
+      </div>
+    </form>`;
+
+  return html(layout('Upload PDF', body));
+}
+
+async function uploadPdfHandler(req: Request, env: Env, surveyId: number): Promise<Response> {
+  const survey = await getSurvey(env, surveyId);
+  if (!survey) return new Response('Survey not found', { status: 404 });
+
+  const form = await req.formData();
+  const fileEntry = form.get('pdf');
+  if (!fileEntry || typeof fileEntry === 'string') return new Response('Missing PDF file', { status: 400 });
+  const file = fileEntry as unknown as { type: string; arrayBuffer(): Promise<ArrayBuffer> };
+  if (file.type && file.type !== 'application/pdf') return new Response('File must be PDF', { status: 400 });
+
+  const [industry, location] = await Promise.all([
+    getIndustry(env, survey.industry_id),
+    getLocation(env, survey.location_id),
+  ]);
+  if (!industry || !location) return new Response('Industry/location missing', { status: 500 });
+
+  const version = await nextReportVersion(env, survey.industry_id, survey.location_id);
+  const reportId = await createReport(env, survey.industry_id, survey.location_id, surveyId, version);
+
+  const key = `reports/${industry.slug}-${location.slug}/v${version}.pdf`;
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  await uploadPdf(env, key, bytes);
+
+  await updateReportStatus(env, reportId, 'ready', {
+    r2_key: key,
+    generated_at: Math.floor(Date.now() / 1000),
+  });
+
+  return redirect(`/admin/reports/${reportId}`);
 }
 
 // ----------------------- reports -----------------------
@@ -249,7 +361,7 @@ async function reportsList(env: Env): Promise<Response> {
   const reports = await listReports(env);
   const rows = reports.length === 0
     ? `<div class="empty">No reports yet.</div>`
-    : `<table><thead><tr><th>#</th><th>Industry × Location</th><th>v</th><th>Status</th><th>Generated</th><th></th></tr></thead><tbody>${
+    : `<table><thead><tr><th>#</th><th>Industry × Location</th><th>v</th><th>Status</th><th>Uploaded</th><th></th></tr></thead><tbody>${
         reports.map(r => `<tr>
           <td>#${r.id}</td>
           <td>${escape(r.industry_name)} · ${escape(r.location_label)}</td>
@@ -260,22 +372,6 @@ async function reportsList(env: Env): Promise<Response> {
         </tr>`).join('')
       }</tbody></table>`;
   return html(layout('Reports', `<h1>Reports</h1>${rows}`, { activeNav: '/admin/reports' }));
-}
-
-async function triggerReport(req: Request, env: Env): Promise<Response> {
-  const form = await req.formData();
-  const surveyId = parseInt(String(form.get('survey_id')), 10);
-  if (!surveyId) return new Response('Missing survey_id', { status: 400 });
-
-  const survey = await getSurvey(env, surveyId);
-  if (!survey) return new Response('Survey not found', { status: 404 });
-
-  const version = await nextReportVersion(env, survey.industry_id, survey.location_id);
-  const reportId = await createReport(env, survey.industry_id, survey.location_id, surveyId, version);
-
-  await env.REPORT_WORKFLOW.create({ params: { reportId } });
-
-  return redirect(`/admin/reports/${reportId}`);
 }
 
 async function reportDetailPage(env: Env, id: number): Promise<Response> {
@@ -289,9 +385,9 @@ async function reportDetailPage(env: Env, id: number): Promise<Response> {
   const statusBadge = `<span class="badge ${report.status}">${escape(report.status.replace(/_/g, ' '))}</span>`;
   const pdfLink = report.r2_key
     ? `<a class="btn" href="/admin/reports/${report.id}/pdf" target="_blank">View / download PDF</a>`
-    : `<span class="muted">PDF not ready</span>`;
+    : `<span class="muted">No PDF uploaded</span>`;
 
-  const payhipForm = report.status === 'ready' || report.status === 'sent_to_payhip'
+  const payhipForm = (report.status === 'ready' || report.status === 'sent_to_payhip')
     ? `<form class="stack" method="post" action="/admin/reports/${report.id}/payhip" style="margin-top:20px">
         <h2 style="margin:0">Payhip handoff</h2>
         <p class="muted">After uploading the PDF to Payhip, paste the public product URL here.</p>
@@ -302,8 +398,7 @@ async function reportDetailPage(env: Env, id: number): Promise<Response> {
 
   const body = `
     <h1>Report #${report.id} — ${escape(industry?.name ?? '?')} · ${escape(location?.city ?? '?')}, ${escape(location?.state ?? '?')}</h1>
-    <p class="meta-line">Version v${report.version} · ${statusBadge}${report.generated_at ? ` · generated ${new Date(report.generated_at * 1000).toLocaleString()}` : ''}</p>
-    ${report.error ? `<div style="background:#fbe1e1;color:#9e2f2f;padding:14px;border-radius:6px;margin-top:14px;font-family:ui-monospace,monospace;font-size:.85rem"><b>Error:</b> ${escape(report.error)}</div>` : ''}
+    <p class="meta-line">Version v${report.version} · ${statusBadge}${report.generated_at ? ` · uploaded ${new Date(report.generated_at * 1000).toLocaleString()}` : ''}</p>
     <div style="margin-top:20px;display:flex;gap:10px">${pdfLink}<a class="btn ghost" href="/admin">← Back to dashboard</a></div>
     ${payhipForm}`;
 
@@ -312,7 +407,7 @@ async function reportDetailPage(env: Env, id: number): Promise<Response> {
 
 async function reportPdfHandler(env: Env, id: number): Promise<Response> {
   const report = await getReport(env, id);
-  if (!report || !report.r2_key) return new Response('PDF not ready', { status: 404 });
+  if (!report || !report.r2_key) return new Response('PDF not uploaded', { status: 404 });
   return fetchPdf(env, report.r2_key);
 }
 
