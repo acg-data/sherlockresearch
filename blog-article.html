@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2024 Landscaping Industry Outlook: Growth Ahead — Sherlock Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===================== TOKENS ===================== */
+:root{
+  --navy:#0E1B2B;
+  --navy-deep:#0A1521;
+  --navy-soft:#15263A;
+  --navy-card:#122236;
+  --navy-line:rgba(255,255,255,.10);
+  --orange:#E26C2C;
+  --orange-bright:#F2812E;
+  --orange-soft:#F39A56;
+  --cream:#F4EEE3;
+  --cream-warm:#FAF5EC;
+  --paper:#FBF8F2;
+  --ink:#1A2330;
+  --ink-soft:#3C4655;
+  --muted:#727C8A;
+  --muted-light:#9AA3AE;
+  --line:#E6DECF;
+  --white:#fff;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'DM Sans',system-ui,-apple-system,sans-serif;
+  --maxw:1180px;
+  --radius:16px;
+  --shadow:0 30px 60px -25px rgba(8,18,30,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ===================== BUTTONS ===================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  font-family:var(--sans);font-weight:600;font-size:.95rem;
+  padding:.85em 1.5em;border-radius:9px;border:none;cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  white-space:nowrap;
+}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:0 10px 22px -10px rgba(226,108,44,.7)}
+.btn-orange:hover{background:var(--orange-bright);transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(226,108,44,.8)}
+.link-arrow{display:inline-flex;align-items:center;gap:.45em;font-weight:600;color:var(--orange);font-size:.9rem;transition:gap .18s ease}
+.link-arrow:hover{gap:.8em}
+.link-arrow svg{width:16px;height:16px}
+
+/* ===================== HEADER ===================== */
+header{position:sticky;top:0;z-index:60;background:var(--navy);border-bottom:1px solid var(--navy-line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .mark{width:42px;height:42px;border-radius:11px;background:linear-gradient(160deg,#1d3047,#0c1826);display:grid;place-items:center;border:1px solid rgba(255,255,255,.08)}
+.brand .mark svg{width:26px;height:26px}
+.brand .name{display:flex;flex-direction:column;line-height:1}
+.brand .name b{font-family:var(--serif);font-weight:600;color:#fff;font-size:1.32rem;letter-spacing:.2px}
+.brand .name span{color:var(--orange);font-size:.62rem;font-weight:700;letter-spacing:.32em;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links > a, .nav-item > button{
+  background:none;border:none;cursor:pointer;font-family:var(--sans);
+  color:rgba(255,255,255,.86);font-size:.94rem;font-weight:500;
+  display:inline-flex;align-items:center;gap:5px;transition:color .15s ease;
+}
+.nav-links > a:hover, .nav-item > button:hover{color:#fff}
+.nav-item{position:relative}
+.nav-item .caret{width:14px;height:14px;transition:transform .2s ease}
+.nav-item:hover .caret{transform:rotate(180deg)}
+.dropdown{
+  position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+  background:#fff;border-radius:12px;padding:10px;min-width:210px;
+  box-shadow:0 24px 48px -16px rgba(8,18,30,.4);border:1px solid var(--line);
+  opacity:0;visibility:hidden;transition:.2s ease;
+}
+.nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown a{display:block;padding:9px 12px;border-radius:8px;color:var(--ink);font-size:.9rem;font-weight:500}
+.dropdown a:hover{background:var(--cream);color:var(--orange)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;border-radius:9px}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;margin:5px auto;transition:.25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* mobile drawer */
+.mobile-menu{display:none;background:var(--navy-soft);border-bottom:1px solid var(--navy-line)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:rgba(255,255,255,.9);padding:14px 24px;border-bottom:1px solid var(--navy-line);font-weight:500}
+.mobile-menu .btn{margin:18px 24px;width:calc(100% - 48px)}
+
+/* ===================== ARTICLE ===================== */
+.article-hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:60px 0}
+.article-hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(900px 500px at 78% 18%, rgba(226,108,44,.16), transparent 60%),
+  radial-gradient(700px 600px at 10% 90%, rgba(40,70,100,.4), transparent 65%);pointer-events:none}
+.article-header{position:relative;max-width:760px;margin:0 auto;text-align:center}
+.article-kicker{color:var(--orange);font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.article-title{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;letter-spacing:-.3px;margin:18px 0 22px;color:#fff}
+.article-meta{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;color:rgba(255,255,255,.7);font-size:.9rem}
+.article-meta .sep{width:1px;height:18px;background:rgba(255,255,255,.3)}
+
+/* article body */
+.article-body{background:#fff;padding:60px 0}
+.article-wrapper{max-width:760px;margin:0 auto}
+.article-content{margin-bottom:60px}
+.article-content h2{font-family:var(--serif);font-weight:600;font-size:1.8rem;margin:42px 0 18px;color:var(--ink);line-height:1.1}
+.article-content h3{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin:32px 0 14px;color:var(--ink)}
+.article-content p{color:var(--ink-soft);font-size:1.05rem;line-height:1.8;margin-bottom:18px}
+.article-content ul,.article-content ol{margin:20px 0 20px 24px;color:var(--ink-soft)}
+.article-content li{margin-bottom:10px;line-height:1.7}
+.article-content strong{color:var(--ink);font-weight:600}
+.article-image{margin:40px 0;border-radius:16px;overflow:hidden;background:linear-gradient(150deg,#c5d6db,#8fa5ad);aspect-ratio:16/9;display:grid;place-items:center;color:var(--muted);font-size:.9rem}
+
+/* article sidebar */
+.article-layout{display:grid;grid-template-columns:1fr 280px;gap:40px;margin-top:40px}
+.article-sidebar{position:sticky;top:100px;height:fit-content}
+.sidebar-box{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:24px}
+.sidebar-box h4{font-family:var(--serif);font-weight:600;font-size:1.05rem;margin-bottom:14px;color:var(--ink)}
+.sidebar-box p{font-size:.9rem;color:var(--muted);line-height:1.6}
+.sidebar-box.cta{background:var(--navy);color:#fff;border:none}
+.sidebar-box.cta h4{color:#fff}
+.sidebar-box.cta p{color:rgba(255,255,255,.7)}
+.sidebar-box.cta .btn{width:100%;margin-top:14px}
+
+/* related articles */
+.related{margin-top:60px;padding-top:60px;border-top:1px solid var(--line)}
+.related h3{font-family:var(--serif);font-weight:600;font-size:1.6rem;margin-bottom:28px;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.related-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.2s}
+.related-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(8,18,30,.15)}
+.related-card .thumb{height:120px;background:linear-gradient(150deg,#d7e3ec,#a9c2d4)}
+.related-card .copy{padding:14px}
+.related-card h4{font-family:var(--serif);font-weight:600;font-size:.95rem;line-height:1.3;margin-bottom:6px}
+.related-card .meta{font-size:.75rem;color:var(--muted-light)}
+
+/* footer */
+footer{background:var(--navy-deep);color:rgba(255,255,255,.66);padding:60px 0 26px}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1fr;gap:30px}
+.foot-brand .brand{margin-bottom:16px}
+.foot-brand p{font-size:.84rem;max-width:24em;line-height:1.55}
+.socials{display:flex;gap:10px;margin-top:18px}
+.socials a{width:34px;height:34px;border-radius:8px;border:1px solid var(--navy-line);display:grid;place-items:center;transition:.18s}
+.socials a:hover{background:var(--orange);border-color:var(--orange)}
+.socials svg{width:16px;height:16px;fill:#fff}
+.fcol h5{color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.fcol a{display:block;font-size:.86rem;padding:5px 0;transition:.15s}
+.fcol a:hover{color:var(--orange)}
+.foot-bottom{border-top:1px solid var(--navy-line);margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.78rem}
+.foot-bottom .links{display:flex;gap:24px}
+.foot-bottom a:hover{color:var(--orange)}
+
+/* reveal anim */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:1024px){
+  .article-layout{grid-template-columns:1fr;gap:30px}
+  .article-sidebar{position:relative;top:auto}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr 1fr;gap:34px 24px}
+  .foot-brand{grid-column:1/-1}
+}
+@media(max-width:860px){
+  .nav-links,.nav-cta .btn{display:none}
+  .hamburger{display:block}
+  .nav-cta{gap:0}
+  .article-hero{padding:48px 0}
+  .article-body{padding:40px 0}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .article-meta{flex-direction:column;gap:8px}
+  .article-meta .sep{display:none}
+  .related-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .article-title{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/><path d="M12 13.5c1 .8 2 .8 3 0" stroke="#0E1B2B" stroke-width="1" stroke-linecap="round"/></svg>
+      </span>
+      <span class="name"><b>Sherlock</b><span>RESEARCH</span></span>
+    </a>
+
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button>Industries <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown">
+          <a href="index.html#industries">Landscaping</a><a href="index.html#industries">Roofing</a>
+          <a href="index.html#industries">HVAC</a><a href="index.html#industries">Pest Control</a>
+          <a href="index.html#industries">View All Industries</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button>Locations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown">
+          <a href="#">Austin, TX</a><a href="#">Dallas, TX</a>
+          <a href="#">Houston, TX</a><a href="#">View All Locations</a>
+        </div>
+      </div>
+      <a href="#">Services</a>
+      <div class="nav-item">
+        <button>Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown">
+          <a href="#">Blog</a><a href="#">Sample Reports</a>
+          <a href="#">Research Methodology</a><a href="faq.html">FAQ</a>
+        </div>
+      </div>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-orange" href="#">Get Your Edge</a>
+      <button class="hamburger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#industries">Industries</a>
+    <a href="#">Locations</a>
+    <a href="#">Services</a>
+    <a href="#">Resources</a>
+    <a href="about.html">About</a>
+    <a class="btn btn-orange" href="#">Get Your Edge</a>
+  </div>
+</header>
+
+<!-- ============ ARTICLE HERO ============ -->
+<section class="article-hero">
+  <div class="wrap article-header reveal">
+    <div class="article-kicker">Industry Insights</div>
+    <h1 class="article-title">2024 Landscaping Industry Outlook: Growth Ahead</h1>
+    <div class="article-meta">
+      <span>May 2, 2024</span>
+      <div class="sep"></div>
+      <span>5 min read</span>
+      <div class="sep"></div>
+      <span>By Sherlock Research</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARTICLE CONTENT ============ -->
+<section class="article-body">
+  <div class="wrap article-wrapper">
+    <div class="article-layout">
+      <div class="article-content reveal">
+        <p><strong>The landscaping industry is experiencing remarkable momentum heading into 2024.</strong> New market research from Sherlock Research shows that business owners are optimistic, demand remains strong, and several emerging trends are reshaping how companies operate.</p>
+
+        <h2>Market Growth and Economic Drivers</h2>
+        <p>The residential landscaping sector is projected to grow 3.2% year-over-year in 2024, driven by continued residential construction and homeowner investment in outdoor living spaces. The post-pandemic surge in home improvement spending hasn't cooled—in fact, it's stabilizing at a higher baseline.</p>
+        <p>Key economic drivers include:</p>
+        <ul>
+          <li>Persistent demand for outdoor living areas and hardscaping</li>
+          <li>Continued investment in sustainable landscaping practices</li>
+          <li>Growing commercial landscaping opportunities as businesses reopen</li>
+          <li>Increased professionalization of the industry</li>
+        </ul>
+
+        <div class="article-image"></div>
+
+        <h2>Emerging Trends and Opportunities</h2>
+        <h3>1. Sustainability and Eco-Friendly Design</h3>
+        <p>Homeowners are increasingly requesting native plants, drought-resistant landscaping, and sustainable maintenance practices. Companies that can offer these solutions command premium pricing and attract a growing segment of environmentally conscious clients.</p>
+
+        <h3>2. Technology Adoption</h3>
+        <p>From scheduling software to drone inspections, technology is becoming standard in the industry. Early adopters are gaining competitive advantages in efficiency, customer communication, and operational scaling.</p>
+
+        <h3>3. Premium Services</h3>
+        <p>The trend toward premium outdoor living—including outdoor kitchens, water features, and integrated lighting—continues to grow. These higher-margin services are attracting new customers willing to invest in their properties.</p>
+
+        <h2>Challenges and Considerations</h2>
+        <p>While the outlook is positive, landscaping business owners should be aware of several challenges:</p>
+        <ul>
+          <li><strong>Labor Availability:</strong> Finding and retaining skilled workers remains difficult in most markets.</li>
+          <li><strong>Material Costs:</strong> While stabilizing, material costs remain elevated compared to pre-pandemic levels.</li>
+          <li><strong>Competition:</strong> More players entering the market, particularly from adjacent service industries.</li>
+          <li><strong>Seasonality:</strong> Managing cash flow across seasons requires more sophisticated financial planning.</li>
+        </ul>
+
+        <h2>What Business Owners Should Do Now</h2>
+        <p>For landscaping business owners looking to capitalize on current market conditions, we recommend:</p>
+        <ol>
+          <li>Understand your local market deeply—demand and pricing vary significantly by geography</li>
+          <li>Invest in technology and training to improve operational efficiency</li>
+          <li>Develop a pricing strategy that reflects the premium nature of your services</li>
+          <li>Build your brand around your unique value proposition (sustainability, design, service quality, etc.)</li>
+          <li>Plan your growth strategically—understand what your market can support</li>
+        </ol>
+
+        <div class="article-image"></div>
+
+        <h2>Looking Ahead</h2>
+        <p>The landscaping industry is well-positioned for continued growth in 2024 and beyond. Business owners who understand their market, adopt best practices, and invest in their capabilities will be best positioned to capture this opportunity.</p>
+        <p>Want detailed benchmarks, competitive intelligence, and location-specific insights for your market? Our 2024 Landscaping Industry Report provides exactly that—data you can act on.</p>
+      </div>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-box">
+          <h4>About This Article</h4>
+          <p>Based on proprietary research and interviews with 150+ landscaping business owners across the US.</p>
+        </div>
+
+        <div class="sidebar-box cta">
+          <h4>Get the Full Report</h4>
+          <p>Deep-dive analysis, benchmarks, and local insights for your market.</p>
+          <a class="btn btn-orange" href="#">Get Your Report</a>
+        </div>
+
+        <div class="sidebar-box">
+          <h4>Share This</h4>
+          <p style="margin-bottom:14px">Share this article with your network</p>
+          <div style="display:flex;gap:10px">
+            <a href="#" style="font-weight:600;color:var(--orange)">LinkedIn</a>
+            <a href="#" style="font-weight:600;color:var(--orange)">Twitter</a>
+            <a href="#" style="font-weight:600;color:var(--orange)">Email</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="related reveal">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+        <a class="related-card" href="#">
+          <div class="thumb"></div>
+          <div class="copy">
+            <h4>Roofing Market Trends for Q2 2024</h4>
+            <div class="meta">April 25, 2024</div>
+          </div>
+        </a>
+        <a class="related-card" href="#">
+          <div class="thumb"></div>
+          <div class="copy">
+            <h4>Austin, TX Market Update: Opportunities in 2024</h4>
+            <div class="meta">April 18, 2024</div>
+          </div>
+        </a>
+        <a class="related-card" href="#">
+          <div class="thumb"></div>
+          <div class="copy">
+            <h4>How to Price Your Services in a Competitive Market</h4>
+            <div class="meta">April 10, 2024</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html">
+          <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/></svg></span>
+          <span class="name"><b>Sherlock</b><span>RESEARCH</span></span>
+        </a>
+        <p>Actionable market intelligence and local insights for business owners who want to win.</p>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H16.6v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H10z"/></svg></a>
+          <a href="#" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M2 5h20v14H2zM2 6l10 7 10-7" fill="none" stroke="#fff" stroke-width="1.7"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.1L8 21H5l7.4-8.5L4.5 3H11l4.5 5.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="fcol"><h5>Company</h5><a href="about.html">About Us</a><a href="#">How It Works</a><a href="#">Careers</a><a href="#">Contact Us</a></div>
+      <div class="fcol"><h5>Services</h5><a href="#">Industry Reports</a><a href="#">Custom Research</a><a href="#">Market Analysis</a><a href="#">Competitive Insights</a></div>
+      <div class="fcol"><h5>Resources</h5><a href="#">Blog</a><a href="#">Sample Reports</a><a href="#">Research Methodology</a><a href="faq.html">FAQ</a></div>
+      <div class="fcol"><h5>Industries</h5><a href="index.html#industries">Landscaping</a><a href="index.html#industries">Roofing</a><a href="index.html#industries">HVAC</a><a href="index.html#industries">Pest Control</a></div>
+      <div class="fcol"><h5>Popular Locations</h5><a href="#">Austin, TX</a><a href="#">Dallas, TX</a><a href="#">Houston, TX</a><a href="#">San Antonio, TX</a></div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2024 Sherlock Research. All rights reserved.</div>
+      <div class="links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* mobile menu */
+const burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mm.classList.toggle('open');});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mm.classList.remove('open');}));
+
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(Math.min(i,4)*70)+'ms';e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

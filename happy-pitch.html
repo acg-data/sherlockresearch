@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Happy Pitch — Institutional Pitch Decks</title>
+<meta name="description" content="Institutional-quality investor presentations for founders, fund managers, and advisory firms. Over $2B raised by clients. 10-14 day delivery."/>
+<meta property="og:title" content="Happy Pitch — Institutional Pitch Decks"/>
+<meta property="og:description" content="Pitch decks that close capital. Institutional-quality investor presentations for founders, fund managers, and advisory firms."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://happypitch.com"/>
+<meta property="og:image" content="https://happypitch.com/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Happy Pitch — Institutional Pitch Decks"/>
+<meta name="twitter:description" content="Pitch decks that close capital. Over $2B raised by clients."/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B162B'/%3E%3Cpath d='M16 6L6 11l10 5 10-5-10-5zM6 21l10 5 10-5M6 16l10 5 10-5' stroke='%23FFB300' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:   #0B162B;
+  --blue:   #284F93;
+  --gold:   #FFB300;
+  --gold2:  #FFCA44;
+  --goldd:  #A07800;
+  --ink:    #050d1c;
+  --white:  #ffffff;
+  --off:    #F4F6FA;
+  --off2:   #EDF2FB;
+  --g100:   #E2E8F4;
+  --g300:   #96A8C8;
+  --g500:   #536180;
+  --text:   #0C1526;
+  --textm:  #2A3A56;
+  --textl:  #536180;
+  --bdr:    #D0DAF0;
+  --bdrd:   #A8BADE;
+  --grad:   linear-gradient(135deg,#0B162B 0%,#284F93 100%);
+  --gradh:  linear-gradient(150deg,#0B162B 0%,#162444 40%,#284F93 100%);
+  --glass: rgba(255,255,255,.08);
+  --glass2: rgba(255,255,255,.12);
+  --sh1: 0 2px 8px rgba(11,22,43,.08);
+  --sh2: 0 8px 32px rgba(11,22,43,.14);
+  --sh3: 0 20px 60px rgba(11,22,43,.22);
+  --sh4: 0 32px 90px rgba(7,18,37,.32);
+  --fd: 'Barlow Condensed',sans-serif;
+  --fs: 'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+html,body{min-height:100%;overflow-x:hidden}
+body{background:linear-gradient(180deg,#fbfcff 0%,#f7f9fd 100%);color:var(--text);font-family:var(--fs);font-size:15px;line-height:1.68;letter-spacing:.003em}
+
+.w{max-width:1200px;margin:0 auto;padding:0 48px}
+.w-sm{max-width:900px;margin:0 auto;padding:0 48px}
+
+.kicker{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--g500);display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.kicker::before{content:'';display:block;width:28px;height:2px;background:var(--gold);flex-shrink:0}
+.kicker.c{justify-content:center}.kicker.c::before,.kicker.c::after{content:'';display:block;width:20px;height:2px;background:var(--gold);flex-shrink:0}
+.kicker.lt{color:var(--gold2)}.kicker.lt::before,.kicker.lt::after{background:var(--gold2)}
+
+.h1{font-family:var(--fd);font-size:clamp(52px,7vw,88px);font-weight:900;line-height:.96;letter-spacing:-.01em;text-transform:uppercase;color:var(--white)}
+.h1 em{font-style:italic;color:var(--gold)}
+.h2{font-family:var(--fd);font-size:clamp(36px,5vw,64px);font-weight:800;line-height:1;letter-spacing:-.005em;text-transform:uppercase;color:var(--navy)}
+.h2 em{font-style:italic;font-weight:800;color:var(--blue)}
+.h2.lt{color:var(--white)}.h2.lt em{color:var(--gold)}
+.h3{font-family:var(--fd);font-size:clamp(22px,3vw,34px);font-weight:700;line-height:1.05;text-transform:uppercase;color:var(--navy);letter-spacing:.01em}
+.h3 em{font-style:italic;color:var(--blue)}
+.lead{font-size:clamp(15px,1.5vw,17px);line-height:1.78;font-weight:300;color:var(--textl)}
+.lead.lt{color:rgba(255,255,255,.62)}
+
+.gr{width:48px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:24px}
+.gr.c{margin-left:auto;margin-right:auto}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px 32px;border-radius:3px;border:none;cursor:pointer;text-decoration:none;transition:all .22s;white-space:nowrap}
+.btn-gold{background:var(--gold);color:var(--navy);box-shadow:0 4px 20px rgba(255,179,0,.22)}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,179,0,.32)}
+.btn-white{background:white;color:var(--navy);box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.btn-ghost{background:rgba(255,255,255,.1);color:white;border:1.5px solid rgba(255,255,255,.35)}
+.btn-ghost:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.6)}
+.btn-dark{background:var(--navy);color:white}
+.btn-dark:hover{background:var(--blue);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--bdr)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.btn-sm{padding:10px 22px;font-size:13px}
+
+.ann{background:var(--gold);text-align:center;padding:9px 20px;position:relative;transition:opacity .3s,max-height .3s}
+.ann.hidden{opacity:0;max-height:0;padding:0;overflow:hidden}
+.ann p{font-family:var(--fd);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);padding-right:30px}
+.ann a{color:var(--navy);border-bottom:1px solid rgba(11,22,43,.4);text-decoration:none}
+.ann a:hover{border-color:var(--navy)}
+.ann-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:4px;opacity:.6;transition:opacity .2s}
+.ann-close:hover{opacity:1}
+.ann-close svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round}
+
+nav{position:sticky;top:0;z-index:100;height:74px;background:rgba(255,255,255,.86);border-bottom:1px solid rgba(208,218,240,.8);box-shadow:0 10px 32px rgba(11,22,43,.08);backdrop-filter:blur(18px);display:flex;align-items:center}
+.nav-w{max-width:1200px;width:100%;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nlogo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nlogo-mark{width:38px;height:38px;background:var(--grad);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 14px 34px rgba(11,22,43,.22)}
+.nlogo-mark svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nlogo-text{font-family:var(--fd);font-size:22px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--navy)}
+.nlogo-text span{color:var(--blue)}
+.nlinks{display:flex;gap:0}
+.nlinks a{font-family:var(--fd);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--textm);text-decoration:none;padding:10px 16px;transition:all .18s;border-radius:999px}
+.nlinks a:hover{color:var(--blue);background:rgba(40,79,147,.06)}
+.nr{display:flex;gap:10px;align-items:center}
+.ham{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.ham svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:2.2;stroke-linecap:round}
+
+.mnav{display:none;position:fixed;inset:0;background:var(--navy);z-index:200;flex-direction:column}
+.mnav.open{display:flex}
+.mntop{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.mnx{background:none;border:none;cursor:pointer;padding:8px;color:white}
+.mnx svg{width:22px;height:22px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round}
+.mnlinks{flex:1;overflow-y:auto;padding:12px 0}
+.mnlinks a{display:block;font-family:var(--fd);font-size:22px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);padding:18px 28px;border-bottom:1px solid rgba(255,255,255,.08);text-decoration:none}
+.mnlinks a:hover{color:white;background:rgba(255,255,255,.05)}
+.mnfoot{padding:24px 28px;flex-shrink:0}
+.mnfoot .btn{width:100%;justify-content:center}
+
+.hero{background:var(--gradh);position:relative;overflow:hidden;padding:138px 0 0}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(
+    -52deg,
+    transparent 0px, transparent 48px,
+    rgba(255,255,255,.032) 48px, rgba(255,255,255,.032) 96px,
+    transparent 96px, transparent 168px,
+    rgba(255,255,255,.02) 168px, rgba(255,255,255,.02) 210px
+  );
+}
+.hero::after{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:90%;
+  background:radial-gradient(ellipse,rgba(40,79,147,.6) 0%,transparent 68%);pointer-events:none}
+.hero-orb{position:absolute;right:6%;top:82px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,179,0,.16) 0%,rgba(255,179,0,.08) 28%,transparent 68%);
+  filter:blur(6px);pointer-events:none}
+.hero-in{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) 360px;align-items:center;gap:48px;padding-bottom:92px}
+.hero-left{width:100%;max-width:760px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,179,0,.12);border:1px solid rgba(255,179,0,.28);border-radius:2px;padding:6px 16px;font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,202,68,.85);margin-bottom:32px}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-h{margin-bottom:20px}
+.hero-sub{max-width:600px;margin-bottom:42px;font-size:16px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.hero-trust{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero-trust span{font-size:12px;color:rgba(255,255,255,.38);font-family:var(--fs);letter-spacing:.02em}
+.hero-trust-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.2);flex-shrink:0}
+.hero-right{position:relative}
+.hero-card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.06) 100%);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:22px;box-shadow:var(--sh4);backdrop-filter:blur(18px)}
+.hero-card::before{content:'';position:absolute;inset:14px;border:1px solid rgba(255,255,255,.05);border-radius:12px;pointer-events:none}
+.hc-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;position:relative;z-index:1}
+.hc-k{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,202,68,.78)}
+.hc-page{font-family:monospace;font-size:11px;color:rgba(255,255,255,.38)}
+.hc-main{background:white;border-radius:12px;padding:20px 18px;position:relative;z-index:1;box-shadow:0 22px 44px rgba(7,18,37,.32)}
+.hc-l{font-family:var(--fd);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--goldd);margin-bottom:6px}
+.hc-h{font-family:var(--fd);font-size:26px;font-weight:800;line-height:1.02;letter-spacing:.01em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.hc-p{font-size:12px;color:var(--textl);line-height:1.62;margin-bottom:16px}
+.hc-bars{display:flex;flex-direction:column;gap:8px}
+.hc-row{display:grid;grid-template-columns:46px 1fr 44px;gap:10px;align-items:center}
+.hc-row span{font-size:10px;color:var(--textl)}
+.hc-track{height:7px;background:var(--off);border-radius:999px;overflow:hidden}
+.hc-fill{height:100%;border-radius:999px}
+.hc-fill.a{width:92%;background:var(--navy)}
+.hc-fill.b{width:68%;background:var(--blue)}
+.hc-fill.c{width:38%;background:var(--gold)}
+.hc-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+.hc-stat{background:var(--off);border:1px solid var(--bdr);border-radius:10px;padding:12px}
+.hc-stat strong{display:block;font-family:var(--fd);font-size:22px;font-weight:800;line-height:1;color:var(--navy)}
+.hc-stat span{display:block;margin-top:4px;font-size:10px;color:var(--textl);letter-spacing:.08em;text-transform:uppercase}
+.hc-note{margin-top:16px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);position:relative;z-index:1}
+.hc-note strong{display:block;font-family:var(--fd);font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:white;margin-bottom:4px}
+.hc-note p{font-size:12px;color:rgba(255,255,255,.56);line-height:1.6}
+.form-row{display:flex;flex-direction:column;gap:14px}
+.ffloat{position:relative}
+.ffloat input,.ffloat textarea,.ffloat select{width:100%;background:var(--off);border:1.5px solid var(--bdr);border-radius:3px;padding:22px 16px 8px;font-size:14px;font-family:var(--fs);color:var(--text);outline:none;transition:all .2s}
+.ffloat input:focus,.ffloat textarea:focus,.ffloat select:focus{border-color:var(--blue);background:white}
+.ffloat label{position:absolute;left:16px;top:16px;font-size:13px;color:var(--g300);pointer-events:none;transition:all .18s ease;font-family:var(--fs);line-height:1}
+.ffloat input:focus+label,.ffloat input:not(:placeholder-shown)+label{top:7px;font-size:10px;color:var(--blue);letter-spacing:.04em}
+.ffloat textarea{padding-top:26px}
+.ffloat textarea+label{top:14px}
+.ffloat textarea:focus+label,.ffloat textarea:not(:placeholder-shown)+label{top:7px;font-size:10px;color:var(--blue);letter-spacing:.04em}
+.ffloat select+label{top:7px;font-size:10px;color:var(--g300);letter-spacing:.04em}
+.ffloat select:focus+label{color:var(--blue)}
+.finput{width:100%;background:var(--off);border:1.5px solid var(--bdr);border-radius:3px;padding:12px 16px;font-size:14px;font-family:var(--fs);color:var(--text);outline:none;transition:border-color .2s}
+.finput:focus{border-color:var(--blue);background:white}
+.finput::placeholder{color:var(--g300)}
+.fselect{appearance:none;background:var(--off) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2396A8C8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") right 14px center/12px no-repeat}
+
+.hero-proof{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.1);background:rgba(6,14,27,.56);backdrop-filter:blur(16px);position:relative;z-index:2;box-shadow:0 -12px 28px rgba(7,18,37,.18)}
+.pitem{padding:32px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.pitem:last-child{border-right:none}
+.pn{font-family:var(--fd);font-size:42px;font-weight:900;color:var(--white);line-height:1;margin-bottom:6px}
+.pn sup{font-size:55%;vertical-align:super;color:var(--gold)}
+.pl{font-family:var(--fd);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.48)}
+
+.sec{padding:116px 0}
+.sec.off{background:var(--off)}
+.sec.dark{background:var(--navy)}
+.sec.grd{background:var(--gradh);position:relative;overflow:hidden}
+.sec.grd::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-52deg,transparent 0px,transparent 48px,rgba(255,255,255,.025) 48px,rgba(255,255,255,.025) 96px);pointer-events:none}
+.sh{margin-bottom:64px}
+.sh.c{text-align:center}
+.sh.c .kicker,.sh.c .gr{justify-content:center;margin-left:auto;margin-right:auto}
+.sh .lead{max-width:500px;margin-top:14px}
+.sh.c .lead{margin-left:auto;margin-right:auto}
+
+.svc-tabs{display:flex;gap:0;border:1.5px solid var(--bdr);border-radius:4px;overflow:hidden;margin-bottom:40px;width:fit-content}
+.stab{font-family:var(--fd);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 26px;border:none;border-right:1.5px solid var(--bdr);background:white;color:var(--g300);cursor:pointer;transition:all .18s;white-space:nowrap}
+.stab:last-child{border-right:none}
+.stab.on{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.stab:hover:not(.on){background:var(--off);color:var(--navy)}
+.svc-layout{display:grid;grid-template-columns:280px 1fr;border:1.5px solid var(--bdr);border-radius:10px;overflow:hidden;box-shadow:var(--sh2);background:white}
+.svc-nav{border-right:1.5px solid var(--bdr);background:var(--off)}
+.sni{padding:21px 24px;border-bottom:1px solid var(--bdr);cursor:pointer;transition:all .18s;border-left:3px solid transparent;position:relative}
+.sni:last-child{border-bottom:none}
+.sni.on{background:white;border-left-color:var(--gold);box-shadow:inset 0 0 0 1px rgba(255,179,0,.06)}
+.sni:hover:not(.on){background:linear-gradient(90deg,rgba(40,79,147,.05),transparent);border-left-color:var(--blue)}
+.sni-t{font-family:var(--fd);font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);margin-bottom:2px}
+.sni-s{font-size:12px;color:var(--textl)}
+.svc-panel{display:none;flex:1}.svc-panel.on{display:flex}
+.svc-content{flex:1;padding:52px 56px;display:flex;flex-direction:column;justify-content:center}
+.svc-kicker{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--goldd);margin-bottom:8px}
+.svc-h{font-family:var(--fd);font-size:clamp(22px,2.5vw,32px);font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.01em;line-height:1.05;margin-bottom:14px}
+.svc-h em{font-style:italic;color:var(--blue)}
+.svc-p{font-size:14px;color:var(--textl);line-height:1.78;margin-bottom:26px;max-width:400px}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.svc-list li{font-size:13.5px;color:var(--textm);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.svc-list li::before{content:'';width:18px;height:18px;border-radius:2px;flex-shrink:0;margin-top:2px;
+  background:var(--off) url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 8L6.5 11L12.5 5' stroke='%23284F93' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat;
+  border:1.5px solid var(--bdr)}
+.svc-vis{width:280px;flex-shrink:0;background:var(--gradh);display:flex;align-items:center;justify-content:center;padding:28px 20px;position:relative;overflow:hidden}
+.svc-vis::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-52deg,transparent 0px,transparent 30px,rgba(255,255,255,.03) 30px,rgba(255,255,255,.03) 60px);pointer-events:none}
+.ipad{position:relative;z-index:1;width:168px;background:#141c2b;border-radius:16px;padding:8px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.14),0 28px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08);animation:ipadIn .6s ease-out}
+@keyframes ipadIn{from{opacity:0;transform:scale(.92) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.ipad::before{content:'';position:absolute;top:3.5px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:#1e2840;z-index:2}
+.ipad::after{content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:rgba(255,255,255,.14)}
+.iscr{background:white;border-radius:10px;overflow:hidden}
+.sld{padding:12px}
+.sld-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sld-logo{width:14px;height:14px;border-radius:2px;background:var(--navy)}
+.sld-pg{font-size:6.5px;color:var(--textl);font-family:monospace}
+.sld-tag{font-size:6.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--goldd);margin-bottom:3px}
+.sld-h{font-family:var(--fd);font-size:11px;font-weight:800;text-transform:uppercase;color:var(--navy);line-height:1.15;margin-bottom:2px}
+.sld-sub{font-size:6.5px;color:var(--textl);margin-bottom:9px}
+.sld-bars{display:flex;flex-direction:column;gap:5px;margin-bottom:9px}
+.sld-row{display:flex;align-items:center;gap:5px}
+.sld-rl{font-size:6px;color:var(--textl);width:18px;flex-shrink:0}
+.sld-tr{flex:1;height:5px;background:var(--off);border-radius:2px;overflow:hidden}
+.sld-f{height:100%;border-radius:2px}
+.fd{background:var(--navy)}.fm{background:var(--blue)}.fg{background:var(--gold)}
+.sld-rv{font-size:6px;color:var(--textl);width:18px;text-align:right;flex-shrink:0}
+.sld-sts{display:flex;gap:5px}
+.sld-st{flex:1;background:var(--off);border-radius:3px;padding:5px 5px;border:1px solid var(--bdr)}
+.ssv{font-family:var(--fd);font-size:12px;font-weight:800;color:var(--navy)}
+.ssl{font-size:5px;color:var(--textl);text-transform:uppercase;letter-spacing:.06em;margin-top:1px}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;background:transparent}
+.wcard{background:white;padding:44px 36px;position:relative;overflow:hidden;transition:all .3s;border:1.5px solid var(--bdr);border-radius:10px;box-shadow:var(--sh1)}
+.wcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .38s}
+.wcard:hover{background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);transform:translateY(-4px);box-shadow:var(--sh2)}.wcard:hover::before{transform:scaleX(1)}
+.wi{width:50px;height:50px;border-radius:8px;background:var(--off);border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.wi svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.wh{font-family:var(--fd);font-size:18px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.wp{font-size:13.5px;color:var(--textl);line-height:1.72}
+
+.cmp-table{background:white;border:1.5px solid var(--bdr);border-radius:10px;overflow:hidden;box-shadow:var(--sh2)}
+.cmp-head{display:grid;grid-template-columns:2fr repeat(4,1fr);border-bottom:1.5px solid var(--bdr);background:var(--off)}
+.cmp-hc{padding:16px 20px;font-family:var(--fd);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--textm);text-align:center;border-right:1px solid var(--bdr)}
+.cmp-hc:last-child{border-right:none}
+.cmp-hc.feat{background:var(--navy);color:var(--gold)}
+.cmp-row{display:grid;grid-template-columns:2fr repeat(4,1fr);border-bottom:1px solid var(--bdr)}
+.cmp-row:last-child{border-bottom:none}
+.cmp-lbl{padding:14px 20px;font-size:13px;color:var(--textm);border-right:1px solid var(--bdr)}
+.cmp-val{padding:14px 12px;text-align:center;border-right:1px solid var(--bdr);font-size:13px;color:var(--textl)}
+.cmp-val:last-child{border-right:none}
+.cmp-val.yes{color:var(--blue);font-weight:600}
+.cmp-val.no{color:var(--g300)}
+.cmp-val.feat{background:rgba(11,22,43,.03);color:var(--navy);font-weight:600}
+
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.proc-line{position:absolute;top:30px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:1px;
+  background:linear-gradient(to right,var(--bdr),var(--blue),var(--bdr));z-index:0}
+.pstep{padding:0 24px;text-align:center;position:relative;z-index:1}
+.pnum{width:60px;height:60px;border-radius:50%;background:white;border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-size:26px;font-weight:900;color:var(--navy);margin:0 auto 24px;box-shadow:var(--sh1);transition:all .3s}
+.pstep:hover .pnum{background:var(--grad);color:white;border-color:transparent;box-shadow:var(--sh2)}
+.pt{font-family:var(--fd);font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.pd{font-size:13px;color:var(--textl);line-height:1.7}
+
+.port-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.pcard{border:1.5px solid var(--bdr);border-radius:10px;overflow:hidden;background:white;transition:all .3s;box-shadow:var(--sh1)}
+.pcard:hover{box-shadow:var(--sh3);transform:translateY(-6px);border-color:var(--bdrd)}
+.ptop{height:188px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ptop.p1{background:linear-gradient(135deg,#0B162B 0%,#284F93 100%)}
+.ptop.p2{background:linear-gradient(135deg,#162444 0%,#0B162B 100%)}
+.ptop.p3{background:linear-gradient(135deg,#284F93 0%,#162444 100%)}
+.ptop.p4{background:linear-gradient(135deg,#111f3a 0%,#284F93 100%)}
+.ptop::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-52deg,transparent 0px,transparent 28px,rgba(255,255,255,.035) 28px,rgba(255,255,255,.035) 56px)}
+.pmock{background:white;border-radius:8px;padding:12px;width:148px;box-shadow:0 18px 42px rgba(0,0,0,.32);position:relative;z-index:1}
+.pmock-t{display:flex;justify-content:space-between;margin-bottom:6px}
+.pmock-d{width:12px;height:12px;border-radius:2px;background:var(--navy)}
+.pmock-p{font-size:6px;color:var(--textl);font-family:monospace}
+.pmock-h{font-family:var(--fd);font-size:10px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:5px}
+.pmock-bars{display:flex;flex-direction:column;gap:3px}
+.pmb{height:4px;border-radius:2px}
+.b1{width:88%;background:var(--navy);opacity:.8}
+.b2{width:62%;background:var(--blue);opacity:.7}
+.b3{width:78%;background:var(--gold);opacity:.8}
+.ptag{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:2px;padding:4px 12px;font-family:var(--fd);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:white;backdrop-filter:blur(8px)}
+.pbody{padding:22px 26px}
+.psec{font-family:var(--fd);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--goldd);margin-bottom:5px}
+.ptitle{font-family:var(--fd);font-size:20px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:6px;letter-spacing:.02em}
+.pdesc{font-size:13px;color:var(--textl);line-height:1.62;margin-bottom:8px}
+.pstat{display:inline-flex;align-items:center;gap:6px;background:var(--off);border:1px solid var(--bdr);border-radius:999px;padding:6px 12px;font-size:11px;color:var(--textm)}
+.pstat svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pstat strong{color:var(--navy)}
+
+.eng-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--bdr);border-radius:10px;overflow:hidden;box-shadow:var(--sh2)}
+.ec{border-right:1.5px solid var(--bdr);transition:all .28s;position:relative}
+.ec:last-child{border-right:none}
+.ec:hover{background:var(--off)}
+.ec.feat{background:var(--navy);border-color:var(--navy)}
+.ec.feat:hover{background:var(--dark2,#0d1c35)}
+.ec-badge{position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-family:var(--fd);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 18px;border-radius:0 0 100px 100px;white-space:nowrap;z-index:2}
+.ec-head{padding:48px 32px 24px;border-bottom:1px solid var(--bdr)}
+.ec.feat .ec-head{border-color:rgba(255,255,255,.1)}
+.ec-tier{font-family:var(--fd);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--textl);margin-bottom:8px}
+.ec.feat .ec-tier{color:rgba(255,255,255,.45)}
+.ec-name{font-family:var(--fd);font-size:26px;font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.02em;margin-bottom:8px}
+.ec.feat .ec-name{color:white}
+.ec-desc{font-size:13px;color:var(--textl);line-height:1.55}
+.ec.feat .ec-desc{color:rgba(255,255,255,.55)}
+.ec-body{padding:32px}
+.ec-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.ec-list li{font-size:13.5px;color:var(--textm);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.ec.feat .ec-list li{color:rgba(255,255,255,.75)}
+.ec-list li::before{content:'';width:18px;height:18px;border-radius:2px;flex-shrink:0;margin-top:1px;
+  background:var(--off) url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 8L6.5 11L12.5 5' stroke='%23284F93' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat;
+  border:1.5px solid var(--bdr)}
+.ec.feat .ec-list li::before{background:rgba(255,255,255,.1) url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 8L6.5 11L12.5 5' stroke='%23FFB300' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat;border-color:rgba(255,255,255,.12)}
+.ecta{width:100%;padding:13px;border-radius:3px;font-family:var(--fd);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:none;transition:all .22s}
+.ecta-out{background:transparent;color:var(--navy);border:2px solid var(--bdr)}
+.ecta-out:hover{border-color:var(--blue);color:var(--blue)}
+.ecta-gold{background:var(--gold);color:var(--navy)}
+.ecta-gold:hover{background:var(--gold2);box-shadow:0 4px 20px rgba(255,179,0,.4)}
+.ecta-ghost{background:rgba(255,255,255,.12);color:white;border:1.5px solid rgba(255,255,255,.25)}
+.ecta-ghost:hover{background:rgba(255,255,255,.2)}
+
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
+.tcard{background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.07));border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:36px;transition:all .28s;backdrop-filter:blur(10px)}
+.tcard:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);transform:translateY(-4px)}
+.tqm{font-family:var(--fd);font-size:72px;font-weight:900;line-height:.6;color:var(--gold);opacity:.45;display:block;margin-bottom:6px}
+.tq{font-size:14.5px;color:rgba(255,255,255,.82);line-height:1.72;margin-bottom:24px;font-style:italic;font-weight:300}
+.tauth{display:flex;align-items:center;gap:12px}
+.tava{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:15px;color:white;flex-shrink:0;border:2px solid rgba(255,255,255,.15)}
+.tname{font-family:var(--fd);font-size:15px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:white}
+.trole{font-size:12px;color:rgba(255,255,255,.4);margin-top:2px}
+.tres{display:block;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+
+.faq-list{max-width:760px;margin:0 auto}
+.fi{border-bottom:1px solid var(--bdr)}
+.fi:first-child{border-top:1px solid var(--bdr)}
+.fq{width:100%;background:none;border:none;cursor:pointer;padding:22px 0;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:24px;font-family:var(--fd);font-size:19px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);transition:color .2s}
+.fq:hover{color:var(--blue)}
+.fq svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:2.2;stroke-linecap:round;flex-shrink:0;transition:transform .3s}
+.fi.open .fq svg{transform:rotate(45deg)}
+.fa{font-size:14.5px;color:var(--textl);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease;padding-right:48px}
+.fi.open .fa{max-height:320px;padding-bottom:22px}
+
+.cta-box{background:var(--gradh);border-radius:12px;padding:80px 72px;position:relative;overflow:hidden;box-shadow:var(--sh3)}
+.cta-box::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-52deg,transparent 0px,transparent 48px,rgba(255,255,255,.025) 48px,rgba(255,255,255,.025) 96px);pointer-events:none}
+.cta-box::after{content:'';position:absolute;top:-20%;right:-8%;width:55%;height:110%;background:radial-gradient(ellipse,rgba(40,79,147,.55) 0%,transparent 65%);pointer-events:none}
+.cta-in{position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;gap:72px;align-items:center}
+.cta-h{font-family:var(--fd);font-size:clamp(36px,5vw,62px);font-weight:900;text-transform:uppercase;line-height:.98;color:white;margin-bottom:16px}
+.cta-h em{font-style:italic;color:var(--gold)}
+.cta-p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.72;font-weight:300}
+.iform{background:white;border-radius:10px;padding:40px;box-shadow:0 32px 72px rgba(0,0,0,.28)}
+.iform-title{font-family:var(--fd);font-size:20px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:4px;letter-spacing:.04em}
+.iform-sub{font-size:13px;color:var(--textl);margin-bottom:20px}
+.iform-sep{height:2px;width:36px;background:var(--gold);margin-bottom:22px}
+.iform .form-row{gap:12px}
+.iform-disc{font-size:11.5px;color:var(--g300);text-align:center;margin-top:10px}
+
+footer{background:#070f1c;padding:72px 0 40px;position:relative}
+footer::before{content:'';position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,179,0,.3),transparent)}
+.ft-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.ft-lm{width:30px;height:30px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:3px;display:flex;align-items:center;justify-content:center}
+.ft-lm svg{width:15px;height:15px;fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ft-lt{font-family:var(--fd);font-size:18px;font-weight:800;text-transform:uppercase;color:white;letter-spacing:.04em}
+.ft-lt span{color:var(--gold)}
+.ft-desc{font-size:13px;color:rgba(255,255,255,.32);line-height:1.75;margin-bottom:20px;max-width:230px}
+.ft-soc{display:flex;gap:8px}
+.fts{width:32px;height:32px;border-radius:8px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:12px;color:rgba(255,255,255,.36);text-decoration:none;transition:all .2s}
+.fts:hover{border-color:rgba(255,255,255,.28);color:white;background:rgba(255,255,255,.05)}
+.ft-col-h{font-family:var(--fd);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px}
+.ft-links{display:flex;flex-direction:column;gap:10px}
+.ft-links a{font-size:13px;color:rgba(255,255,255,.42);text-decoration:none;transition:color .2s}
+.ft-links a:hover{color:white}
+.ft-bot{border-top:1px solid rgba(255,255,255,.07);padding-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ft-copy{font-size:12px;color:rgba(255,255,255,.2)}
+.ft-leg{display:flex;gap:24px}
+.ft-leg a{font-size:12px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s}
+.ft-leg a:hover{color:rgba(255,255,255,.5)}
+
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.98);border-top:1px solid var(--bdr);padding:12px 20px;z-index:99;backdrop-filter:blur(14px)}
+.mobile-cta .btn{width:100%;justify-content:center}
+
+.ru{opacity:0;transform:translateY(28px);transition:opacity .72s ease,transform .72s ease}
+.ru.v{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.ru{opacity:1;transform:none}}
+
+@media(max-width:1080px){
+  .w,.nav-w,.ft-grid,.w-sm{padding-left:28px;padding-right:28px}
+  .nlinks,.nr .btn-outline{display:none}.ham{display:flex;align-items:center}
+  .hero-h{font-size:clamp(48px,9vw,80px)}
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-right{max-width:520px;width:100%}
+  .svc-layout{grid-template-columns:1fr}
+  .svc-nav{border-right:none;border-bottom:1.5px solid var(--bdr);display:flex;flex-wrap:wrap}
+  .sni{flex:1;min-width:140px;border-bottom:none;border-right:1px solid var(--bdr)}
+  .sni:last-child{border-right:none}
+  .svc-panel.on{flex-direction:column}
+  .svc-vis{width:100%;min-height:260px}
+  .why-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto}
+  .proc-grid{grid-template-columns:1fr 1fr}.proc-line{display:none}
+  .eng-grid{grid-template-columns:1fr;border:none;gap:16px}
+  .ec{border-radius:4px;border:1.5px solid var(--bdr)}
+  .ec.feat{border-color:var(--navy)}
+  .ec-badge{border-radius:100px}
+  .test-grid{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:1fr}
+  .cta-in{grid-template-columns:1fr}
+  .cta-box{padding:56px 36px}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .cmp-table{overflow-x:auto}
+  .cmp-head,.cmp-row{min-width:600px}
+}
+@media(max-width:680px){
+  .w,.nav-w,.w-sm{padding-left:20px;padding-right:20px}
+  nav{height:60px}
+  .hero{padding:72px 0 0}
+  .hero-orb{right:-28%;top:110px;width:320px;height:320px}
+  .hero-grid{padding-bottom:64px}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+  .hero-btns .btn{width:100%;justify-content:center}
+  .hero-card{padding:16px}
+  .hc-main{padding:16px}
+  .hc-h{font-size:20px}
+  .hc-row{grid-template-columns:40px 1fr 40px}
+  .hero-proof{grid-template-columns:1fr 1fr}
+  .pitem:nth-child(2){border-right:none}
+  .pitem:nth-child(3){border-top:1px solid rgba(255,255,255,.07)}
+  .sec{padding:64px 0}
+  .sh{margin-bottom:44px}
+  .why-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr;gap:24px}
+  .pstep{display:flex;align-items:flex-start;gap:16px;text-align:left}
+  .pnum{margin:0;flex-shrink:0;width:48px;height:48px;font-size:22px}
+  .ft-grid{grid-template-columns:1fr;gap:28px}
+  .ft-bot{flex-direction:column;text-align:center}
+  .ft-leg{justify-content:center;flex-wrap:wrap;gap:16px}
+  .cta-box{padding:40px 20px;border-radius:4px}
+  .svc-tabs{width:100%;overflow-x:auto}
+  footer{padding:56px 20px 100px}
+  .mobile-cta{display:block}
+}
+@media(max-width:420px){
+  .h1{font-size:44px}
+  .h2{font-size:30px}
+  .hc-stats{grid-template-columns:1fr}
+  .pn{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<div class="ann" id="ann">
+  <p>New engagements accepted for Q2 2026 &nbsp;&mdash;&nbsp; <a href="#contact">Submit your inquiry &rarr;</a></p>
+  <button class="ann-close" onclick="closeAnn()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+</div>
+
+<nav>
+  <div class="nav-w">
+    <a href="#" class="nlogo">
+      <div class="nlogo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="nlogo-text">Happy<span>Pitch</span></div>
+    </a>
+    <div class="nlinks">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#process">Process</a>
+      <a href="#work">Our Work</a>
+      <a href="#engagements">Engagements</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nr">
+      <a href="#work" class="btn btn-outline btn-sm">View Portfolio</a>
+      <button class="btn btn-gold btn-sm" onclick="goCTA()">Submit Inquiry</button>
+    </div>
+    <button class="ham" onclick="openNav()"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+
+<div class="mnav" id="mnav">
+  <div class="mntop">
+    <a href="#" class="nlogo"><div class="nlogo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="nlogo-text" style="color:white">Happy<span>Pitch</span></div></a>
+    <button class="mnx" onclick="closeNav()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="mnlinks">
+    <a href="#services" onclick="closeNav()">Services</a>
+    <a href="#why" onclick="closeNav()">Why Us</a>
+    <a href="#process" onclick="closeNav()">Process</a>
+    <a href="#work" onclick="closeNav()">Our Work</a>
+    <a href="#engagements" onclick="closeNav()">Engagements</a>
+    <a href="#testimonials" onclick="closeNav()">Clients</a>
+    <a href="#faq" onclick="closeNav()">FAQ</a>
+  </div>
+  <div class="mnfoot"><button class="btn btn-gold" style="width:100%;justify-content:center" onclick="closeNav();goCTA()">Submit an Inquiry &rarr;</button></div>
+</div>
+
+<main>
+
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="w hero-in">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-tag"><span class="hero-tag-dot"></span>Investor-Grade Presentations</div>
+        <h1 class="h1 hero-h">Pitch Decks<br/>That <em>Close</em><br/>Capital.</h1>
+        <p class="lead lt hero-sub">Happy Pitch produces institutional-quality investor presentations for founders, fund managers, and advisory firms &mdash; translating complex mandates into the precise language that moves capital.</p>
+        <div class="hero-btns">
+          <button class="btn btn-gold" onclick="goCTA()">Submit an Inquiry &rarr;</button>
+          <a href="#services" class="btn btn-ghost">Explore Services</a>
+        </div>
+        <div class="hero-trust">
+          <span>Confidential by default</span>
+          <span class="hero-trust-dot"></span>
+          <span>NDA available on request</span>
+          <span class="hero-trust-dot"></span>
+          <span>Response within 1 business day</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hc-top">
+            <div class="hc-k">Sample Engagement Preview</div>
+            <div class="hc-page">04 / 16</div>
+          </div>
+          <div class="hc-main">
+            <div class="hc-l">Market Opportunity</div>
+            <div class="hc-h">$4.2B TAM with Clear Wedge into an Underserved Segment</div>
+            <p class="hc-p">A well-built deck should not just look credible. It should make the business model, urgency, and scale logic feel obvious.</p>
+            <div class="hc-bars">
+              <div class="hc-row"><span>TAM</span><div class="hc-track"><div class="hc-fill a"></div></div><span>$4.2B</span></div>
+              <div class="hc-row"><span>SAM</span><div class="hc-track"><div class="hc-fill b"></div></div><span>$1.1B</span></div>
+              <div class="hc-row"><span>SOM</span><div class="hc-track"><div class="hc-fill c"></div></div><span>$82M</span></div>
+            </div>
+            <div class="hc-stats">
+              <div class="hc-stat"><strong>34%</strong><span>Projected CAGR</span></div>
+              <div class="hc-stat"><strong>Yr 3</strong><span>Breakeven Target</span></div>
+            </div>
+          </div>
+          <div class="hc-note">
+            <strong>Design backed by argument</strong>
+            <p>Every slide is built to help a skeptical audience understand the thesis faster and trust the business sooner.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-proof">
+    <div class="pitem"><div class="pn" data-target="2" data-prefix="$" data-suffix="B+">$0</div><div class="pl">Capital Raised by Clients</div></div>
+    <div class="pitem"><div class="pn" data-target="500" data-suffix="+">0</div><div class="pl">Decks Delivered</div></div>
+    <div class="pitem"><div class="pn" data-target="97" data-suffix="%">0%</div><div class="pl">Client Satisfaction</div></div>
+    <div class="pitem"><div class="pn">10&ndash;14</div><div class="pl">Days to Delivery</div></div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="w">
+    <div class="sh c ru">
+      <div class="kicker c">Practice Areas</div>
+      <div class="gr c"></div>
+      <h2 class="h2">The Full Scope of <em>Capital Communication</em></h2>
+      <p class="lead" style="margin:14px auto 0;max-width:520px">From seed round narratives to board-level strategic presentations — every engagement is produced to institutional standard.</p>
+    </div>
+    <div class="svc-tabs ru">
+      <button class="stab on" onclick="sw(this,'iv')">Investor Decks</button>
+      <button class="stab" onclick="sw(this,'sa')">Sales Presentations</button>
+      <button class="stab" onclick="sw(this,'bd')">Board &amp; Strategic</button>
+      <button class="stab" onclick="sw(this,'dv')">Data Visualization</button>
+    </div>
+    <div class="svc-layout ru">
+      <div class="svc-nav" id="sn-iv">
+        <div class="sni on" onclick="si(this)"><div class="sni-t">Market Opportunity</div><div class="sni-s">TAM/SAM/SOM with bottoms-up sizing</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Investment Thesis</div><div class="sni-s">Problem, solution, and why now</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Financial Projections</div><div class="sni-s">Model architecture built for diligence</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Competitive Landscape</div><div class="sni-s">Positioning maps and differentiation</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Executive Summary</div><div class="sni-s">One-pagers for warm introductions</div></div>
+      </div>
+      <div class="svc-panel on" id="sp-iv">
+        <div class="svc-content">
+          <div class="svc-kicker">Investor Pitch Decks</div>
+          <div class="svc-h">Engineered to Speak the <em>Language of Capital</em></div>
+          <p class="svc-p">We produce materials that move institutional investors, VCs, and family offices from initial interest to committed capital — structured around the specific criteria that govern allocation decisions.</p>
+          <ul class="svc-list">
+            <li>Independent TAM/SAM/SOM with primary research and bottoms-up verification</li>
+            <li>Investment narrative from thesis to evidence to ask — in the sequence that builds conviction</li>
+            <li>Financial model slide architecture designed to withstand LP-level diligence review</li>
+            <li>Production quality that signals institutional credibility before a word is spoken</li>
+          </ul>
+          <button class="btn btn-dark btn-sm" onclick="goCTA()">Request a Sample Engagement</button>
+        </div>
+        <div class="svc-vis">
+          <div class="ipad"><div class="iscr"><div class="sld">
+            <div class="sld-top"><div class="sld-logo"></div><div class="sld-pg">04 / 14</div></div>
+            <div class="sld-tag">Market Opportunity</div>
+            <div class="sld-h">$4.2B TAM &mdash; Largely Untapped</div>
+            <div class="sld-sub">34% CAGR &middot; 2024&ndash;2029 &middot; Bottoms-up</div>
+            <div class="sld-bars">
+              <div class="sld-row"><div class="sld-rl">TAM</div><div class="sld-tr"><div class="sld-f fd" style="width:92%"></div></div><div class="sld-rv">$4.2B</div></div>
+              <div class="sld-row"><div class="sld-rl">SAM</div><div class="sld-tr"><div class="sld-f fm" style="width:65%"></div></div><div class="sld-rv">$1.1B</div></div>
+              <div class="sld-row"><div class="sld-rl">SOM</div><div class="sld-tr"><div class="sld-f fg" style="width:38%"></div></div><div class="sld-rv">$82M</div></div>
+            </div>
+            <div class="sld-sts">
+              <div class="sld-st"><div class="ssv">34%</div><div class="ssl">CAGR</div></div>
+              <div class="sld-st"><div class="ssv" style="color:var(--goldd)">Yr3</div><div class="ssl">BEP</div></div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+      <div class="svc-nav" id="sn-sa" style="display:none">
+        <div class="sni on" onclick="si(this)"><div class="sni-t">Competitive Positioning</div><div class="sni-s">Frame you as the only logical choice</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">ROI &amp; Business Case</div><div class="sni-s">Quantified value that dissolves objections</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Case Studies</div><div class="sni-s">Social proof woven into every stage</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Leave-Behinds</div><div class="sni-s">Materials that keep you top of mind</div></div>
+      </div>
+      <div class="svc-panel" id="sp-sa">
+        <div class="svc-content">
+          <div class="svc-kicker">Sales Presentations</div>
+          <div class="svc-h">Designed to Convert <em>Prospects Into Clients</em></div>
+          <p class="svc-p">We build materials that accelerate the decision process — structured to anticipate objections, establish credibility, and create the conditions for a signed engagement.</p>
+          <ul class="svc-list">
+            <li>Buyer psychology-driven structure that anticipates and dissolves objections at every stage</li>
+            <li>Competitive positioning that frames you as the category-defining choice</li>
+            <li>Quantified ROI frameworks that make the business case undeniable</li>
+          </ul>
+          <button class="btn btn-dark btn-sm" onclick="goCTA()">View Sales Engagement</button>
+        </div>
+        <div class="svc-vis">
+          <div class="ipad"><div class="iscr"><div class="sld">
+            <div class="sld-top"><div class="sld-logo" style="background:var(--blue)"></div><div class="sld-pg">03 / 10</div></div>
+            <div class="sld-tag">Competitive Benchmark</div>
+            <div class="sld-h">Why We Win Every Evaluation</div>
+            <div class="sld-sub">Independent scoring vs. top 3 competitors</div>
+            <div class="sld-bars">
+              <div class="sld-row"><div class="sld-rl">Speed</div><div class="sld-tr"><div class="sld-f fg" style="width:95%"></div></div><div class="sld-rv">9.5</div></div>
+              <div class="sld-row"><div class="sld-rl">Quality</div><div class="sld-tr"><div class="sld-f fg" style="width:90%"></div></div><div class="sld-rv">9.0</div></div>
+              <div class="sld-row"><div class="sld-rl">ROI</div><div class="sld-tr"><div class="sld-f fg" style="width:88%"></div></div><div class="sld-rv">8.8</div></div>
+            </div>
+            <div class="sld-sts">
+              <div class="sld-st"><div class="ssv">3x</div><div class="ssl">Close Speed</div></div>
+              <div class="sld-st"><div class="ssv" style="color:var(--goldd)">94%</div><div class="ssl">Win Rate</div></div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+      <div class="svc-nav" id="sn-bd" style="display:none">
+        <div class="sni on" onclick="si(this)"><div class="sni-t">Board Presentations</div><div class="sni-s">Quarterly narratives that build confidence</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Strategic Roadmaps</div><div class="sni-s">5-year visions distilled to clear actions</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">M&amp;A Narratives</div><div class="sni-s">Acquisition rationale and integration story</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">All-Hands Decks</div><div class="sni-s">Alignment at scale across your organization</div></div>
+      </div>
+      <div class="svc-panel" id="sp-bd">
+        <div class="svc-content">
+          <div class="svc-kicker">Board &amp; Strategic Presentations</div>
+          <div class="svc-h">Clarity That Moves <em>Organizations Forward</em></div>
+          <p class="svc-p">Board decks, strategic plans, and all-hands presentations that translate complex strategies into decisive, memorable narratives — built for action, not applause.</p>
+          <ul class="svc-list">
+            <li>Roadmap clarity — complex initiatives distilled into decisive, ownable priorities</li>
+            <li>Board-ready narratives that inspire confidence without losing rigor or nuance</li>
+            <li>Stakeholder alignment materials engineered to generate organizational buy-in</li>
+          </ul>
+          <button class="btn btn-dark btn-sm" onclick="goCTA()">Discuss a Strategic Mandate</button>
+        </div>
+        <div class="svc-vis">
+          <div class="ipad"><div class="iscr"><div class="sld">
+            <div class="sld-top"><div class="sld-logo" style="background:#4f46e5"></div><div class="sld-pg">07 / 16</div></div>
+            <div class="sld-tag">Strategic Roadmap</div>
+            <div class="sld-h">5-Year Vision &amp; Milestones</div>
+            <div class="sld-sub">Phase-gated &middot; Q3 2026 next gate</div>
+            <div class="sld-bars">
+              <div class="sld-row"><div class="sld-rl">Phase 1</div><div class="sld-tr"><div class="sld-f fd" style="width:100%"></div></div><div class="sld-rv">Done</div></div>
+              <div class="sld-row"><div class="sld-rl">Phase 2</div><div class="sld-tr"><div class="sld-f fg" style="width:62%"></div></div><div class="sld-rv">Q3</div></div>
+              <div class="sld-row"><div class="sld-rl">Phase 3</div><div class="sld-tr"><div class="sld-f fm" style="width:24%;opacity:.4"></div></div><div class="sld-rv">2027</div></div>
+            </div>
+            <div class="sld-sts">
+              <div class="sld-st"><div class="ssv">5yr</div><div class="ssl">Vision</div></div>
+              <div class="sld-st"><div class="ssv" style="color:var(--goldd)">Q3</div><div class="ssl">Next Gate</div></div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+      <div class="svc-nav" id="sn-dv" style="display:none">
+        <div class="sni on" onclick="si(this)"><div class="sni-t">Revenue Dashboards</div><div class="sni-s">ARR, MRR, churn — told as a growth story</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Cohort Analysis</div><div class="sni-s">Retention and LTV visualized for impact</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Market Share Charts</div><div class="sni-s">Competitive position made instantly clear</div></div>
+        <div class="sni" onclick="si(this)"><div class="sni-t">Custom Infographics</div><div class="sni-s">Complex data made viscerally digestible</div></div>
+      </div>
+      <div class="svc-panel" id="sp-dv">
+        <div class="svc-content">
+          <div class="svc-kicker">Data Visualization</div>
+          <div class="svc-h">Numbers That <em>Tell the Story</em></div>
+          <p class="svc-p">Unstructured data does not persuade institutional audiences. We transform your metrics into visual arguments that make performance undeniable and trajectory self-evident.</p>
+          <ul class="svc-list">
+            <li>Custom chart design — every visual engineered for maximum persuasive impact</li>
+            <li>Metrics selection strategy — showing the right numbers at the right moment</li>
+            <li>Infographic storytelling — complex relationships made instantly legible</li>
+          </ul>
+          <button class="btn btn-dark btn-sm" onclick="goCTA()">View Data Examples</button>
+        </div>
+        <div class="svc-vis">
+          <div class="ipad"><div class="iscr"><div class="sld">
+            <div class="sld-top"><div class="sld-logo" style="background:#059669"></div><div class="sld-pg">05 / 12</div></div>
+            <div class="sld-tag">Revenue Performance</div>
+            <div class="sld-h">Q4 Record &mdash; $2.1M ARR</div>
+            <div class="sld-sub">YoY +78% &middot; Accelerating Q-on-Q</div>
+            <div class="sld-bars">
+              <div class="sld-row"><div class="sld-rl">Q1</div><div class="sld-tr"><div class="sld-f fm" style="width:42%"></div></div><div class="sld-rv">$0.6M</div></div>
+              <div class="sld-row"><div class="sld-rl">Q2</div><div class="sld-tr"><div class="sld-f fm" style="width:60%"></div></div><div class="sld-rv">$1.1M</div></div>
+              <div class="sld-row"><div class="sld-rl">Q3</div><div class="sld-tr"><div class="sld-f fg" style="width:80%"></div></div><div class="sld-rv">$1.7M</div></div>
+              <div class="sld-row"><div class="sld-rl">Q4</div><div class="sld-tr"><div class="sld-f fg" style="width:100%"></div></div><div class="sld-rv">$2.1M</div></div>
+            </div>
+            <div class="sld-sts">
+              <div class="sld-st"><div class="ssv" style="color:var(--goldd)">+78%</div><div class="ssl">YoY</div></div>
+              <div class="sld-st"><div class="ssv">$2.1M</div><div class="ssl">ARR</div></div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec off" id="why">
+  <div class="w">
+    <div class="sh ru">
+      <div class="kicker">Our Distinction</div>
+      <div class="gr"></div>
+      <h2 class="h2">What Separates <em>Happy Pitch</em></h2>
+      <p class="lead" style="margin-top:14px;max-width:480px">We operate at the intersection of investment strategy and executive communication — where narrative quality directly determines mandate outcomes.</p>
+    </div>
+    <div class="why-grid ru">
+      <div class="wcard">
+        <div class="wi"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
+        <div class="wh">Narrative Architecture First</div>
+        <p class="wp">We establish the strategic framework and argument structure before any design commences. Every slide is justified by its contribution to the overall investment thesis.</p>
+      </div>
+      <div class="wcard d1">
+        <div class="wi"><svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+        <div class="wh">Principal-Level Perspective</div>
+        <p class="wp">Our principals have participated in transactions on both sides of the table. We understand the precise lens through which institutional investors evaluate capital allocation materials.</p>
+      </div>
+      <div class="wcard d2">
+        <div class="wi"><svg viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+        <div class="wh">Documented Track Record</div>
+        <p class="wp">Over 500 engagements completed. Client organizations have collectively secured in excess of $2B in capital commitments. Our methodology is reproducible and outcome-oriented.</p>
+      </div>
+      <div class="wcard d1">
+        <div class="wi"><svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+        <div class="wh">Proprietary Research</div>
+        <p class="wp">Independent market analysis, competitive landscape mapping, and TAM verification are embedded in every engagement — not outsourced and never treated as optional.</p>
+      </div>
+      <div class="wcard d2">
+        <div class="wi"><svg viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div>
+        <div class="wh">Sector Fluency</div>
+        <p class="wp">From life sciences to private credit, from SaaS to real asset funds — we produce materials across the full spectrum of alternative and traditional capital structures.</p>
+      </div>
+      <div class="wcard d3">
+        <div class="wi"><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <div class="wh">Dedicated Engagement Team</div>
+        <p class="wp">A senior strategist is assigned to each mandate from intake through final delivery. Revision cycles are structured and unlimited — we stay engaged until the materials are precisely right.</p>
+      </div>
+    </div>
+    <div class="ru" style="margin-top:64px">
+      <h3 class="h3" style="text-align:center;margin-bottom:32px">How We Compare</h3>
+      <div class="cmp-table">
+        <div class="cmp-head">
+          <div class="cmp-hc"></div>
+          <div class="cmp-hc feat">Happy Pitch</div>
+          <div class="cmp-hc">Freelancer</div>
+          <div class="cmp-hc">Agency</div>
+          <div class="cmp-hc">DIY</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-lbl">Investment Thesis Structure</div>
+          <div class="cmp-val feat yes">Included</div>
+          <div class="cmp-val no">Rarely</div>
+          <div class="cmp-val">Sometimes</div>
+          <div class="cmp-val no">No</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-lbl">Independent Market Research</div>
+          <div class="cmp-val feat yes">Included</div>
+          <div class="cmp-val no">Extra</div>
+          <div class="cmp-val">Extra</div>
+          <div class="cmp-val no">No</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-lbl">Unlimited Revisions</div>
+          <div class="cmp-val feat yes">Yes</div>
+          <div class="cmp-val no">Limited</div>
+          <div class="cmp-val no">Limited</div>
+          <div class="cmp-val">N/A</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-lbl">Senior Strategist Assigned</div>
+          <div class="cmp-val feat yes">Always</div>
+          <div class="cmp-val no">No</div>
+          <div class="cmp-val">Sometimes</div>
+          <div class="cmp-val no">No</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-lbl">10-14 Day Turnaround</div>
+          <div class="cmp-val feat yes">Standard</div>
+          <div class="cmp-val">Varies</div>
+          <div class="cmp-val no">4-8 weeks</div>
+          <div class="cmp-val">Varies</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-lbl">NDA / White-Label</div>
+          <div class="cmp-val feat yes">Available</div>
+          <div class="cmp-val">Sometimes</div>
+          <div class="cmp-val yes">Available</div>
+          <div class="cmp-val">N/A</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="process">
+  <div class="w">
+    <div class="sh c ru">
+      <div class="kicker c">Engagement Framework</div>
+      <div class="gr c"></div>
+      <h2 class="h2">End-to-End <em>Mandate Support</em></h2>
+      <p class="lead" style="margin:14px auto 0;max-width:480px">Most engagements progress from initial briefing to delivered materials within 10&ndash;14 business days. Expedited timelines available.</p>
+    </div>
+    <div class="proc-grid ru" style="margin-top:64px">
+      <div class="proc-line"></div>
+      <div class="pstep">
+        <div class="pnum">1</div>
+        <div class="pt">Mandate Briefing</div>
+        <p class="pd">A structured 45-minute session to establish scope, investment thesis, target capital sources, and desired outcomes. No assumptions. No templates.</p>
+      </div>
+      <div class="pstep">
+        <div class="pnum">2</div>
+        <div class="pt">Narrative Architecture</div>
+        <p class="pd">We construct the strategic framework — slide sequence, messaging hierarchy, and argument structure — before any visual work commences.</p>
+      </div>
+      <div class="pstep">
+        <div class="pnum">3</div>
+        <div class="pt">Production</div>
+        <p class="pd">Your materials are produced to institutional standard: bespoke data visualization, custom slide design, and rigorous editorial review throughout.</p>
+      </div>
+      <div class="pstep">
+        <div class="pnum">4</div>
+        <div class="pt">Review &amp; Delivery</div>
+        <p class="pd">Structured revision cycles with your principals until the materials reflect your mandate with precision. Delivered in all required formats.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec off" id="work">
+  <div class="w">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:52px" class="ru">
+      <div>
+        <div class="kicker">Selected Work</div>
+        <div class="gr"></div>
+        <h2 class="h2">Recent <em>Engagements</em></h2>
+      </div>
+      <a href="#contact" class="btn btn-outline btn-sm">View Full Portfolio &rarr;</a>
+    </div>
+    <div class="port-grid ru">
+      <div class="pcard">
+        <div class="ptop p1"><div class="ptag">HealthTech &middot; Seed</div>
+          <div class="pmock"><div class="pmock-t"><div class="pmock-d"></div><div class="pmock-p">04/14</div></div><div class="pmock-h">$2.4B TAM &mdash; Digital Care Navigation</div><div class="pmock-bars"><div class="pmb b1"></div><div class="pmb b2"></div><div class="pmb b3"></div></div></div>
+        </div>
+        <div class="pbody"><div class="psec">Healthcare Technology</div><div class="ptitle">Series Seed &mdash; $4M Raised</div><p class="pdesc">Full investor pitch deck for digital health navigators. Closed with a top-tier lead investor in 8 weeks.</p><div class="pstat"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg><strong>0 &rarr; 12 investor meetings</strong> in 6 weeks</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ptop p2"><div class="ptag">SaaS &middot; Series A</div>
+          <div class="pmock"><div class="pmock-t"><div class="pmock-d" style="background:var(--blue)"></div><div class="pmock-p">06/16</div></div><div class="pmock-h">$2.1M ARR &middot; +78% YoY Growth</div><div class="pmock-bars"><div class="pmb b2"></div><div class="pmb b1"></div><div class="pmb b3"></div></div></div>
+        </div>
+        <div class="pbody"><div class="psec">Enterprise SaaS</div><div class="ptitle">Series A &mdash; $12M Raised</div><p class="pdesc">Complete investor narrative and data suite. Lead partner cited it as the clearest pitch reviewed that quarter.</p><div class="pstat"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg><strong>Closed at target valuation</strong> in 2 weeks</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ptop p3"><div class="ptag">Real Assets &middot; Fund</div>
+          <div class="pmock"><div class="pmock-t"><div class="pmock-d" style="background:var(--goldd)"></div><div class="pmock-p">03/12</div></div><div class="pmock-h">$75M Raise &mdash; Fund IV</div><div class="pmock-bars"><div class="pmb b3"></div><div class="pmb b1"></div><div class="pmb b2"></div></div></div>
+        </div>
+        <div class="pbody"><div class="psec">Private Equity / Real Assets</div><div class="ptitle">Fund IV Capital Raise Deck</div><p class="pdesc">LP-facing pitch deck for an exotic asset PE fund targeting family offices and UHNW investors.</p><div class="pstat"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg><strong>First close in 90 days</strong> vs 6mo target</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ptop p4"><div class="ptag">M&amp;A &middot; Advisory</div>
+          <div class="pmock"><div class="pmock-t"><div class="pmock-d" style="background:#6d28d9"></div><div class="pmock-p">05/10</div></div><div class="pmock-h">$35M Acquisition Rationale</div><div class="pmock-bars"><div class="pmb b1"></div><div class="pmb b3"></div><div class="pmb b2"></div></div></div>
+        </div>
+        <div class="pbody"><div class="psec">M&amp;A Advisory</div><div class="ptitle">Acquisition Rationale Deck</div><p class="pdesc">Board-level strategic narrative with synergy modeling, integration roadmap, and full stakeholder communication suite.</p><div class="pstat"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg><strong>Board approved</strong> unanimously</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="engagements">
+  <div class="w">
+    <div class="sh c ru">
+      <div class="kicker c">Engagement Structures</div>
+      <div class="gr c"></div>
+      <h2 class="h2">Structured for Every <em>Stage of Capital</em></h2>
+      <p class="lead" style="margin:14px auto 0;max-width:500px">All structures include dedicated strategy, full-service production, and structured revision cycles. Pricing available upon inquiry.</p>
+    </div>
+    <div class="eng-grid ru" style="margin-top:64px;position:relative">
+      <div class="ec">
+        <div class="ec-head"><div class="ec-tier">Engagement I</div><div class="ec-name">Foundation Deck</div><p class="ec-desc">For early-stage principals entering their first institutional conversations.</p></div>
+        <div class="ec-body">
+          <ul class="ec-list"><li>Up to 12 custom slides</li><li>Narrative strategy session</li><li>3 structured revision cycles</li><li>PowerPoint + PDF delivery</li><li>7 business-day turnaround</li></ul>
+          <button class="ecta ecta-out" onclick="goCTA()">Inquire About This Engagement</button>
+        </div>
+      </div>
+      <div class="ec feat">
+        <div class="ec-badge">Most Requested</div>
+        <div class="ec-head"><div class="ec-tier">Engagement II</div><div class="ec-name">Capital Raise Deck</div><p class="ec-desc">The complete offering for Seed through Series A mandates. Strategy, narrative, design — integrated.</p></div>
+        <div class="ec-body">
+          <ul class="ec-list"><li>Up to 20 custom slides</li><li>Executive strategy workshop (2hr)</li><li>Independent market research &amp; sizing</li><li>Financial model slide architecture</li><li>Unlimited revision cycles</li><li>10 business-day turnaround</li><li>Investor outreach framework</li></ul>
+          <button class="ecta ecta-gold" onclick="goCTA()">Begin This Engagement</button>
+        </div>
+      </div>
+      <div class="ec">
+        <div class="ec-head"><div class="ec-tier">Engagement III</div><div class="ec-name">Advisory Mandate</div><p class="ec-desc">For complex capital mandates, M&amp;A processes, fund formation, and long-duration advisory.</p></div>
+        <div class="ec-body">
+          <ul class="ec-list"><li>Unlimited deliverables &amp; decks</li><li>Senior strategist dedicated to mandate</li><li>Data room &amp; diligence support</li><li>Retainer and project structures</li><li>Priority expedited delivery</li><li>Full NDA &amp; white-label available</li></ul>
+          <button class="ecta ecta-ghost" onclick="goCTA()" style="background:transparent;color:var(--navy);border:2px solid var(--bdr)">Schedule a Consultation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec grd" id="testimonials">
+  <div class="w">
+    <div class="sh c ru">
+      <div class="kicker lt c">Client Perspectives</div>
+      <div class="gr c"></div>
+      <h2 class="h2 lt">What Our <em>Clients Say</em></h2>
+    </div>
+    <div class="test-grid ru">
+      <div class="tcard">
+        <span class="tqm">&ldquo;</span>
+        <p class="tq">We had been through two prior attempts at building our investor deck internally. Happy Pitch restructured the entire narrative in our first session. We closed a $4M seed round eight weeks after delivery.</p>
+        <div class="tauth"><div class="tava" style="background:linear-gradient(135deg,#0B162B,#284F93)">JS</div><div><div class="tname">James S.</div><div class="trole">Co-Founder, HealthTech &middot; Series Seed</div></div></div>
+        <span class="tres">$4M Seed Round &mdash; Closed</span>
+      </div>
+      <div class="tcard">
+        <span class="tqm">&ldquo;</span>
+        <p class="tq">In over two decades reviewing investment material, the work Happy Pitch produces is consistently at the standard of a top-tier advisory firm. The strategic rigor behind the design is what distinguishes them.</p>
+        <div class="tauth"><div class="tava" style="background:linear-gradient(135deg,#92400e,#d97706)">MR</div><div><div class="tname">Michael R.</div><div class="trole">Managing Partner, Growth Equity Fund</div></div></div>
+        <span class="tres">LP-Quality Materials Delivered</span>
+      </div>
+      <div class="tcard">
+        <span class="tqm">&ldquo;</span>
+        <p class="tq">Our Series A meeting was two weeks post-delivery. The lead partner opened by noting ours was among the most clearly structured pitches their team had reviewed. We closed $12M at our target valuation.</p>
+        <div class="tauth"><div class="tava" style="background:linear-gradient(135deg,#065f46,#059669)">AK</div><div><div class="tname">Alicia K.</div><div class="trole">Chief Executive Officer, Enterprise SaaS</div></div></div>
+        <span class="tres">$12M Series A &mdash; Closed at Target</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec off" id="faq">
+  <div class="w-sm">
+    <div class="sh c ru">
+      <div class="kicker c">Common Questions</div>
+      <div class="gr c"></div>
+      <h2 class="h2">Frequently Asked <em>Questions</em></h2>
+    </div>
+    <div class="faq-list ru">
+      <div class="fi">
+        <button class="fq" onclick="tf(this)">How long does a typical engagement take?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="fa">Most engagements are delivered within 10&ndash;14 business days from completion of the mandate briefing. Complex or multi-deck engagements may require additional time. Expedited delivery is available for time-sensitive mandates and is discussed during the initial briefing session.</div>
+      </div>
+      <div class="fi">
+        <button class="fq" onclick="tf(this)">Do you work across industries and asset classes?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="fa">Yes. We have produced materials across technology (SaaS, AI, HealthTech), real assets (real estate, private equity, fund formation), energy, life sciences, financial services, and corporate M&A. Our research team conducts sector-specific analysis for each engagement regardless of industry.</div>
+      </div>
+      <div class="fi">
+        <button class="fq" onclick="tf(this)">What is included in the market research?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="fa">Independent TAM/SAM/SOM modeling using bottoms-up methodology, competitive landscape mapping, industry benchmark data, and comparable transaction analysis where relevant. All research is integrated into the deck narrative rather than appended as supporting data.</div>
+      </div>
+      <div class="fi">
+        <button class="fq" onclick="tf(this)">How many revisions are included?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="fa">All Engagement II and III structures include unlimited revision cycles. We remain engaged until the materials reflect your mandate with precision. Engagement I includes three structured revision cycles.</div>
+      </div>
+      <div class="fi">
+        <button class="fq" onclick="tf(this)">What formats are final deliverables provided in?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="fa">Standard delivery includes fully editable PowerPoint (.pptx), presentation-ready PDF, and where applicable, Google Slides. Keynote versions and brand-compliant slide templates are available upon request.</div>
+      </div>
+      <div class="fi">
+        <button class="fq" onclick="tf(this)">Is my information kept confidential?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="fa">All engagements are conducted under strict confidentiality. NDAs are executed prior to any exchange of sensitive information. White-label arrangements — where materials carry no Happy Pitch attribution — are available for all engagement tiers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="w">
+    <div class="cta-box ru">
+      <div class="cta-in">
+        <div>
+          <h2 class="cta-h">Your Next Mandate Deserves <em>Institutional</em> Collateral.</h2>
+          <p class="cta-p" style="margin-top:16px">The quality of your materials signals the quality of your thinking. Submit an inquiry and a senior strategist will review your mandate within one business day.</p>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,179,0,.2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gold);flex-shrink:0">&#10003;</div><span style="font-size:13.5px;color:rgba(255,255,255,.6)">Confidential by default &mdash; NDA available immediately</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,179,0,.2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gold);flex-shrink:0">&#10003;</div><span style="font-size:13.5px;color:rgba(255,255,255,.6)">Response from a senior strategist within 1 business day</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,179,0,.2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gold);flex-shrink:0">&#10003;</div><span style="font-size:13.5px;color:rgba(255,255,255,.6)">Structured engagements with clear deliverables and timelines</span></div>
+          </div>
+        </div>
+        <div class="iform">
+          <div class="iform-title">Submit an Inquiry</div>
+          <p class="iform-sub">Tell us about your mandate. No obligation.</p>
+          <div class="iform-sep"></div>
+          <div class="form-row">
+            <div class="ffloat"><input type="text" placeholder=" " id="c-name"/><label>Full Name</label></div>
+            <div class="ffloat"><input type="email" placeholder=" " id="c-email"/><label>Work Email</label></div>
+            <div class="ffloat"><input type="text" placeholder=" " id="c-co"/><label>Company / Fund Name</label></div>
+            <div class="ffloat">
+              <select class="fselect" id="c-type">
+                <option value="" disabled selected></option>
+                <option>Seed / Series A Pitch Deck</option>
+                <option>Fund LP Deck</option>
+                <option>M&A / Board Deck</option>
+                <option>Sales Presentation</option>
+                <option>Data Visualization</option>
+                <option>Other</option>
+              </select>
+              <label>Engagement Type</label>
+            </div>
+            <div class="ffloat"><textarea rows="3" placeholder=" " id="c-msg" style="resize:none"></textarea><label>Brief description of your mandate...</label></div>
+            <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="hsubmit('c')">Submit Inquiry &rarr;</button>
+          </div>
+          <p class="iform-disc">Confidential &nbsp;&middot;&nbsp; NDA available &nbsp;&middot;&nbsp; Response within 1 business day</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo"><div class="ft-lm"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="ft-lt">Happy<span>Pitch</span></div></div>
+        <p class="ft-desc">Institutional-grade investor presentations for founders, fund managers, and advisory firms navigating complex capital mandates.</p>
+        <div class="ft-soc"><a href="#" class="fts">IG</a><a href="#" class="fts">in</a><a href="#" class="fts">YT</a></div>
+      </div>
+      <div><div class="ft-col-h">Services</div><div class="ft-links"><a href="#services">Investor Pitch Decks</a><a href="#services">Sales Presentations</a><a href="#services">Board &amp; Strategic</a><a href="#services">Data Visualization</a><a href="#work">One-Pagers</a></div></div>
+      <div><div class="ft-col-h">Who We Serve</div><div class="ft-links"><a href="#">Seed Founders</a><a href="#">Series A/B Teams</a><a href="#">PE &amp; VC Funds</a><a href="#">Real Estate Sponsors</a><a href="#">M&amp;A Advisory Teams</a></div></div>
+      <div><div class="ft-col-h">Company</div><div class="ft-links"><a href="#">About</a><a href="#work">Portfolio</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#">Careers</a></div></div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">&copy; 2026 Happy Pitch. All rights reserved. An Aryo Consulting Group company.</div>
+      <div class="ft-leg"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">NDA Template</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <button class="btn btn-gold" onclick="goCTA()">Submit an Inquiry &rarr;</button>
+</div>
+
+</main>
+
+<script>
+function openNav(){document.getElementById('mnav').classList.add('open');document.body.style.overflow='hidden'}
+function closeNav(){document.getElementById('mnav').classList.remove('open');document.body.style.overflow=''}
+function goCTA(){document.getElementById('contact').scrollIntoView({behavior:'smooth'})}
+function closeAnn(){document.getElementById('ann').classList.add('hidden')}
+
+function reveal(){document.querySelectorAll('.ru').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight+60)el.classList.add('v')})}
+reveal();
+window.addEventListener('scroll',reveal,{passive:true});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');e.target.querySelectorAll('[data-target]').forEach(ac)}})},{threshold:.04});
+document.querySelectorAll('.ru').forEach(el=>ro.observe(el));
+
+function ac(el){
+  if(el._d)return;el._d=true;
+  const t=parseFloat(el.dataset.target),sf=el.dataset.suffix||'',pf=el.dataset.prefix||'',dur=1600,s=performance.now();
+  (function tk(n){const p=Math.min((n-s)/dur,1),ease=1-Math.pow(1-p,3),v=t*ease;
+    el.textContent=pf+(Number.isInteger(t)?Math.round(v):v.toFixed(1))+sf;
+    if(p<1)requestAnimationFrame(tk)})(s);
+}
+document.querySelectorAll('[data-target]').forEach(ac);
+
+const SIDS=['iv','sa','bd','dv'];
+function sw(btn,id){
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  SIDS.forEach(s=>{
+    const n=document.getElementById('sn-'+s),p=document.getElementById('sp-'+s);
+    if(n)n.style.display=s===id?'':'none';
+    if(p)p.classList.toggle('on',s===id);
+  });
+  const ipad=document.querySelector('.svc-panel.on .ipad');
+  if(ipad){ipad.style.animation='none';ipad.offsetHeight;ipad.style.animation='ipadIn .6s ease-out'}
+}
+function si(el){el.closest('.svc-nav').querySelectorAll('.sni').forEach(i=>i.classList.remove('on'));el.classList.add('on');const ipad=document.querySelector('.svc-panel.on .ipad');if(ipad){ipad.style.animation='none';ipad.offsetHeight;ipad.style.animation='ipadIn .6s ease-out'}}
+
+function tf(btn){const it=btn.closest('.fi'),was=it.classList.contains('open');document.querySelectorAll('.fi.open').forEach(i=>i.classList.remove('open'));if(!was)it.classList.add('open')}
+
+function hsubmit(pfx){
+  const nm=document.getElementById(pfx+'-name'),em=document.getElementById(pfx+'-email');
+  const btn=em.closest('.form-row').querySelector('button');
+  if(!nm.value.trim()||!em.value.includes('@')){
+    if(!nm.value.trim()){nm.style.outline='2px solid #dc2626';setTimeout(()=>nm.style.outline='',1500)}
+    if(!em.value.includes('@')){em.style.outline='2px solid #dc2626';setTimeout(()=>em.style.outline='',1500)}
+    return;
+  }
+  const orig=btn.textContent;
+  btn.textContent='Inquiry Submitted \u2713';btn.style.background='#16a34a';btn.style.color='white';
+  setTimeout(()=>{btn.textContent=orig;btn.style='';[nm,em,document.getElementById(pfx+'-co'),document.getElementById(pfx+'-type'),document.getElementById(pfx+'-msg')].forEach(i=>{if(i)i.value=''})},4000);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t&&a.getAttribute('href')!=='#'){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
+</script>
+</body>
+</html>
