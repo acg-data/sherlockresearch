@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{industry_name}} Industry Report — {{location_label}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E1B2B;--navy-deep:#0A1521;--orange:#E26C2C;
+    --cream:#F4EEE3;--paper:#FBF8F2;
+    --ink:#1A2330;--ink-soft:#3C4655;--muted:#727C8A;
+    --line:#E6DECF;--green:#7c8a63;--green-deep:#56633f;
+    --serif:'Fraunces',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+  }
+  @page { size: Letter; margin: 0.5in; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:#fff;font-size:11pt;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;color:var(--ink);line-height:1.1}
+  h1{font-size:32pt;letter-spacing:-.5px}
+  h2{font-size:18pt;margin:18pt 0 8pt;padding-top:6pt;border-top:1px solid var(--line)}
+  h3{font-size:13pt;margin:14pt 0 6pt}
+  h4{font-size:11pt;margin:10pt 0 4pt}
+  p{margin:0 0 8pt}
+  ul,ol{margin:6pt 0 10pt 16pt}
+  li{margin-bottom:3pt}
+  strong{color:var(--ink);font-weight:600}
+  small{font-size:8.5pt;color:var(--muted)}
+  .accent{color:var(--orange)}
+  .muted{color:var(--muted)}
+
+  /* cover page */
+  .cover{height:10in;page-break-after:always;background:var(--navy);color:#fff;margin:-0.5in;padding:0.75in;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .cover::before{content:"";position:absolute;inset:0;background:radial-gradient(8in 4in at 80% 20%,rgba(226,108,44,.18),transparent 60%);pointer-events:none}
+  .cover-head{position:relative;display:flex;align-items:center;gap:10pt}
+  .cover-mark{width:36pt;height:36pt;border-radius:8pt;background:linear-gradient(160deg,#1d3047,#0c1826);display:grid;place-items:center;border:1px solid rgba(255,255,255,.1)}
+  .cover-mark svg{width:22pt;height:22pt}
+  .cover-brand b{font-family:var(--serif);font-size:14pt;color:#fff}
+  .cover-brand span{display:block;color:var(--orange);font-size:6pt;font-weight:700;letter-spacing:.32em;margin-top:2pt}
+  .cover-body{position:relative}
+  .cover-kicker{color:var(--orange);font-size:9pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14pt}
+  .cover-title{font-size:42pt;color:#fff;line-height:1.02;margin-bottom:8pt}
+  .cover-location{color:rgba(255,255,255,.78);font-size:16pt;font-family:var(--serif);font-weight:500}
+  .cover-edition{color:var(--orange);font-family:var(--serif);font-weight:600;font-size:14pt;margin-top:18pt}
+  .cover-rule{width:64pt;height:3pt;background:var(--orange);border-radius:3pt;margin:8pt 0 18pt}
+  .cover-lead{color:rgba(255,255,255,.72);max-width:5in;font-size:11pt;line-height:1.55}
+  .cover-foot{position:relative;display:flex;justify-content:space-between;align-items:flex-end;color:rgba(255,255,255,.55);font-size:8.5pt}
+  .cover-foot b{color:#fff;display:block;font-family:var(--serif);font-weight:600;font-size:10pt}
+
+  /* layout */
+  .page-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:6pt;border-bottom:1px solid var(--line);margin-bottom:12pt;font-size:8.5pt;color:var(--muted)}
+  .page-head b{color:var(--ink)}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:6pt;margin:10pt 0 14pt}
+  .stat{border:1px solid var(--line);border-radius:6pt;padding:9pt 10pt;background:var(--paper)}
+  .stat .v{font-family:var(--serif);font-weight:600;font-size:14pt;color:var(--orange);line-height:1}
+  .stat .l{font-size:7.5pt;color:var(--ink-soft);font-weight:600;margin-top:3pt;text-transform:uppercase;letter-spacing:.04em}
+
+  /* cards */
+  .card{border:1px solid var(--line);border-radius:6pt;padding:12pt 14pt;background:#fff;margin:8pt 0 12pt;page-break-inside:avoid}
+  .card-head{font-size:8.5pt;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8pt}
+
+  /* insight grid */
+  .ins-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8pt;margin-top:8pt}
+  .ins{border:1px solid var(--line);border-radius:6pt;padding:10pt 12pt;background:var(--cream)}
+  .ins h4{margin:0 0 4pt;color:var(--green-deep)}
+  .ins p{margin:0;font-size:9.5pt;color:var(--ink-soft)}
+
+  /* competitive table */
+  table.comp{width:100%;border-collapse:collapse;margin-top:8pt;font-size:10pt}
+  table.comp th,table.comp td{padding:7pt 10pt;text-align:left;border-bottom:1px solid var(--line)}
+  table.comp th{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);font-weight:700;background:var(--paper)}
+  table.comp td.num{text-align:right;font-family:var(--serif);font-weight:600;color:var(--orange)}
+
+  /* checklist */
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:5pt 18pt;margin-top:8pt;font-size:10pt}
+  .checks div{display:flex;gap:7pt;align-items:flex-start}
+  .checks div::before{content:"✓";color:var(--orange);font-weight:700;flex:none}
+
+  /* narrative blocks */
+  .narrative{margin:8pt 0 14pt}
+  .narrative p{font-size:10.5pt;line-height:1.7;color:var(--ink-soft);margin-bottom:8pt}
+
+  /* page break helper */
+  .page-break{page-break-before:always}
+
+  /* footer band */
+  .footer-band{margin-top:20pt;padding-top:8pt;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:8pt;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- =================== COVER =================== -->
+<section class="cover">
+  <div class="cover-head">
+    <div class="cover-mark">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/></svg>
+    </div>
+    <div class="cover-brand"><b>Sherlock Research</b><span>MARKET INTELLIGENCE</span></div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-kicker">{{period}} Industry Report</div>
+    <h1 class="cover-title">{{industry_name}}<br>Industry Report</h1>
+    <div class="cover-location">{{location_label}}</div>
+    <div class="cover-rule"></div>
+    <div class="cover-edition">{{period}} Edition · v{{version}}</div>
+    <p class="cover-lead" style="margin-top:18pt">Comprehensive market data, competitive landscape, and local insights to help {{industry_name_lower}} business owners grow with confidence in {{location_label}}.</p>
+  </div>
+
+  <div class="cover-foot">
+    <div><b>sherlockresearch.com</b>Trusted by 2,600+ business owners</div>
+    <div style="text-align:right">Generated {{generated_date}}<br>Report #{{report_id}}</div>
+  </div>
+</section>
+
+<!-- =================== EXECUTIVE SUMMARY =================== -->
+<div class="page-head"><span><b>{{industry_name}} Industry Report</b> · {{location_label}}</span><span>{{period}} Edition · v{{version}}</span></div>
+
+<h2 style="border-top:none;padding-top:0;margin-top:0">Executive Summary</h2>
+
+<div class="stats">
+  <div class="stat"><div class="v">${{market_size_b}}B</div><div class="l">Market Size</div></div>
+  <div class="stat"><div class="v">{{cagr_pct}}%</div><div class="l">CAGR 24–28</div></div>
+  <div class="stat"><div class="v">{{job_growth_pct}}%</div><div class="l">Job Growth</div></div>
+  <div class="stat"><div class="v">{{maintenance_revenue_pct}}%</div><div class="l">Maintenance Rev</div></div>
+  <div class="stat"><div class="v">{{markets_count}}</div><div class="l">Sub-Markets</div></div>
+</div>
+
+<div class="narrative"><!-- NARRATIVE:market_overview --></div>
+
+<!-- =================== KEY INSIGHTS =================== -->
+<h2>Key Industry Insights</h2>
+<div class="ins-grid">
+  <div class="ins"><h4>Top Demand Driver</h4><p>{{top_demand_driver}}</p></div>
+  <div class="ins"><h4>Top Challenge</h4><p>{{top_challenge}}</p></div>
+  <div class="ins"><h4>Emerging Trend</h4><p>{{emerging_trend}}</p></div>
+  <div class="ins"><h4>Maintenance Share</h4><p>{{maintenance_revenue_pct}}% of category revenue is recurring maintenance — the most stable revenue line in the industry.</p></div>
+</div>
+
+<!-- =================== COMPETITIVE LANDSCAPE =================== -->
+<div class="page-break"></div>
+<div class="page-head"><span><b>{{industry_name}} Industry Report</b> · {{location_label}}</span><span>{{period}} Edition · v{{version}}</span></div>
+
+<h2 style="border-top:none;padding-top:0;margin-top:0">Competitive Landscape</h2>
+
+<div class="card">
+  <div class="card-head">Market Share by Business Size</div>
+  <table class="comp">
+    <thead><tr><th>Segment</th><th>Definition</th><th style="text-align:right">Share</th></tr></thead>
+    <tbody>
+      <tr><td><b>Small</b></td><td>1–9 employees</td><td class="num">{{share_small_pct}}%</td></tr>
+      <tr><td><b>Mid</b></td><td>10–49 employees</td><td class="num">{{share_mid_pct}}%</td></tr>
+      <tr><td><b>Large</b></td><td>50–249 employees</td><td class="num">{{share_large_pct}}%</td></tr>
+      <tr><td><b>Enterprise</b></td><td>250+ employees</td><td class="num">{{share_enterprise_pct}}%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="narrative"><!-- NARRATIVE:competitive_landscape --></div>
+
+<h3>What Wins Customers</h3>
+<ol>
+  <li><strong>Quality of work</strong> — visible, photographable outcomes</li>
+  <li><strong>Customer service</strong> — fast responsiveness, clear scope</li>
+  <li><strong>Reputation &amp; reviews</strong> — local Google rating is the #1 search factor</li>
+  <li><strong>Pricing transparency</strong> — written estimates beat verbal quotes</li>
+  <li><strong>Reliability &amp; timeliness</strong> — showing up when promised</li>
+</ol>
+
+<!-- =================== LOCAL OUTLOOK =================== -->
+<div class="page-break"></div>
+<div class="page-head"><span><b>{{industry_name}} Industry Report</b> · {{location_label}}</span><span>{{period}} Edition · v{{version}}</span></div>
+
+<h2 style="border-top:none;padding-top:0;margin-top:0">Local Outlook — {{location_label}}</h2>
+
+<div class="narrative"><!-- NARRATIVE:local_outlook --></div>
+
+<h3>What This Report Covers</h3>
+<div class="checks">
+  <div>Market size, growth &amp; forecast (2020–2028)</div>
+  <div>Competitive landscape &amp; key players</div>
+  <div>Local market insights for {{location_label}}</div>
+  <div>Pricing benchmarks &amp; service mix analysis</div>
+  <div>Trends, opportunities, and challenges</div>
+  <div>Actionable insights to grow your business</div>
+</div>
+
+<div class="card" style="margin-top:18pt;background:var(--cream)">
+  <div class="card-head">Methodology &amp; Sources</div>
+  <p style="font-size:9.5pt;color:var(--ink-soft);margin:0">
+    Sherlock Research reports combine national datasets with hyper-local survey data and proprietary modeling.
+    Sources include the U.S. Census Bureau, Bureau of Labor Statistics, IBISWorld, and Sherlock proprietary
+    operator surveys. Data vintage: {{period}}. Figures may be revised in future quarterly editions as new data becomes available.
+  </p>
+</div>
+
+<div class="footer-band">
+  <div>© Sherlock Research · sherlockresearch.com</div>
+  <div>Report #{{report_id}} · v{{version}} · {{period}}</div>
+</div>
+
+</body>
+</html>
