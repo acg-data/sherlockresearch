@@ -1,368 +1,253 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Sherlock Research — Market Intelligence Experts</title>
-<meta name="description" content="Meet the team behind Sherlock Research. We deliver actionable market intelligence for landscaping, roofing, HVAC, and pest control business owners.">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0D1B2A" />
+<title>About — Sherlock Research</title>
+<meta name="description" content="Why Sherlock Research exists: making professional market intelligence affordable, actionable, and built for operators — not analysts.">
 <link rel="canonical" href="https://sherlockresearch.com/about.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="About Sherlock Research — Market Intelligence Experts">
-<meta property="og:description" content="Our story, mission, and team — making professional market research accessible to every business owner.">
+<meta property="og:title" content="About Sherlock Research">
+<meta property="og:description" content="Our story and mission: market research priced for operators, not enterprise procurement.">
 <meta property="og:url" content="https://sherlockresearch.com/about.html">
 <meta property="og:image" content="https://sherlockresearch.com/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ===================== HERO ===================== */
-.hero{background:var(--navy);position:relative;overflow:hidden;padding:84px 0}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(900px 500px at 78% 18%, rgba(226,108,44,.16), transparent 60%),
-  radial-gradient(700px 600px at 10% 90%, rgba(40,70,100,.4), transparent 65%);pointer-events:none}
-.hero-content{position:relative;text-align:center;max-width:54em;margin:0 auto}
-.eyebrow-line{width:46px;height:3px;background:var(--orange);border-radius:3px;margin:0 auto 26px}
-.hero h1{font-family:var(--serif);color:#fff;font-weight:600;font-size:clamp(2.6rem,5.4vw,4.3rem);line-height:1.02;letter-spacing:-.5px}
-.hero h1 .accent{color:var(--orange)}
-.hero p{color:rgba(255,255,255,.74);font-size:1.08rem;margin:24px 0}
+  :root{--navy:#0D1B2A;--navy-4:#08111c;--orange:#F26A21;--orange-2:#FF8542;--orange-3:#D9551A;
+    --sage:#5C7F5A;--sage-soft:#eef2ed;--stone:#F2EFE6;--stone-2:#F8F5EC;--stone-3:#FBF9F1;--stone-deep:#E8E4D6;
+    --ink:#1a1a1a;--muted:#6b6b6b;--line:rgba(13,27,42,0.08);--line-strong:rgba(13,27,42,0.14);--line-dark:rgba(255,255,255,0.08);--white:#fff;
+    --font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',sans-serif;
+    --radius:10px;--radius-lg:18px;--radius-xl:24px;
+    --grad-orange:linear-gradient(135deg,#FF8542 0%,#F26A21 50%,#D9551A 100%);
+    --grad-navy-deep:radial-gradient(ellipse at top right,#1c2f44 0%,#0D1B2A 60%,#08111c 100%);
+    --grad-sage:linear-gradient(135deg,#6E9269 0%,#5C7F5A 100%);
+    --grad-stone-warm:linear-gradient(160deg,#F8F5EC 0%,#F2EFE6 50%,#EDE7D5 100%);
+    --grad-text:linear-gradient(135deg,#F26A21 0%,#FF8542 50%,#F26A21 100%);
+    --grad-card:linear-gradient(180deg,#fff 0%,#fbf9f1 100%);
+    --shadow-orange:0 12px 32px rgba(242,106,33,0.25);--shadow-md:0 8px 24px rgba(13,27,42,0.08);--shadow-lg:0 24px 60px rgba(13,27,42,0.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;color:var(--navy);letter-spacing:-0.015em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1200px;margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:var(--radius);font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;border:none;min-height:44px;transition:transform .2s,filter .2s;text-align:center}
+  .btn-primary{background:var(--grad-orange);color:#fff;box-shadow:var(--shadow-orange)}
+  .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.25)}
+  .btn-outline:hover{background:rgba(255,255,255,0.08)}
+  .btn-lg{padding:16px 28px;font-size:15px}
 
-/* ===================== SECTION SHELLS ===================== */
-.section{padding:84px 0}
-.section.cream{background:var(--cream)}
-.section.paper{background:var(--paper)}
-.section.navy{background:var(--navy);color:#fff}
-.center{text-align:center}
-.kicker{color:var(--orange);font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;display:inline-flex;align-items:center;gap:14px}
-.kicker::before,.kicker::after{content:"";width:30px;height:1px;background:var(--orange);opacity:.5}
-.h2{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.12;letter-spacing:-.3px;margin-top:18px}
-.h2.white{color:#fff}
-.sub{color:var(--muted);font-size:1.02rem;margin-top:10px}
-.sub.white{color:rgba(255,255,255,.7)}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(13,27,42,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line-dark)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:21px;font-weight:700;color:#fff}
+  .logo-mark{width:38px;height:38px;border-radius:50%;background:var(--grad-orange);display:flex;align-items:center;justify-content:center}
+  .logo-mark svg{width:26px;height:26px}
+  .logo-stack{line-height:1}
+  .logo-stack small{display:block;font-size:9px;font-weight:700;letter-spacing:0.22em;color:var(--orange-2);margin-top:3px}
+  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.85)}
+  .nav-links a{color:rgba(255,255,255,0.85)}
+  .nav-links a:hover{color:var(--orange-2)}
+  @media(max-width:768px){.nav-links{display:none}}
 
-/* mission + values */
-.mission{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:54px}
-.mission-text h3{font-family:var(--serif);font-weight:600;font-size:2rem;line-height:1.1;margin-bottom:18px}
-.mission-text p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:16px}
-.mission-art{min-height:380px;background:linear-gradient(150deg,#e8dccf,#d6cbbf);border-radius:22px;border:1px solid var(--line)}
+  .hero{padding:88px 0 72px;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(242,106,33,0.18),transparent 55%),var(--grad-navy-deep);color:#fff;text-align:center}
+  .hero-eyebrow{font-size:11px;letter-spacing:0.24em;color:var(--orange-2);text-transform:uppercase;font-weight:700;margin-bottom:18px}
+  .hero h1{color:#fff;font-size:clamp(40px,5.5vw,64px);line-height:1;margin-bottom:22px;letter-spacing:-0.025em}
+  .hero h1 em{font-style:italic;font-weight:500;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:rgba(255,255,255,0.74);font-size:18px;max-width:580px;margin:0 auto;line-height:1.55}
 
-.values{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:54px}
-.value{padding:32px;background:#fff;border:1px solid var(--line);border-radius:16px;text-align:center}
-.value .ic{width:60px;height:60px;border-radius:50%;background:var(--cream);display:grid;place-items:center;margin:0 auto 18px}
-.value .ic svg{width:28px;height:28px;stroke:var(--ink);fill:none;stroke-width:1.5}
-.value h4{font-family:var(--serif);font-weight:600;font-size:1.22rem;margin-bottom:12px}
-.value p{color:var(--muted);font-size:.95rem;line-height:1.6}
+  .mission{padding:80px 0;background:var(--grad-stone-warm)}
+  .mission-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;max-width:1080px;margin:0 auto}
+  .mission-text .eyebrow{font-size:11px;letter-spacing:0.24em;color:var(--orange);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .mission-text h2{font-size:clamp(28px,4vw,40px);margin-bottom:22px;letter-spacing:-0.02em;line-height:1.1}
+  .mission-text h2 em{font-style:italic;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:500}
+  .mission-text p{color:var(--muted);font-size:15.5px;line-height:1.7;margin-bottom:14px}
+  .mission-art{aspect-ratio:1/1;border-radius:var(--radius-xl);background:linear-gradient(135deg,#2d4a2c,#1a2e1a);box-shadow:var(--shadow-lg);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .mission-art::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0 2px,transparent 2px 12px)}
+  .mission-art img{max-width:65%;max-height:70%;position:relative;z-index:1;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.4))}
 
-/* team */
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:54px}
-.team-member{text-align:center}
-.team-member .photo{width:100%;aspect-ratio:1;background:linear-gradient(150deg,#c5d6db,#8fa5ad);border-radius:16px;margin-bottom:18px}
-.team-member h4{font-family:var(--serif);font-weight:600;font-size:1.05rem;margin-bottom:4px}
-.team-member .role{color:var(--orange);font-size:.85rem;font-weight:600}
-.team-member p{color:var(--muted);font-size:.9rem;margin-top:8px;line-height:1.5}
+  .values{padding:80px 0;background:#fff}
+  .values-head{text-align:center;margin-bottom:48px;max-width:680px;margin-left:auto;margin-right:auto}
+  .values-head .eyebrow{font-size:11px;letter-spacing:0.24em;color:var(--orange);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .values-head h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px;letter-spacing:-0.02em}
+  .values-head h2 em{font-style:italic;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:500}
+  .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .value-card{background:var(--grad-card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px 28px;transition:transform .25s,box-shadow .25s}
+  .value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .value-num{font-family:var(--font-display);font-size:48px;font-weight:800;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:14px;letter-spacing:-0.03em}
+  .value-card h3{font-family:var(--font-body);font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em}
+  .value-card p{font-size:14px;color:var(--muted);line-height:1.65}
 
-/* timeline */
-.timeline{position:relative;padding:40px 0;margin-top:54px}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--line);transform:translateX(-1px)}
-.timeline-item{margin-bottom:50px;position:relative}
-.timeline-item:nth-child(odd) .t-content{margin-left:0;margin-right:auto;width:48%}
-.timeline-item:nth-child(even) .t-content{margin-right:0;margin-left:auto;width:48%}
-.timeline-dot{position:absolute;left:50%;top:0;width:16px;height:16px;background:var(--orange);border:3px solid #fff;border-radius:50%;transform:translateX(-50%);z-index:2}
-.t-content{background:#fff;padding:24px;border-radius:12px;border:1px solid var(--line)}
-.t-content .year{font-family:var(--serif);font-weight:600;font-size:1.2rem;color:var(--orange);margin-bottom:6px}
-.t-content h4{font-family:var(--serif);font-weight:600;font-size:1.05rem;margin-bottom:8px}
-.t-content p{color:var(--muted);font-size:.9rem;line-height:1.6}
-.h2-mb{margin-bottom:54px}
+  .timeline-sec{padding:80px 0;background:var(--grad-stone-warm)}
+  .timeline-head{text-align:center;margin-bottom:56px;max-width:680px;margin-left:auto;margin-right:auto}
+  .timeline-head .eyebrow{font-size:11px;letter-spacing:0.24em;color:var(--orange);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .timeline-head h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px;letter-spacing:-0.02em}
+  .timeline-head h2 em{font-style:italic;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:500}
+  .tl{max-width:760px;margin:0 auto;position:relative}
+  .tl::before{content:'';position:absolute;left:24px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--orange) 0%,var(--orange-3) 100%)}
+  .tl-item{position:relative;padding-left:64px;padding-bottom:32px}
+  .tl-item::before{content:'';position:absolute;left:14px;top:6px;width:22px;height:22px;background:var(--orange);border:4px solid var(--stone-2);border-radius:50%;z-index:1}
+  .tl-year{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--orange);line-height:1;margin-bottom:6px;letter-spacing:-0.02em}
+  .tl-item h3{font-family:var(--font-body);font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:-0.01em}
+  .tl-item p{font-size:14.5px;color:var(--muted);line-height:1.65}
 
-/* cta */
-.cta-block{background:var(--navy);color:#fff;padding:60px;border-radius:22px;text-align:center;position:relative;overflow:hidden;margin-top:84px}
-.cta-block::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 400px at 50% 50%,rgba(226,108,44,.12),transparent 60%);pointer-events:none}
-.cta-block h3{font-family:var(--serif);font-weight:600;font-size:2rem;margin-bottom:16px;position:relative}
-.cta-block p{color:rgba(255,255,255,.7);font-size:1.05rem;margin-bottom:28px;max-width:40em;margin-left:auto;margin-right:auto;position:relative}
-.cta-block .btn{position:relative}
+  .final{padding:80px 0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(242,106,33,0.2),transparent 60%),var(--grad-navy-deep);color:#fff;text-align:center;position:relative}
+  .final::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+  .final h2{color:#fff;font-size:clamp(32px,4.5vw,52px);margin-bottom:20px;line-height:1.05;letter-spacing:-0.025em;position:relative}
+  .final h2 em{font-style:italic;font-weight:500;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .final p{color:rgba(255,255,255,0.72);font-size:16px;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;position:relative}
+  .final-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
 
-@media(max-width:1024px){
-  .mission{grid-template-columns:1fr;gap:30px}
-  .values{grid-template-columns:repeat(2,1fr)}
-  .team-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:860px){
-  .hero{padding:56px 0}
-  .timeline::before{left:8px}
-  .timeline-item:nth-child(odd) .t-content,
-  .timeline-item:nth-child(even) .t-content{width:calc(100% - 36px);margin-left:36px;margin-right:0}
-  .timeline-dot{left:8px}
-}
-@media(max-width:600px){
-  .section{padding:60px 0}
-  .values{grid-template-columns:1fr}
-  .team-grid{grid-template-columns:1fr}
-  .cta-block{padding:40px 24px}
-  .cta-block h3{font-size:1.6rem}
-  .hero{padding:48px 0}
-}
+  footer{background:var(--navy-4);color:rgba(255,255,255,0.6);padding:48px 0 28px;text-align:center;font-size:12.5px}
+  .footer-tag{font-family:var(--font-display);font-style:italic;color:var(--orange-2);font-size:16px;margin-bottom:8px}
+  .footer-links{display:flex;justify-content:center;gap:24px;margin:14px 0;flex-wrap:wrap;font-size:13px}
+  .footer-links a{color:rgba(255,255,255,0.85);font-weight:500}
+  .footer-links a:hover{color:var(--orange-2)}
+
+  @media(max-width:960px){
+    .mission-grid{grid-template-columns:1fr;gap:32px}
+    .mission-art{max-width:380px;margin:0 auto}
+    .values-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:768px){.hero{padding:56px 0 48px}.tl::before{left:16px}.tl-item{padding-left:48px}.tl-item::before{left:6px}}
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Sherlock Research",
-  "url": "https://sherlockresearch.com",
-  "logo": "https://sherlockresearch.com/favicon.svg",
-  "description": "Actionable market intelligence and local insights for landscaping, roofing, HVAC, and pest control business owners.",
-  "foundingDate": "2018",
-  "sameAs": [
-    "https://www.linkedin.com/company/sherlock-research",
-    "https://twitter.com/sherlockresearch"
-  ]
-}
-</script>
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="Sherlock Research home">
-      <span class="mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/><path d="M12 13.5c1 .8 2 .8 3 0" stroke="#0E1B2B" stroke-width="1" stroke-linecap="round"/></svg>
-      </span>
-      <span class="name"><b>Sherlock</b><span>RESEARCH</span></span>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></div>
+      <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
     </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      <div class="nav-item">
-        <button>Industries <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="dropdown">
-          <a href="landscaping-report.html">Landscaping</a><a href="index.html#industries">Roofing</a>
-          <a href="index.html#industries">HVAC</a><a href="index.html#industries">Pest Control</a>
-          <a href="index.html#industries">View All Industries</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button>Locations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="dropdown">
-          <a href="#">Austin, TX</a><a href="#">Dallas, TX</a>
-          <a href="#">Houston, TX</a><a href="#">View All Locations</a>
-        </div>
-      </div>
+    <div class="nav-links">
+      <a href="index.html#reports">Reports</a>
+      <a href="index.html#how">How It Works</a>
       <a href="pricing.html">Pricing</a>
-      <div class="nav-item">
-        <button>Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="dropdown">
-          <a href="blog-article.html">Blog</a><a href="#">Sample Reports</a>
-          <a href="#">Research Methodology</a><a href="faq.html">FAQ</a>
-        </div>
-      </div>
-      <a href="about.html" class="active">About</a>
-    </nav>
-
-    <div class="nav-cta">
-      <a class="btn btn-orange" href="pricing.html#plans">Get Your Edge</a>
-      <button class="hamburger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <a href="about.html" style="color:var(--orange-2)">About</a>
     </div>
+    <a href="pricing.html" class="btn btn-primary">See Sample Insights</a>
   </div>
+</nav>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="landscaping-report.html">Industries</a>
-    <a href="#">Locations</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="faq.html">FAQ</a>
-    <a href="about.html">About</a>
-    <a class="btn btn-orange" href="pricing.html#plans">Get Your Edge</a>
+<header class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">OUR STORY</div>
+    <h1>Built for operators.<br>Not <em>analysts</em>.</h1>
+    <p>We believe market research should answer one question: "What do I do Monday?" Everything else is overhead.</p>
   </div>
 </header>
 
-<main>
-
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="wrap hero-content reveal">
-    <div class="eyebrow-line"></div>
-    <h1>Our Story. Our <span class="accent">Mission.</span></h1>
-    <p>We exist to help business owners make smarter decisions backed by real data, real insights, and a deep understanding of their markets.</p>
-  </div>
-</section>
-
-<!-- ============ MISSION ============ -->
-<section class="section cream">
-  <div class="wrap">
-    <div class="mission">
-      <div class="mission-text reveal">
-        <h2 class="h2" style="margin-top:0;font-size:2rem">Why We Started Sherlock</h2>
-        <p>Too many business owners were making major decisions based on incomplete information or market hunches. We saw an opportunity to change that.</p>
-        <p>In 2018, our founder realized that small and mid-sized business owners—landscapers, roofers, HVAC contractors, pest control companies—had access to expensive, overcomplicated research tools built for Fortune 500 companies.</p>
-        <p>We built Sherlock Research to change that: clear, actionable market intelligence that's actually affordable and designed for the businesses that matter.</p>
+<section class="mission">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-text">
+        <div class="eyebrow">WHY WE STARTED SHERLOCK</div>
+        <h2>Enterprise research is too expensive. Anecdotes cost <em>even more</em>.</h2>
+        <p>Small and mid-sized service businesses make seven-figure decisions on hunches. They base pricing on what the competitor down the road charges. They expand into the wrong zip codes. They miss obvious switching demand because no one has put the data in front of them.</p>
+        <p>The information exists. It's just locked behind $8K enterprise subscriptions designed for analysts at Fortune 500 companies. Or buried in $25K consulting engagements that take 12 weeks to deliver.</p>
+        <p>Sherlock exists to put operator-grade market intelligence on the table for the price of a one-time decision &mdash; not the price of a research department.</p>
       </div>
-      <div class="mission-art reveal" aria-hidden="true"></div>
+      <div class="mission-art"><img src="assets/sherlock-colorful.svg" alt="Sherlock the fox detective"></div>
     </div>
   </div>
 </section>
 
-<!-- ============ VALUES ============ -->
-<section class="section paper">
-  <div class="wrap center">
-    <span class="kicker reveal">What we stand for</span>
-    <h2 class="h2 reveal">Our core values guide everything we do.</h2>
-
-    <div class="values">
-      <div class="value reveal">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20 10 10 0 000-20Z"/></svg></div>
-        <h3>Clarity</h3>
-        <p>We cut through noise and deliver data you can actually understand and act on.</p>
+<section class="values">
+  <div class="container">
+    <div class="values-head">
+      <div class="eyebrow">WHAT WE STAND FOR</div>
+      <h2>Three principles, <em>every report</em>.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <h3>Action-first, not data-first</h3>
+        <p>Every section ends with a recommended move. If a chart doesn't drive a decision, we cut it.</p>
       </div>
-      <div class="value reveal">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M13 10h-2v2h2V6h-2v4zm-4 3l-2 2m6-6l2-2m0 8l-2-2m4-4l2 2"/></svg></div>
-        <h3>Precision</h3>
-        <p>Every report is built on meticulous research, local expertise, and verified data sources.</p>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <h3>Local matters more than national</h3>
+        <p>National benchmarks are interesting. City-level demand and competitive density is what actually pays.</p>
       </div>
-      <div class="value reveal">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6 7-12a7 7 0 00-14 0c0 6 7 12 7 12z"/></svg></div>
-        <h3>Partnership</h3>
-        <p>Your success is our success. We're committed to helping you win in your market.</p>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <h3>Affordable on purpose</h3>
+        <p>Pricing that's an obvious upgrade from guessing &mdash; not a procurement-approval exercise.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TEAM ============ -->
-<section class="section cream">
-  <div class="wrap center">
-    <span class="kicker reveal">Meet the team</span>
-    <h2 class="h2 reveal">Smart people who care about your success.</h2>
-
-    <div class="team-grid">
-      <div class="team-member reveal">
-        <div class="photo" aria-hidden="true"></div>
-        <h3>Sarah Chen</h3>
-        <div class="role">Founder &amp; CEO</div>
-        <p>Former market research analyst with 12 years in industry intelligence.</p>
+<section class="timeline-sec">
+  <div class="container">
+    <div class="timeline-head">
+      <div class="eyebrow">OUR JOURNEY</div>
+      <h2>From idea to <em>2,600+ operators served</em>.</h2>
+    </div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-year">2018</div>
+        <h3>The idea</h3>
+        <p>Founded with a simple mission: make market research accessible to every business owner, not just the ones with research departments.</p>
       </div>
-      <div class="team-member reveal">
-        <div class="photo" aria-hidden="true"></div>
-        <h3>Marcus Rodriguez</h3>
-        <div class="role">VP of Research</div>
-        <p>Built research teams across multiple industries. Obsessed with accuracy.</p>
+      <div class="tl-item">
+        <div class="tl-year">2019</div>
+        <h3>First 100 clients</h3>
+        <p>Launched our first industry research product focused on landscaping. Immediate signal that operators wanted action-first, locally-cut intelligence.</p>
       </div>
-      <div class="team-member reveal">
-        <div class="photo" aria-hidden="true"></div>
-        <h3>Emily Patel</h3>
-        <div class="role">Head of Client Success</div>
-        <p>Ensures every client gets the insights they need to grow their business.</p>
+      <div class="tl-item">
+        <div class="tl-year">2021</div>
+        <h3>Multi-industry expansion</h3>
+        <p>Added roofing, HVAC, and pest control. Hit 500+ clients across four verticals.</p>
       </div>
-      <div class="team-member reveal">
-        <div class="photo" aria-hidden="true"></div>
-        <h3>James Liu</h3>
-        <div class="role">VP of Analytics</div>
-        <p>Data scientist by training. Transforms raw data into actionable insights.</p>
+      <div class="tl-item">
+        <div class="tl-year">2023</div>
+        <h3>National coverage</h3>
+        <p>Expanded research coverage to 300+ markets nationwide. Client base grew past 1,500.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2024</div>
+        <h3>Quarterly intelligence launches</h3>
+        <p>Introduced the Quarterly + Coaching tier for operators who want ongoing market signal, not just one-time reports.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Today</div>
+        <h3>2,600+ operators</h3>
+        <p>Serving thousands of business owners with the insights they need to make confident, data-backed decisions.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TIMELINE ============ -->
-<section class="section paper">
-  <div class="wrap center">
-    <span class="kicker reveal">Our journey</span>
-    <h2 class="h2 reveal h2-mb">How Sherlock Research grew.</h2>
-
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="t-content">
-          <div class="year">2018</div>
-          <h3>The Idea</h3>
-          <p>Founded with a simple mission: make market research accessible to every business owner.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="t-content">
-          <div class="year">2019</div>
-          <h3>First 100 Clients</h3>
-          <p>Launch our first industry research product focused on landscaping. Immediate positive response.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="t-content">
-          <div class="year">2020</div>
-          <h3>Industry Expansion</h3>
-          <p>Add roofing, HVAC, and pest control to our platform. Hit 500+ clients.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="t-content">
-          <div class="year">2021</div>
-          <h3>National Reach</h3>
-          <p>Expand research coverage to 400+ markets nationwide. Client base grows to 1,500+.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="t-content">
-          <div class="year">2023</div>
-          <h3>Custom Research Launch</h3>
-          <p>Introduce custom market analysis for enterprise clients.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="t-content">
-          <div class="year">Today</div>
-          <h3>2,600+ Owners Served</h3>
-          <p>Serving thousands of business owners with the insights they need to win.</p>
-        </div>
-      </div>
+<section class="final">
+  <div class="container">
+    <h2>Ready to see your market <em>clearly</em>?</h2>
+    <p>Pick the report that fits your next move. If it doesn't give you at least one insight you can act on, we'll refund it within 30 days.</p>
+    <div class="final-row">
+      <a href="pricing.html" class="btn btn-primary btn-lg">See pricing &rarr;</a>
+      <a href="landscaping-report.html" class="btn btn-outline btn-lg">View a sample report</a>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section class="section navy">
-  <div class="wrap center">
-    <div class="cta-block reveal">
-      <h2 style="font-family:var(--serif);font-weight:600;font-size:2rem;margin-bottom:16px;position:relative">Ready to see your market clearly?</h2>
-      <p>Join thousands of business owners who use Sherlock Research to make smarter decisions.</p>
-      <a class="btn btn-orange" href="pricing.html#plans">Get Your Edge Today</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ============ FOOTER ============ -->
 <footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand" href="index.html" aria-label="Sherlock Research home">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/></svg></span>
-          <span class="name"><b>Sherlock</b><span>RESEARCH</span></span>
-        </a>
-        <p>Actionable market intelligence and local insights for business owners who want to win.</p>
-        <div class="socials">
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H16.6v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H10z"/></svg></a>
-          <a href="#" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2zM2 6l10 7 10-7" fill="none" stroke="#fff" stroke-width="1.7"/></svg></a>
-          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.1L8 21H5l7.4-8.5L4.5 3H11l4.5 5.5z"/></svg></a>
-        </div>
-      </div>
-      <div class="fcol"><h5>Company</h5><a href="about.html">About Us</a><a href="#">How It Works</a><a href="#">Careers</a><a href="#">Contact Us</a></div>
-      <div class="fcol"><h5>Services</h5><a href="pricing.html">Industry Reports</a><a href="#">Custom Research</a><a href="#">Market Analysis</a><a href="#">Competitive Insights</a></div>
-      <div class="fcol"><h5>Resources</h5><a href="blog-article.html">Blog</a><a href="#">Sample Reports</a><a href="#">Research Methodology</a><a href="faq.html">FAQ</a></div>
-      <div class="fcol"><h5>Industries</h5><a href="landscaping-report.html">Landscaping</a><a href="index.html#industries">Roofing</a><a href="index.html#industries">HVAC</a><a href="index.html#industries">Pest Control</a></div>
-      <div class="fcol"><h5>Popular Locations</h5><a href="#">Austin, TX</a><a href="#">Dallas, TX</a><a href="#">Houston, TX</a><a href="#">San Antonio, TX</a></div>
+  <div class="container">
+    <div class="footer-tag">See the Market. Stay Ahead.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy-policy.html">Privacy</a>
     </div>
-    <div class="foot-bottom">
-      <div>© <span data-year>2026</span> Sherlock Research. All rights reserved.</div>
-      <div class="links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
-    </div>
+    <div>&copy; 2026 Sherlock Research. All rights reserved.</div>
   </div>
 </footer>
 
-<script src="shared/app.js" defer></script>
 </body>
 </html>

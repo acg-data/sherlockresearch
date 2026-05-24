@@ -1,315 +1,218 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0D1B2A" />
 <title>FAQ — Sherlock Research</title>
-<meta name="description" content="Common questions about Sherlock Research industry reports, pricing, subscriptions, and our money-back guarantee. Get the answers you need before buying.">
+<meta name="description" content="Common questions about Sherlock Research reports, pricing, licensing, methodology, and the 30-day guarantee.">
 <link rel="canonical" href="https://sherlockresearch.com/faq.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="FAQ — Sherlock Research">
-<meta property="og:description" content="Answers to the most common questions about our industry reports, pricing, and how Sherlock Research works.">
+<meta property="og:description" content="Answers to common questions about reports, pricing, and how Sherlock works.">
 <meta property="og:url" content="https://sherlockresearch.com/faq.html">
 <meta property="og:image" content="https://sherlockresearch.com/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* hero */
-.hero{background:var(--navy);position:relative;overflow:hidden;padding:84px 0}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(900px 500px at 78% 18%, rgba(226,108,44,.16), transparent 60%),
-  radial-gradient(700px 600px at 10% 90%, rgba(40,70,100,.4), transparent 65%);pointer-events:none}
-.hero-content{position:relative;text-align:center;max-width:54em;margin:0 auto}
-.eyebrow-line{width:46px;height:3px;background:var(--orange);border-radius:3px;margin:0 auto 26px}
-.hero h1{font-family:var(--serif);color:#fff;font-weight:600;font-size:clamp(2.6rem,5.4vw,4.3rem);line-height:1.02;letter-spacing:-.5px}
-.hero h1 .accent{color:var(--orange)}
-.hero p{color:rgba(255,255,255,.74);font-size:1.08rem;margin-top:24px}
+  :root{--navy:#0D1B2A;--navy-4:#08111c;--orange:#F26A21;--orange-2:#FF8542;--orange-3:#D9551A;
+    --stone:#F2EFE6;--stone-2:#F8F5EC;--stone-3:#FBF9F1;--ink:#1a1a1a;--muted:#6b6b6b;
+    --line:rgba(13,27,42,0.08);--line-strong:rgba(13,27,42,0.14);--line-dark:rgba(255,255,255,0.08);--white:#fff;
+    --font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',sans-serif;
+    --radius:10px;--radius-lg:18px;
+    --grad-orange:linear-gradient(135deg,#FF8542 0%,#F26A21 50%,#D9551A 100%);
+    --grad-navy-deep:radial-gradient(ellipse at top right,#1c2f44 0%,#0D1B2A 60%,#08111c 100%);
+    --grad-stone-warm:linear-gradient(160deg,#F8F5EC 0%,#F2EFE6 50%,#EDE7D5 100%);
+    --grad-text:linear-gradient(135deg,#F26A21 0%,#FF8542 50%,#F26A21 100%);
+    --grad-card:linear-gradient(180deg,#fff 0%,#fbf9f1 100%);
+    --shadow-orange:0 12px 32px rgba(242,106,33,0.25);--shadow-md:0 8px 24px rgba(13,27,42,0.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;color:var(--navy);letter-spacing:-0.015em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1200px;margin:0 auto;padding:0 20px}
+  .container-narrow{max-width:820px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:var(--radius);font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;border:none;min-height:44px;transition:transform .2s,filter .2s;text-align:center}
+  .btn-primary{background:var(--grad-orange);color:#fff;box-shadow:var(--shadow-orange)}
+  .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .btn-outline-dark{background:#fff;color:var(--navy);border:1.5px solid var(--line-strong)}
+  .btn-outline-dark:hover{border-color:var(--navy)}
+  .btn-lg{padding:16px 28px;font-size:15px}
 
-/* section shells */
-.section{padding:84px 0}
-.section.cream{background:var(--cream)}
-.center{text-align:center}
-.kicker{color:var(--orange);font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;display:inline-flex;align-items:center;gap:14px}
-.kicker::before,.kicker::after{content:"";width:30px;height:1px;background:var(--orange);opacity:.5}
-.h2{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.12;letter-spacing:-.3px;margin-top:18px}
-.head-block{margin-bottom:34px}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(13,27,42,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line-dark)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:21px;font-weight:700;color:#fff}
+  .logo-mark{width:38px;height:38px;border-radius:50%;background:var(--grad-orange);display:flex;align-items:center;justify-content:center}
+  .logo-mark svg{width:26px;height:26px}
+  .logo-stack{line-height:1}
+  .logo-stack small{display:block;font-size:9px;font-weight:700;letter-spacing:0.22em;color:var(--orange-2);margin-top:3px}
+  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.85)}
+  .nav-links a{color:rgba(255,255,255,0.85)}
+  .nav-links a:hover{color:var(--orange-2)}
+  @media(max-width:768px){.nav-links{display:none}}
 
-/* faq grid */
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:54px}
-.faq-col h2.col-title{font-family:var(--serif);font-weight:600;font-size:1.4rem;margin-bottom:28px;color:var(--ink)}
-.faq-item{margin-bottom:20px}
-.faq-q{
-  background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;
-  cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;
-  transition:background .2s ease, border-color .2s ease;font-weight:600;
-}
-.faq-q:hover, .faq-q:focus{background:var(--cream-warm);border-color:var(--orange);outline:none}
-.faq-q.open{background:var(--navy);color:#fff;border-color:var(--navy)}
-.faq-toggle{width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex:none;font-size:1.2rem;transition:transform .2s ease}
-.faq-q.open .faq-toggle{transform:rotate(180deg)}
-.faq-a{
-  background:var(--cream-warm);padding:0 22px;border:1px solid var(--line);border-top:none;
-  border-radius:0 0 12px 12px;max-height:0;overflow:hidden;transition:max-height .3s ease, padding .3s ease;
-}
-.faq-a.open{max-height:500px;padding:22px}
-.faq-a p{color:var(--ink-soft);font-size:.95rem;line-height:1.7}
-.faq-a p:not(:last-child){margin-bottom:12px}
+  .hero{padding:72px 0 48px;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(242,106,33,0.16),transparent 55%),var(--grad-navy-deep);color:#fff;text-align:center}
+  .hero-eyebrow{font-size:11px;letter-spacing:0.24em;color:var(--orange-2);text-transform:uppercase;font-weight:700;margin-bottom:16px}
+  .hero h1{color:#fff;font-size:clamp(36px,5vw,56px);line-height:1.02;margin-bottom:16px;letter-spacing:-0.025em}
+  .hero h1 em{font-style:italic;font-weight:500;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:rgba(255,255,255,0.72);font-size:16px;max-width:520px;margin:0 auto}
 
-/* categories */
-.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:54px}
-.cat-btn{
-  padding:16px;background:#fff;border:2px solid var(--line);border-radius:12px;
-  cursor:pointer;font-weight:600;text-align:center;transition:.2s;font-family:var(--sans);
-}
-.cat-btn:hover, .cat-btn.active, .cat-btn:focus{background:var(--navy);color:#fff;border-color:var(--navy);outline:none}
+  .faq{padding:72px 0 96px;background:var(--stone-2)}
+  .faq-cat{font-family:var(--font-body);font-size:11px;letter-spacing:0.24em;color:var(--orange);text-transform:uppercase;font-weight:700;margin:40px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--orange-2)}
+  .faq-cat:first-of-type{margin-top:0}
+  details{border:1px solid var(--line);background:var(--grad-card);border-radius:12px;padding:20px 24px;margin-bottom:10px;transition:border-color .2s}
+  details[open]{border-color:var(--orange)}
+  summary{font-size:15.5px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'+';color:var(--orange);font-size:26px;font-weight:300;flex-shrink:0;line-height:1}
+  details[open] summary::after{content:'−'}
+  details p{margin-top:14px;color:var(--muted);font-size:14.5px;line-height:1.7}
 
-/* contact cta */
-.contact-cta{background:#fff;border:1px solid var(--line);border-radius:16px;padding:40px;text-align:center;margin-top:54px}
-.contact-cta h2{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin-bottom:12px}
-.contact-cta p{color:var(--muted);margin-bottom:24px}
+  .contact-cta{margin-top:48px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;text-align:center;box-shadow:var(--shadow-md)}
+  .contact-cta h3{font-size:22px;margin-bottom:10px}
+  .contact-cta p{color:var(--muted);margin-bottom:22px;font-size:15px}
+  .contact-cta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-@media(max-width:1024px){
-  .faq-grid{grid-template-columns:1fr;gap:30px}
-  .categories{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:860px){ .hero{padding:56px 0} }
-@media(max-width:600px){
-  .section{padding:60px 0}
-  .categories{grid-template-columns:1fr}
-  .contact-cta{padding:30px 20px}
-  .hero{padding:48px 0}
-}
+  footer{background:var(--navy-4);color:rgba(255,255,255,0.6);padding:48px 0 28px;text-align:center;font-size:12.5px}
+  .footer-tag{font-family:var(--font-display);font-style:italic;color:var(--orange-2);font-size:16px;margin-bottom:8px}
+  .footer-links{display:flex;justify-content:center;gap:24px;margin:14px 0;flex-wrap:wrap;font-size:13px}
+  .footer-links a{color:rgba(255,255,255,0.85);font-weight:500}
+  .footer-links a:hover{color:var(--orange-2)}
 </style>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"What is Sherlock Research?","acceptedAnswer":{"@type":"Answer","text":"Sherlock Research provides actionable market intelligence and local insights for small and mid-sized business owners. We deliver clear, data-backed reports that help you understand your market, spot opportunities, and make confident decisions."}},
-    {"@type":"Question","name":"Who is Sherlock Research for?","acceptedAnswer":{"@type":"Answer","text":"We serve business owners and operators in industries like landscaping, roofing, HVAC, and pest control. Any business that wants to understand their local market and make smarter decisions can benefit from our research."}},
-    {"@type":"Question","name":"How often are reports updated?","acceptedAnswer":{"@type":"Answer","text":"Our core industry reports are updated annually with the latest trends, benchmarks, and market data. We also provide quarterly updates on market highlights and emerging opportunities for active subscribers."}},
-    {"@type":"Question","name":"Can I get a custom report?","acceptedAnswer":{"@type":"Answer","text":"Yes! We offer custom research services tailored to your specific market, industry, or competitive questions. Contact our team to discuss your research needs and get a custom proposal."}},
-    {"@type":"Question","name":"How much does a report cost?","acceptedAnswer":{"@type":"Answer","text":"Our standard industry reports start at $399 and vary based on location and customization. The Pro Bundle includes 5 reports for $799, and Enterprise pricing is custom — contact our team for details."}},
-    {"@type":"Question","name":"Is there a subscription required?","acceptedAnswer":{"@type":"Answer","text":"You can purchase reports individually, but we recommend adding quarterly or semi-annual update subscriptions ($199/year) for ongoing access to the latest data. Subscriptions offer better value and keep you ahead of market changes."}},
-    {"@type":"Question","name":"Do you offer a money-back guarantee?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. If you're not satisfied with your report within 30 days, we'll refund your full purchase price. We're confident you'll find value in our research."}},
-    {"@type":"Question","name":"Can I upgrade or downgrade my plan?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can adjust your subscription at any time. Changes take effect in your next billing cycle, and we'll adjust your charges accordingly."}}
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Who is Sherlock Research for?","acceptedAnswer":{"@type":"Answer","text":"Owner-led businesses, franchise teams, agencies, and investors making pricing, channel, expansion, or acquisition decisions."}},
+    {"@type":"Question","name":"What's in a report?","acceptedAnswer":{"@type":"Answer","text":"Six modules: market sizing, buyer behavior, competitive landscape, pricing pressure, channel strategy, and executive playbook. Each ends with a recommended action."}},
+    {"@type":"Question","name":"How much does a report cost?","acceptedAnswer":{"@type":"Answer","text":"Standard $497, City-Specific $597, Quarterly + Coaching $2,000/yr, All-Access $2,997 one-time."}},
+    {"@type":"Question","name":"Do you offer a refund?","acceptedAnswer":{"@type":"Answer","text":"Yes. 30-day money-back guarantee. If the report doesn't give you at least one insight you can act on, email us within 30 days for a full refund."}}
   ]
 }
 </script>
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="Sherlock Research home">
-      <span class="mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/><path d="M12 13.5c1 .8 2 .8 3 0" stroke="#0E1B2B" stroke-width="1" stroke-linecap="round"/></svg>
-      </span>
-      <span class="name"><b>Sherlock</b><span>RESEARCH</span></span>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></div>
+      <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
     </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      <div class="nav-item">
-        <button>Industries <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="dropdown">
-          <a href="landscaping-report.html">Landscaping</a><a href="index.html#industries">Roofing</a>
-          <a href="index.html#industries">HVAC</a><a href="index.html#industries">Pest Control</a>
-          <a href="index.html#industries">View All Industries</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button>Locations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="dropdown">
-          <a href="#">Austin, TX</a><a href="#">Dallas, TX</a>
-          <a href="#">Houston, TX</a><a href="#">View All Locations</a>
-        </div>
-      </div>
+    <div class="nav-links">
+      <a href="index.html#reports">Reports</a>
+      <a href="index.html#how">How It Works</a>
       <a href="pricing.html">Pricing</a>
-      <div class="nav-item">
-        <button>Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div class="dropdown">
-          <a href="blog-article.html">Blog</a><a href="#">Sample Reports</a>
-          <a href="#">Research Methodology</a><a href="faq.html" class="active">FAQ</a>
-        </div>
-      </div>
       <a href="about.html">About</a>
-    </nav>
-
-    <div class="nav-cta">
-      <a class="btn btn-orange" href="pricing.html#plans">Get Your Edge</a>
-      <button class="hamburger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
+    <a href="pricing.html" class="btn btn-primary">See Sample Insights</a>
   </div>
+</nav>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="landscaping-report.html">Industries</a>
-    <a href="#">Locations</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="faq.html">FAQ</a>
-    <a href="about.html">About</a>
-    <a class="btn btn-orange" href="pricing.html#plans">Get Your Edge</a>
+<header class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">FREQUENTLY ASKED</div>
+    <h1>Questions buyers <em>actually ask</em>.</h1>
+    <p>If your question isn't here, email <a href="mailto:hello@sherlockresearch.com" style="color:var(--orange-2);font-weight:600">hello@sherlockresearch.com</a> &mdash; we read everything.</p>
   </div>
 </header>
 
-<main>
+<section class="faq">
+  <div class="container-narrow">
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="wrap hero-content reveal">
-    <div class="eyebrow-line"></div>
-    <h1>Frequently Asked <span class="accent">Questions</span></h1>
-    <p>Get answers to the most common questions about Sherlock Research and our reports.</p>
-  </div>
-</section>
+    <div class="faq-cat">About Sherlock</div>
+    <details open>
+      <summary>Who is Sherlock Research for?</summary>
+      <p>Owner-led service businesses, franchise teams, local service companies, agencies, and investors. If you're making a pricing, channel, expansion, or acquisition decision in the next 90 days, you're the buyer.</p>
+    </details>
+    <details>
+      <summary>What industries do you cover?</summary>
+      <p>Live today: Landscaping, Roofing, HVAC, and Pest Control. On the roadmap: Cleaning, Dentistry, Fitness, Automotive, and Accounting. If you need a vertical that isn't published yet, email us &mdash; we accelerate based on demand.</p>
+    </details>
+    <details>
+      <summary>How is this different from IBISWorld, Statista, or a consultant?</summary>
+      <p>Enterprise research like IBISWorld runs $8K/year per seat and is written for analysts. Consultants charge $25K+ for a single engagement. Sherlock is built for operators: $497&ndash;$2,997, structured around decisions you actually need to make, every section ends with a recommended action.</p>
+    </details>
 
-<!-- ============ FAQ ============ -->
-<section class="section cream">
-  <div class="wrap">
-    <div class="center reveal head-block">
-      <span class="kicker">Have a question?</span>
-      <h2 class="h2">We're here to help</h2>
-    </div>
+    <div class="faq-cat">Reports &amp; data</div>
+    <details>
+      <summary>What's actually in a report?</summary>
+      <p>Six modules: demand and market size, buyer behavior, competitive landscape, pricing pressure, channel strategy, and an executive playbook. Each module is built around answering one commercial question and ends with specific recommended actions. The full report is 40+ pages.</p>
+    </details>
+    <details>
+      <summary>How fresh is the data?</summary>
+      <p>The 2026 edition reflects the latest available data, refreshed in May 2026. Quarterly + Coaching subscribers receive a refreshed edition every quarter plus a 1:1 call to apply it.</p>
+    </details>
+    <details>
+      <summary>Where does the data come from?</summary>
+      <p>Four sources cross-referenced: consumer panels (300+ verified service-buying households per market), operator interviews with active business owners, public data anchors (U.S. Census, BLS, IBISWorld, association reports), and demand signals (search trends, review velocity, ad-spend indicators). Every number is tagged as simulated, benchmarked, or fielded.</p>
+    </details>
+    <details>
+      <summary>Can I get data for a city not on your list?</summary>
+      <p>Yes. We cover the top 20 U.S. metros at launch. If your specific market isn't listed, we'll build the local cut for you within 48 hours of purchase at no extra cost.</p>
+    </details>
 
-    <div class="categories reveal">
-      <button class="cat-btn active" data-cat="all">All Questions</button>
-      <button class="cat-btn" data-cat="product">Product &amp; Reports</button>
-      <button class="cat-btn" data-cat="pricing">Pricing &amp; Plans</button>
-    </div>
+    <div class="faq-cat">Pricing &amp; licensing</div>
+    <details>
+      <summary>How much does a report cost?</summary>
+      <p>Standard Report (national) is $497 one-time. City-Specific Report (national + local cut) is $597 one-time. Quarterly + Coaching is $2,000/year and includes four quarterly updates plus four 1:1 calls. All-Access Pass is $2,997 one-time and includes every industry report we publish.</p>
+    </details>
+    <details>
+      <summary>Can I share a report with my team?</summary>
+      <p>Standard and City-Specific reports are licensed for use within a single business or operating company &mdash; internal sharing is fine. Quarterly + Coaching includes team sharing within one operating company. All-Access is licensed for use across a team or investment portfolio. For agency or franchise distribution, email us about an enterprise license.</p>
+    </details>
+    <details>
+      <summary>Can I upgrade later?</summary>
+      <p>Yes. Any one-time purchase credits toward an upgrade within 30 days. Most buyers start with a Standard or City-Specific report, then move to Quarterly + Coaching once they see the value of ongoing data.</p>
+    </details>
+    <details>
+      <summary>Do you offer a refund?</summary>
+      <p>Yes &mdash; the 30-day "made a better decision" guarantee. If a report doesn't give you at least one insight you can act on, email us within 30 days for a full refund. We can offer this because operators rarely ask &mdash; the data pays for itself on the first decision.</p>
+    </details>
 
-    <div class="faq-grid">
-      <div class="faq-col">
-        <h2 class="col-title">General Questions</h2>
+    <div class="faq-cat">Delivery &amp; format</div>
+    <details>
+      <summary>Is it a real download or a subscription?</summary>
+      <p>Standard, City-Specific, and All-Access are instant PDF downloads you own forever. Quarterly + Coaching is an annual subscription that includes the downloads plus quarterly refreshes and 1:1 calls.</p>
+    </details>
+    <details>
+      <summary>What format is the report in?</summary>
+      <p>PDF, delivered immediately to your email after purchase. Designed to be readable on screen and printable. The full report runs 40+ pages with charts, benchmarks, and tables.</p>
+    </details>
+    <details>
+      <summary>Do you offer custom research?</summary>
+      <p>Yes. If you need a deeper dive into a specific market, segment, or strategic question that falls outside our standard reports, email <a href="mailto:hello@sherlockresearch.com" style="color:var(--orange);font-weight:600">hello@sherlockresearch.com</a> and we'll scope a custom engagement. Typical custom work runs $5K&ndash;$15K depending on scope.</p>
+    </details>
 
-        <div class="faq-item" data-cat="all,product">
-          <div class="faq-q">
-            <span>What is Sherlock Research?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-a">
-            <p>Sherlock Research provides actionable market intelligence and local insights for small and mid-sized business owners. We deliver clear, data-backed reports that help you understand your market, spot opportunities, and make confident decisions.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" data-cat="all,product">
-          <div class="faq-q">
-            <span>Who is Sherlock Research for?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-a">
-            <p>We serve business owners and operators in industries like landscaping, roofing, HVAC, and pest control. Any business that wants to understand their local market and make smarter decisions can benefit from our research.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" data-cat="all,product">
-          <div class="faq-q">
-            <span>How often are reports updated?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-a">
-            <p>Our core industry reports are updated annually with the latest trends, benchmarks, and market data. We also provide quarterly updates on market highlights and emerging opportunities for active subscribers.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" data-cat="all,product">
-          <div class="faq-q">
-            <span>Can I get a custom report?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-a">
-            <p>Yes! We offer custom research services tailored to your specific market, industry, or competitive questions. Contact our team to discuss your research needs and get a custom proposal.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-col">
-        <h2 class="col-title">Pricing &amp; Account</h2>
-
-        <div class="faq-item" data-cat="all,pricing">
-          <div class="faq-q">
-            <span>How much does a report cost?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-a">
-            <p>Our standard industry reports start at $399 and vary based on location and customization. The Pro Bundle includes 5 reports for $799, and Enterprise pricing is custom — contact our team for details.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" data-cat="all,pricing">
-          <div class="faq-q">
-            <span>Is there a subscription required?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-a">
-            <p>You can purchase reports individually, but we recommend adding quarterly or semi-annual update subscriptions ($199/year) for ongoing access to the latest data. Subscriptions offer better value and keep you ahead of market changes.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" data-cat="all,pricing">
-          <div class="faq-q">
-            <span>Do you offer a money-back guarantee?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-a">
-            <p>Absolutely. If you're not satisfied with your report within 30 days, we'll refund your full purchase price. We're confident you'll find value in our research.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" data-cat="all,pricing">
-          <div class="faq-q">
-            <span>Can I upgrade or downgrade my plan?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span>
-          </div>
-          <div class="faq-a">
-            <p>Yes, you can adjust your subscription at any time. Changes take effect in your next billing cycle, and we'll adjust your charges accordingly.</p>
-          </div>
-        </div>
+    <div class="contact-cta">
+      <h3>Still have questions?</h3>
+      <p>We read every email and reply within one business day &mdash; usually faster.</p>
+      <div class="row">
+        <a href="mailto:hello@sherlockresearch.com" class="btn btn-primary btn-lg">Email us &rarr;</a>
+        <a href="pricing.html" class="btn btn-outline-dark btn-lg">See pricing</a>
       </div>
     </div>
 
-    <div class="contact-cta reveal">
-      <h2>Still have questions?</h2>
-      <p>Reach out to our team—we're happy to help.</p>
-      <a class="btn btn-orange" href="#">Contact Us</a>
-    </div>
   </div>
 </section>
 
-</main>
-
-<!-- ============ FOOTER ============ -->
 <footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand" href="index.html" aria-label="Sherlock Research home">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/></svg></span>
-          <span class="name"><b>Sherlock</b><span>RESEARCH</span></span>
-        </a>
-        <p>Actionable market intelligence and local insights for business owners who want to win.</p>
-        <div class="socials">
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H16.6v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H10z"/></svg></a>
-          <a href="#" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2zM2 6l10 7 10-7" fill="none" stroke="#fff" stroke-width="1.7"/></svg></a>
-          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.1L8 21H5l7.4-8.5L4.5 3H11l4.5 5.5z"/></svg></a>
-        </div>
-      </div>
-      <div class="fcol"><h5>Company</h5><a href="about.html">About Us</a><a href="#">How It Works</a><a href="#">Careers</a><a href="#">Contact Us</a></div>
-      <div class="fcol"><h5>Services</h5><a href="pricing.html">Industry Reports</a><a href="#">Custom Research</a><a href="#">Market Analysis</a><a href="#">Competitive Insights</a></div>
-      <div class="fcol"><h5>Resources</h5><a href="blog-article.html">Blog</a><a href="#">Sample Reports</a><a href="#">Research Methodology</a><a href="faq.html">FAQ</a></div>
-      <div class="fcol"><h5>Industries</h5><a href="landscaping-report.html">Landscaping</a><a href="index.html#industries">Roofing</a><a href="index.html#industries">HVAC</a><a href="index.html#industries">Pest Control</a></div>
-      <div class="fcol"><h5>Popular Locations</h5><a href="#">Austin, TX</a><a href="#">Dallas, TX</a><a href="#">Houston, TX</a><a href="#">San Antonio, TX</a></div>
+  <div class="container">
+    <div class="footer-tag">See the Market. Stay Ahead.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy-policy.html">Privacy</a>
     </div>
-    <div class="foot-bottom">
-      <div>© <span data-year>2026</span> Sherlock Research. All rights reserved.</div>
-      <div class="links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
-    </div>
+    <div>&copy; 2026 Sherlock Research. All rights reserved.</div>
   </div>
 </footer>
 
-<script src="shared/app.js" defer></script>
 </body>
 </html>
