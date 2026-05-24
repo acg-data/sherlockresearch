@@ -1,0 +1,28 @@
+name = "sherlock-backend"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+
+# D1 — relational database
+# Run: wrangler d1 create sherlock-research
+# Then paste the returned database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "sherlock-research"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+# R2 — storage for the finished PDFs Justin uploads after writing them in Claude.
+# Run: wrangler r2 bucket create sherlock-reports
+[[r2_buckets]]
+binding = "REPORTS"
+bucket_name = "sherlock-reports"
+
+# Secrets (set via: wrangler secret put <NAME>)
+#   ADMIN_TOKEN — single shared bearer token for /admin auth
+
+[vars]
+ENVIRONMENT = "production"
+SITE_URL = "https://sherlockresearch.com"
+
+[observability]
+enabled = true

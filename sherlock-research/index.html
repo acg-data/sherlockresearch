@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sherlock Research — Market Intelligence for Home Service Businesses</title>
+<meta name="description" content="Affordable, actionable market intelligence for landscaping, roofing, HVAC, and pest control business owners. Industry reports, local insights, and quarterly updates.">
+<link rel="canonical" href="https://sherlockresearch.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sherlock Research — Market Intelligence for Home Service Businesses">
+<meta property="og:description" content="40+ page industry reports with market size, growth forecasts, local benchmarks, and competitive intelligence. Trusted by 2,600+ business owners.">
+<meta property="og:url" content="https://sherlockresearch.com/">
+<meta property="og:image" content="https://sherlockresearch.com/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/styles.css">
+<style>
+/* hero */
+.hero{background:var(--navy);position:relative;overflow:hidden;padding:96px 0 88px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(900px 500px at 78% 18%, rgba(226,108,44,.18), transparent 60%),
+  radial-gradient(700px 600px at 10% 90%, rgba(40,70,100,.4), transparent 65%);pointer-events:none}
+.hero-content{position:relative;text-align:center;max-width:54em;margin:0 auto}
+.eyebrow-line{width:46px;height:3px;background:var(--orange);border-radius:3px;margin:0 auto 26px}
+.hero-kicker{color:var(--orange);font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px;display:inline-block}
+.hero h1{font-family:var(--serif);color:#fff;font-weight:600;font-size:clamp(2.6rem,5.4vw,4.3rem);line-height:1.02;letter-spacing:-.5px}
+.hero h1 .accent{color:var(--orange)}
+.hero p.lead{color:rgba(255,255,255,.78);font-size:1.12rem;line-height:1.55;margin:26px auto 32px;max-width:38em}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-trust{margin-top:36px;color:rgba(255,255,255,.55);font-size:.82rem;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.hero-trust b{color:#fff}
+
+/* sections */
+.section{padding:84px 0}
+.section.cream{background:var(--cream)}
+.section.paper{background:var(--paper)}
+.section.navy{background:var(--navy);color:#fff}
+.center{text-align:center}
+.kicker{color:var(--orange);font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;display:inline-flex;align-items:center;gap:14px}
+.kicker::before,.kicker::after{content:"";width:30px;height:1px;background:var(--orange);opacity:.5}
+.h2{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.12;letter-spacing:-.3px;margin-top:18px}
+.h2.white{color:#fff}
+.sub{color:var(--muted);font-size:1.02rem;margin-top:12px;max-width:38em;margin-left:auto;margin-right:auto}
+.sub.white{color:rgba(255,255,255,.7)}
+
+/* industries grid */
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:54px}
+.ind{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 24px;text-align:left;transition:.18s;display:flex;flex-direction:column;gap:8px}
+.ind:hover{transform:translateY(-4px);box-shadow:0 24px 44px -22px rgba(8,18,30,.25);border-color:var(--orange)}
+.ind .ic{width:48px;height:48px;border-radius:12px;background:var(--cream);display:grid;place-items:center;margin-bottom:8px}
+.ind .ic svg{width:26px;height:26px;stroke:var(--orange);fill:none;stroke-width:1.6}
+.ind h3{font-family:var(--serif);font-weight:600;font-size:1.18rem;color:var(--ink);margin:0}
+.ind p{color:var(--muted);font-size:.9rem;line-height:1.5;margin:0}
+.ind .more{margin-top:auto;color:var(--orange);font-weight:600;font-size:.84rem;display:inline-flex;align-items:center;gap:4px;padding-top:10px}
+
+/* locations */
+.loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
+.loc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;color:var(--ink);transition:.18s}
+.loc:hover{border-color:var(--orange);color:var(--orange)}
+.loc b{font-family:var(--serif);font-weight:600;font-size:1.05rem;display:block}
+.loc span{color:var(--muted);font-size:.8rem}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:54px}
+.step{position:relative;padding-top:18px}
+.step .n{position:absolute;top:-12px;left:0;width:42px;height:42px;background:var(--orange);color:#fff;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:1.2rem}
+.step h3{font-family:var(--serif);font-weight:600;font-size:1.2rem;margin:30px 0 10px;color:var(--ink)}
+.step p{color:var(--muted);font-size:.94rem;line-height:1.6}
+
+/* stats strip */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--navy-line);border-radius:14px;background:rgba(255,255,255,.04);margin-top:50px;overflow:hidden}
+.stat-strip .s{padding:24px;text-align:center;border-right:1px solid var(--navy-line)}
+.stat-strip .s:last-child{border-right:none}
+.stat-strip .s .n{font-family:var(--serif);font-weight:600;font-size:1.9rem;color:var(--orange);line-height:1}
+.stat-strip .s .l{color:rgba(255,255,255,.7);font-size:.82rem;margin-top:6px;display:block}
+
+/* featured report */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:54px}
+.feat-art{position:relative;height:340px;background:linear-gradient(160deg,#2a4a30,#16301f 60%,#0e2018);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.feat-art::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 12px,transparent 12px 24px)}
+.feat-art .pill{position:absolute;top:24px;left:24px;background:var(--orange);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.16em;padding:6px 12px;border-radius:99px;text-transform:uppercase}
+.feat-art .cv{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-4deg);width:170px;height:228px;border-radius:8px;background:linear-gradient(150deg,#13283c,#0b1a2a);border:1px solid rgba(255,255,255,.1);padding:18px;box-shadow:0 30px 50px -20px rgba(0,0,0,.6)}
+.feat-art .cv .cl{color:var(--orange);font-size:.5rem;font-weight:700;letter-spacing:.2em}
+.feat-art .cv h4{color:#fff;font-family:var(--serif);font-size:1.1rem;line-height:1.1;margin:8px 0;font-weight:600}
+.feat-art .cv .cy{color:var(--orange);font-size:.55rem;letter-spacing:.16em;font-weight:700}
+.feat-text h3{font-family:var(--serif);font-weight:600;font-size:1.9rem;line-height:1.1;margin-bottom:14px}
+.feat-text p{color:var(--muted);margin-bottom:22px;line-height:1.65}
+.feat-text .feat-meta{display:flex;gap:18px;margin-bottom:22px;color:var(--muted);font-size:.85rem;flex-wrap:wrap}
+.feat-text .feat-meta b{color:var(--ink)}
+
+/* final CTA */
+.cta-block{background:var(--navy);color:#fff;padding:64px;border-radius:22px;text-align:center;position:relative;overflow:hidden;margin-top:54px}
+.cta-block::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 400px at 50% 50%,rgba(226,108,44,.16),transparent 60%);pointer-events:none}
+.cta-block h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:14px;position:relative}
+.cta-block p{color:rgba(255,255,255,.72);font-size:1.05rem;margin-bottom:28px;max-width:40em;margin-left:auto;margin-right:auto;position:relative}
+.cta-block .btn{position:relative}
+.cta-block .btn-pair{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;position:relative}
+
+@media(max-width:1024px){
+  .ind-grid{grid-template-columns:repeat(2,1fr)}
+  .loc-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr;gap:36px}
+  .stat-strip{grid-template-columns:repeat(2,1fr)}
+  .stat-strip .s{border-right:none;border-bottom:1px solid var(--navy-line)}
+  .stat-strip .s:nth-last-child(-n+2){border-bottom:none}
+  .stat-strip .s:nth-child(2n){border-right:none}
+  .feat{grid-template-columns:1fr;gap:30px}
+  .feat-art{height:280px;order:-1}
+}
+@media(max-width:860px){
+  .hero{padding:64px 0 56px}
+}
+@media(max-width:600px){
+  .section{padding:60px 0}
+  .ind-grid,.loc-grid{grid-template-columns:1fr}
+  .stat-strip{grid-template-columns:1fr}
+  .stat-strip .s{border-right:none;border-bottom:1px solid var(--navy-line)}
+  .stat-strip .s:last-child{border-bottom:none}
+  .cta-block{padding:40px 24px}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Sherlock Research",
+  "url": "https://sherlockresearch.com",
+  "logo": "https://sherlockresearch.com/favicon.svg",
+  "description": "Actionable market intelligence and local insights for landscaping, roofing, HVAC, and pest control business owners.",
+  "sameAs": [
+    "https://www.linkedin.com/company/sherlock-research",
+    "https://twitter.com/sherlockresearch"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Sherlock Research home">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/><path d="M12 13.5c1 .8 2 .8 3 0" stroke="#0E1B2B" stroke-width="1" stroke-linecap="round"/></svg>
+      </span>
+      <span class="name"><b>Sherlock</b><span>RESEARCH</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <div class="nav-item">
+        <button>Industries <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown">
+          <a href="landscaping-report.html">Landscaping</a><a href="#industries">Roofing</a>
+          <a href="#industries">HVAC</a><a href="#industries">Pest Control</a>
+          <a href="#industries">View All Industries</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button>Locations <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown">
+          <a href="#locations">Austin, TX</a><a href="#locations">Dallas, TX</a>
+          <a href="#locations">Houston, TX</a><a href="#locations">View All Locations</a>
+        </div>
+      </div>
+      <a href="pricing.html">Pricing</a>
+      <div class="nav-item">
+        <button>Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dropdown">
+          <a href="blog-article.html">Blog</a><a href="#">Sample Reports</a>
+          <a href="#">Research Methodology</a><a href="faq.html">FAQ</a>
+        </div>
+      </div>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-orange" href="pricing.html#plans">Get Your Edge</a>
+      <button class="hamburger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="landscaping-report.html">Industries</a>
+    <a href="#locations">Locations</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+    <a class="btn btn-orange" href="pricing.html#plans">Get Your Edge</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-content reveal">
+    <div class="eyebrow-line"></div>
+    <span class="hero-kicker">Market Intelligence · Built for Operators</span>
+    <h1>Know your market.<br>Beat your <span class="accent">competition.</span></h1>
+    <p class="lead">Sherlock Research delivers affordable, deeply-local industry intelligence for landscaping, roofing, HVAC, and pest control business owners. 40+ pages of data, charts, and actionable insight — in one PDF.</p>
+    <div class="hero-cta">
+      <a class="btn btn-orange" href="pricing.html#plans">See pricing</a>
+      <a class="btn btn-outline" href="landscaping-report.html">View sample report</a>
+    </div>
+    <div class="hero-trust">
+      <span><b>2,600+</b> business owners trust Sherlock</span>
+      <span><b>400+</b> local markets researched</span>
+      <span><b>4,200+</b> reports delivered</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIES ============ -->
+<section class="section paper" id="industries">
+  <div class="wrap center">
+    <span class="kicker reveal">Industries we cover</span>
+    <h2 class="h2 reveal">Deep research for the trades that matter.</h2>
+    <p class="sub reveal">National market size, local benchmarks, competitive landscape, and forward-looking trends — for the home-service industries that actually run America.</p>
+
+    <div class="ind-grid">
+      <a class="ind reveal" href="landscaping-report.html">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12c-4 0-7-3-7-7 4 0 7 3 7 7ZM12 12c4 0 7-2 7-6-4 0-7 2-7 6Z"/></svg></div>
+        <h3>Landscaping</h3>
+        <p>Residential and commercial landscape services — market size, growth, pricing, and labor benchmarks.</p>
+        <span class="more">View report →</span>
+      </a>
+      <a class="ind reveal" href="#industries">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>Roofing</h3>
+        <p>Residential reroof, new construction, and storm-repair — competitive dynamics and pricing data.</p>
+        <span class="more">Coming soon →</span>
+      </a>
+      <a class="ind reveal" href="#industries">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v6M5 14a4 4 0 0 0 7 0 4 4 0 0 0 7 0M12 9c-3 0-5 2-5 5M12 9c3 0 5 2 5 5"/></svg></div>
+        <h3>HVAC</h3>
+        <p>Installation, service, and maintenance economics across the heating &amp; cooling category.</p>
+        <span class="more">Coming soon →</span>
+      </a>
+      <a class="ind reveal" href="#industries">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
+        <h3>Pest Control</h3>
+        <p>Residential and commercial pest, termite, and lawn-care services — recurring-revenue benchmarks.</p>
+        <span class="more">Coming soon →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section cream">
+  <div class="wrap center">
+    <span class="kicker reveal">How it works</span>
+    <h2 class="h2 reveal">Three steps from "buy" to "smarter decisions."</h2>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="n">1</div>
+        <h3>Pick your report</h3>
+        <p>Choose a single industry report ($399), a Pro Bundle of 5 ($799), or talk to us about an Enterprise package.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">2</div>
+        <h3>Instant PDF</h3>
+        <p>Get a 40+ page PDF in your inbox immediately. Market size, growth forecasts, local benchmarks, competitive landscape — everything you need.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">3</div>
+        <h3>Stay current</h3>
+        <p>Add quarterly or semi-annual updates for $199/year and we automatically refresh your reports with the latest data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED REPORT ============ -->
+<section class="section paper">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker reveal">Featured report</span>
+      <h2 class="h2 reveal">2024 Landscaping Industry Report</h2>
+    </div>
+
+    <div class="feat">
+      <div class="feat-art reveal" aria-hidden="true">
+        <div class="pill">2024 Edition</div>
+        <div class="cv">
+          <div class="cl">SHERLOCK RESEARCH</div>
+          <h4>Landscaping Industry Report</h4>
+          <div class="cy">2024 EDITION</div>
+        </div>
+      </div>
+      <div class="feat-text reveal">
+        <h3>40+ pages of data, charts, and operator-ready insight.</h3>
+        <p>National market size and growth forecasts. Local market deep-dives. Competitive landscape by company size. Pricing benchmarks, service mix, and the trends that'll define the next 24 months.</p>
+        <div class="feat-meta">
+          <span><b>40+</b> pages</span>
+          <span><b>400+</b> local markets</span>
+          <span><b>2024</b> data vintage</span>
+          <span><b>Instant</b> PDF download</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-orange" href="landscaping-report.html">View the report</a>
+          <a class="btn btn-outline" href="pricing.html#plans">See pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATIONS ============ -->
+<section class="section cream" id="locations">
+  <div class="wrap center">
+    <span class="kicker reveal">Local coverage</span>
+    <h2 class="h2 reveal">Hyper-local insights for major markets.</h2>
+    <p class="sub reveal">Every industry report includes location-specific breakdowns. Starting with Texas — expanding nationally.</p>
+
+    <div class="loc-grid">
+      <a class="loc reveal" href="#"><b>Austin</b><span>Texas</span></a>
+      <a class="loc reveal" href="#"><b>Dallas</b><span>Texas</span></a>
+      <a class="loc reveal" href="#"><b>Houston</b><span>Texas</span></a>
+      <a class="loc reveal" href="#"><b>San Antonio</b><span>Texas</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF / STATS (navy) ============ -->
+<section class="section navy">
+  <div class="wrap center">
+    <span class="kicker reveal" style="color:var(--orange)">By the numbers</span>
+    <h2 class="h2 white reveal">Trusted research, delivered at scale.</h2>
+
+    <div class="stat-strip">
+      <div class="s"><div class="n">2,600+</div><span class="l">Business owners served</span></div>
+      <div class="s"><div class="n">400+</div><span class="l">Local markets researched</span></div>
+      <div class="s"><div class="n">4,200+</div><span class="l">Reports delivered</span></div>
+      <div class="s"><div class="n">12.4%</div><span class="l">Avg. client profit lift</span></div>
+    </div>
+
+    <div class="cta-block reveal">
+      <h2>Stop guessing. Start knowing your market.</h2>
+      <p>Join thousands of business owners using Sherlock Research to make confident, data-backed decisions.</p>
+      <div class="btn-pair">
+        <a class="btn btn-orange" href="pricing.html#plans">Get your edge today</a>
+        <a class="btn btn-outline" href="landscaping-report.html">View sample report</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Sherlock Research home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 1.5 5 1 7 0-1 4 .5 6 .5 9C19.5 16 16 21 12 22 8 21 4.5 16 4.5 11 4.5 8 6 6 5 2c2 1 5 1.5 7 0Z" fill="#E26C2C"/><circle cx="9.3" cy="10.5" r="1.1" fill="#0E1B2B"/><circle cx="14.7" cy="10.5" r="1.1" fill="#0E1B2B"/></svg></span>
+          <span class="name"><b>Sherlock</b><span>RESEARCH</span></span>
+        </a>
+        <p>Actionable market intelligence and local insights for business owners who want to win.</p>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H16.6v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H10z"/></svg></a>
+          <a href="#" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2zM2 6l10 7 10-7" fill="none" stroke="#fff" stroke-width="1.7"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.1L8 21H5l7.4-8.5L4.5 3H11l4.5 5.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="fcol"><h5>Company</h5><a href="about.html">About Us</a><a href="#">How It Works</a><a href="#">Careers</a><a href="#">Contact Us</a></div>
+      <div class="fcol"><h5>Services</h5><a href="pricing.html">Industry Reports</a><a href="#">Custom Research</a><a href="#">Market Analysis</a><a href="#">Competitive Insights</a></div>
+      <div class="fcol"><h5>Resources</h5><a href="blog-article.html">Blog</a><a href="#">Sample Reports</a><a href="#">Research Methodology</a><a href="faq.html">FAQ</a></div>
+      <div class="fcol"><h5>Industries</h5><a href="landscaping-report.html">Landscaping</a><a href="#industries">Roofing</a><a href="#industries">HVAC</a><a href="#industries">Pest Control</a></div>
+      <div class="fcol"><h5>Popular Locations</h5><a href="#locations">Austin, TX</a><a href="#locations">Dallas, TX</a><a href="#locations">Houston, TX</a><a href="#locations">San Antonio, TX</a></div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span data-year>2026</span> Sherlock Research. All rights reserved.</div>
+      <div class="links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="shared/app.js" defer></script>
+</body>
+</html>
