@@ -4,866 +4,896 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#0D1B2A" />
-<title>Sherlock Research — Know your market before your next move.</title>
-<meta name="description" content="Sherlock turns customer demand, local competition, pricing pressure, and buyer behavior into clear decisions for owner-led service businesses. From $497.">
-<link rel="canonical" href="https://sherlockresearch.com/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sherlock Research — Know your market before your next move.">
-<meta property="og:description" content="Industry-specific market intelligence for service businesses under $10M. Reports priced for operators, not procurement.">
-<meta property="og:url" content="https://sherlockresearch.com/">
-<meta property="og:image" content="https://sherlockresearch.com/og-default.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Sherlock Research - See the Market, Stay Ahead</title>
+<meta name="description" content="Sherlock Research combines macro market context with operator interviews, local field research, and city-level demand signals for industry-specific decisions." />
+<link rel="canonical" href="https://sherlockreports.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sherlock Research - See the Market, Stay Ahead" />
+<meta property="og:description" content="Hyper-targeted industry research built from macro benchmarks, local market research, operator interviews, and on-the-ground signals." />
+<meta property="og:url" content="https://sherlockreports.com/" />
+<meta property="og:image" content="https://sherlockreports.com/og-default.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --navy: #0D1B2A; --navy-2: #142537; --navy-3: #1c2f44; --navy-4: #08111c;
-    --orange: #F26A21; --orange-2: #FF8542; --orange-3: #D9551A; --orange-soft: #fef2eb;
-    --sage: #5C7F5A; --sage-2: #6E9269; --sage-soft: #eef2ed;
-    --slate: #60788E; --slate-2: #7B92A8;
-    --stone: #F2EFE6; --stone-2: #F8F5EC; --stone-3: #FBF9F1; --stone-deep: #E8E4D6;
-    --ink: #1a1a1a; --muted: #6b6b6b; --muted-dark: rgba(255,255,255,0.65);
-    --line: rgba(13, 27, 42, 0.08); --line-strong: rgba(13, 27, 42, 0.14); --line-dark: rgba(255,255,255,0.08);
-    --white: #ffffff;
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --radius: 10px; --radius-lg: 18px; --radius-xl: 24px;
-    --grad-orange: linear-gradient(135deg, #FF8542 0%, #F26A21 50%, #D9551A 100%);
-    --grad-orange-soft: linear-gradient(135deg, #fff5ed 0%, #fef2eb 100%);
-    --grad-navy: linear-gradient(135deg, #1c2f44 0%, #0D1B2A 100%);
-    --grad-navy-deep: radial-gradient(ellipse at top right, #1c2f44 0%, #0D1B2A 60%, #08111c 100%);
-    --grad-sage: linear-gradient(135deg, #6E9269 0%, #5C7F5A 100%);
-    --grad-stone: linear-gradient(180deg, #F8F5EC 0%, #F2EFE6 100%);
-    --grad-stone-warm: linear-gradient(160deg, #F8F5EC 0%, #F2EFE6 50%, #EDE7D5 100%);
-    --grad-text: linear-gradient(135deg, #F26A21 0%, #FF8542 50%, #F26A21 100%);
-    --grad-card: linear-gradient(180deg, #ffffff 0%, #fbf9f1 100%);
-    --shadow-sm: 0 2px 4px rgba(13,27,42,0.04), 0 1px 2px rgba(13,27,42,0.04);
-    --shadow-md: 0 8px 24px rgba(13,27,42,0.08), 0 2px 6px rgba(13,27,42,0.05);
-    --shadow-lg: 0 24px 60px rgba(13,27,42,0.14), 0 4px 12px rgba(13,27,42,0.06);
-    --shadow-orange: 0 12px 32px rgba(242,106,33,0.25), 0 4px 8px rgba(242,106,33,0.15);
-    --shadow-glow: 0 0 80px rgba(242,106,33,0.15);
+    --navy:#0D1B2A;
+    --navy-2:#142537;
+    --navy-3:#1c2f44;
+    --navy-4:#08111c;
+    --orange:#F26A21;
+    --orange-2:#FF8542;
+    --orange-3:#D9551A;
+    --orange-soft:#fef2eb;
+    --sage:#5C7F5A;
+    --sage-2:#6E9269;
+    --sage-soft:#eef2ed;
+    --slate:#60788E;
+    --stone:#F2EFE6;
+    --stone-2:#F8F5EC;
+    --stone-3:#FBF9F1;
+    --stone-deep:#E8E4D6;
+    --ink:#1a1a1a;
+    --muted:#626e79;
+    --muted-dark:rgba(255,255,255,.68);
+    --line:rgba(13,27,42,.10);
+    --line-strong:rgba(13,27,42,.16);
+    --line-dark:rgba(255,255,255,.10);
+    --white:#fff;
+    --font-display:'Playfair Display',Georgia,serif;
+    --font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    --radius:10px;
+    --radius-lg:18px;
+    --radius-xl:24px;
+    --grad-orange:linear-gradient(135deg,#FF8542 0%,#F26A21 52%,#D9551A 100%);
+    --grad-text:linear-gradient(135deg,#F26A21 0%,#FF8542 55%,#F26A21 100%);
+    --grad-navy-deep:radial-gradient(ellipse at top right,#1c2f44 0%,#0D1B2A 58%,#08111c 100%);
+    --grad-stone:linear-gradient(160deg,#F8F5EC 0%,#F2EFE6 52%,#EDE7D5 100%);
+    --grad-card:linear-gradient(180deg,#ffffff 0%,#fbf9f1 100%);
+    --shadow-sm:0 2px 8px rgba(13,27,42,.06);
+    --shadow-md:0 12px 32px rgba(13,27,42,.10);
+    --shadow-lg:0 28px 70px rgba(13,27,42,.16);
+    --shadow-orange:0 12px 32px rgba(242,106,33,.26);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body { font-family: var(--font-body); color: var(--ink); background: var(--white); line-height: 1.55; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--navy); letter-spacing: -0.015em; line-height: 1.08; }
-  a { color: inherit; text-decoration: none; }
-  img, svg { display: block; max-width: 100%; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-  .grad-text { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
 
-  .mobile-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 60; background: rgba(255,255,255,0.96); backdrop-filter: saturate(180%) blur(20px); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); display: none; gap: 10px; align-items: center; }
-  .mobile-cta .btn { flex: 1; padding: 14px 16px; font-size: 15px; }
-  @media (max-width: 768px) { .mobile-cta { display: flex; } body { padding-bottom: 80px; } }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body { font-family:var(--font-body); color:var(--ink); background:var(--stone-3); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  img, svg { display:block; max-width:100%; }
+  h1, h2, h3, h4 { font-family:var(--font-display); color:var(--navy); font-weight:700; line-height:1.08; letter-spacing:-.015em; }
+  button, input, select { font:inherit; }
+  .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+  .orange { color:var(--orange); }
+  .grad-text { background:var(--grad-text); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .section-pad { padding:88px 0; }
+  .section-eyebrow { color:var(--orange); font-size:11px; font-weight:800; letter-spacing:.24em; text-transform:uppercase; margin-bottom:14px; }
+  .section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:38px; }
+  .section-head h2 { font-size:clamp(30px,4vw,46px); max-width:700px; }
+  .section-head p { color:var(--muted); max-width:460px; font-size:15.5px; }
+  .center { text-align:center; }
+  .center h2, .center p { margin-left:auto; margin-right:auto; }
 
-  .nav { position: sticky; top: 0; z-index: 50; background: rgba(13,27,42,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--line-dark); }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--white); }
-  .logo-mark { width: 38px; height: 38px; border-radius: 50%; background: var(--grad-orange); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(242,106,33,0.3); }
-  .logo-mark svg { width: 26px; height: 26px; }
-  .logo-stack { line-height: 1; }
-  .logo-stack small { display: block; font-family: var(--font-body); font-size: 9px; font-weight: 700; letter-spacing: 0.22em; color: var(--orange-2); margin-top: 3px; }
-  .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); }
-  .nav-links a { transition: color 0.15s; }
-  .nav-links a:hover { color: var(--orange-2); }
-  .nav-right { display: flex; align-items: center; gap: 14px; font-size: 14px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:13px 22px; border-radius:var(--radius); border:0; cursor:pointer; font-size:14px; font-weight:700; transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease; white-space:nowrap; }
+  .btn-primary { background:var(--grad-orange); color:var(--white); box-shadow:var(--shadow-orange); }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 18px 40px rgba(242,106,33,.32); }
+  .btn-outline { color:var(--white); border:1.5px solid rgba(255,255,255,.26); background:transparent; }
+  .btn-outline:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.46); }
+  .btn-outline-dark { color:var(--navy); border:1.5px solid var(--line-strong); background:rgba(255,255,255,.7); }
+  .btn-outline-dark:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
+  .btn-lg { padding:16px 28px; font-size:15px; }
+  .arrow-link { display:inline-flex; align-items:center; gap:8px; color:var(--orange); font-weight:800; font-size:14px; }
+  .arrow-link svg { transition:transform .18s ease; }
+  .arrow-link:hover svg { transform:translateX(4px); }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 22px; border-radius: var(--radius); font-family: var(--font-body); font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: transform 0.2s cubic-bezier(.2,.8,.2,1), box-shadow 0.2s, filter 0.2s; text-align: center; position: relative; overflow: hidden; min-height: 44px; }
-  .btn-primary { background: var(--grad-orange); color: var(--white); box-shadow: var(--shadow-orange); }
-  .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 16px 36px rgba(242,106,33,0.32); }
-  .btn-primary:active { transform: translateY(0); }
-  .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.25); }
-  .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
-  .btn-outline-dark { background: rgba(255,255,255,0.6); color: var(--navy); border: 1.5px solid var(--navy); }
-  .btn-outline-dark:hover { background: var(--navy); color: var(--white); }
-  .btn-lg { padding: 16px 28px; font-size: 15px; }
+  .nav { position:sticky; top:0; z-index:70; background:rgba(13,27,42,.94); backdrop-filter:saturate(170%) blur(18px); border-bottom:1px solid var(--line-dark); }
+  .nav-inner { height:72px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  .logo { display:flex; align-items:center; gap:10px; color:var(--white); min-width:max-content; }
+  .logo-mark { width:42px; height:42px; object-fit:contain; flex:0 0 auto; }
+  .logo-stack { display:flex; flex-direction:column; line-height:1; font-family:var(--font-display); font-size:22px; font-weight:800; letter-spacing:.01em; }
+  .logo-stack small { margin-top:3px; font-family:var(--font-body); font-size:9px; font-weight:800; color:var(--orange-2); letter-spacing:.26em; }
+  .nav-links { display:flex; align-items:center; gap:28px; color:rgba(255,255,255,.84); font-size:14px; font-weight:600; }
+  .nav-links a, .nav-item button { color:inherit; background:none; border:0; cursor:pointer; display:inline-flex; align-items:center; gap:5px; padding:24px 0; }
+  .nav-links a:hover, .nav-item button:hover, .nav-links a:focus, .nav-item button:focus { color:var(--orange-2); outline:none; }
+  .nav-item { position:relative; }
+  .caret { width:12px; height:12px; transition:transform .18s ease; }
+  .nav-item:hover .caret, .nav-item:focus-within .caret { transform:rotate(180deg); }
+  .dropdown { position:absolute; top:calc(100% - 8px); left:50%; min-width:230px; transform:translateX(-50%) translateY(10px); background:var(--white); color:var(--ink); border:1px solid var(--line); border-radius:14px; padding:9px; box-shadow:var(--shadow-lg); opacity:0; visibility:hidden; transition:.18s ease; }
+  .nav-item:hover .dropdown, .nav-item:focus-within .dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+  .dropdown a { display:block; padding:9px 11px; border-radius:9px; color:var(--ink); font-size:13.5px; font-weight:700; }
+  .dropdown a:hover, .dropdown a:focus { background:var(--orange-soft); color:var(--orange-3); }
+  .nav-right { display:flex; align-items:center; gap:12px; }
+  .hamburger { display:none; width:42px; height:42px; border:0; background:transparent; cursor:pointer; border-radius:9px; }
+  .hamburger span { display:block; width:22px; height:2px; background:var(--white); margin:5px auto; transition:.2s ease; }
+  .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity:0; }
+  .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display:none; background:var(--navy-2); border-bottom:1px solid var(--line-dark); }
+  .mobile-menu.open { display:block; }
+  .mobile-menu a { display:block; color:rgba(255,255,255,.9); padding:14px 22px; border-top:1px solid var(--line-dark); font-weight:700; }
+  .mobile-menu .btn { margin:16px 22px; width:calc(100% - 44px); }
 
-  .hero { position: relative; padding: 56px 0 80px; overflow: hidden; background: radial-gradient(ellipse 60% 50% at 10% 30%, rgba(242,106,33,0.18), transparent 55%), radial-gradient(ellipse 50% 40% at 95% 80%, rgba(92,127,90,0.15), transparent 55%), var(--grad-navy-deep); color: var(--white); }
-  .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-  .hero-grid { display: grid; grid-template-columns: 1.08fr 1fr; gap: 56px; align-items: center; position: relative; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.12); padding: 6px 16px 6px 6px; border-radius: 100px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 26px; }
-  .hero-badge .stars-mini { background: var(--grad-orange); border-radius: 100px; padding: 4px 10px; color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
-  .hero h1 { color: var(--white); font-size: clamp(40px, 6.2vw, 76px); line-height: 1; margin-bottom: 22px; letter-spacing: -0.025em; }
-  .hero h1 em { font-style: italic; font-weight: 500; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-sub { font-size: 18px; color: rgba(255,255,255,0.72); margin-bottom: 32px; max-width: 560px; line-height: 1.55; }
-  .hero-cta-row { display: flex; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
-  .hero-pills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 560px; }
-  .hero-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 16px; backdrop-filter: blur(10px); }
-  .hero-pill-num { font-family: var(--font-display); font-size: 22px; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 6px; display: block; }
-  .hero-pill-label { font-size: 11.5px; color: rgba(255,255,255,0.62); line-height: 1.4; }
+  .hero { position:relative; overflow:hidden; background:var(--grad-navy-deep); color:var(--white); padding:66px 0 0; }
+  .hero::before { content:""; position:absolute; inset:0; background-image:radial-gradient(circle at 25% 25%,rgba(255,255,255,.03) 1px,transparent 1px); background-size:34px 34px; pointer-events:none; }
+  .hero-grid { position:relative; display:grid; grid-template-columns:1.02fr 1.08fr; gap:40px; align-items:center; min-height:604px; }
+  .hero-copy { padding:42px 0 94px; }
+  .hero h1 { color:var(--white); font-size:clamp(44px,6.1vw,74px); line-height:1.02; letter-spacing:-.03em; margin-bottom:24px; }
+  .hero-sub { color:rgba(255,255,255,.74); font-size:18px; line-height:1.58; max-width:560px; margin-bottom:32px; }
+  .hero-cta { display:flex; align-items:center; flex-wrap:wrap; gap:14px; }
+  .hero-visual { position:relative; align-self:end; }
+  .hero-visual::before { content:""; position:absolute; width:78%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(242,106,33,.22),rgba(242,106,33,0) 68%); right:0; bottom:34px; filter:blur(2px); }
+  .hero-report-img { position:relative; width:min(760px,122%); max-width:none; margin-left:-8%; filter:drop-shadow(0 32px 48px rgba(0,0,0,.42)); }
+  .hero-signal { position:absolute; left:0; bottom:42px; z-index:2; width:min(420px,88%); background:rgba(13,27,42,.82); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:16px; box-shadow:0 28px 68px rgba(0,0,0,.38); backdrop-filter:blur(10px); }
+  .signal-top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:12px; }
+  .signal-label { font-size:10px; text-transform:uppercase; letter-spacing:.16em; color:rgba(255,255,255,.58); font-weight:800; }
+  .signal-value { font-family:var(--font-display); font-size:30px; font-weight:800; line-height:1; color:var(--white); }
+  .signal-tag { color:var(--orange-2); font-size:12px; font-weight:800; }
+  .spark { height:74px; }
+  .features { background:var(--navy); border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark); padding:30px 0 46px; }
+  .feature-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
+  .feature { display:flex; gap:14px; color:var(--white); }
+  .feature:not(:first-child) { border-left:1px solid var(--line-dark); padding-left:26px; }
+  .feature svg { width:36px; height:36px; color:var(--orange); flex:0 0 auto; margin-top:2px; }
+  .feature h3 { font-family:var(--font-body); color:var(--white); font-size:15.5px; letter-spacing:0; margin-bottom:5px; }
+  .feature p { color:rgba(255,255,255,.58); font-size:13px; line-height:1.5; }
 
-  .hero-visual { position: relative; perspective: 1200px; }
-  .fox-stage { position: relative; aspect-ratio: 1 / 0.95; }
-  .fox-illustration { position: absolute; bottom: -20px; left: -10%; width: 58%; z-index: 2; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35)); }
-  .dashboard-card { position: absolute; top: 10%; right: 0; width: 78%; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg), var(--shadow-glow); overflow: hidden; z-index: 1; border: 1px solid rgba(255,255,255,0.1); transform: rotate(-1.5deg); }
-  .dash-header { background: var(--navy); color: var(--white); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
-  .dash-header-dots { display: flex; gap: 5px; }
-  .dash-header-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); }
-  .dash-header-dots span:first-child { background: var(--orange); }
-  .dash-title { padding: 18px 22px 8px; font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--navy); }
-  .dash-sub { padding: 0 22px 16px; font-size: 11px; color: var(--muted); }
-  .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--stone); padding: 14px 22px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .dash-stat-val { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1; }
-  .dash-stat-val.orange { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .dash-stat-label { font-size: 8.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; font-weight: 600; }
-  .dash-chart { padding: 18px 22px; display: flex; align-items: flex-end; gap: 8px; height: 90px; }
-  .dash-bar { flex: 1; border-radius: 3px 3px 0 0; }
-  .dash-bar:nth-child(1) { height: 35%; background: #7B92A8; }
-  .dash-bar:nth-child(2) { height: 52%; background: #7B92A8; }
-  .dash-bar:nth-child(3) { height: 68%; background: #5C7F5A; }
-  .dash-bar:nth-child(4) { height: 82%; background: #5C7F5A; }
-  .dash-bar:nth-child(5) { height: 100%; background: var(--grad-orange); box-shadow: 0 4px 12px rgba(242,106,33,0.4); }
-  .floating-card { position: absolute; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); padding: 12px 16px; border-radius: 12px; box-shadow: var(--shadow-lg); font-size: 12px; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 10px; z-index: 3; }
-  .floating-card.top { top: 5%; right: -2%; transform: rotate(2deg); }
-  .pill { background: var(--grad-orange); color: var(--white); padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; }
+  .reports-section { background:var(--grad-stone); }
+  .report-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .report-card { position:relative; min-height:360px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; border-radius:18px; color:var(--white); padding:22px; background:var(--navy); box-shadow:var(--shadow-md); transition:transform .2s ease, box-shadow .2s ease; }
+  .report-card:hover { transform:translateY(-6px); box-shadow:0 26px 56px rgba(13,27,42,.22); }
+  .report-card::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(8,17,28,.36),rgba(8,17,28,.88)); z-index:1; }
+  .report-card::after { content:""; position:absolute; inset:0; opacity:.8; background:radial-gradient(circle at 70% 38%,var(--card-accent),transparent 36%),linear-gradient(145deg,var(--card-bg-1),var(--card-bg-2)); }
+  .report-card > * { position:relative; z-index:2; }
+  .report-card.landscaping { --card-accent:#6E9269; --card-bg-1:#1b3827; --card-bg-2:#0D1B2A; }
+  .report-card.roofing { --card-accent:#a76936; --card-bg-1:#243a52; --card-bg-2:#0D1B2A; }
+  .report-card.hvac { --card-accent:#5f95c8; --card-bg-1:#173c5a; --card-bg-2:#0D1B2A; }
+  .report-card.pest { --card-accent:#7c8a63; --card-bg-1:#26351f; --card-bg-2:#0D1B2A; }
+  .report-edition { color:var(--orange-2); font-size:11px; letter-spacing:.16em; font-weight:800; text-transform:uppercase; margin-bottom:10px; }
+  .report-title { color:var(--white); font-size:28px; line-height:1.08; }
+  .report-meta { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; color:rgba(255,255,255,.78); font-size:13px; }
+  .report-icon { width:62px; height:62px; display:grid; place-items:center; border-radius:50%; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.18); margin-top:52px; }
+  .report-arrow { width:38px; height:38px; border-radius:50%; background:var(--orange); display:grid; place-items:center; flex:0 0 auto; }
+  .trusted-note { margin-top:34px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  .trust-card { background:rgba(255,255,255,.72); border:1px solid var(--line); border-radius:16px; padding:18px 20px; }
+  .trust-card b { display:block; color:var(--navy); margin-bottom:5px; }
+  .trust-card span { color:var(--muted); font-size:13.5px; }
 
-  section { padding: 96px 0; position: relative; }
-  .section-eyebrow { font-size: 11px; letter-spacing: 0.24em; color: var(--orange); text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
-  .section-eyebrow-center { text-align: center; }
-  .section-title { font-size: clamp(32px, 4.4vw, 50px); text-align: center; margin-bottom: 18px; max-width: 780px; margin-left: auto; margin-right: auto; letter-spacing: -0.02em; line-height: 1.05; }
-  .section-title em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; }
-  .section-sub { text-align: center; color: var(--muted); max-width: 620px; margin: 0 auto 56px; font-size: 16px; line-height: 1.6; }
+  .smart { background:var(--white); }
+  .smart-grid { display:grid; grid-template-columns:1fr 1fr 1.04fr; gap:42px; align-items:center; }
+  .smart h2 { font-size:clamp(30px,3.6vw,42px); margin-bottom:18px; }
+  .smart p { color:var(--muted); margin-bottom:24px; max-width:360px; }
+  .checklist { list-style:none; display:grid; gap:12px; }
+  .checklist li { display:flex; gap:11px; align-items:flex-start; color:var(--navy); font-weight:700; font-size:14px; }
+  .checklist svg { color:var(--orange); width:18px; height:18px; flex:0 0 auto; margin-top:2px; }
+  .stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .stat { background:var(--grad-card); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:var(--shadow-sm); }
+  .stat svg { width:30px; height:30px; color:var(--orange); margin-bottom:14px; }
+  .stat strong { display:block; font-family:var(--font-display); color:var(--navy); font-size:28px; line-height:1; margin-bottom:8px; }
+  .stat span { color:var(--muted); font-size:12.5px; line-height:1.4; display:block; }
+  .map-panel { background:var(--grad-stone); border:1px solid var(--line); border-radius:var(--radius-xl); padding:24px; box-shadow:var(--shadow-md); }
+  .map-caption { margin-top:14px; color:var(--muted); font-size:13px; }
 
-  .problem { background: var(--grad-stone-warm); }
-  .problem-head { text-align: center; margin-bottom: 56px; }
-  .problem-head h2 { font-size: clamp(32px, 4.4vw, 50px); margin-bottom: 16px; letter-spacing: -0.02em; max-width: 820px; margin-left: auto; margin-right: auto; line-height: 1.05; }
-  .problem-head h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; }
-  .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .problem-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; transition: transform 0.25s, box-shadow 0.25s; }
-  .problem-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  .problem-card.highlight { background: var(--grad-orange); color: var(--white); border: none; box-shadow: var(--shadow-orange); }
-  .problem-num { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--orange); margin-bottom: 14px; letter-spacing: 0.05em; }
-  .problem-card.highlight .problem-num { color: rgba(255,255,255,0.85); }
-  .problem-card h3 { font-family: var(--font-body); font-size: 19px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .problem-card.highlight h3 { color: var(--white); }
-  .problem-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-  .problem-card.highlight p { color: rgba(255,255,255,0.92); }
+  .split { display:grid; grid-template-columns:1fr 1fr; }
+  .how { background:var(--grad-stone); padding:76px 0; }
+  .inside { background:var(--grad-navy-deep); padding:76px 0; color:var(--white); }
+  .how-inner { max-width:588px; margin-left:auto; padding:0 48px 0 20px; }
+  .inside-inner { max-width:588px; margin-right:auto; padding:0 20px 0 48px; }
+  .mini-head { font-size:32px; margin-bottom:8px; }
+  .mini-sub { color:var(--muted); font-size:14.5px; margin-bottom:34px; }
+  .inside .mini-head { color:var(--white); }
+  .inside .mini-sub { color:rgba(255,255,255,.64); }
+  .steps { position:relative; display:grid; gap:17px; margin-bottom:34px; }
+  .steps::before { content:""; position:absolute; top:24px; bottom:24px; left:19px; width:1px; background:var(--line-strong); }
+  .step { position:relative; display:grid; grid-template-columns:40px 1fr; gap:16px; }
+  .step-num { width:40px; height:40px; border-radius:50%; background:var(--navy); color:var(--white); display:grid; place-items:center; font-weight:800; z-index:2; }
+  .step-card { background:rgba(255,255,255,.7); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
+  .step-card h3 { font-family:var(--font-body); font-size:16px; letter-spacing:0; margin-bottom:4px; }
+  .step-card p { color:var(--muted); font-size:13.5px; line-height:1.5; }
+  .popular { border:1px solid var(--line); background:rgba(255,255,255,.52); border-radius:18px; padding:24px; }
+  .popular h3 { font-size:22px; margin-bottom:16px; }
+  .chip-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:18px; }
+  .chip { display:flex; align-items:center; gap:8px; background:var(--white); border:1px solid var(--line); border-radius:9px; padding:10px; color:var(--navy); font-size:12.5px; font-weight:800; }
+  .chip svg { color:var(--orange); width:16px; height:16px; flex:0 0 auto; }
+  .inside-list { list-style:none; display:grid; gap:13px; margin:26px 0 30px; }
+  .inside-list li { display:flex; align-items:flex-start; gap:12px; color:rgba(255,255,255,.86); font-weight:700; font-size:14.5px; }
+  .inside-list span { width:20px; height:20px; border-radius:50%; background:var(--orange); color:var(--white); display:grid; place-items:center; flex:0 0 auto; margin-top:1px; }
+  .report-spread { background:rgba(255,255,255,.06); border:1px solid var(--line-dark); border-radius:20px; padding:22px; box-shadow:0 26px 60px rgba(0,0,0,.28); }
 
-  .modules { background: var(--white); }
-  .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .module { padding: 28px; background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-lg); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; position: relative; overflow: hidden; }
-  .module::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad-orange); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
-  .module:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
-  .module:hover::before { transform: scaleX(1); }
-  .module-icon { width: 44px; height: 44px; background: var(--sage-soft); border-radius: 12px; color: var(--sage); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-  .module-icon.orange { background: var(--orange-soft); color: var(--orange); }
-  .module-icon.navy { background: rgba(13,27,42,0.08); color: var(--navy); }
-  .module h3 { font-family: var(--font-body); font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
-  .module p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+  .testimonials { background:var(--stone-2); }
+  .testimonial-top { display:flex; justify-content:space-between; gap:24px; align-items:flex-end; margin-bottom:30px; }
+  .testimonial-top h2 { font-size:clamp(30px,4vw,44px); max-width:680px; }
+  .testimonial-controls { display:flex; gap:10px; }
+  .testimonial-btn { width:44px; height:44px; border:1px solid var(--line-strong); border-radius:50%; background:var(--white); color:var(--navy); cursor:pointer; display:grid; place-items:center; font-size:24px; line-height:1; transition:.18s ease; }
+  .testimonial-btn:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
+  .testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; min-height:286px; }
+  .testimonial-card { background:var(--white); border:1px solid var(--line); border-radius:18px; padding:24px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column; }
+  .testimonial-tag { color:var(--orange); text-transform:uppercase; letter-spacing:.18em; font-size:10.5px; font-weight:900; margin-bottom:16px; }
+  .testimonial-quote { font-family:var(--font-display); color:var(--navy); font-size:21px; line-height:1.32; margin-bottom:24px; flex:1; }
+  .testimonial-card.placeholder .testimonial-quote { color:#6a5f55; }
+  .testimonial-name { color:var(--navy); font-weight:800; font-size:14px; }
+  .testimonial-role { color:var(--muted); font-size:12.5px; margin-top:3px; }
+  .testimonial-footer { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:22px; color:var(--muted); font-size:12.5px; }
+  .testimonial-dots { display:flex; gap:8px; }
+  .testimonial-dot { width:9px; height:9px; border-radius:50%; border:0; background:#c9c3b6; cursor:pointer; }
+  .testimonial-dot.active { background:var(--orange); }
 
-  .sample { background: radial-gradient(ellipse 50% 30% at 100% 0%, rgba(242,106,33,0.18), transparent 55%), radial-gradient(ellipse 40% 30% at 0% 100%, rgba(92,127,90,0.12), transparent 55%), var(--grad-navy-deep); color: var(--white); }
-  .sample::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-  .sample-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; position: relative; }
-  .sample-left .section-eyebrow { color: var(--orange-2); }
-  .sample-left h2 { color: var(--white); font-size: clamp(30px, 4vw, 44px); margin-bottom: 22px; letter-spacing: -0.02em; line-height: 1.05; }
-  .sample-left h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; }
-  .sample-left p { color: rgba(255,255,255,0.7); font-size: 15.5px; line-height: 1.65; margin-bottom: 24px; }
-  .sample-disclaimer { background: rgba(255,255,255,0.04); border-left: 3px solid var(--orange); padding: 14px 18px; border-radius: 4px; font-size: 12.5px; color: rgba(255,255,255,0.7); line-height: 1.6; }
-  .sample-panel { background: var(--white); color: var(--ink); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg), 0 0 100px rgba(242,106,33,0.15); }
-  .sample-panel-head { background: var(--stone); padding: 18px 26px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
-  .sample-panel-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
-  .sample-panel-tag { font-size: 10px; background: var(--navy); color: var(--white); padding: 4px 10px; border-radius: 100px; font-weight: 700; letter-spacing: 0.05em; }
-  .sample-stats { display: grid; grid-template-columns: repeat(2, 1fr); padding: 24px; gap: 16px; }
-  .sample-stat { padding: 20px; border-radius: 12px; background: var(--stone-3); border: 1px solid var(--line); }
-  .sample-stat.featured { background: var(--grad-orange); color: var(--white); border: none; }
-  .sample-stat-val { font-family: var(--font-display); font-size: 44px; font-weight: 800; line-height: 1; color: var(--navy); margin-bottom: 8px; letter-spacing: -0.03em; }
-  .sample-stat.featured .sample-stat-val { color: var(--white); }
-  .sample-stat-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 6px; }
-  .sample-stat.featured .sample-stat-label { color: rgba(255,255,255,0.85); }
-  .sample-stat-desc { font-size: 12.5px; color: var(--navy); font-weight: 500; line-height: 1.4; }
-  .sample-stat.featured .sample-stat-desc { color: rgba(255,255,255,0.95); }
-  .sample-bar-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 0 24px 24px; }
-  .sample-bar-block { height: 8px; border-radius: 4px; }
-  .sample-bar-block:nth-child(1) { background: var(--orange); }
-  .sample-bar-block:nth-child(2) { background: var(--sage); }
-  .sample-bar-block:nth-child(3) { background: var(--slate); }
-  .sample-bar-block:nth-child(4) { background: var(--stone-deep); }
+  .research { background:var(--white); }
+  .article-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .article-card { background:var(--grad-card); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow-sm); transition:.2s ease; }
+  .article-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-md); }
+  .article-art { aspect-ratio:16/9; background:linear-gradient(145deg,var(--navy-2),var(--navy)); color:var(--orange); display:grid; place-items:center; }
+  .article-body { padding:20px 22px 24px; }
+  .article-kicker { color:var(--muted); font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:900; margin-bottom:10px; }
+  .article-title { font-family:var(--font-display); color:var(--navy); font-size:21px; line-height:1.22; margin-bottom:16px; }
 
-  .library { background: var(--grad-stone-warm); }
-  .library-head { margin-bottom: 48px; max-width: 720px; }
-  .library-head h2 { font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 16px; }
-  .library-head h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; }
-  .library-head p { color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 560px; }
-  .library-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-  .lib-card { background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; cursor: pointer; position: relative; display: block; }
-  .lib-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--orange); }
-  .lib-card.featured { background: var(--grad-orange); color: var(--white); border: none; box-shadow: var(--shadow-orange); }
-  .lib-card.coming { background: transparent; border: 2px dashed var(--line-strong); display: flex; align-items: center; justify-content: center; text-align: center; }
-  .lib-icon { width: 28px; height: 28px; margin-bottom: 12px; color: var(--sage); }
-  .lib-card.featured .lib-icon { color: var(--white); }
-  .lib-title { font-family: var(--font-body); font-size: 14.5px; font-weight: 700; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.01em; }
-  .lib-card.featured .lib-title { color: var(--white); }
-  .lib-meta { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-  .lib-card.featured .lib-meta { color: rgba(255,255,255,0.85); }
+  .cta { position:relative; background:var(--grad-navy-deep); color:var(--white); overflow:hidden; }
+  .cta::before { content:""; position:absolute; inset:0; background-image:radial-gradient(circle at 70% 20%,rgba(242,106,33,.18),transparent 28%),radial-gradient(circle at 10% 85%,rgba(92,127,90,.16),transparent 30%); pointer-events:none; }
+  .cta-inner { position:relative; padding:78px 0; }
+  .cta h2 { color:var(--white); font-size:clamp(34px,4.8vw,54px); max-width:780px; margin-bottom:18px; }
+  .cta p { color:rgba(255,255,255,.68); max-width:580px; margin-bottom:30px; }
+  .trust-row { display:flex; flex-wrap:wrap; align-items:center; gap:18px 30px; }
+  .trust-point { color:rgba(255,255,255,.82); display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:700; }
+  .trust-point svg { color:var(--orange-2); width:19px; height:19px; }
 
-  .how { background: var(--white); }
-  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .how-step { background: var(--grad-card); border-radius: var(--radius-lg); padding: 32px 28px; border: 1px solid var(--line); transition: transform 0.25s, box-shadow 0.25s; position: relative; }
-  .how-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  .how-num { width: 44px; height: 44px; background: var(--grad-orange); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 18px; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(242,106,33,0.3); }
-  .how-step h3 { font-family: var(--font-body); font-size: 19px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .how-step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  footer { background:var(--navy-4); color:rgba(255,255,255,.66); padding:58px 0 30px; border-top:1px solid var(--line-dark); }
+  .foot-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr; gap:28px; }
+  .foot-brand p { max-width:280px; font-size:13.5px; margin:18px 0 22px; color:rgba(255,255,255,.6); }
+  .socials { display:flex; gap:10px; }
+  .socials a { width:34px; height:34px; display:grid; place-items:center; border:1px solid var(--line-dark); border-radius:8px; color:var(--white); transition:.18s ease; }
+  .socials a:hover { background:var(--orange); border-color:var(--orange); }
+  .fcol h3 { font-family:var(--font-body); color:var(--white); font-size:12px; letter-spacing:.16em; text-transform:uppercase; margin-bottom:15px; }
+  .fcol a { display:block; color:rgba(255,255,255,.64); font-size:13.5px; padding:5px 0; }
+  .fcol a:hover { color:var(--orange-2); }
+  .foot-bottom { border-top:1px solid var(--line-dark); margin-top:42px; padding-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:12.5px; color:rgba(255,255,255,.52); }
+  .mobile-cta { position:fixed; left:0; right:0; bottom:0; z-index:80; display:none; gap:10px; padding:10px 16px calc(10px + env(safe-area-inset-bottom)); background:rgba(255,255,255,.96); border-top:1px solid var(--line); backdrop-filter:saturate(180%) blur(18px); }
+  .mobile-cta .btn { flex:1; }
 
-  .middle { background: var(--grad-stone-warm); }
-  .middle-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: stretch; }
-  .middle-left { background: var(--white); border-radius: var(--radius-xl); padding: 44px 40px; border: 1px solid var(--line); box-shadow: var(--shadow-md); }
-  .middle-left h2 { font-size: clamp(30px, 4vw, 42px); letter-spacing: -0.02em; line-height: 1.02; margin-bottom: 24px; }
-  .middle-left h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; }
-  .middle-list { list-style: none; margin-top: 28px; }
-  .middle-list li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 14.5px; color: var(--navy); font-weight: 500; line-height: 1.5; }
-  .middle-list li:last-child { border-bottom: 1px solid var(--line); }
-  .middle-list .check { width: 22px; height: 22px; background: var(--grad-sage); color: var(--white); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .middle-right { background: radial-gradient(ellipse at top right, rgba(242,106,33,0.15), transparent 60%), var(--grad-navy-deep); color: var(--white); border-radius: var(--radius-xl); padding: 44px 40px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; }
-  .middle-right::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
-  .quote-fox { width: 80px; height: 80px; background: var(--grad-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 12px 32px rgba(242,106,33,0.4); position: relative; z-index: 1; }
-  .quote-fox svg { width: 50px; height: 50px; }
-  .quote-text { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 26px); color: var(--white); line-height: 1.3; margin-bottom: 24px; font-style: italic; position: relative; z-index: 1; letter-spacing: -0.01em; }
-  .quote-attr { font-size: 14px; color: rgba(255,255,255,0.7); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; position: relative; z-index: 1; line-height: 1.5; }
+  .reveal { opacity:0; transform:translateY(22px); transition:opacity .65s ease, transform .65s ease; }
+  .reveal.in { opacity:1; transform:none; }
 
-  .pricing { background: var(--white); }
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 12px; }
-  .price-card { background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 36px 32px; transition: transform 0.25s, box-shadow 0.25s; position: relative; }
-  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  .price-card.featured { background: radial-gradient(ellipse at top right, rgba(242,106,33,0.15), transparent 60%), var(--grad-navy-deep); color: var(--white); border: none; box-shadow: var(--shadow-lg); transform: scale(1.03); }
-  .price-card.featured:hover { transform: scale(1.03) translateY(-4px); }
-  .price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--grad-orange); color: var(--white); padding: 6px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; box-shadow: var(--shadow-orange); }
-  .price-eyebrow { font-size: 11px; letter-spacing: 0.2em; color: var(--orange); text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
-  .price-card.featured .price-eyebrow { color: var(--orange-2); }
-  .price-name { font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
-  .price-card.featured .price-name { color: var(--white); }
-  .price-value { font-family: var(--font-display); font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1; margin: 18px 0 12px; letter-spacing: -0.03em; }
-  .price-card.featured .price-value { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .price-tagline { font-size: 13.5px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
-  .price-card.featured .price-tagline { color: rgba(255,255,255,0.7); }
-  .price-list { list-style: none; margin-bottom: 28px; }
-  .price-list li { padding: 10px 0; font-size: 13.5px; color: var(--ink); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-  .price-card.featured .price-list li { color: rgba(255,255,255,0.9); }
-  .price-list li::before { content: ''; width: 16px; height: 16px; background: var(--grad-sage); border-radius: 50%; flex-shrink: 0; margin-top: 2px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-size: 10px; background-position: center; background-repeat: no-repeat; }
-
-  .method { background: radial-gradient(ellipse 50% 40% at 50% 0%, rgba(92,127,90,0.08), transparent 60%), var(--grad-stone-warm); }
-  .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
-  .method-card { background: var(--grad-card); padding: 28px 24px; border-radius: var(--radius-lg); border: 1px solid var(--line); text-align: center; }
-  .method-icon { width: 56px; height: 56px; background: var(--grad-sage); border-radius: 16px; color: var(--white); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; box-shadow: 0 8px 20px rgba(92,127,90,0.2); }
-  .method-icon.orange { background: var(--grad-orange); box-shadow: 0 8px 20px rgba(242,106,33,0.25); }
-  .method-icon.navy { background: var(--grad-navy); }
-  .method-icon.slate { background: linear-gradient(135deg, #7B92A8, #60788E); }
-  .method-card h4 { font-family: var(--font-body); font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; letter-spacing: -0.01em; }
-  .method-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
-
-  .reviews { background: var(--white); }
-  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .review-card { background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; }
-  .review-rating { color: var(--orange); margin-bottom: 14px; font-size: 14px; letter-spacing: 3px; }
-  .review-card h4 { font-family: var(--font-body); font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 12px; line-height: 1.3; letter-spacing: -0.01em; }
-  .review-card p { font-size: 13.5px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
-  .review-card cite { font-size: 12.5px; color: var(--ink); font-style: normal; font-weight: 600; display: block; padding-top: 14px; border-top: 1px solid var(--line); }
-
-  .faq { background: var(--white); }
-  .faq h2 { font-size: clamp(28px, 3.6vw, 40px); text-align: center; margin-bottom: 16px; letter-spacing: -0.02em; }
-  .faq-sub { text-align: center; color: var(--muted); margin-bottom: 44px; }
-  .faq-list { max-width: 760px; margin: 0 auto; }
-  details { border: 1px solid var(--line); background: var(--grad-card); border-radius: 12px; padding: 20px 24px; margin-bottom: 10px; transition: border-color 0.2s; }
-  details[open] { border-color: var(--orange); }
-  summary { font-size: 15.5px; font-weight: 600; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; list-style: none; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: '+'; color: var(--orange); font-size: 26px; font-weight: 300; transition: transform 0.2s; flex-shrink: 0; line-height: 1; }
-  details[open] summary::after { content: '−'; }
-  details p { margin-top: 14px; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
-
-  .final { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(242,106,33,0.22), transparent 60%), radial-gradient(ellipse 60% 50% at 50% 100%, rgba(92,127,90,0.12), transparent 60%), var(--grad-navy-deep); color: var(--white); text-align: center; overflow: hidden; position: relative; }
-  .final::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-  .final-eyebrow { font-family: var(--font-display); font-style: italic; color: var(--orange-2); font-size: 18px; margin-bottom: 16px; position: relative; }
-  .final h2 { color: var(--white); font-size: clamp(36px, 5vw, 60px); margin-bottom: 32px; max-width: 820px; margin-left: auto; margin-right: auto; line-height: 1.02; letter-spacing: -0.025em; position: relative; }
-  .final h2 em { font-style: italic; font-weight: 500; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .final-cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
-
-  footer { background: var(--navy-4); color: rgba(255,255,255,0.65); padding: 56px 0 32px; border-top: 1px solid rgba(255,255,255,0.05); }
-  .footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 20px; }
-  .footer-top .logo { color: var(--white); }
-  .footer-tag { font-family: var(--font-display); font-style: italic; color: var(--orange-2); font-size: 16px; }
-  .footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; flex-wrap: wrap; gap: 12px; }
-  .footer-bottom a:hover { color: var(--orange-2); }
-
-  @keyframes float { 0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-6px) rotate(var(--rot, 0deg)); } }
-  .floating-card.top { --rot: 2deg; animation: float 4s ease-in-out infinite; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .hero h1, .hero-sub, .hero-cta-row, .hero-pills, .hero-badge { animation: fadeUp 0.6s ease-out backwards; }
-  .hero-sub { animation-delay: 0.1s; }
-  .hero-cta-row { animation-delay: 0.2s; }
-  .hero-pills { animation-delay: 0.3s; }
-  .hero-visual { animation: fadeUp 0.8s ease-out 0.2s backwards; }
-
-  @media (max-width: 960px) {
-    .hero-grid, .sample-grid, .middle-grid { grid-template-columns: 1fr; gap: 40px; }
-    .problem-grid, .modules-grid, .how-grid, .pricing-grid, .reviews-grid { grid-template-columns: 1fr; }
-    .library-grid { grid-template-columns: repeat(3, 1fr); }
-    .method-grid { grid-template-columns: repeat(2, 1fr); }
-    section { padding: 64px 0; }
-    .price-card.featured { transform: none; }
-    .price-card.featured:hover { transform: translateY(-4px); }
-    .middle-left, .middle-right { padding: 32px 28px; }
+  @media (max-width:1040px) {
+    .hero-grid, .smart-grid { grid-template-columns:1fr; }
+    .hero-copy { padding-bottom:36px; }
+    .hero-visual { max-width:720px; margin:0 auto; }
+    .feature-grid, .report-grid { grid-template-columns:repeat(2,1fr); }
+    .feature:not(:first-child) { border-left:0; padding-left:0; }
+    .trusted-note { grid-template-columns:1fr; }
+    .split { grid-template-columns:1fr; }
+    .how-inner, .inside-inner { max-width:none; margin:0; padding:0 22px; }
+    .foot-grid { grid-template-columns:1fr 1fr 1fr; }
+    .foot-brand { grid-column:1/-1; }
   }
-  @media (max-width: 768px) {
-    .container { padding: 0 18px; }
-    section { padding: 56px 0; }
-    .hero { padding: 32px 0 64px; }
-    .hero h1 { font-size: 38px; }
-    .hero-sub { font-size: 16px; }
-    .hero-cta-row .btn { flex: 1; }
-    .hero-pills { grid-template-columns: 1fr; max-width: 100%; gap: 8px; }
-    .hero-pill { padding: 12px 16px; display: flex; align-items: center; gap: 14px; }
-    .hero-pill-num { margin: 0; font-size: 20px; }
-    .fox-stage { max-width: 420px; margin: 0 auto; }
-    .nav-links { display: none; }
-    .nav-right .btn { padding: 10px 16px; font-size: 13px; }
-    .sample-stats { grid-template-columns: 1fr; }
-    .sample-stat-val { font-size: 36px; }
-    .sample-bar-row { grid-template-columns: repeat(2, 1fr); }
-    .library-grid { grid-template-columns: repeat(2, 1fr); }
-    .method-grid { grid-template-columns: 1fr 1fr; }
-    .price-card { padding: 28px 24px; }
-    .price-value { font-size: 44px; }
-    .final h2 { font-size: 32px; }
-    .final-cta-row { flex-direction: column; }
-    .final-cta-row .btn { width: 100%; }
-    summary { font-size: 14.5px; }
-    .footer-top { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+  @media (max-width:780px) {
+    body { padding-bottom:76px; }
+    .nav-links, .nav-right .btn { display:none; }
+    .hamburger { display:block; }
+    .mobile-cta { display:flex; }
+    .section-pad { padding:62px 0; }
+    .section-head, .testimonial-top { flex-direction:column; align-items:flex-start; }
+    .hero { padding-top:42px; }
+    .hero-grid { min-height:0; gap:8px; }
+    .hero h1 { font-size:40px; }
+    .hero-sub { font-size:16px; }
+    .hero-cta .btn { width:100%; }
+    .hero-report-img { width:100%; margin-left:0; }
+    .hero-signal { position:relative; left:auto; bottom:auto; width:100%; margin:-26px 0 26px; }
+    .feature-grid, .report-grid, .stat-grid, .testimonial-grid, .article-grid { grid-template-columns:1fr; }
+    .trusted-note { margin-top:24px; }
+    .smart-grid { gap:28px; }
+    .chip-grid { grid-template-columns:1fr 1fr; }
+    .testimonial-grid { min-height:auto; }
+    .foot-grid { grid-template-columns:1fr 1fr; }
+    .foot-bottom { flex-direction:column; }
   }
-  @media (max-width: 400px) {
-    .hero h1 { font-size: 34px; }
-    .library-grid { grid-template-columns: 1fr; }
-    .method-grid { grid-template-columns: 1fr; }
+
+  @media (max-width:440px) {
+    .container { padding:0 18px; }
+    .logo-stack { font-size:19px; }
+    .logo-mark { width:38px; height:38px; }
+    .chip-grid, .foot-grid { grid-template-columns:1fr; }
+    .report-card { min-height:316px; }
   }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Sherlock Research",
-  "url": "https://sherlockresearch.com",
-  "logo": "https://sherlockresearch.com/assets/sherlock-colorful.png",
-  "description": "Industry-specific market intelligence for owner-led service businesses under $10M. Demand, competition, pricing, and buyer behavior — built for operators.",
-  "sameAs": []
+<link rel="stylesheet" href="shared/styles.css" />
+<style id="hero-dash">
+/* === Homepage hero: minimal dashboard (right column) === */
+.hero .hero-visual{align-self:center;min-width:0}
+.hero-ipad{width:100%;min-width:0}
+
+.hero-ipad{
+  --navy:#021828;--orange:#ea6310;--olive:#5c6746;--steel:#546d7c;
+  --line:rgba(255,255,255,.08);
+  --orange-2:#f37422;--olive-bright:#7d8d65;--steel-bright:#7891a0;
+  --text:#e7edf3;
+  --serif:'Lora',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;
 }
-</script>
+.hero-ipad .ipad{
+  position:relative;width:100%;max-width:620px;margin:0 auto;
+  background:linear-gradient(160deg,#2a2d33 0%,#1a1c20 50%,#222428 100%);
+  border-radius:34px;padding:16px 18px;
+  box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 -1px 0 rgba(0,0,0,.4) inset,0 0 0 1px #34373d,0 30px 60px -20px rgba(2,24,40,.5),0 56px 100px -30px rgba(2,24,40,.32);
+}
+.hero-ipad .ipad::before{content:"";position:absolute;inset:11px 14px;border-radius:26px;background:#0b0d11;z-index:0}
+.hero-ipad .ipad-cam{position:absolute;left:7px;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#4a4e56,#1f2226 70%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 0 0 1.5px #1a1c20;z-index:5}
+.hero-ipad .ipad::after{content:"";position:absolute;inset:0;border-radius:34px;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,transparent 8%,transparent 92%,rgba(0,0,0,.18) 100%)}
+.hero-ipad .screen{position:relative;z-index:1;background:var(--navy);border-radius:18px;overflow:hidden;color:var(--text);display:flex;flex-direction:column;box-shadow:0 0 0 2px #000}
+.hero-ipad .chrome{flex:none;height:34px;background:linear-gradient(180deg,#0a2236,#06192a);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 13px}
+.hero-ipad .dots{display:flex;gap:7px}
+.hero-ipad .dots span{width:11px;height:11px;border-radius:50%}
+.hero-ipad .d-r{background:#ff5f57}
+.hero-ipad .d-y{background:#febc2e}
+.hero-ipad .d-g{background:#28c840}
+.hero-ipad .main{padding:18px 18px 20px;display:flex;flex-direction:column;gap:13px}
+.hero-ipad .dash-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.hero-ipad .dash-title{font-family:var(--serif);font-weight:700;color:#fff;font-size:16px;line-height:1.1}
+.hero-ipad .dash-ed{color:var(--orange);font-weight:700;font-size:9.5px;letter-spacing:1.6px;font-family:var(--sans);white-space:nowrap}
+.hero-ipad .ov{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hero-ipad .card{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:9px;padding:12px 13px}
+.hero-ipad .lbl{color:#b6c4d2;font-size:8.5px;font-weight:600;letter-spacing:.7px;margin-bottom:7px;font-family:var(--sans)}
+.hero-ipad .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hero-ipad .big{font-family:var(--serif);font-weight:700;color:#fff;font-size:24px;line-height:1}
+.hero-ipad .big sup{font-size:11px;font-weight:500;color:#b6c4d2;margin-left:2px;font-family:var(--sans)}
+.hero-ipad .big .pct{font-size:14px;color:#fff;font-weight:600;font-family:var(--sans)}
+.hero-ipad .sub{font-size:9.5px;margin-top:5px;font-weight:500;font-family:var(--sans)}
+.hero-ipad .sub.green{color:var(--olive-bright)}
+.hero-ipad .sub.muted{color:#9fb0c3}
+.hero-ipad .chart{flex:none}
+.hero-ipad .trend{background:rgba(255,255,255,.018);border:1px solid var(--line);border-radius:10px;padding:13px 15px 9px}
+.hero-ipad .trend-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.hero-ipad .trend-head b{font-size:11px;color:#fff;font-weight:600;font-family:var(--sans)}
+.hero-ipad .trend-head .up{color:var(--olive-bright);font-size:10.5px;font-weight:600;font-family:var(--sans)}
+.hero-ipad .trend svg{display:block;width:100%;height:62px}
+@media (max-width:560px){.hero-ipad .ov{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-
-<!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="index.html" class="logo">
-      <div class="logo-mark">
-        <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/>
-        </svg>
-      </div>
-      <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
+    <a href="/" class="logo" aria-label="Sherlock Research home">
+      <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true" />
+      <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
     </a>
-    <div class="nav-links">
+
+    <div class="nav-links" aria-label="Primary navigation">
+      <div class="nav-item">
+        <button type="button">Industries <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dropdown">
+          <a href="/landscaping-report">Landscaping</a>
+          <a href="/roofing-report">Roofing</a>
+          <a href="/hvac-report">HVAC</a>
+          <a href="/pest-control-report">Pest Control</a>
+        </div>
+      </div>
       <a href="#reports">Reports</a>
-      <a href="#how">How It Works</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="#methodology">Methodology</a>
-      <a href="about.html">About</a>
+      <div class="nav-item">
+        <button type="button">Resources <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dropdown">
+          <a href="/sample">Sample Report</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/faq">FAQ</a>
+          <a href="/blog-article">Research Note</a>
+        </div>
+      </div>
+      <a href="/about">About</a>
     </div>
+
     <div class="nav-right">
-      <a href="pricing.html" class="btn btn-primary">See Sample Insights</a>
+      <a href="/pricing" class="btn btn-primary">Get Your Edge</a>
+      <button class="hamburger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#reports">Reports</a>
+    <a href="/landscaping-report">Landscaping</a>
+    <a href="/roofing-report">Roofing</a>
+    <a href="/hvac-report">HVAC</a>
+    <a href="/pest-control-report">Pest Control</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/sample">Sample</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/pricing" class="btn btn-primary">Get Your Edge</a>
   </div>
 </nav>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-badge">
-          <span class="stars-mini">★ 4.9 / 5</span>
-          <span>Trusted by 240+ service-business operators</span>
-        </div>
-        <h1>Know your market before your <em>next move</em>.</h1>
-        <p class="hero-sub">Sherlock turns customer demand, local competition, pricing pressure, and buyer behavior into clear decisions for owner-led service businesses.</p>
-        <div class="hero-cta-row">
-          <a href="pricing.html" class="btn btn-primary btn-lg">Explore Reports →</a>
-          <a href="#sample" class="btn btn-outline btn-lg">View Sample Insight</a>
-        </div>
-        <div class="hero-pills">
-          <div class="hero-pill">
-            <span class="hero-pill-num">300+</span>
-            <span class="hero-pill-label">Person consumer panel per report</span>
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <div class="section-eyebrow">Interview-backed local market research</div>
+          <h1>See the Market,<br />Stay <span class="grad-text">Ahead.</span></h1>
+          <p class="hero-sub">IBISWorld and Statista are useful for macro context. Sherlock goes closer to the ground: operator interviews, city-level demand signals, local competition, pricing pressure, and clear next moves for specific industries.</p>
+          <div class="hero-cta">
+            <a href="#reports" class="btn btn-primary btn-lg">Explore Reports
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#how" class="btn btn-outline btn-lg">How It Works
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
           </div>
-          <div class="hero-pill">
-            <span class="hero-pill-num">10+</span>
-            <span class="hero-pill-label">Service industries covered</span>
+        </div>
+        <div class="hero-visual reveal">
+<div class="hero-ipad">
+<div class="ipad" role="img" aria-label="Sherlock Research Landscaping Industry Report market dashboard">
+  <div class="ipad-cam"></div>
+  <div class="screen">
+    <div class="chrome"><div class="dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div></div>
+    <div class="main">
+      <div class="dash-head">
+        <div class="dash-title">Landscaping Industry Report</div>
+        <div class="dash-ed">2026 EDITION</div>
+      </div>
+      <div class="ov">
+        <div class="card">
+          <div class="lbl">MARKET OPPORTUNITY</div>
+          <div class="row">
+            <div><div class="big">86<sup>/100</sup></div><div class="sub green">High Opportunity</div></div>
+            <svg class="chart" width="48" height="48" viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="22" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="7"/>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="#7d8d65" stroke-width="7" stroke-dasharray="118.9 138.2" stroke-dashoffset="34.55" stroke-linecap="round" transform="rotate(-90 30 30)"/>
+            </svg>
           </div>
-          <div class="hero-pill">
-            <span class="hero-pill-num">Action</span>
-            <span class="hero-pill-label">First, not data dumps</span>
+        </div>
+        <div class="card">
+          <div class="lbl">REVENUE GROWTH · 5YR</div>
+          <div class="row">
+            <div><div class="big">24.6<span class="pct">%</span></div><div class="sub green">Strong Growth</div></div>
+            <svg class="chart" width="78" height="44" viewBox="0 0 100 50">
+              <polyline points="3,42 18,36 30,38 44,24 58,28 72,12 88,16 96,4" fill="none" stroke="#7d8d65" stroke-width="2"/>
+              <g fill="#a8b48a"><circle cx="3" cy="42" r="2"/><circle cx="18" cy="36" r="2"/><circle cx="30" cy="38" r="2"/><circle cx="44" cy="24" r="2"/><circle cx="58" cy="28" r="2"/><circle cx="72" cy="12" r="2"/><circle cx="88" cy="16" r="2"/><circle cx="96" cy="4" r="2.5"/></g>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <div class="lbl">CAGR · 2026&ndash;2031</div>
+          <div class="row">
+            <div><div class="big">5.7<span class="pct">%</span></div><div class="sub muted">Annual Growth</div></div>
+            <svg class="chart" width="70" height="44" viewBox="0 0 90 50">
+              <g fill="#546d7c"><rect x="6" y="34" width="9" height="13" rx="1.5"/><rect x="22" y="28" width="9" height="19" rx="1.5"/><rect x="38" y="22" width="9" height="25" rx="1.5"/><rect x="54" y="14" width="9" height="33" rx="1.5"/><rect x="70" y="6" width="9" height="41" rx="1.5"/></g>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <div class="lbl">MARKET SIZE · 2026</div>
+          <div class="row">
+            <div><div class="big">$129.6<span class="pct">B</span></div><div class="sub muted">Total Market</div></div>
+            <svg class="chart" width="48" height="48" viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="22" fill="#3d5360"/>
+              <path d="M30 30 L30 8 A22 22 0 0 1 49.05 41 Z" fill="#546d7c"/>
+              <path d="M30 30 L49.05 41 A22 22 0 0 1 30 52 Z" fill="#7891a0" opacity=".95"/>
+            </svg>
           </div>
         </div>
       </div>
-
-      <div class="hero-visual">
-        <div class="fox-stage">
-          <img class="fox-illustration" src="assets/sherlock-colorful.svg" alt="Sherlock the fox detective" />
-
-          <div class="floating-card top">
-            <span class="pill">UPDATED</span>
-            <span>Q4 2026 panel data</span>
-          </div>
-
-          <div class="dashboard-card">
-            <div class="dash-header">
-              <div class="dash-header-dots"><span></span><span></span><span></span></div>
-              <span>sherlockresearch.com</span>
-            </div>
-            <div class="dash-title">Landscaping Consumer Panel</div>
-            <div class="dash-sub">Q4 2026 · 312 active service-buying households</div>
-            <div class="dash-stats">
-              <div><div class="dash-stat-val">57%</div><div class="dash-stat-label">Switch Risk</div></div>
-              <div><div class="dash-stat-val">52%</div><div class="dash-stat-label">Quality Driven</div></div>
-              <div><div class="dash-stat-val orange">38%</div><div class="dash-stat-label">Price Sensitive</div></div>
-              <div><div class="dash-stat-val">$4K</div><div class="dash-stat-label">Avg Annual</div></div>
-            </div>
-            <div class="dash-chart">
-              <div class="dash-bar"></div><div class="dash-bar"></div><div class="dash-bar"></div><div class="dash-bar"></div><div class="dash-bar"></div>
-            </div>
-          </div>
-        </div>
+      <div class="trend">
+        <div class="trend-head"><b>Revenue Forecast &middot; 2026&ndash;2031</b><span class="up">&#9650; 24.6% / 5yr</span></div>
+        <svg viewBox="0 0 600 62" preserveAspectRatio="none">
+          <defs><linearGradient id="heroTrendFill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#7d8d65" stop-opacity=".40"/>
+            <stop offset="1" stop-color="#7d8d65" stop-opacity="0"/>
+          </linearGradient></defs>
+          <path d="M0 52 L75 47 L150 49 L225 35 L300 39 L375 24 L450 27 L525 13 L600 6 L600 62 L0 62 Z" fill="url(#heroTrendFill)"/>
+          <polyline points="0,52 75,47 150,49 225,35 300,39 375,24 450,27 525,13 600,6" fill="none" stroke="#a8b48a" stroke-width="2" vector-effect="non-scaling-stroke"/>
+        </svg>
       </div>
     </div>
   </div>
-</section>
-
-<!-- ============ PROBLEM SECTION ============ -->
-<section class="problem">
-  <div class="container">
-    <div class="problem-head">
-      <div class="section-eyebrow section-eyebrow-center">THE SHERLOCK ANGLE</div>
-      <h2>Enterprise research is too expensive. Anecdotes cost <em>even more</em>.</h2>
-    </div>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-num">01</div>
-        <h3>$3K reports built for boardrooms, not owners</h3>
-        <p>Most enterprise market research is written for analysts and investors. Operators get 80-page PDFs full of charts and zero recommended action.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-num">02</div>
-        <h3>National data misses the local picture</h3>
-        <p>Industry benchmarks at the country level don't tell you what's happening in your zip code. Local operators need local signals to compete.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-num">03</div>
-        <h3>Anecdotes are the most expensive data</h3>
-        <p>Owners often rely on ad reps, peer chatter, and one-off competitor calls to make pricing and growth decisions. That hidden cost shows up in churn and lost share.</p>
-      </div>
-      <div class="problem-card highlight">
-        <div class="problem-num">04</div>
-        <h3>Reports should answer "what do I do Monday?"</h3>
-        <p>Every Sherlock module ends with a specific recommended move — pricing, channel, positioning — not just a chart. Insights you act on, not just read.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MODULES SECTION ============ -->
-<section class="modules">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">WHAT'S IN EACH REPORT</div>
-    <h2 class="section-title">A report that feels like a <em>strategy sprint</em>.</h2>
-    <p class="section-sub">Each module is designed to answer one commercial question quickly, then point the owner toward a concrete decision.</p>
-    <div class="modules-grid">
-      <div class="module">
-        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div>
-        <h3>Demand &amp; market size</h3>
-        <p>Size the opportunity by category, market, customer segment, and service line.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon orange"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
-        <h3>Buyer behavior</h3>
-        <p>Understand satisfaction, switching intent, trust channels, unmet needs, and willingness to pay.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-        <h3>Competitive landscape</h3>
-        <p>Benchmark local providers, offers, ratings, positioning, and service bundles.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon orange"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <h3>Pricing pressure</h3>
-        <p>Spot where customers tolerate premium pricing — and where churn-risk lives.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3>Channel strategy</h3>
-        <p>Prioritize Google, referrals, local groups, review capture, and neighborhood visibility.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <h3>Executive playbook</h3>
-        <p>Turn the data into specific launch plans, messaging, pricing tiers, and next-best moves.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SAMPLE INSIGHT ============ -->
-<section class="sample" id="sample">
-  <div class="container">
-    <div class="sample-grid">
-      <div class="sample-left">
-        <div class="section-eyebrow">SAMPLE INSIGHT MODULE</div>
-        <h2>What a landscaping operator learns in <em>minutes</em>.</h2>
-        <p>This module uses a 312-person consumer panel concept: homeowners who paid for landscaping or lawn care in the last 12 months and were primary or shared decision-makers in their household.</p>
-        <div class="sample-disclaimer">Sample panel illustrated below. Live reports include the full module with field methodology, segment cuts, and recommended Monday-morning actions.</div>
-      </div>
-      <div class="sample-panel">
-        <div class="sample-panel-head">
-          <div class="sample-panel-title">Switching &amp; willingness-to-pay signals</div>
-          <div class="sample-panel-tag">312 SAMPLE</div>
-        </div>
-        <div class="sample-stats">
-          <div class="sample-stat featured">
-            <div class="sample-stat-val">31%</div>
-            <div class="sample-stat-label">Considering Switching</div>
-            <div class="sample-stat-desc">Active or soft-switch candidates</div>
-          </div>
-          <div class="sample-stat">
-            <div class="sample-stat-val">52%</div>
-            <div class="sample-stat-label">Top Choice Driver</div>
-            <div class="sample-stat-desc">Quality + reliability beats price</div>
-          </div>
-          <div class="sample-stat">
-            <div class="sample-stat-val">57%</div>
-            <div class="sample-stat-label">20%+ Price Risk</div>
-            <div class="sample-stat-desc">Would shop, switch, or stop</div>
-          </div>
-          <div class="sample-stat">
-            <div class="sample-stat-val">6%</div>
-            <div class="sample-stat-label">True Price Buyers</div>
-            <div class="sample-stat-desc">Pure cheapest-wins decision makers</div>
-          </div>
-        </div>
-        <div class="sample-bar-row">
-          <div class="sample-bar-block"></div><div class="sample-bar-block"></div><div class="sample-bar-block"></div><div class="sample-bar-block"></div>
+</div>
+</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ INDUSTRIES LIBRARY ============ -->
-<section class="library" id="reports">
-  <div class="container">
-    <div class="library-head">
-      <div class="section-eyebrow">REPORT LIBRARY</div>
-      <h2>Start with home services. <em>Expand</em> by industry, city, and decision.</h2>
-      <p>Each industry becomes a scalable template: market size, buyer behavior, competition, pricing, and growth opportunities.</p>
+  <section class="features" aria-label="Sherlock Research advantages">
+    <div class="container feature-grid">
+      <div class="feature reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div><h3>Local Focus</h3><p>City and metro cuts built for specific market decisions.</p></div>
+      </div>
+      <div class="feature reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M19 8l-3 2"/></svg>
+        <div><h3>Field Interviews</h3><p>Operator and buyer conversations that explain the why.</p></div>
+      </div>
+      <div class="feature reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+        <div><h3>Industry Specific</h3><p>Vertical reports with benchmarks, channels, and pricing pressure.</p></div>
+      </div>
+      <div class="feature reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><h3>Decision Ready</h3><p>Each section ends with actions, not a data dump.</p></div>
+      </div>
     </div>
-    <div class="library-grid">
-      <a class="lib-card featured" href="landscaping-report.html">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 5.16-1 9-5.45 9-11V7l-10-5z"/></svg>
-        <div class="lib-title">Landscaping</div>
-        <div class="lib-meta">Sample available</div>
-      </a>
-      <a class="lib-card" href="roofing-report.html">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-13l9-5 9 5v13"/><path d="M9 21V12h6v9"/></svg>
-        <div class="lib-title">Roofing</div>
-        <div class="lib-meta">Market report</div>
-      </a>
-      <a class="lib-card" href="pest-control-report.html">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6m-10 0H1"/></svg>
-        <div class="lib-title">Pest Control</div>
-        <div class="lib-meta">Market report</div>
-      </a>
-      <a class="lib-card" href="hvac-report.html">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 11-4.96.44 2.5 2.5 0 01-2.96-3.08 3 3 0 01-.34-5.58 2.5 2.5 0 011.32-4.24 2.5 2.5 0 011.98-3A2.5 2.5 0 019.5 2z"/></svg>
-        <div class="lib-title">HVAC</div>
-        <div class="lib-meta">Market report</div>
-      </a>
-      <a class="lib-card" href="#reports">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
-        <div class="lib-title">Cleaning</div>
-        <div class="lib-meta">Coming soon</div>
-      </a>
-      <a class="lib-card" href="#reports">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M8 6h8M8 10h8M8 14h8M8 18h8"/></svg>
-        <div class="lib-title">Dentistry</div>
-        <div class="lib-meta">Coming soon</div>
-      </a>
-      <a class="lib-card" href="#reports">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16M18 4v16M3 8h6M15 8h6M3 16h6M15 16h6"/></svg>
-        <div class="lib-title">Fitness</div>
-        <div class="lib-meta">Coming soon</div>
-      </a>
-      <a class="lib-card" href="#reports">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-4l2-6h12l3 6v4h-2"/></svg>
-        <div class="lib-title">Automotive</div>
-        <div class="lib-meta">Coming soon</div>
-      </a>
-      <a class="lib-card" href="#reports">
-        <svg class="lib-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-        <div class="lib-title">Accounting</div>
-        <div class="lib-meta">Coming soon</div>
-      </a>
-      <a class="lib-card coming" href="mailto:hello@sherlockresearch.com?subject=Industry%20request">
+  </section>
+
+  <section class="reports-section section-pad" id="reports">
+    <div class="container">
+      <div class="section-head reveal">
         <div>
-          <div class="lib-title" style="margin-bottom: 4px;">And more</div>
-          <div class="lib-meta">Request industry</div>
+          <div class="section-eyebrow">Featured reports</div>
+          <h2>Industry reports built for local strategy.</h2>
         </div>
-      </a>
-    </div>
-  </div>
-</section>
+        <a href="/pricing" class="arrow-link">View Pricing
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section class="how" id="how">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">HOW IT WORKS</div>
-    <h2 class="section-title">From question to decision in one <em>self-serve flow</em>.</h2>
-    <p class="section-sub">No enterprise subscription. No 12-week research project. Choose the market question, get the report, act.</p>
-    <div class="how-grid">
-      <div class="how-step">
-        <div class="how-num">1</div>
-        <h3>Pick your industry and market</h3>
-        <p>Start broad with an industry report or go local with city, region, and service-line modules.</p>
+      <div class="report-grid">
+        <a class="report-card landscaping reveal" href="/landscaping-report">
+          <div>
+            <div class="report-edition">2026 edition</div>
+            <h3 class="report-title">Landscaping<br />Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c3 4 5 7 5 11a5 5 0 0 1-10 0c0-4 2-7 5-11z"/><path d="M12 14v7M8 17h8"/></svg></div>
+          </div>
+          <div class="report-meta"><span>Demand, pricing, labor, channels.</span><span class="report-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card roofing reveal" href="/roofing-report">
+          <div>
+            <div class="report-edition">2026 edition</div>
+            <h3 class="report-title">Roofing<br />Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11l8-6 8 6v8H4z"/><path d="M9 19v-6h6v6"/></svg></div>
+          </div>
+          <div class="report-meta"><span>Storm demand, leads, margins.</span><span class="report-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card hvac reveal" href="/hvac-report">
+          <div>
+            <div class="report-edition">2026 edition</div>
+            <h3 class="report-title">HVAC<br />Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3M7 7l2 2M15 15l2 2M7 17l2-2M15 9l2-2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>Seasonality, replacement, service mix.</span><span class="report-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card pest reveal" href="/pest-control-report">
+          <div>
+            <div class="report-edition">2026 edition</div>
+            <h3 class="report-title">Pest Control<br />Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>Recurring revenue, churn, local search.</span><span class="report-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
       </div>
-      <div class="how-step">
-        <div class="how-num">2</div>
-        <h3>Review the signals</h3>
-        <p>See consumer demand, switching triggers, channel trust, price sensitivity, and competitive positioning.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-num">3</div>
-        <h3>Use the growth playbook</h3>
-        <p>Leave with specific recommendations for messaging, pricing, services, hiring, and expansion.</p>
+
+      <div class="trusted-note reveal">
+        <div class="trust-card"><b>Not just macro</b><span>Macro datasets are useful context. Sherlock adds field research and local buying behavior.</span></div>
+        <div class="trust-card"><b>Built to update</b><span>Reports are structured by industry, quarter and year, access level, and city inclusion.</span></div>
+        <div class="trust-card"><b>Checkout ready</b><span>Use Stripe links now, then swap in Payhip or SendOwl product URLs when the catalog scales.</span></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ MIDDLE-TICKET ============ -->
-<section class="middle">
-  <div class="container">
-    <div class="middle-grid">
-      <div class="middle-left">
-        <div class="section-eyebrow">BUILT FOR THE MIDDLE-TICKET MARKET</div>
-        <h2>Big enough to matter. Small enough to <em>buy today</em>.</h2>
-        <p style="color: var(--muted); font-size: 15px; line-height: 1.65;">The fastest path is not selling giant enterprise research contracts. It is creating clean, affordable, high-trust reports that owner-operators, agencies, and franchise teams can buy without a committee.</p>
-        <ul class="middle-list">
-          <li><span class="check">✓</span>Self-serve purchase journey, no procurement call required</li>
-          <li><span class="check">✓</span>Category pages built for search-driven demand</li>
-          <li><span class="check">✓</span>Sample insights before checkout — see the value first</li>
-          <li><span class="check">✓</span>Clear distinction between simulated, benchmarked, and fielded data</li>
+  <section class="smart section-pad">
+    <div class="container smart-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Insights that drive growth</div>
+        <h2>Smarter decisions start with better local evidence.</h2>
+        <p>Use Sherlock when a generic industry report is too broad and a consultant is too slow. The goal is clear market judgment: where to compete, what to price, who to target, and which signals matter.</p>
+        <ul class="checklist">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Market sizing and growth context</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Local competition and search demand</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Pricing and margin benchmarks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Operator and buyer interview takeaways</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Actionable recommendations by market</li>
         </ul>
       </div>
-      <div class="middle-right">
-        <div class="quote-fox">
-          <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg>
+      <div class="stat-grid reveal">
+        <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V12M10 20V6M16 20v-9M20 20H3"/></svg><strong>Industry</strong><span>Vertical-specific report structure, benchmarks, and playbooks.</span></div>
+        <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg><strong>City</strong><span>Optional metro cuts for local demand and competition.</span></div>
+        <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 18h8M12 3v15M7 8l5-5 5 5"/></svg><strong>Quarter</strong><span>Reports designed to be swapped in as new PDFs are released.</span></div>
+        <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5M15 19c0-2 1-3.5 3-3.5s3 1.5 3 3.5"/></svg><strong>Field</strong><span>Interview-backed findings instead of static data dumps.</span></div>
+      </div>
+      <div class="map-panel reveal">
+        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" aria-label="United States market coverage map">
+          <path d="M40 70 L120 55 L210 50 L300 55 L380 70 L385 120 L360 175 L300 200 L250 215 L210 235 L180 215 L150 205 L120 200 L80 180 L50 150 L38 110 Z" fill="#dcd9d0" stroke="#cbc7bc" stroke-width="1"/>
+          <path d="M20 195 L55 185 L70 215 L45 235 L18 220 Z" fill="#dcd9d0" stroke="#cbc7bc"/>
+          <g fill="#1f4068">
+            <circle cx="90" cy="120" r="2.8"/><circle cx="110" cy="100" r="2.8"/><circle cx="130" cy="140" r="2.8"/><circle cx="150" cy="90" r="2.8"/>
+            <circle cx="170" cy="150" r="2.8"/><circle cx="190" cy="110" r="2.8"/><circle cx="210" cy="160" r="2.8"/><circle cx="230" cy="95" r="2.8"/>
+            <circle cx="250" cy="130" r="2.8"/><circle cx="270" cy="105" r="2.8"/><circle cx="290" cy="150" r="2.8"/><circle cx="310" cy="115" r="2.8"/>
+            <circle cx="330" cy="160" r="2.8"/><circle cx="350" cy="100" r="2.8"/><circle cx="300" cy="185" r="2.8"/><circle cx="260" cy="190" r="2.8"/>
+            <circle cx="200" cy="200" r="2.8"/><circle cx="160" cy="185" r="2.8"/><circle cx="120" cy="170" r="2.8"/><circle cx="340" cy="140" r="2.8"/>
+          </g>
+          <g fill="#F26A21">
+            <circle cx="110" cy="150" r="5"/><circle cx="220" cy="125" r="5"/><circle cx="300" cy="185" r="5"/><circle cx="330" cy="160" r="5"/>
+          </g>
+        </svg>
+        <div class="map-caption">City-level cuts are added where the buying behavior, competition, and operator interviews justify a local view.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="split" id="how">
+    <div class="how">
+      <div class="how-inner reveal">
+        <h2 class="mini-head">How It Works</h2>
+        <p class="mini-sub">A simple workflow for a report library that can keep growing.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-card"><h3>Choose the report</h3><p>Select an industry, quarter, access level, and whether you need a national or city-specific cut.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-card"><h3>Checkout and download</h3><p>Use Stripe links first. As the library grows, product URLs can be swapped to Payhip or SendOwl without rebuilding the site.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-card"><h3>Act on the playbook</h3><p>Use the findings to choose markets, pricing, positioning, channels, and next interviews.</p></div>
+          </div>
         </div>
-        <div class="quote-text">"Show me where demand is moving, what customers are unhappy about, and which growth move has the highest odds."</div>
-        <div class="quote-attr"><strong style="color: var(--white);">That is the buyer.</strong><br>Sherlock should answer them before they book a call.</div>
+        <div class="popular">
+          <h3>Popular industries</h3>
+          <div class="chip-grid">
+            <a class="chip" href="/landscaping-report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 4c3 4 5 7 5 11a5 5 0 0 1-10 0c0-4 2-7 5-11z"/></svg>Landscaping</a>
+            <a class="chip" href="/roofing-report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11l8-6 8 6v8H4z"/></svg>Roofing</a>
+            <a class="chip" href="/hvac-report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg>HVAC</a>
+            <a class="chip" href="/pest-control-report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg>Pest Control</a>
+            <a class="chip" href="/contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11l8-6 8 6v8H4z"/></svg>Real Estate</a>
+            <a class="chip" href="/contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 4c-4 0-6 2-6 6 0 5 2 10 4 10 1 0 1.3-2 2-2s1 2 2 2c2 0 4-5 4-10 0-4-2-6-6-6z"/></svg>Dental</a>
+          </div>
+          <a href="/contact" class="arrow-link">Request another industry
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============ PRICING ============ -->
-<section class="pricing" id="pricing">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">SIMPLE COMMERCIAL MODEL</div>
-    <h2 class="section-title">Research priced for operators, <em>not procurement</em>.</h2>
-    <p class="section-sub">Reports are priced to be an obvious upgrade from guessing — and an obvious bargain compared to a $25K consulting engagement.</p>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-eyebrow">ENTRY</div>
-        <div class="price-name">Standard Report</div>
-        <div class="price-value">$497</div>
-        <div class="price-tagline">Best for owners validating an industry trend, customer pain point, or service expansion idea.</div>
-        <ul class="price-list">
-          <li>Demand &amp; market sizing</li>
-          <li>Buyer behavior modules</li>
-          <li>Competitive landscape</li>
-          <li>Pricing &amp; channel signals</li>
-          <li>Growth recommendations</li>
+    <div class="inside">
+      <div class="inside-inner reveal">
+        <h2 class="mini-head">What's Inside Every Report</h2>
+        <p class="mini-sub">Clear market context, local signals, and operator-ready recommendations.</p>
+        <ul class="inside-list">
+          <li><span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg></span> Market overview and key trends</li>
+          <li><span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg></span> Industry size and growth context</li>
+          <li><span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg></span> Local demand and competition signals</li>
+          <li><span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg></span> Pricing and profitability benchmarks</li>
+          <li><span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg></span> Interview-backed customer and operator notes</li>
+          <li><span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg></span> Recommended actions by market</li>
         </ul>
-        <a href="landscaping-report.html" class="btn btn-outline-dark btn-lg" style="width: 100%;">View Sample</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-badge">BEST FIT</div>
-        <div class="price-eyebrow">MOST POPULAR</div>
-        <div class="price-name">City-Specific Report</div>
-        <div class="price-value">$597</div>
-        <div class="price-tagline">Best for market entry, service launches, local positioning, and competitive moves in a specific MSA.</div>
-        <ul class="price-list">
-          <li>Everything in Standard Report</li>
-          <li>Local competitor scan</li>
-          <li>Market-specific demand signals</li>
-          <li>MSA-level pricing data</li>
-          <li>Decision-ready playbook</li>
-        </ul>
-        <a href="pricing.html" class="btn btn-primary btn-lg" style="width: 100%;">Start with Sherlock →</a>
-      </div>
-      <div class="price-card">
-        <div class="price-eyebrow">ONGOING</div>
-        <div class="price-name">Quarterly Intelligence</div>
-        <div class="price-value">$2,000<span style="font-size: 18px; color: var(--muted); font-weight: 500;">/yr</span></div>
-        <div class="price-tagline">Best for teams treating market intelligence as a continuous capability, not a one-time purchase.</div>
-        <ul class="price-list">
-          <li>4 quarterly report refreshes</li>
-          <li>4 strategy meetings with our team</li>
-          <li>Continuous trend monitoring</li>
-          <li>Priority access to new modules</li>
-        </ul>
-        <a href="pricing.html" class="btn btn-outline-dark btn-lg" style="width: 100%;">Reserve Your Quarter</a>
+        <div class="report-spread" aria-label="Report preview illustration">
+          <svg viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="210,30 30,60 30,200 210,180" fill="#f6f4ef"/>
+            <polygon points="210,30 390,60 390,200 210,180" fill="#fbfaf7"/>
+            <polygon points="210,30 210,180 30,200 30,60" fill="#eceae3" opacity=".55"/>
+            <g fill="#1f4068"><rect x="48" y="78" width="80" height="6" rx="2"/><rect x="48" y="92" width="60" height="4"/><rect x="48" y="125" width="22" height="40"/><rect x="76" y="115" width="22" height="50"/><rect x="104" y="100" width="22" height="65"/></g>
+            <g fill="#F26A21"><rect x="250" y="78" width="70" height="6" rx="2"/></g>
+            <g fill="#9fb6cc"><rect x="250" y="92" width="120" height="4"/><rect x="250" y="102" width="100" height="4"/></g>
+            <g fill="#1f4068"><rect x="252" y="135" width="18" height="30"/><rect x="276" y="125" width="18" height="40"/><rect x="300" y="115" width="18" height="50"/><rect x="324" y="105" width="18" height="60"/></g>
+            <line x1="210" y1="30" x2="210" y2="180" stroke="#cfccc3" stroke-width="2"/>
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ METHODOLOGY ============ -->
-<section class="method" id="methodology">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">HOW WE KNOW WHAT WE KNOW</div>
-    <h2 class="section-title">Built on four data layers — <em>verified, not vibes</em>.</h2>
-    <p class="section-sub">Every Sherlock report combines four independent data sources, with every number tagged as simulated, benchmarked, or fielded.</p>
-    <div class="method-grid">
-      <div class="method-card">
-        <div class="method-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <h4>Consumer panels</h4>
-        <p>300+ verified service-buying households per market, fielded in the last 12 months.</p>
+  <section class="testimonials section-pad" id="testimonials">
+    <div class="container">
+      <div class="testimonial-top reveal">
+        <div>
+          <div class="section-eyebrow">Testimonials</div>
+          <h2>Ten editable testimonial slots, three visible at a time.</h2>
+        </div>
+        <div class="testimonial-controls">
+          <button class="testimonial-btn" type="button" id="testimonialPrev" aria-label="Previous testimonials">&lsaquo;</button>
+          <button class="testimonial-btn" type="button" id="testimonialNext" aria-label="Next testimonials">&rsaquo;</button>
+        </div>
       </div>
-      <div class="method-card">
-        <div class="method-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <h4>Operator interviews</h4>
-        <p>Primary conversations with active service-business owners across each industry covered.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-icon slate"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>
-        <h4>Public data anchors</h4>
-        <p>Census, BLS, permit data, and association reports cross-referenced for every market sizing claim.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-icon navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <h4>Demand signals</h4>
-        <p>Search trends, review velocity, ad-spend indicators, and channel data triangulated each quarter.</p>
+      <div class="testimonial-grid" id="testimonialGrid" aria-live="polite"></div>
+      <div class="testimonial-footer">
+        <span id="testimonialCounter">Showing 1-3 of 10</span>
+        <div class="testimonial-dots" id="testimonialDots" aria-label="Testimonial pages"></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ REVIEWS ============ -->
-<section class="reviews">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">WHAT OPERATORS ARE SAYING</div>
-    <h2 class="section-title">Trusted by service businesses making <em>real moves</em>.</h2>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-rating">★★★★★</div>
-        <h4>Saved me $12K I was about to waste</h4>
-        <p>I was about to drop $12K on a marketing agency to push residential pressure washing. The city-specific report showed me which zip codes actually pay for premium service and which were a dead end. Cancelled the agency, rerouted my crew, and our close rate doubled in 60 days.</p>
-        <cite>— Caleb T., Owner, Bear Power Wash</cite>
+  <section class="research section-pad">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-eyebrow">Research and insights</div>
+          <h2>Latest market thinking.</h2>
+        </div>
+        <a href="/blog-article" class="arrow-link">Read the Research Note
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
-      <div class="review-card">
-        <div class="review-rating">★★★★★</div>
-        <h4>Restructured our pricing in one weekend</h4>
-        <p>We were stuck debating whether to push our premium epoxy line or stay competitive on price. The Sherlock report showed us exactly which buyer segments would pay more — and which would walk. Rebuilt our pricing tiers that weekend and our average ticket went up 23% in the first quarter.</p>
-        <cite>— Amir L., Owner, Garage Floor Coating &amp; Epoxy</cite>
-      </div>
-      <div class="review-card">
-        <div class="review-rating">★★★★★</div>
-        <h4>Saved us from a six-figure misread</h4>
-        <p>We were planning to add a cosmetic dentistry line. The local report showed the demand was real, but the buyer profile in our area wasn't what we assumed. We adjusted the offer and the messaging before launch. Cleanest pre-launch decision I've ever made.</p>
-        <cite>— Dana C., Dental Operator</cite>
+      <div class="article-grid">
+        <a class="article-card reveal" href="/blog-article">
+          <div class="article-art"><svg width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div class="article-body"><div class="article-kicker">Local strategy</div><div class="article-title">How to judge a market before you enter it.</div><span class="arrow-link">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="article-card reveal" href="/sample">
+          <div class="article-art"><svg width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V12M10 20V6M16 20v-9M20 20H3"/></svg></div>
+          <div class="article-body"><div class="article-kicker">Sample insight</div><div class="article-title">What an operator-ready report section looks like.</div><span class="arrow-link">View Sample <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="article-card reveal" href="/faq">
+          <div class="article-art"><svg width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 1 1 5.8 1c-.4 1.2-1.7 1.8-2.3 2.7-.3.4-.4.8-.4 1.3"/><path d="M12 17h.01"/></svg></div>
+          <div class="article-body"><div class="article-kicker">FAQ</div><div class="article-title">How Sherlock compares with macro research tools.</div><span class="arrow-link">Read FAQ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ FAQ ============ -->
-<section class="faq">
-  <div class="container">
-    <h2>Questions buyers ask.</h2>
-    <p class="faq-sub">Make trust obvious before checkout.</p>
-    <div class="faq-list">
-      <details open>
-        <summary>Who is Sherlock Research for?</summary>
-        <p>Owner-led businesses, franchise teams, local service companies, agencies, and investors who need clear market intelligence without enterprise research overhead. If you're making a pricing, channel, expansion, or acquisition decision in the next 90 days, you're the buyer.</p>
-      </details>
-      <details>
-        <summary>What's actually in a report?</summary>
-        <p>Six modules: demand and market size, buyer behavior, competitive landscape, pricing pressure, channel strategy, and an executive playbook. Each module ends with specific recommended actions, not just data. Sample insights are shown on the report page before checkout.</p>
-      </details>
-      <details>
-        <summary>How is this different from IBISWorld, Statista, or a consultant?</summary>
-        <p>Enterprise research is built for analysts and investors at $3K+ per seat. Consultants run $25K+ for a single project. Sherlock is built for operators at $497 per report or $2,000/year for ongoing intelligence — priced and structured to drive specific operational decisions, not committee debate.</p>
-      </details>
-      <details>
-        <summary>How should simulated panels be positioned?</summary>
-        <p>Every Sherlock data point is tagged as simulated, benchmarked, or fielded. Simulated insights illustrate the structure of a module before you buy. Benchmarked data comes from public sources cross-referenced for accuracy. Fielded data comes from active consumer panels and operator interviews. Live reports are dominated by fielded and benchmarked data.</p>
-      </details>
-      <details>
-        <summary>Why not just use Google Trends or a generic industry report?</summary>
-        <p>Google Trends tells you what people search. It doesn't tell you why customers switch, what they'd pay 20% more for, or which growth move has the highest odds in your market. Generic industry reports describe the past. Sherlock reports drive your next decision.</p>
-      </details>
-      <details>
-        <summary>What's included in the Quarterly Intelligence subscription?</summary>
-        <p>Quarterly Intelligence ($2,000/year) includes four quarterly report refreshes plus four strategy meetings with the Sherlock team — typically scoped around upcoming launches, pricing decisions, expansion moves, or competitive responses. It's the equivalent of a fractional market intelligence team for less than the cost of a single consulting engagement.</p>
-      </details>
-      <details>
-        <summary>Can I upgrade from a one-time report to the Quarterly subscription?</summary>
-        <p>Yes. Standard and City-Specific Report purchases credit toward an upgrade to Quarterly Intelligence within 30 days of purchase. Most buyers start with a single report and upgrade once they see the value of ongoing market signal.</p>
-      </details>
+  <section class="cta">
+    <div class="container cta-inner reveal">
+      <h2>Your next competitive advantage is one report away.</h2>
+      <p>Start with the current report library, then keep swapping in new PDFs by industry, quarter, access level, and city inclusion.</p>
+      <div class="trust-row">
+        <span class="trust-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Secure checkout</span>
+        <span class="trust-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v10M8 11l4 4 4-4M5 18h14"/></svg> Instant PDF delivery</span>
+        <span class="trust-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg> Built for repeat updates</span>
+        <a href="/pricing" class="btn btn-primary btn-lg">Get Your Edge Today
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<!-- ============ FINAL CTA ============ -->
-<section class="final">
-  <div class="container">
-    <div class="final-eyebrow">See the market. Stay ahead.</div>
-    <h2>Turn market uncertainty into your next <em>growth move</em>.</h2>
-    <div class="final-cta-row">
-      <a href="pricing.html" class="btn btn-primary btn-lg">Explore the Report Library →</a>
-      <a href="#sample" class="btn btn-outline btn-lg">View a Sample Insight</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
 <footer>
-  <div class="container">
-    <div class="footer-top">
-      <a href="index.html" class="logo">
-        <div class="logo-mark">
-          <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg>
-        </div>
-        <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <a href="/" class="logo" aria-label="Sherlock Research home">
+        <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true" />
+        <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
       </a>
-      <div class="footer-tag">See the Market. Stay Ahead.</div>
-    </div>
-    <div class="footer-bottom">
-      <div>Industry-specific market intelligence for service businesses under $10M. © 2026 Sherlock Research.</div>
-      <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-        <a href="#reports">Reports</a>
-        <a href="#how">How It Works</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
-        <a href="mailto:hello@sherlockresearch.com">hello@sherlockresearch.com</a>
+      <p>Industry-specific research and local market intelligence for operators, investors, and teams that need clearer market signal.</p>
+      <div class="socials">
+        <a href="mailto:hello@sherlockresearch.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        <a href="/contact" aria-label="Contact Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></a>
       </div>
     </div>
+    <div class="fcol"><h3>Reports</h3><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a><a href="/pest-control-report">Pest Control</a></div>
+    <div class="fcol"><h3>Resources</h3><a href="/pricing">Pricing</a><a href="/sample">Sample</a><a href="/faq">FAQ</a><a href="/blog-article">Research Note</a></div>
+    <div class="fcol"><h3>Company</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/terms-of-service">Terms</a></div>
+  </div>
+  <div class="container foot-bottom">
+    <span>&copy; <span data-year>2026</span> Sherlock Research. All rights reserved.</span>
+    <span>See the Market. Stay Ahead.</span>
   </div>
 </footer>
 
-<!-- ============ STICKY MOBILE CTA ============ -->
 <div class="mobile-cta">
-  <a href="pricing.html" class="btn btn-primary">See Sample →</a>
+  <a href="#reports" class="btn btn-outline-dark">Reports</a>
+  <a href="/pricing" class="btn btn-primary">Pricing</a>
 </div>
 
+<script src="shared/catalog.js"></script>
+<script src="shared/app.js"></script>
+<script>
+  (function () {
+    var testimonials = [
+      { tag: "Slot 01", quote: "Add approved quote about pricing confidence here. Keep it specific to the decision, market, and result.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 02", quote: "Add approved quote about choosing a city, zip code, or service area here.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 03", quote: "Add approved quote about acquisition, diligence, or investor use here.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 04", quote: "Add approved quote about customer interviews or on-the-ground research here.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 05", quote: "Add approved quote about replacing guesswork with local market evidence here.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 06", quote: "Add approved quote about comparing Sherlock with macro research products here.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 07", quote: "Add approved quote about competitive positioning, channel strategy, or messaging here.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 08", quote: "Add approved quote about quarterly updates or recurring research value here.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 09", quote: "Add approved quote about a vertical-specific report here.", name: "Customer name", role: "Title, company, market", placeholder: true },
+      { tag: "Slot 10", quote: "Add approved quote about the strongest customer outcome here.", name: "Customer name", role: "Title, company, market", placeholder: true }
+    ];
+
+    var grid = document.getElementById("testimonialGrid");
+    var dots = document.getElementById("testimonialDots");
+    var counter = document.getElementById("testimonialCounter");
+    var prev = document.getElementById("testimonialPrev");
+    var next = document.getElementById("testimonialNext");
+    var perView = 3;
+    var active = 0;
+
+    if (!grid || !dots || !counter || !prev || !next) return;
+
+    function updatePerView() {
+      perView = window.matchMedia("(max-width: 780px)").matches ? 1 : 3;
+      active = Math.min(active, maxStart());
+    }
+
+    function maxStart() {
+      return Math.max(0, testimonials.length - perView);
+    }
+
+    function pageStarts() {
+      var starts = [];
+      var max = maxStart();
+      for (var i = 0; i < testimonials.length; i += perView) {
+        starts.push(Math.min(i, max));
+      }
+      return starts.filter(function (value, index) {
+        return starts.indexOf(value) === index;
+      });
+    }
+
+    function makeCard(item) {
+      var card = document.createElement("article");
+      card.className = "testimonial-card" + (item.placeholder ? " placeholder" : "");
+
+      var tag = document.createElement("div");
+      tag.className = "testimonial-tag";
+      tag.textContent = item.tag;
+
+      var quote = document.createElement("blockquote");
+      quote.className = "testimonial-quote";
+      quote.textContent = item.quote;
+
+      var meta = document.createElement("div");
+      meta.className = "testimonial-meta";
+
+      var name = document.createElement("div");
+      name.className = "testimonial-name";
+      name.textContent = item.name;
+
+      var role = document.createElement("div");
+      role.className = "testimonial-role";
+      role.textContent = item.role;
+
+      meta.appendChild(name);
+      meta.appendChild(role);
+      card.appendChild(tag);
+      card.appendChild(quote);
+      card.appendChild(meta);
+      return card;
+    }
+
+    function render() {
+      updatePerView();
+      var end = Math.min(active + perView, testimonials.length);
+      grid.replaceChildren.apply(grid, testimonials.slice(active, end).map(makeCard));
+      counter.textContent = "Showing " + (active + 1) + "-" + end + " of " + testimonials.length;
+
+      dots.innerHTML = "";
+      pageStarts().forEach(function (start, index) {
+        var dot = document.createElement("button");
+        dot.className = "testimonial-dot" + (start === active ? " active" : "");
+        dot.type = "button";
+        dot.setAttribute("aria-label", "Show testimonial set " + (index + 1));
+        dot.addEventListener("click", function () {
+          active = start;
+          render();
+        });
+        dots.appendChild(dot);
+      });
+    }
+
+    prev.addEventListener("click", function () {
+      active = active === 0 ? maxStart() : Math.max(0, active - perView);
+      render();
+    });
+
+    next.addEventListener("click", function () {
+      active = active >= maxStart() ? 0 : Math.min(maxStart(), active + perView);
+      render();
+    });
+
+    window.addEventListener("resize", render);
+    render();
+  })();
+
+  (function () {
+    var items = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(function (item) { item.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (item) { io.observe(item); });
+  })();
+</script>
 </body>
 </html>

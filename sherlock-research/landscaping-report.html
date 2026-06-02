@@ -22,7 +22,7 @@ PER-INDUSTRY TOKENS (search/replace these in the duplicated file):
   - 4 Key Industry Insights cards     ::  search for class="insight-cards"
   - Donut market-share %              ::  search for ".donut2" and "comp-legend"
   - Top Competitive Factors           ::  search for class="comp-factors"
-  - 3 Reviews                         ::  search for class="rev-grid"
+  - 3 Use cases                       ::  search for class="rev-grid"
   - Buy-card cover gradient           ::  .buy-cover background (currently green)
   - Hero-cover gradient               ::  .hero-cover background (currently green)
   - Sample Pages thumbnail gradient   ::  .sp-thumb.navy background (currently green)
@@ -30,13 +30,12 @@ PER-INDUSTRY TOKENS (search/replace these in the duplicated file):
 
 SHARED (do NOT change — keeps reports visually consistent):
   - Nav, footer, design tokens (:root), button styles
-  - Purchase selector ($497 / $597 / $2,000 / $2,997)
-  - Compare vs IBISWorld table, Who-For grid, Guarantee, FAQ, Final CTA
+  - Purchase selector ($497 / $2,000 / $2,997)
+  - Macro-to-local comparison table, Who-For grid, Guarantee, FAQ, Final CTA
   - Sticky buy bar JS at bottom
 
 NOTES:
-  - Pricing here ($497 / $597 / $2,000 / $2,997) currently differs from pricing.html
-    ($399 / $799 / Enterprise). Reconcile before launch.
+  - Checkout URLs are managed in shared/catalog.js.
   - The "Look Inside" flipbook section has a placeholder mount — drop your
     flipbook embed into #flipbookMount when ready.
 ================================================================================
@@ -47,17 +46,17 @@ NOTES:
 <meta name="theme-color" content="#0D1B2A" />
 <title>Landscaping Industry Report — Sherlock Research</title>
 <meta name="description" content="The 2026 Landscaping Industry Report from Sherlock Research: market size, growth forecasts, competitive landscape, and local benchmarks for U.S. landscaping operators.">
-<link rel="canonical" href="https://sherlockresearch.com/landscaping-report.html">
+<link rel="canonical" href="https://sherlockreports.com/landscaping-report">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Landscaping Industry Report — Sherlock Research">
 <meta property="og:description" content="Market size, growth, competitive landscape, and local benchmarks for the U.S. landscaping services industry. 40+ pages, instant PDF.">
-<meta property="og:url" content="https://sherlockresearch.com/landscaping-report.html">
-<meta property="og:image" content="https://sherlockresearch.com/og-default.png">
+<meta property="og:url" content="https://sherlockreports.com/landscaping-report">
+<meta property="og:image" content="https://sherlockreports.com/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
     --navy: #0D1B2A;
@@ -351,7 +350,7 @@ NOTES:
   .axis-note { display: inline-flex; gap: 8px; align-items: center; font-size: 12.5px; color: var(--muted); background: var(--white); border: 1px solid var(--line); padding: 8px 16px; border-radius: 100px; margin-bottom: 44px; }
   .axis-note b { color: var(--navy); }
 
-  .options-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 36px; align-items: stretch; }
+  .options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 36px; align-items: stretch; }
   .opt-card {
     background: var(--white); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
     padding: 30px 24px; cursor: pointer; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
@@ -509,23 +508,25 @@ NOTES:
     .stats-inner { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
   }
-</style>
+  .logo img.logo-mark{width:42px;height:42px;object-fit:contain;border-radius:0;background:transparent;box-shadow:none;display:block;flex:0 0 auto}
+  .footer-logo{justify-content:center;margin:0 auto 12px}</style>
+<link rel="stylesheet" href="shared/styles.css" />
 </head>
-<body>
+<body data-report-slug="landscaping">
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="index.html" class="logo">
-      <div class="logo-mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></div>
+    <a href="/" class="logo">
+      <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
       <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
     </a>
     <div class="nav-links">
-      <a href="index.html#industries">Industries</a>
-      <a href="index.html#locations">Locations</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="blog-article.html">Resources</a>
-      <a href="about.html">About</a>
+      <a href="/#reports">Reports</a>
+      <a href="/#how">How It Works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/blog-article">Resources</a>
+      <a href="/about">About</a>
     </div>
     <div class="nav-right">
       <a href="#purchase" class="btn btn-primary">Get Your Edge</a>
@@ -536,7 +537,7 @@ NOTES:
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#industries">Industry Reports</a> › <span class="current">Landscaping Industry Report</span></div>
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="/#reports">Report Library</a> › <span class="current">Landscaping Industry Report</span></div>
     <div class="hero-grid">
       <div>
         <h1>Landscaping Industry Report</h1>
@@ -641,7 +642,7 @@ NOTES:
             <span><span class="ldot" style="background:var(--navy);"></span> Actual</span>
             <span><span class="ldot" style="background:var(--sage);"></span> Projected</span>
           </div>
-          <p class="source-note"><strong>Sources:</strong> U.S. Census Bureau, IBISWorld, and Sherlock Research proprietary operator surveys.</p>
+          <p class="source-note"><strong>Sources:</strong> U.S. Census Bureau, BLS, local market datasets, operator interviews, and Sherlock Research field research.</p>
         </div>
 
         <h2 class="section-h">Key Industry Insights</h2>
@@ -707,7 +708,7 @@ NOTES:
           </ul>
           <div class="method-box">
             <h4>Methodology &amp; Sources</h4>
-            <p>Sherlock Research reports combine national datasets with hyper-local survey data and proprietary modeling. Each report draws on sample size, data vintage, geographic coverage, and primary sources including the U.S. Census Bureau, Bureau of Labor Statistics, IBISWorld, and Sherlock proprietary consumer panels.</p>
+            <p>Sherlock Research reports combine macro benchmarks with local market research, customer panels, operator interviews, competitor scans, and demand signals. Each report is tagged by industry, quarter and year, access level, and coverage so new PDFs can be swapped into the catalog without rewriting the site.</p>
           </div>
         </div>
       </div>
@@ -731,23 +732,11 @@ NOTES:
             </ul>
             <hr class="buy-divider">
             <div class="buy-selected-label">Selected plan</div>
-            <div class="buy-selected-name" id="sidebarPlanName">City-Specific Report</div>
-            <div class="buy-price-row"><span class="buy-price" id="sidebarPrice">$597</span><span class="buy-price-unit" id="sidebarUnit"></span></div>
-            <div class="buy-price-note" id="sidebarNote">One-time · this industry + your metro</div>
-            <div id="sidebarCityWrap">
-              <label>Choose your metro</label>
-              <select class="city-select" id="sidebarCity">
-                <option>New York, NY</option><option>Los Angeles, CA</option><option>Chicago, IL</option>
-                <option>Dallas, TX</option><option>Houston, TX</option><option>Atlanta, GA</option>
-                <option>Washington, DC</option><option>Philadelphia, PA</option><option>Miami, FL</option>
-                <option>Phoenix, AZ</option><option>Boston, MA</option><option>San Francisco, CA</option>
-                <option>Riverside, CA</option><option>Detroit, MI</option><option>Seattle, WA</option>
-                <option>Minneapolis, MN</option><option>Tampa, FL</option><option>San Diego, CA</option>
-                <option>Denver, CO</option><option>Charlotte, NC</option>
-              </select>
-            </div>
-            <a href="#purchase" class="btn btn-primary btn-block btn-lg" id="sidebarCta">Get City-Specific Report</a>
-            <span class="change-plan" onclick="document.getElementById('purchase').scrollIntoView({behavior:'smooth'})">Compare all 4 options →</span>
+            <div class="buy-selected-name" id="sidebarPlanName">Standard Report</div>
+            <div class="buy-price-row"><span class="buy-price" id="sidebarPrice">$497</span><span class="buy-price-unit" id="sidebarUnit"></span></div>
+            <div class="buy-price-note" id="sidebarNote">One-time · full national report</div>
+            <a href="/contact" class="btn btn-primary btn-block btn-lg" id="sidebarCta" data-checkout-plan="single">Get Standard Report</a>
+            <span class="change-plan" onclick="document.getElementById('purchase').scrollIntoView({behavior:'smooth'})">Compare all 3 options →</span>
             <div class="buy-trust"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Secure checkout · 30-day money-back guarantee</div>
           </div>
         </div>
@@ -830,36 +819,20 @@ NOTES:
 
     <div class="options-grid" id="optionsGrid">
       <!-- Option 1 -->
-      <div class="opt-card" data-plan="single">
+      <div class="opt-card popular selected" data-plan="single">
+        <div class="opt-badge">MOST POPULAR</div>
         <div class="opt-radio"></div>
         <div class="opt-axis">Depth · Entry</div>
         <div class="opt-name">Standard Report</div>
         <div class="opt-price">$497</div>
         <div class="opt-price-sub">One-time</div>
-        <div class="opt-compare">&nbsp;</div>
+        <div class="opt-compare">The fastest way in</div>
         <div class="opt-desc">The full Landscaping report at the national level. Best for a one-time read on the industry.</div>
         <ul class="opt-list">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full 42-page report</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> National data &amp; forecasts</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Instant PDF download</li>
-          <li class="muted"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg> Local / city data</li>
-        </ul>
-      </div>
-      <!-- Option 2 -->
-      <div class="opt-card popular selected" data-plan="city">
-        <div class="opt-badge">MOST POPULAR</div>
-        <div class="opt-radio"></div>
-        <div class="opt-axis">Depth · Local</div>
-        <div class="opt-name">City-Specific Report</div>
-        <div class="opt-price">$597</div>
-        <div class="opt-price-sub">One-time · pick your metro</div>
-        <div class="opt-compare">Only $100 more than national</div>
-        <div class="opt-desc">Everything in Standard, plus a local data cut for the metro you choose. Best for real market moves.</div>
-        <ul class="opt-list">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Everything in Standard</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Your city's local data cut</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Local competitor scan</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Metro pricing benchmarks</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Local market signals</li>
         </ul>
       </div>
       <!-- Option 3 -->
@@ -881,14 +854,14 @@ NOTES:
       </div>
       <!-- Option 4 -->
       <div class="opt-card" data-plan="all">
-        <div class="opt-badge" style="background:var(--grad-sage);">vs $8K AT IBISWORLD</div>
+        <div class="opt-badge" style="background:var(--grad-sage);">MACRO + LOCAL</div>
         <div class="opt-radio"></div>
         <div class="opt-axis">Breadth · All Industries</div>
         <div class="opt-name">All-Access Pass</div>
         <div class="opt-price">$2,997</div>
         <div class="opt-price-sub">One-time · every report</div>
-        <div class="opt-compare">Pay once — no annual seat fee</div>
-        <div class="opt-desc">Every Sherlock industry report, not just landscaping. Best for multi-industry operators, agencies, and investors.</div>
+        <div class="opt-compare">Best for multi-market research</div>
+        <div class="opt-desc">Every Sherlock industry report, current and future. Best for multi-industry operators, agencies, and investors.</div>
         <ul class="opt-list">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> All current industry reports</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> New reports as released</li>
@@ -902,23 +875,12 @@ NOTES:
     <div class="checkout-bar">
       <div class="checkout-summary">
         <div class="cs-label">You're getting</div>
-        <div class="cs-name" id="checkoutName">City-Specific Report</div>
-        <div class="cs-detail" id="checkoutDetail">Landscaping · national + local data for your chosen metro</div>
-        <div id="checkoutCityWrap">
-          <select id="checkoutCity">
-            <option>New York, NY</option><option>Los Angeles, CA</option><option>Chicago, IL</option>
-            <option>Dallas, TX</option><option>Houston, TX</option><option>Atlanta, GA</option>
-            <option>Washington, DC</option><option>Philadelphia, PA</option><option>Miami, FL</option>
-            <option>Phoenix, AZ</option><option>Boston, MA</option><option>San Francisco, CA</option>
-            <option>Riverside, CA</option><option>Detroit, MI</option><option>Seattle, WA</option>
-            <option>Minneapolis, MN</option><option>Tampa, FL</option><option>San Diego, CA</option>
-            <option>Denver, CO</option><option>Charlotte, NC</option>
-          </select>
-        </div>
+        <div class="cs-name" id="checkoutName">Standard Report</div>
+        <div class="cs-detail" id="checkoutDetail">Landscaping · full national report and forecasts</div>
       </div>
       <div class="checkout-action">
-        <div class="checkout-price" id="checkoutPrice">$597</div>
-        <a href="#" class="btn btn-primary btn-lg" id="checkoutCta">Get City-Specific Report →</a>
+        <div class="checkout-price" id="checkoutPrice">$497</div>
+        <a href="/contact" class="btn btn-primary btn-lg" id="checkoutCta" data-checkout-plan="single">Get Standard Report →</a>
       </div>
     </div>
   </div>
@@ -929,49 +891,48 @@ NOTES:
   <div class="container">
     <div class="compare-head">
       <div class="eyebrow">WHY SHERLOCK</div>
-      <h2>One IBISWorld seat is $8,000 a year. Every Sherlock report is $2,997, once.</h2>
+      <h2>IBISWorld and Statista explain the macro market. Sherlock adds the local evidence.</h2>
     </div>
     <div class="compare-table">
       <div class="compare-row head">
         <div class="feat">What you get</div>
         <div class="col-sherlock">Sherlock</div>
-        <div class="col-hide">IBISWorld</div>
+        <div class="col-hide">IBIS / Statista</div>
         <div class="col-hide">Consultant</div>
       </div>
       <div class="compare-row">
-        <div class="feat">Built for operators</div>
-        <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Yes</div>
-        <div class="col-hide"><span class="ci-no">○</span>&nbsp;Analysts</div>
-        <div class="col-hide"><span class="ci-mid">◐</span>&nbsp;Sometimes</div>
+        <div class="feat">Primary interviews</div>
+        <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Included</div>
+        <div class="col-hide"><span class="ci-no">○</span>&nbsp;Limited</div>
+        <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Custom</div>
       </div>
       <div class="compare-row">
-        <div class="feat">Local / city-level data</div>
+        <div class="feat">Local market signals</div>
         <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Yes</div>
-        <div class="col-hide"><span class="ci-no">○</span>&nbsp;No</div>
-        <div class="col-hide"><span class="ci-mid">◐</span>&nbsp;Custom</div>
+        <div class="col-hide"><span class="ci-mid">●</span>&nbsp;Mostly macro</div>
+        <div class="col-hide"><span class="ci-mid">●</span>&nbsp;Custom</div>
       </div>
       <div class="compare-row">
         <div class="feat">Recommended actions</div>
         <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Every section</div>
-        <div class="col-hide"><span class="ci-no">○</span>&nbsp;No</div>
+        <div class="col-hide"><span class="ci-no">○</span>&nbsp;Reference data</div>
         <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Yes</div>
       </div>
       <div class="compare-row">
-        <div class="feat">Time to answer</div>
-        <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Instant</div>
-        <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Instant</div>
-        <div class="col-hide"><span class="ci-no">○</span>&nbsp;6–12 weeks</div>
+        <div class="feat">Useful for</div>
+        <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Specific market moves</div>
+        <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Macro context</div>
+        <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Bespoke projects</div>
       </div>
       <div class="compare-row">
-        <div class="feat">Typical cost</div>
-        <div class="col-sherlock">$497–$2,997</div>
-        <div class="col-hide">$8,000+/yr</div>
-        <div class="col-hide">$25,000+</div>
+        <div class="feat">Research structure</div>
+        <div class="col-sherlock">Industry | quarter | access | coverage</div>
+        <div class="col-hide">Broad category pages</div>
+        <div class="col-hide">Project-specific scope</div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- ============ WHO FOR ============ -->
 <section class="whofor">
   <div class="container">
@@ -1008,27 +969,27 @@ NOTES:
 <section class="rev">
   <div class="container">
     <div class="toc-head" style="text-align:center; margin-bottom:40px;">
-      <div class="eyebrow">FROM LANDSCAPING OPERATORS</div>
-      <h2>Used to make real moves.</h2>
+      <div class="eyebrow">LANDSCAPING USE CASES</div>
+      <h2>Decisions this report is built to support.</h2>
     </div>
     <div class="rev-grid">
       <div class="rev-card">
-        <div class="rev-stars">★★★★★</div>
-        <h4>Raised renewals 15% with confidence</h4>
-        <p>We'd been guessing on maintenance contract pricing for years. The report showed the local rate spread and where the premium tolerance was. Raised prices on renewals and lost almost no one.</p>
-        <cite>— Marcus R., Owner, 3-crew landscaping company</cite>
+        <div class="rev-stars">PRICING</div>
+        <h4>Renew maintenance contracts with confidence</h4>
+        <p>Use local rate spreads, premium tolerance, and switching-risk signals before adjusting recurring maintenance packages.</p>
+        <cite>Best for renewal and margin planning</cite>
       </div>
       <div class="rev-card">
-        <div class="rev-stars">★★★★★</div>
-        <h4>Won a bid we'd lost twice before</h4>
-        <p>We used the competitive landscape section to position against the two big players in our metro. Won a commercial property contract we'd lost twice before.</p>
-        <cite>— Tina G., Operations, regional landscape firm</cite>
+        <div class="rev-stars">COMPETITION</div>
+        <h4>Position against larger competitors</h4>
+        <p>Use competitor density, service gaps, and buyer priorities to sharpen bids without racing to the lowest price.</p>
+        <cite>Best for commercial and multi-crew teams</cite>
       </div>
       <div class="rev-card">
-        <div class="rev-stars">★★★★★</div>
-        <h4>Cut my CAC in half</h4>
-        <p>As a newer operator I had no idea where demand actually was. The local insights told me which suburbs to focus my door-hangers and Google spend. Cut my acquisition cost in half.</p>
-        <cite>— Jared M., Founder, lawn care startup</cite>
+        <div class="rev-stars">GROWTH</div>
+        <h4>Focus local acquisition spend</h4>
+        <p>Use suburb-level demand and buyer-fit signals to decide where door-hangers, Google spend, and route density are likely to pay off.</p>
+        <cite>Best for local launch and routing decisions</cite>
       </div>
     </div>
   </div>
@@ -1040,7 +1001,7 @@ NOTES:
     <div class="guarantee-inner">
       <div class="guarantee-badge"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
       <h2>The 30-day "made a better decision" guarantee.</h2>
-      <p>If the report doesn't give you at least one insight you can act on, email us within 30 days and we'll refund every dollar. We can offer this because operators rarely ask — the data pays for itself on the first decision.</p>
+      <p>If the report does not give you at least one insight you can act on, email us within 30 days and we will refund every dollar. The first useful decision should more than justify the cost.</p>
     </div>
   </div>
 </section>
@@ -1051,12 +1012,8 @@ NOTES:
     <h2>Questions before you buy.</h2>
     <div class="faq-list">
       <details open>
-        <summary>What's the difference between the four options?</summary>
-        <p>Standard ($497) is the full national report. City-Specific ($597) adds a local data cut for the metro you choose. Quarterly + Coaching ($2,000/yr) keeps one industry current all year with four updates and four 1:1 calls. All-Access ($2,997, one-time) unlocks every industry report we publish — best if you operate or invest across multiple verticals. For comparison, a single IBISWorld seat runs around $8,000 per year.</p>
-      </details>
-      <details>
-        <summary>Which metros are available for the City-Specific report?</summary>
-        <p>We cover the top 20 U.S. metros at launch — New York, LA, Chicago, Dallas, Houston, Atlanta, Washington DC, Philadelphia, Miami, Phoenix, Boston, San Francisco, Riverside, Detroit, Seattle, Minneapolis, Tampa, San Diego, Denver, and Charlotte. If your exact market isn't listed, we'll build the local cut for you within 48 hours at no extra cost.</p>
+        <summary>What's the difference between the three options?</summary>
+        <p>Standard ($497) is the full national industry report. Quarterly + Coaching ($2,000/yr) keeps one industry current all year with four updates and four 1:1 calls. All-Access ($2,997, one-time) unlocks every industry report we publish. Choose based on whether you need one report, ongoing updates, or the full library.</p>
       </details>
       <details>
         <summary>Can I upgrade later?</summary>
@@ -1068,7 +1025,7 @@ NOTES:
       </details>
       <details>
         <summary>Is this a real download or a subscription?</summary>
-        <p>Standard, City-Specific, and All-Access are instant PDF downloads you own. Quarterly + Coaching is an annual subscription that includes the downloads plus updates and calls.</p>
+        <p>Standard and All-Access are instant PDF downloads you own. Quarterly + Coaching is an annual subscription that includes the downloads plus updates and calls.</p>
       </details>
     </div>
   </div>
@@ -1080,11 +1037,11 @@ NOTES:
     <div class="final-grid">
       <div>
         <h2>Better data. Better decisions. <em>More growth.</em></h2>
-        <p>Join thousands of business owners who use Sherlock Research to stay ahead of the competition.</p>
+        <p>Use Sherlock Research to turn market questions into clearer growth decisions.</p>
         <a href="#purchase" class="btn btn-primary btn-lg">Get Your Edge Today →</a>
       </div>
       <div class="final-fox">
-        <img src="assets/sherlock-colorful.svg" alt="Sherlock Research">
+        <img src="assets/sherlock-colorful.png" alt="Sherlock Research">
       </div>
     </div>
   </div>
@@ -1095,17 +1052,17 @@ NOTES:
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><div class="logo-mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></div><div class="logo-stack">Sherlock<small>RESEARCH</small></div></a>
+        <a href="/" class="logo"><img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true"><div class="logo-stack">Sherlock<small>RESEARCH</small></div></a>
         <p>Actionable market intelligence and local insights for business owners who want to grow with confidence.</p>
       </div>
-      <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="index.html#how">How It Works</a><a href="#">Careers</a><a href="#">Contact Us</a></div>
-      <div class="footer-col"><h5>Services</h5><a href="pricing.html">Industry Reports</a><a href="#">Custom Research</a><a href="#">Market Analysis</a><a href="#">Competitive Insights</a></div>
-      <div class="footer-col"><h5>Resources</h5><a href="blog-article.html">Blog</a><a href="#">Sample Reports</a><a href="#">Methodology</a><a href="faq.html">FAQ</a></div>
-      <div class="footer-col"><h5>Industries</h5><a href="landscaping-report.html">Landscaping</a><a href="index.html#industries">Roofing</a><a href="index.html#industries">HVAC</a><a href="index.html#industries">Pest Control</a></div>
+      <div class="footer-col"><h5>Company</h5><a href="/about">About Us</a><a href="/#how">How It Works</a><a href="mailto:hello@sherlockresearch.com?subject=Careers%20at%20Sherlock%20Research">Careers</a><a href="/contact">Contact Us</a></div>
+      <div class="footer-col"><h5>Services</h5><a href="/pricing">Industry Reports</a><a href="/contact?subject=Custom%20Research">Custom Research</a><a href="/pricing">Market Analysis</a><a href="/sample">Competitive Insights</a></div>
+      <div class="footer-col"><h5>Resources</h5><a href="/blog-article">Blog</a><a href="/sample">Sample Reports</a><a href="/#how">Methodology</a><a href="/faq">FAQ</a></div>
+      <div class="footer-col"><h5>Industries</h5><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a><a href="/pest-control-report">Pest Control</a></div>
     </div>
     <div class="footer-bottom">
       <div>© 2026 Sherlock Research. All rights reserved.</div>
-      <div style="display:flex; gap:18px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      <div style="display:flex; gap:18px;"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a></div>
     </div>
   </div>
 </footer>
@@ -1114,22 +1071,31 @@ NOTES:
 <div class="sticky-buy" id="stickyBuy">
   <div class="container sticky-buy-inner">
     <div class="sticky-buy-info">
-      <div class="sticky-buy-name" id="stickyName">City-Specific Report</div>
-      <div class="sticky-buy-price" id="stickyPrice">$597 · one-time</div>
+      <div class="sticky-buy-name" id="stickyName">Standard Report</div>
+      <div class="sticky-buy-price" id="stickyPrice">$497 · one-time</div>
     </div>
-    <a href="#" class="btn btn-primary" id="stickyCta">Get This Report →</a>
+    <a href="/contact" class="btn btn-primary" id="stickyCta" data-checkout-plan="single">Get This Report →</a>
   </div>
 </div>
 
+<script src="shared/catalog.js"></script>
+<script src="shared/app.js"></script>
 <script>
   // ===== PLAN DATA =====
   var plans = {
     single:    { name: "Standard Report",       price: "$497",  unit: "",     note: "One-time · national data",            detail: "Landscaping · full national report and forecasts", cta: "Get Standard Report",      city: false },
-    city:      { name: "City-Specific Report",   price: "$597",  unit: "",     note: "One-time · this industry + your metro", detail: "Landscaping · national + local data for your chosen metro", cta: "Get City-Specific Report", city: true  },
     quarterly: { name: "Quarterly + Coaching",   price: "$2,000",unit: "/yr",  note: "Billed annually · updates + 1:1 calls", detail: "Landscaping · 4 quarterly updates + 4 coaching calls",  cta: "Start Quarterly Plan",     city: true  },
     all:       { name: "All-Access Pass",        price: "$2,997",unit: "",     note: "One-time · every industry report",     detail: "Every Sherlock industry report, not just landscaping",  cta: "Get All-Access Pass",      city: false }
   };
-  var current = "city";
+  var current = "single";
+
+  function syncCheckoutLinks(key) {
+    if (!window.SherlockCheckout) return;
+    ['sidebarCta', 'checkoutCta', 'stickyCta'].forEach(function(id) {
+      var link = document.getElementById(id);
+      if (link) window.SherlockCheckout.applyLink(link, key);
+    });
+  }
 
   function applyPlan(key) {
     current = key;
@@ -1142,37 +1108,22 @@ NOTES:
     document.getElementById('sidebarUnit').textContent = p.unit;
     document.getElementById('sidebarNote').textContent = p.note;
     document.getElementById('sidebarCta').textContent = p.cta;
-    document.getElementById('sidebarCityWrap').style.display = p.city ? 'block' : 'none';
     document.getElementById('checkoutName').textContent = p.name;
     document.getElementById('checkoutPrice').innerHTML = p.price + (p.unit ? '<span class="unit">'+p.unit+'</span>' : '');
     document.getElementById('checkoutCta').textContent = p.cta + ' →';
-    document.getElementById('checkoutCityWrap').style.display = p.city ? 'block' : 'none';
     updateCheckoutDetail();
     document.getElementById('stickyName').textContent = p.name;
     document.getElementById('stickyPrice').textContent = p.price + (p.unit ? p.unit : '') + (p.unit ? ' · subscription' : ' · one-time');
     document.getElementById('stickyCta').textContent = p.cta + ' →';
+    syncCheckoutLinks(key);
   }
 
   function updateCheckoutDetail() {
-    var p = plans[current];
-    var detail = p.detail;
-    if (p.city) {
-      var city = document.getElementById('checkoutCity').value;
-      detail = detail.replace('your chosen metro', city).replace('Landscaping ·', 'Landscaping (' + city + ') ·');
-    }
-    document.getElementById('checkoutDetail').textContent = detail;
+    document.getElementById('checkoutDetail').textContent = plans[current].detail;
   }
 
   document.querySelectorAll('.opt-card').forEach(function(card){
     card.addEventListener('click', function(){ applyPlan(card.getAttribute('data-plan')); });
-  });
-  document.getElementById('checkoutCity').addEventListener('change', function(){
-    document.getElementById('sidebarCity').value = this.value;
-    updateCheckoutDetail();
-  });
-  document.getElementById('sidebarCity').addEventListener('change', function(){
-    document.getElementById('checkoutCity').value = this.value;
-    updateCheckoutDetail();
   });
 
   // ===== STICKY BUY BAR =====
@@ -1186,7 +1137,7 @@ NOTES:
     stickyBar.classList.toggle('show', past && !inPurchase);
   });
 
-  applyPlan('city');
+  applyPlan('single');
 </script>
 
 </body>

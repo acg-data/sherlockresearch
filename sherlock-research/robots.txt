@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sherlockresearch.com/sitemap.xml
+Sitemap: https://sherlockreports.com/sitemap.xml

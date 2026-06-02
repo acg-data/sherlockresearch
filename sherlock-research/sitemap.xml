@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Top-level -->
-  <url><loc>https://sherlockresearch.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://sherlockresearch.com/pricing.html</loc><changefreq>monthly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://sherlockresearch.com/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sherlockresearch.com/faq.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sherlockresearch.com/contact.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://sherlockresearch.com/sample.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sherlockreports.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://sherlockreports.com/pricing</loc><changefreq>monthly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://sherlockreports.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sherlockreports.com/faq</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sherlockreports.com/contact</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sherlockreports.com/sample</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Industry reports -->
-  <url><loc>https://sherlockresearch.com/landscaping-report.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://sherlockresearch.com/roofing-report.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://sherlockresearch.com/hvac-report.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://sherlockresearch.com/pest-control-report.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sherlockreports.com/landscaping-report</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sherlockreports.com/roofing-report</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sherlockreports.com/hvac-report</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sherlockreports.com/pest-control-report</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
-  <!-- Locations -->
-  <url><loc>https://sherlockresearch.com/austin-tx.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sherlockresearch.com/dallas-tx.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sherlockresearch.com/houston-tx.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sherlockresearch.com/san-antonio-tx.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Editorial -->
-  <url><loc>https://sherlockresearch.com/blog-article.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sherlockreports.com/blog-article</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
 
   <!-- Legal -->
-  <url><loc>https://sherlockresearch.com/privacy-policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://sherlockresearch.com/terms-of-service.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sherlockreports.com/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sherlockreports.com/terms-of-service</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

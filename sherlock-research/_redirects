@@ -1,0 +1,14 @@
+# Legacy .html URLs -> clean URLs (301) for SEO + old bookmarks
+/index.html              /                 301
+/about.html              /about            301
+/contact.html            /contact          301
+/faq.html                /faq              301
+/pricing.html            /pricing          301
+/sample.html             /sample           301
+/blog-article.html       /blog-article     301
+/privacy-policy.html     /privacy-policy   301
+/terms-of-service.html   /terms-of-service 301
+/landscaping-report.html /landscaping-report 301
+/roofing-report.html     /roofing-report   301
+/hvac-report.html        /hvac-report      301
+/pest-control-report.html /pest-control-report 301

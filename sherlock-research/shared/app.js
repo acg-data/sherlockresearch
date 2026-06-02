@@ -1,6 +1,118 @@
 (function(){
   'use strict';
 
+  const catalog = window.SherlockCatalog;
+  const planAliases = { standard: 'single' };
+
+  function planKey(key) {
+    return planAliases[key] || key || 'city';
+  }
+
+  function pageReportSlug() {
+    if (document.body && document.body.dataset.reportSlug) {
+      return document.body.dataset.reportSlug;
+    }
+
+    const path = window.location.pathname.split('/').pop() || '';
+    const match = path.match(/^(.+)-report(?:\.html)?$/);
+    return match ? match[1] : '';
+  }
+
+  function isCheckoutUrl(url) {
+    return /^https:\/\//i.test(url || '');
+  }
+
+  function reportFor(slug) {
+    if (!catalog || !catalog.reports) return null;
+    return catalog.reports[slug] || null;
+  }
+
+  function planFor(key) {
+    if (!catalog || !catalog.plans) return null;
+    return catalog.plans[planKey(key)] || null;
+  }
+
+  function quarterRank(product) {
+    const match = String(product.quarter || '').match(/Q([1-4])/i);
+    return (Number(product.year) || 0) * 10 + (match ? Number(match[1]) : 0);
+  }
+
+  function productFor(key, slug) {
+    const report = reportFor(slug || pageReportSlug() || (catalog && catalog.defaultReportSlug));
+    const products = report && Array.isArray(report.products) ? report.products : [];
+    const resolvedKey = planKey(key);
+
+    return products
+      .filter(product => product.plan === resolvedKey)
+      .sort((a, b) => quarterRank(b) - quarterRank(a))[0] || null;
+  }
+
+  function contactFallback(plan, report) {
+    const parts = ['Sherlock Research'];
+    if (report && report.name) parts.push(report.name);
+    if (plan && plan.name) parts.push(plan.name);
+    parts.push('purchase');
+    return '/contact?subject=' + encodeURIComponent(parts.join(' '));
+  }
+
+  function checkoutUrl(key, slug) {
+    if (!catalog) return '#';
+
+    const resolvedKey = planKey(key);
+    const plan = planFor(resolvedKey);
+    const reportSlug = slug || pageReportSlug() || catalog.defaultReportSlug;
+    const report = reportFor(reportSlug);
+    const product = productFor(resolvedKey, reportSlug);
+    const productUrl = product ? product.checkoutUrl || product.payhipUrl : '';
+    const reportCheckout = report && (report.checkout || report.payhip);
+    const reportUrl = reportCheckout ? reportCheckout[resolvedKey] : '';
+    const planUrl = plan ? plan.checkoutUrl || plan.payhipUrl : '';
+    const url = productUrl || reportUrl || planUrl || '';
+
+    return isCheckoutUrl(url) ? url : contactFallback(plan, report);
+  }
+
+  function applyCheckoutLink(link, key, slug) {
+    if (!link || !catalog) return;
+
+    const resolvedKey = planKey(key || link.dataset.checkoutPlan || link.dataset.payhipPlan);
+    const resolvedSlug = slug || link.dataset.reportSlug || pageReportSlug() || catalog.defaultReportSlug;
+    const url = checkoutUrl(resolvedKey, resolvedSlug);
+
+    link.dataset.checkoutPlan = resolvedKey;
+    link.removeAttribute('data-payhip-plan');
+    if (resolvedSlug) link.dataset.reportSlug = resolvedSlug;
+    link.href = url;
+
+    if (isCheckoutUrl(url)) {
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.dataset.checkoutState = 'checkout';
+    } else {
+      link.removeAttribute('target');
+      link.removeAttribute('rel');
+      link.dataset.checkoutState = 'contact';
+    }
+  }
+
+  function wireCheckoutLinks(root) {
+    if (!catalog) return;
+    (root || document).querySelectorAll('[data-checkout-plan], [data-payhip-plan]').forEach(link => {
+      applyCheckoutLink(link);
+    });
+  }
+
+  window.SherlockCheckout = {
+    applyLink: applyCheckoutLink,
+    checkoutUrl: checkoutUrl,
+    planFor: planFor,
+    productFor: productFor,
+    reportFor: reportFor,
+    wireLinks: wireCheckoutLinks
+  };
+
+  wireCheckoutLinks(document);
+
   /* dynamic copyright year */
   document.querySelectorAll('[data-year]').forEach(el => {
     el.textContent = new Date().getFullYear();

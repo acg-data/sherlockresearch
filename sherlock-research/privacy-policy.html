@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#0D1B2A" />
 <title>Privacy Policy — Sherlock Research</title>
 <meta name="description" content="How Sherlock Research collects, uses, and protects your data.">
-<link rel="canonical" href="https://sherlockresearch.com/privacy-policy.html">
+<link rel="canonical" href="https://sherlockreports.com/privacy-policy">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root{--navy:#0D1B2A;--navy-4:#08111c;--orange:#F26A21;--orange-2:#FF8542;--orange-3:#D9551A;
     --stone:#F2EFE6;--stone-2:#F8F5EC;--ink:#1a1a1a;--muted:#6b6b6b;
@@ -58,22 +58,24 @@
   .footer-links{display:flex;justify-content:center;gap:24px;margin:14px 0;flex-wrap:wrap;font-size:13px}
   .footer-links a{color:rgba(255,255,255,0.85);font-weight:500;text-decoration:none}
   .footer-links a:hover{color:var(--orange-2)}
-</style>
+  .logo img.logo-mark{width:42px;height:42px;object-fit:contain;border-radius:0;background:transparent;box-shadow:none;display:block;flex:0 0 auto}
+  .footer-logo{justify-content:center;margin:0 auto 12px}</style>
+<link rel="stylesheet" href="shared/styles.css" />
 </head>
 <body>
 
 <nav class="nav">
   <div class="container-wide nav-inner">
-    <a href="index.html" class="logo">
-      <div class="logo-mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></div>
+    <a href="/" class="logo">
+      <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
       <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
     </a>
     <div class="nav-links">
-      <a href="index.html#reports">Reports</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
+      <a href="/#reports">Reports</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
     </div>
-    <a href="pricing.html" class="btn btn-primary">See Sample</a>
+    <a href="/pricing" class="btn btn-primary">See Sample</a>
   </div>
 </nav>
 
@@ -87,7 +89,7 @@
 
 <section class="doc">
   <div class="container">
-    <p>This Privacy Policy describes how Sherlock Research ("we," "us," or "our") collects, uses, and protects information you provide when visiting <a href="https://sherlockresearch.com">sherlockresearch.com</a> or purchasing our reports.</p>
+    <p>This Privacy Policy describes how Sherlock Research ("we," "us," or "our") collects, uses, and protects information you provide when visiting <a href="https://sherlockreports.com">sherlockresearch.com</a> or purchasing our reports.</p>
 
     <h2>1. Information we collect</h2>
     <h3>Information you provide</h3>
@@ -140,14 +142,19 @@
 
 <footer>
   <div class="container-wide">
+        <a href="/" class="logo footer-logo">
+      <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+      <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
+    </a>
     <div style="font-family:var(--font-display);font-style:italic;color:var(--orange-2);font-size:16px;margin-bottom:8px">See the Market. Stay Ahead.</div>
     <div class="footer-links">
-      <a href="index.html">Home</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
-      <a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="terms-of-service.html">Terms</a>
+      <a href="/">Home</a><a href="/pricing">Pricing</a><a href="/about">About</a>
+      <a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="/terms-of-service">Terms</a>
     </div>
     <div>© 2026 Sherlock Research. All rights reserved.</div>
   </div>
 </footer>
 
+<script src="shared/app.js"></script>
 </body>
 </html>
