@@ -19,7 +19,11 @@
   }
 
   function isCheckoutUrl(url) {
-    return /^https:\/\//i.test(url || '');
+    return /^https:\/\//i.test(url || '') || isDynamicCheckoutUrl(url);
+  }
+
+  function isDynamicCheckoutUrl(url) {
+    return /^\/api\/checkout(?:\?|$)/i.test(url || '');
   }
 
   function reportFor(slug) {
@@ -47,12 +51,17 @@
       .sort((a, b) => quarterRank(b) - quarterRank(a))[0] || null;
   }
 
-  function contactFallback(plan, report) {
+  function contactFallback(plan, report, reportSlug, resolvedPlanKey) {
     const parts = ['Sherlock Research'];
     if (report && report.name) parts.push(report.name);
     if (plan && plan.name) parts.push(plan.name);
     parts.push('purchase');
-    return '/contact?subject=' + encodeURIComponent(parts.join(' '));
+    const params = new URLSearchParams();
+    params.set('subject', parts.join(' '));
+    if (reportSlug) params.set('industry', reportSlug);
+    if (resolvedPlanKey) params.set('plan', resolvedPlanKey);
+    if (report && report.status) params.set('status', report.status);
+    return '/contact?' + params.toString();
   }
 
   function checkoutUrl(key, slug) {
@@ -63,30 +72,44 @@
     const reportSlug = slug || pageReportSlug() || catalog.defaultReportSlug;
     const report = reportFor(reportSlug);
     const product = productFor(resolvedKey, reportSlug);
-    const productUrl = product ? product.checkoutUrl || product.payhipUrl : '';
-    const reportCheckout = report && (report.checkout || report.payhip);
+    const productUrl = product ? product.checkoutUrl : '';
+    const reportCheckout = report && report.checkout;
     const reportUrl = reportCheckout ? reportCheckout[resolvedKey] : '';
-    const planUrl = plan ? plan.checkoutUrl || plan.payhipUrl : '';
+    const planUrl = plan ? plan.checkoutUrl : '';
     const url = productUrl || reportUrl || planUrl || '';
 
-    return isCheckoutUrl(url) ? url : contactFallback(plan, report);
+    if (isCheckoutUrl(url)) return url;
+
+    if (resolvedKey === 'all') {
+      return '/api/checkout?plan=all';
+    }
+
+    if (report && (report.status === 'available' || report.status === 'presell')) {
+      return '/api/checkout?industry=' + encodeURIComponent(reportSlug) + '&plan=' + encodeURIComponent(resolvedKey);
+    }
+
+    return contactFallback(plan, report, reportSlug, resolvedKey);
   }
 
   function applyCheckoutLink(link, key, slug) {
     if (!link || !catalog) return;
 
-    const resolvedKey = planKey(key || link.dataset.checkoutPlan || link.dataset.payhipPlan);
+    const resolvedKey = planKey(key || link.dataset.checkoutPlan);
     const resolvedSlug = slug || link.dataset.reportSlug || pageReportSlug() || catalog.defaultReportSlug;
     const url = checkoutUrl(resolvedKey, resolvedSlug);
 
     link.dataset.checkoutPlan = resolvedKey;
-    link.removeAttribute('data-payhip-plan');
     if (resolvedSlug) link.dataset.reportSlug = resolvedSlug;
     link.href = url;
 
     if (isCheckoutUrl(url)) {
-      link.target = '_blank';
-      link.rel = 'noopener';
+      if (/^https:\/\//i.test(url)) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      } else {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
       link.dataset.checkoutState = 'checkout';
     } else {
       link.removeAttribute('target');
@@ -97,7 +120,7 @@
 
   function wireCheckoutLinks(root) {
     if (!catalog) return;
-    (root || document).querySelectorAll('[data-checkout-plan], [data-payhip-plan]').forEach(link => {
+    (root || document).querySelectorAll('[data-checkout-plan]').forEach(link => {
       applyCheckoutLink(link);
     });
   }
@@ -112,6 +135,164 @@
   };
 
   wireCheckoutLinks(document);
+
+  function carouselPageSize() {
+    return 4;
+  }
+
+  function initReportCarousel(grid) {
+    const section = grid.closest('.reports-section') || document;
+    const prev = section.querySelector('[data-report-prev]');
+    const next = section.querySelector('[data-report-next]');
+    const label = section.querySelector('[data-report-page-label]');
+    const dots = section.querySelector('[data-report-dots]');
+    const cards = Array.prototype.slice.call(grid.querySelectorAll('.report-card'));
+    if (!prev || !next || !label || !cards.length) return;
+
+    let index = 0;
+
+    function updateIndex() {
+      index = Math.min(index, maxStart());
+    }
+
+    function maxStart() {
+      return Math.max(0, cards.length - carouselPageSize());
+    }
+
+    function pageStarts() {
+      const pageSize = carouselPageSize();
+      const max = maxStart();
+      const starts = [];
+      for (let i = 0; i < cards.length; i += pageSize) {
+        starts.push(Math.min(i, max));
+      }
+      return starts.filter((value, startIndex) => starts.indexOf(value) === startIndex);
+    }
+
+    function renderDots() {
+      if (!dots) return;
+      dots.innerHTML = '';
+      pageStarts().forEach((start, pageIndex) => {
+        const dot = document.createElement('button');
+        dot.className = 'testimonial-dot' + (start === index ? ' active' : '');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', 'Show report set ' + (pageIndex + 1));
+        dot.addEventListener('click', function () {
+          index = start;
+          render();
+        });
+        dots.appendChild(dot);
+      });
+    }
+
+    function render() {
+      updateIndex();
+      const pageSize = carouselPageSize();
+      const end = Math.min(index + pageSize, cards.length);
+      grid.replaceChildren.apply(grid, cards.slice(index, end));
+      label.textContent = 'Showing ' + (index + 1) + '-' + end + ' of ' + cards.length;
+      renderDots();
+    }
+
+    prev.addEventListener('click', function () {
+      index = index === 0 ? maxStart() : Math.max(0, index - carouselPageSize());
+      render();
+    });
+
+    next.addEventListener('click', function () {
+      index = index >= maxStart() ? 0 : Math.min(maxStart(), index + carouselPageSize());
+      render();
+    });
+
+    window.addEventListener('resize', render);
+    render();
+  }
+
+  document.querySelectorAll('[data-report-carousel]').forEach(initReportCarousel);
+
+  function track(eventName, detail) {
+    if (!eventName) return;
+    if (typeof window.plausible === 'function') window.plausible(eventName, { props: detail || {} });
+    if (typeof window.gtag === 'function') window.gtag('event', eventName, detail || {});
+    window.dispatchEvent(new CustomEvent('sherlock:analytics', { detail: Object.assign({ event: eventName }, detail || {}) }));
+  }
+
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('[data-analytics-event], [data-checkout-plan]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    const reportSlug = link.dataset.reportSlug || pageReportSlug() || '';
+    const plan = link.dataset.checkoutPlan || '';
+    track(link.dataset.analyticsEvent || 'checkout_cta', {
+      href: href,
+      reportSlug: reportSlug,
+      plan: plan,
+      checkoutState: link.dataset.checkoutState || ''
+    });
+
+    if (!isDynamicCheckoutUrl(href)) return;
+    event.preventDefault();
+    startDynamicCheckout(link, { reportSlug: reportSlug, plan: plan });
+  });
+
+  async function startDynamicCheckout(link, detail) {
+    const originalText = link.textContent;
+    link.setAttribute('aria-disabled', 'true');
+    link.dataset.checkoutBusy = 'true';
+    link.textContent = 'Opening checkout...';
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          industry: detail.reportSlug,
+          plan: detail.plan || 'single'
+        })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (response.status === 409 && payload.contactUrl) {
+        window.location.assign(payload.contactUrl);
+        return;
+      }
+      if (!response.ok || !payload.url) throw new Error(payload.error || 'Checkout is unavailable.');
+      window.location.assign(payload.url);
+    } catch (error) {
+      const fallback = contactFallback(planFor(detail.plan), reportFor(detail.reportSlug), detail.reportSlug, detail.plan);
+      window.location.assign(fallback);
+    } finally {
+      link.removeAttribute('aria-disabled');
+      delete link.dataset.checkoutBusy;
+      link.textContent = originalText;
+    }
+  }
+
+  document.querySelectorAll('[data-lead-form]').forEach(form => {
+    const note = form.querySelector('[data-form-note]');
+    const submit = form.querySelector('[type="submit"]');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (note) note.textContent = 'Sending...';
+      if (submit) submit.disabled = true;
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || 'Unable to send right now.');
+        if (note) note.textContent = 'Received. Check your inbox for the Sherlock follow-up.';
+        form.reset();
+        track('lead_form_submit', { industry: data.industry || '', plan: data.plan || '', source: data.source || '' });
+      } catch (error) {
+        if (note) note.innerHTML = 'Could not send automatically. Email <a href="mailto:hello@sherlockreports.com">hello@sherlockreports.com</a>.';
+      } finally {
+        if (submit) submit.disabled = false;
+      }
+    });
+  });
 
   /* dynamic copyright year */
   document.querySelectorAll('[data-year]').forEach(el => {

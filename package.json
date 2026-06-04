@@ -1,0 +1,16 @@
+{
+  "name": "sherlockresearch",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "extract-insights": "node sherlock-research/scripts/extract-insights.mjs",
+    "generate": "node sherlock-research/scripts/generate-site.mjs",
+    "audit": "node sherlock-research/scripts/audit-site.mjs",
+    "prepare-assets": "node scripts/prepare-assets.mjs",
+    "visual-smoke": "node sherlock-research/scripts/visual-smoke.mjs",
+    "build": "npm run generate && npm run audit && npm run prepare-assets",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {}
+}

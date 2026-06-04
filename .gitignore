@@ -4,3 +4,12 @@
 !.dev.vars.example
 .env*
 !.env.example
+dist/
+
+# Internal ops docs & research data — keep local, never publish
+PAGE_READINESS_AUDIT.md
+sherlock-research/REPORT_UPDATE_GUIDE.md
+sherlock-research/TALLY_*.md
+sherlock-research/*_FORECAST.md
+sherlock-research/*_FORECAST.csv
+sherlock-research/outputs/

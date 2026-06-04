@@ -47,10 +47,15 @@ class CleanURLHandler(http.server.SimpleHTTPRequestHandler):
         return super().send_error(code, message, explain)
 
 
+class PreviewServer(socketserver.ThreadingTCPServer):
+    """Threaded so one slow/hung connection can't block the whole server."""
+    allow_reuse_address = True
+    daemon_threads = True
+
+
 def main():
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8732
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", port), CleanURLHandler) as httpd:
+    with PreviewServer(("", port), CleanURLHandler) as httpd:
         print(f"Preview (clean URLs) serving {ROOT} on http://localhost:{port}")
         httpd.serve_forever()
 
