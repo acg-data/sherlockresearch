@@ -42,7 +42,7 @@
       "price": "$497",
       "unit": "",
       "cadence": "one-time",
-      "checkoutUrl": "https://buy.stripe.com/8x25kD8OJ6iQ1bQdit6oo2b",
+      "checkoutUrl": "https://payhip.com/b/REPLACE-standard",
       "description": "Full national industry report, recommendations, and email confirmation."
     },
     "quarterly": {
@@ -50,7 +50,7 @@
       "price": "$2,000",
       "unit": "/yr",
       "cadence": "annual",
-      "checkoutUrl": "https://buy.stripe.com/test_PLACEHOLDER_quarterly",
+      "checkoutUrl": "https://payhip.com/b/REPLACE-quarterly",
       "description": "Four quarterly updates plus four one-on-one coaching calls."
     },
     "all": {
@@ -58,7 +58,7 @@
       "price": "$2,997",
       "unit": "",
       "cadence": "one-time",
-      "checkoutUrl": "https://buy.stripe.com/test_PLACEHOLDER_all",
+      "checkoutUrl": "https://payhip.com/b/REPLACE-all",
       "description": "Every Sherlock industry report, current and future releases."
     }
   },

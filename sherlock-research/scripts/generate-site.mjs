@@ -449,7 +449,7 @@ ${nav("reports")}
             ${checkoutBtn()}
             <a href="${html(industry.sampleAsset)}" class="btn btn-outline btn-lg" data-analytics-event="sample_download">View sample pages ${arrowSvg}</a>
           </div>
-          <div class="hero-trust">${shieldSvg} Trusted by 2,600+ business owners</div>
+          <div class="hero-trust">${shieldSvg} Trusted by 2,000+ business owners</div>
         </div>
         <div class="report-hero-visual">
           <div class="book-wrap reveal">
@@ -473,8 +473,8 @@ ${nav("reports")}
         <div class="report-statbar-grid">
           <div class="rstat"><b>75+</b><span>5-Star Reviews</span></div>
           <div class="rstat"><b>500+</b><span>Operator Interviews</span></div>
-          <div class="rstat"><b>25,000+</b><span>Markets Analyzed</span></div>
-          <div class="rstat"><b>2,600+</b><span>Business Owners</span></div>
+          <div class="rstat"><b>100+</b><span>Major Markets</span></div>
+          <div class="rstat"><b>2,000+</b><span>Business Owners</span></div>
         </div>
       </div>
     </div>

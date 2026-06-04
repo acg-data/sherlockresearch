@@ -39,7 +39,17 @@ export default {
       return handleSuccess(request, env);
     }
 
-    return env.ASSETS.fetch(request);
+    const assetResponse = await env.ASSETS.fetch(request);
+    // HTML must always revalidate so deploys are never shadowed by stale edge cache.
+    // (Fingerprinted assets in /assets, *.png, *.svg keep their long immutable cache.)
+    const contentType = assetResponse.headers.get("content-type") || "";
+    if (contentType.includes("text/html")) {
+      const headers = new Headers(assetResponse.headers);
+      headers.set("Cache-Control", "public, max-age=0, must-revalidate");
+      headers.set("CDN-Cache-Control", "no-store");
+      return new Response(assetResponse.body, { status: assetResponse.status, statusText: assetResponse.statusText, headers });
+    }
+    return assetResponse;
   }
 };
 
