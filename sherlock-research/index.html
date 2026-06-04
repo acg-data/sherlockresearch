@@ -361,7 +361,8 @@ body{ background:#faf8f2; }
 .hero .btn-outline:hover{ background:rgba(2,24,40,.04); border-color:var(--navy); }
 
 /* Features — light hairline band (flips from navy) */
-.features{ background:#fffdf8; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:8px 0; }
+.features{ background:#fffdf8; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:54px 0 18px; }
+.feature-head h2{ font-size:clamp(28px,3.4vw,40px); line-height:1.12; }
 .feature{ color:var(--ink); padding:36px 30px; align-items:flex-start; }
 .feature:not(:first-child){ border-left:1px solid var(--line); }
 .feature svg{ width:28px; height:28px; }
@@ -558,22 +559,26 @@ body{ background:#faf8f2; }
   </section>
 
   <section class="features" aria-label="Sherlock Research advantages">
+    <div class="container feature-head" style="text-align:center;max-width:740px;margin:0 auto 34px">
+      <div class="section-eyebrow" style="justify-content:center">Why Sherlock</div>
+      <h2>Industry research built for your industry, to confidently succeed.</h2>
+    </div>
     <div class="container feature-grid">
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        <div><h3>Local Focus</h3><p>City and metro cuts built for specific market decisions.</p></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div><h3>Field Interviews</h3><p>Conversations with operators and owners on the ground.</p></div>
       </div>
       <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M19 8l-3 2"/></svg>
-        <div><h3>Field Interviews</h3><p>Operator and buyer conversations that explain the why.</p></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+        <div><h3>Customer Interviews</h3><p>What buyers actually want, in their own words.</p></div>
+      </div>
+      <div class="feature reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5M15 19c0-2 1-3.5 3-3.5s3 1.5 3 3.5"/></svg>
+        <div><h3>Employee Interviews</h3><p>Frontline views on pay, churn, and capacity.</p></div>
       </div>
       <div class="feature reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-        <div><h3>Industry Specific</h3><p>Vertical reports with benchmarks, channels, and pricing pressure.</p></div>
-      </div>
-      <div class="feature reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
-        <div><h3>Decision Ready</h3><p>Each section ends with actions, not a data dump.</p></div>
+        <div><h3>Industry Specific Reports</h3><p>Vertical benchmarks, channels, and pricing pressure.</p></div>
       </div>
     </div>
   </section>
@@ -1251,18 +1256,15 @@ body{ background:#faf8f2; }
 <footer>
   <div class="container foot-grid">
     <div class="foot-brand">
-      <a href="/" class="logo" aria-label="Sherlock Research home">
-        <img class="logo-mark" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true" />
-        <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
-      </a>
-      <p>Industry-specific research and local market intelligence for operators, investors, and teams that need clearer market signal.</p>
+      <a href="/" class="logo" aria-label="Sherlock Research home"><img class="logo-mark" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true"><span class="logo-stack">Sherlock<small>RESEARCH</small></span></a>
+      <p>Industry-specific research and local market intelligence for operators, investors, and agencies.</p>
       <div class="socials">
         <a href="mailto:hello@sherlockreports.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
         <a href="/contact" aria-label="Contact Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></a>
       </div>
     </div>
-    <div class="fcol"><h3>Reports</h3><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a><a href="/pest-control-report">Pest Control</a></div>
-    <div class="fcol"><h3>Resources</h3><a href="/pricing">Pricing</a><a href="/sample">Sample</a><a href="/faq">FAQ</a><a href="/blog-article">Research Note</a></div>
+    <div class="fcol"><h3>Reports</h3><a href="/reports">Report Library</a><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a></div>
+    <div class="fcol"><h3>Resources</h3><a href="/pricing">Pricing</a><a href="/sample">Sample Report</a><a href="/faq">FAQ</a><a href="/blog-article">Research Note</a></div>
     <div class="fcol"><h3>Company</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/terms-of-service">Terms</a></div>
   </div>
   <div class="container foot-bottom">
