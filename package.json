@@ -12,5 +12,7 @@
     "build": "npm run generate && npm run audit && npm run prepare-assets",
     "dev": "wrangler dev"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "wrangler": "^4.98.0"
+  }
 }

@@ -202,7 +202,7 @@
   "brand": { "@type": "Brand", "name": "Sherlock Research" },
   "image": "https://sherlockreports.com/og-default.png",
   "offers": [
-    {"@type":"Offer","name":"Standard Report","price":"497","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pricing","description":"Full national industry report, 40+ pages, instant PDF download."},
+    {"@type":"Offer","name":"Standard Report","price":"497","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pricing","description":"Full national industry report purchase with delivery status confirmed by email."},
     {"@type":"Offer","name":"Quarterly + Coaching","price":"2000","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pricing","description":"Four quarterly report updates plus four 1:1 coaching calls per year."},
     {"@type":"Offer","name":"All-Access Pass","price":"2997","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pricing","description":"Every Sherlock industry report, current and new releases, one-time payment."}
   ]
@@ -267,7 +267,7 @@
         <ul class="opt-list">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full 42-page report</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> National data &amp; forecasts</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Instant PDF download</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Email delivery status</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Local market signals</li>
         </ul>
       </div>
@@ -311,7 +311,7 @@
       <div class="checkout-summary">
         <div class="cs-label">You're getting</div>
         <div class="cs-name" id="checkoutName">Standard Report</div>
-        <div class="cs-detail" id="checkoutDetail">Full national industry report and forecasts (PDF)</div>
+        <div class="cs-detail" id="checkoutDetail">Full national industry report and delivery status</div>
       </div>
       <div class="checkout-action">
         <div class="checkout-price" id="checkoutPrice">$497</div>
@@ -383,7 +383,7 @@
 <section class="faq">
   <div class="container">
     <h2>Pricing questions, answered.</h2>
-    <p class="faq-sub">If we missed yours, email <a href="mailto:hello@sherlockresearch.com" style="color:var(--orange);font-weight:600">hello@sherlockresearch.com</a>.</p>
+    <p class="faq-sub">If we missed yours, email <a href="mailto:hello@sherlockreports.com" style="color:var(--orange);font-weight:600">hello@sherlockreports.com</a>.</p>
     <div class="faq-list">
       <details open>
         <summary>What's the difference between the three options?</summary>
@@ -398,8 +398,8 @@
         <p>The 2026 edition reflects the latest available data, refreshed in May 2026. Quarterly subscribers receive an updated edition every quarter, plus a coaching call to apply it.</p>
       </details>
       <details>
-        <summary>Is this a real download or a subscription?</summary>
-        <p>Standard and All-Access are instant PDF downloads you own forever. Quarterly + Coaching is an annual subscription that includes the downloads plus updates and calls.</p>
+        <summary>How does delivery work?</summary>
+        <p>Stripe Checkout records the selected plan, buyer email, and report metadata. Cloudflare Email sends a confirmation with the current delivery status. When a full PDF asset is configured, that email includes the secure report link; presell and pending-asset purchases state the expected follow-up path.</p>
       </details>
       <details>
         <summary>How is this different from IBISWorld or Statista?</summary>
@@ -437,7 +437,7 @@
         <a href="/" class="logo"><img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true"><div class="logo-stack">Sherlock<small>RESEARCH</small></div></a>
         <p>Actionable market intelligence and local insights for business owners who want to grow with confidence.</p>
       </div>
-      <div class="footer-col"><h5>Company</h5><a href="/about">About Us</a><a href="/#how">How It Works</a><a href="mailto:hello@sherlockresearch.com?subject=Careers%20at%20Sherlock%20Research">Careers</a><a href="mailto:hello@sherlockresearch.com">Contact Us</a></div>
+      <div class="footer-col"><h5>Company</h5><a href="/about">About Us</a><a href="/#how">How It Works</a><a href="mailto:hello@sherlockreports.com?subject=Careers%20at%20Sherlock%20Research">Careers</a><a href="mailto:hello@sherlockreports.com">Contact Us</a></div>
       <div class="footer-col"><h5>Services</h5><a href="/pricing">Industry Reports</a><a href="/contact?subject=Custom%20Research">Custom Research</a><a href="/pricing">Market Analysis</a><a href="/sample">Competitive Insights</a></div>
       <div class="footer-col"><h5>Resources</h5><a href="/blog-article">Blog</a><a href="/sample">Sample Reports</a><a href="/#how">Methodology</a><a href="/faq">FAQ</a></div>
       <div class="footer-col"><h5>Industries</h5><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a><a href="/pest-control-report">Pest Control</a></div>
@@ -453,7 +453,7 @@
 <script src="shared/app.js"></script>
 <script>
   var plans = {
-    single:    { name: "Standard Report",       price: "$497",  unit: "",     note: "One-time · national data",            detail: "Full national industry report and forecasts (PDF)", cta: "Get Standard Report" },
+    single:    { name: "Standard Report",       price: "$497",  unit: "",     note: "One-time - national data",            detail: "Full national industry report and delivery status", cta: "Get Standard Report" },
     quarterly: { name: "Quarterly + Coaching",   price: "$2,000",unit: "/yr",  note: "Billed annually · updates + 1:1 calls", detail: "Pick one industry · 4 quarterly updates + 4 coaching calls",  cta: "Start Quarterly Plan" },
     all:       { name: "All-Access Pass",        price: "$2,997",unit: "",     note: "One-time · every industry report",     detail: "Every Sherlock industry report — current and new releases", cta: "Get All-Access Pass" }
   };

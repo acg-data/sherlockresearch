@@ -1,1144 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-================================================================================
-SHERLOCK REPORT TEMPLATE — Landscaping
-================================================================================
-This file is the canonical industry-report template. To create a new industry
-report (e.g. roofing-report.html, hvac-report.html, pest-control-report.html):
-
-  1. Duplicate this file and rename it: <industry>-report.html
-  2. Search/replace the strings below — they're the per-industry tokens.
-
-PER-INDUSTRY TOKENS (search/replace these in the duplicated file):
-
-  - Industry name (Title Case)        ::  "Landscaping"
-  - Industry name (lowercase)         ::  "landscaping"
-  - Hero description sentence         ::  search for class="hero-desc"
-  - Industry Outlook stat (cover)     ::  search for class="cover-outlook-stat"
-  - Stats Bar — 5 metrics             ::  search for class="stats-inner" (5 stat-items)
-  - Lead paragraph (intro)            ::  search for class="lead-text"
-  - Chart data — 9 years of values    ::  search for "chart-bar" inside the market chart
-  - 4 Key Industry Insights cards     ::  search for class="insight-cards"
-  - Donut market-share %              ::  search for ".donut2" and "comp-legend"
-  - Top Competitive Factors           ::  search for class="comp-factors"
-  - 3 Use cases                       ::  search for class="rev-grid"
-  - Buy-card cover gradient           ::  .buy-cover background (currently green)
-  - Hero-cover gradient               ::  .hero-cover background (currently green)
-  - Sample Pages thumbnail gradient   ::  .sp-thumb.navy background (currently green)
-  - Sample Pages thumbnail accent     ::  Update .sp-thumb.cream if you want
-
-SHARED (do NOT change — keeps reports visually consistent):
-  - Nav, footer, design tokens (:root), button styles
-  - Purchase selector ($497 / $2,000 / $2,997)
-  - Macro-to-local comparison table, Who-For grid, Guarantee, FAQ, Final CTA
-  - Sticky buy bar JS at bottom
-
-NOTES:
-  - Checkout URLs are managed in shared/catalog.js.
-  - The "Look Inside" flipbook section has a placeholder mount — drop your
-    flipbook embed into #flipbookMount when ready.
-================================================================================
--->
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#0D1B2A" />
-<title>Pest Control Industry Report — Sherlock Research</title>
-<meta name="description" content="The 2026 Pest Control Industry Report from Sherlock Research: market size, growth forecasts, competitive landscape, and local benchmarks for U.S. pest control operators.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0D1B2A">
+
+<title>Pest Control Industry Report - Sherlock Research</title>
+<meta name="description" content="Sherlock Research Pest Control industry intelligence: market context, local demand signals, operator interviews, pricing pressure, and recommendations for pest control operators, investors, and agencies.">
 <link rel="canonical" href="https://sherlockreports.com/pest-control-report">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Pest Control Industry Report — Sherlock Research">
-<meta property="og:description" content="Market size, growth, competitive landscape, and local benchmarks for the U.S. pest control services industry. 40+ pages, instant PDF.">
+<meta property="og:title" content="Pest Control Industry Report - Sherlock Research">
+<meta property="og:description" content="Sherlock Research Pest Control industry intelligence: market context, local demand signals, operator interviews, pricing pressure, and recommendations for pest control operators, investors, and agencies.">
 <meta property="og:url" content="https://sherlockreports.com/pest-control-report">
 <meta property="og:image" content="https://sherlockreports.com/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Pest Control Industry Report","description":"Sherlock Research Pest Control industry intelligence: market context, local demand signals, operator interviews, pricing pressure, and recommendations for pest control operators, investors, and agencies.","brand":{"@type":"Brand","name":"Sherlock Research"},"image":"https://sherlockreports.com/og-default.png","offers":{"@type":"Offer","name":"Standard Report","price":"497","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pest-control-report"}}</script>
 <style>
-  :root {
-    --navy: #0D1B2A;
-    --navy-2: #142537;
-    --navy-3: #1c2f44;
-    --navy-4: #08111c;
-    --orange: #F26A21;
-    --orange-2: #FF8542;
-    --orange-3: #D9551A;
-    --orange-soft: #fef2eb;
-    --sage: #5C7F5A;
-    --sage-2: #6E9269;
-    --sage-soft: #eef2ed;
-    --slate: #60788E;
-    --slate-2: #7B92A8;
-    --stone: #F2EFE6;
-    --stone-2: #F8F5EC;
-    --stone-3: #FBF9F1;
-    --stone-deep: #E8E4D6;
-    --ink: #1a1a1a;
-    --muted: #6b6b6b;
-    --line: rgba(13, 27, 42, 0.08);
-    --line-strong: rgba(13, 27, 42, 0.14);
-    --line-dark: rgba(255,255,255,0.08);
-    --white: #ffffff;
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --radius: 10px;
-    --radius-lg: 18px;
-    --radius-xl: 24px;
-    --grad-orange: linear-gradient(135deg, #FF8542 0%, #F26A21 50%, #D9551A 100%);
-    --grad-navy: linear-gradient(135deg, #1c2f44 0%, #0D1B2A 100%);
-    --grad-navy-deep: radial-gradient(ellipse at top right, #1c2f44 0%, #0D1B2A 60%, #08111c 100%);
-    --grad-sage: linear-gradient(135deg, #6E9269 0%, #5C7F5A 100%);
-    --grad-stone-warm: linear-gradient(160deg, #F8F5EC 0%, #F2EFE6 50%, #EDE7D5 100%);
-    --grad-text: linear-gradient(135deg, #F26A21 0%, #FF8542 50%, #F26A21 100%);
-    --grad-card: linear-gradient(180deg, #ffffff 0%, #fbf9f1 100%);
-    --shadow-sm: 0 1px 2px rgba(13,27,42,0.03), 0 2px 6px rgba(13,27,42,0.03);
-    --shadow-md: 0 2px 6px rgba(13,27,42,0.03), 0 12px 28px rgba(13,27,42,0.06);
-    --shadow-lg: 0 4px 12px rgba(13,27,42,0.04), 0 32px 72px rgba(13,27,42,0.09);
-    --shadow-orange: 0 6px 18px rgba(242,106,33,0.18), 0 2px 6px rgba(242,106,33,0.12);
+  .library-hero,.report-hero,.success-hero,.sample-hero{background:var(--grad-navy-deep);color:#fff;padding:68px 0}
+  .library-hero h1,.report-hero h1,.success-hero h1,.sample-hero h1{color:#fff;font-size:clamp(40px,6vw,68px);max-width:880px;margin-bottom:18px}
+  .hero-copy{max-width:760px}
+  .hero-copy p,.report-hero p,.success-hero p,.sample-hero p{color:rgba(255,255,255,.74);font-size:17px;max-width:720px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--orange-2);margin-bottom:14px}
+  .status-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);border-radius:999px;padding:8px 13px;margin-bottom:20px;color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+  .signal-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px;max-width:780px}
+  .signal-item{display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);border-radius:10px;padding:11px 12px;color:rgba(255,255,255,.82);font-size:12.5px;font-weight:700}
+  .signal-item svg{color:var(--orange-2);flex:0 0 auto}
+  .page-band{padding:70px 0;background:var(--stone-3)}
+  .page-band.white{background:#fff}
+  .two-col{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:34px;align-items:start}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;box-shadow:var(--shadow-sm)}
+  .panel.dark{background:var(--navy);color:#fff;border-color:rgba(255,255,255,.1)}
+  .panel.dark h2,.panel.dark h3{color:#fff}
+  .panel h2{font-size:30px;margin-bottom:12px}
+  .panel h3{font-family:var(--font-body);font-size:15px;letter-spacing:0;margin-bottom:8px}
+  .panel p,.panel li{color:var(--muted);font-size:14.5px}
+  .panel.dark p,.panel.dark li{color:rgba(255,255,255,.72)}
+  .research-copy h2{font-size:30px;margin-bottom:12px}
+  .research-copy p{color:var(--muted);font-size:15px;max-width:850px}
+  .module-grid,.persona-grid,.report-library-grid,.ops-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .module-card,.persona-card,.industry-card,.ops-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;box-shadow:var(--shadow-sm)}
+  .module-card{display:grid;gap:12px;align-content:start}
+  .module-icon,.card-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff3eb;color:var(--orange);border:1px solid #ffd8c3}
+  .industry-card{display:flex;flex-direction:column;gap:14px;min-height:245px}
+  .industry-card .card-icon{background:var(--stone-2);color:var(--navy);border-color:var(--line)}
+  .industry-card h3{font-size:23px}
+  .industry-card p{color:var(--muted);font-size:13.5px;flex:1}
+  .tag-row{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{border:1px solid var(--line);background:var(--stone-2);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+  .tag.available{background:#edf5ed;color:#42673f;border-color:#cbdcca}.tag.presell{background:#fff0e8;color:#b84d15;border-color:#ffd2bc}.tag.waitlist{background:#eef4fa;color:#335b7d;border-color:#c9dae9}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .asset-list{display:grid;gap:12px;margin-top:18px}
+  .asset-row{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);border-radius:10px;padding:14px;background:#fff}
+  .asset-row span{color:var(--muted);font-size:13px}
+  .asset-row b{display:flex;align-items:center;gap:10px}
+  .asset-row svg{color:var(--orange);flex:0 0 auto}
+  .delivery-note{border-left:3px solid var(--orange);padding:12px 14px;background:#fff8f4;color:var(--muted);font-size:13.5px;margin-top:18px}
+  .filters{display:grid;grid-template-columns:1.2fr .6fr .6fr;gap:12px;margin:28px 0 26px}
+  .filters input,.filters select,.lead-form input,.lead-form textarea,.lead-form select{width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}
+  .lead-form{display:grid;gap:12px;margin-top:18px}
+  .lead-form textarea{min-height:110px;resize:vertical}
+  .form-note{font-size:12px;color:var(--muted);min-height:18px}
+  .checkout-box{position:sticky;top:88px}
+  .price{font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--navy);line-height:1;margin:10px 0}
+  .fine{font-size:12px;color:var(--muted)}
+  .ops-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:13px}
+  .ops-table th,.ops-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ops-table th{background:var(--stone);color:var(--navy);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+  .ops-table tr:last-child td{border-bottom:0}
+  .code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:var(--navy)}
+  @media(max-width:900px){.two-col,.module-grid,.persona-grid,.report-library-grid,.ops-grid,.filters,.signal-strip{grid-template-columns:1fr}.checkout-box{position:static}.library-hero,.report-hero,.success-hero,.sample-hero{padding:48px 0}.page-band{padding:48px 0}}
+
+  /* ===== Industry report — premium redesign ===== */
+  .report-hero-pro{padding:0}
+  .report-hero-pro>.container{padding-top:32px;padding-bottom:52px}
+  .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.58);margin-bottom:28px;flex-wrap:wrap}
+  .breadcrumb a{color:rgba(255,255,255,.72)}.breadcrumb a:hover{color:var(--orange-2)}
+  .breadcrumb .chev{width:13px;height:13px;opacity:.5}.breadcrumb span{color:#fff}
+  .report-hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+  .report-hero-copy h1{color:#fff;font-size:clamp(38px,5.2vw,58px);line-height:1.04;letter-spacing:-.02em;margin:14px 0 18px;max-width:none}
+  .report-hero-copy>p{color:rgba(255,255,255,.74);font-size:16.5px;line-height:1.6;max-width:560px;margin-bottom:22px}
+  .hero-checks{list-style:none;display:grid;gap:11px;margin:0 0 26px;padding:0}
+  .hero-checks li{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.9);font-weight:600;font-size:14.5px}
+  .hero-checks .ck{width:20px;height:20px;color:#fff;background:var(--orange);border-radius:50%;padding:4px;flex:0 0 auto}
+  .hero-trust{display:inline-flex;align-items:center;gap:9px;margin-top:22px;color:rgba(255,255,255,.7);font-size:13px;font-weight:600}
+  .hero-trust svg{width:18px;height:18px;color:var(--orange-2)}
+  .report-hero-visual{display:flex;justify-content:center}
+  .book-wrap{position:relative;perspective:1600px}
+  .report-book{position:relative;width:clamp(220px,24vw,288px);aspect-ratio:3/4;transform:rotateY(-22deg) rotateX(3deg);transform-style:preserve-3d;border-radius:3px 7px 7px 3px;box-shadow:-26px 34px 60px -22px rgba(0,0,0,.6),-2px 6px 14px rgba(0,0,0,.4)}
+  .book-face{position:absolute;inset:0;border-radius:3px 7px 7px 3px;padding:30px 26px 26px;color:#fff;display:flex;flex-direction:column;background:linear-gradient(155deg,var(--accent) 0%,#0a2236 58%,#021828 100%);border-left:6px solid rgba(0,0,0,.4);overflow:hidden}
+  .book-face::after{content:"";position:absolute;right:0;top:0;bottom:0;width:8px;background:repeating-linear-gradient(180deg,#e8e3d6,#e8e3d6 1px,#cfc9ba 1px,#cfc9ba 3px)}
+  .book-spine{position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(255,255,255,.06));border-radius:3px 0 0 3px;z-index:2}
+  .book-logo{width:34px;height:34px;object-fit:contain;margin-bottom:auto}
+  .book-ed{color:var(--orange-2);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+  .book-name{font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.12;margin-bottom:12px}
+  .book-tagline{font-size:11px;color:rgba(255,255,255,.66)}
+  .book-badge{position:absolute;right:-6px;bottom:24px;z-index:3;display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--navy);font-size:12px;font-weight:700;padding:9px 13px;border-radius:999px;box-shadow:0 14px 30px rgba(2,24,40,.34)}
+  .book-badge svg{color:var(--orange)}
+  .report-statbar{border-top:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);padding:24px 0 20px}
+  .report-statbar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .rstat{display:flex;flex-direction:column;gap:6px;padding-left:18px;border-left:2px solid rgba(255,255,255,.12)}
+  .rstat:first-child{border-left:0;padding-left:0}
+  .rstat b{font-family:var(--font-display);font-weight:700;color:#fff;font-size:clamp(26px,3vw,34px);line-height:1}
+  .rstat span{color:rgba(255,255,255,.6);font-size:12.5px}
+  .report-statbar-note{margin-top:16px;color:rgba(255,255,255,.42);font-size:11.5px}
+  .teaser-band{background:var(--grad-stone)}
+  .band-sub{color:var(--muted);max-width:640px;margin:10px 0 30px;font-size:15px}
+  .teaser-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .teaser{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:12px;overflow:hidden}
+  .teaser-head{display:flex;align-items:center;justify-content:space-between}
+  .teaser-chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--stone-2);border:1px solid var(--line);border-radius:999px;padding:5px 10px}
+  .teaser-chip svg{width:12px;height:12px}
+  .teaser-chip.free{color:#42673f;background:#edf5ed;border-color:#cbdcca}
+  .teaser h3{font-family:var(--font-body);font-size:15px;line-height:1.3;color:var(--navy);letter-spacing:0;margin:0}
+  .teaser-chart{position:relative;min-height:148px}
+  .bar-chart{width:100%;height:auto}
+  .bc-label{font:600 12px/1 var(--font-body);fill:var(--ink)}
+  .bc-val{font:700 12px/1 var(--font-body);fill:var(--muted)}
+  .teaser-blur{filter:blur(7px);opacity:.92;pointer-events:none;user-select:none}
+  .teaser-veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.7))}
+  .teaser-veil-in{text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px}
+  .teaser-veil-in svg{width:26px;height:26px;color:var(--navy)}
+  .teaser-veil-in b{font-size:13.5px;color:var(--navy)}
+  .teaser-foot{margin-top:24px;color:var(--muted);font-size:13.5px}
+  .teaser-foot a{color:var(--orange);font-weight:700;display:inline-flex;align-items:center;gap:6px}
+  .teaser-foot a svg{width:14px;height:14px}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+  .why-item{display:flex;gap:13px;align-items:flex-start}
+  .why-item svg{width:24px;height:24px;color:var(--orange);flex:0 0 auto;margin-top:2px}
+  .why-item b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:3px}
+  .why-item span{color:var(--muted);font-size:13px;line-height:1.45}
+  .report-final-cta{position:relative;overflow:hidden;background:var(--grad-navy-deep);color:#fff;padding:72px 0}
+  .report-final-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center}
+  .report-final-cta h2{color:#fff;font-size:clamp(30px,4vw,46px);margin:12px 0 14px;max-width:560px}
+  .report-final-cta p{color:rgba(255,255,255,.7);max-width:520px;margin-bottom:20px}
+  .final-checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px;padding:0}
+  .final-checks li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.88);font-size:14px;font-weight:600}
+  .final-checks .ck{width:18px;height:18px;color:#fff;background:var(--orange);border-radius:50%;padding:3px;flex:0 0 auto}
+  .report-final-visual{display:flex;justify-content:center;perspective:1500px}
+  .report-book-tilt{transform:rotateY(18deg) rotateX(4deg)}
+  .btn-sm{min-height:0;padding:9px 15px;font-size:12.5px}
+  @media(max-width:900px){
+    .report-hero-grid{grid-template-columns:1fr;gap:28px}
+    .report-hero-visual{order:-1}
+    .report-statbar-grid{grid-template-columns:1fr 1fr;gap:16px}
+    .teaser-grid{grid-template-columns:1fr 1fr}
+    .why-grid{grid-template-columns:1fr}
+    .report-final-grid{grid-template-columns:1fr}
+    .report-final-visual{display:none}
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    font-family: var(--font-body);
-    color: var(--ink);
-    background: #FCFBF7;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+  @media(max-width:560px){
+    .report-statbar-grid,.teaser-grid,.final-checks{grid-template-columns:1fr}
+    .rstat{padding-left:0;border-left:0}
   }
-  h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 700; color: var(--navy); letter-spacing: -0.015em; line-height: 1.1; }
-  a { color: inherit; text-decoration: none; }
-  img, svg { display: block; max-width: 100%; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-  .grad-text { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 13px 22px; border-radius: var(--radius);
-    font-family: var(--font-body); font-size: 14px; font-weight: 600;
-    cursor: pointer; border: none; min-height: 44px;
-    transition: transform 0.2s cubic-bezier(.2,.8,.2,1), box-shadow 0.2s, filter 0.2s;
-    text-align: center; position: relative; overflow: hidden;
-  }
-  .btn-primary { background: var(--grad-orange); color: var(--white); box-shadow: var(--shadow-orange); }
-  .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 16px 36px rgba(242,106,33,0.32); }
-  .btn-dark { background: var(--grad-navy); color: var(--white); box-shadow: var(--shadow-md); }
-  .btn-dark:hover { transform: translateY(-2px); }
-  .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.25); }
-  .btn-outline:hover { background: rgba(255,255,255,0.08); }
-  .btn-outline-dark { background: var(--white); color: var(--navy); border: 1.5px solid var(--line-strong); }
-  .btn-outline-dark:hover { border-color: var(--navy); }
-  .btn-lg { padding: 16px 28px; font-size: 15px; }
-  .btn-block { width: 100%; }
-
-  /* ============ NAV ============ */
-  .nav {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(13,27,42,0.94); backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--line-dark);
-  }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--white); }
-  .logo-mark { width: 34px; height: 34px; border-radius: 50%; background: var(--grad-orange); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(242,106,33,0.3); }
-  .logo-mark svg { width: 22px; height: 22px; }
-  .logo-stack { line-height: 1; }
-  .logo-stack small { display: block; font-family: var(--font-body); font-size: 8px; font-weight: 700; letter-spacing: 0.22em; color: var(--orange-2); margin-top: 3px; }
-  .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); }
-  .nav-links a:hover { color: var(--orange-2); }
-  .nav-right { display: flex; align-items: center; gap: 14px; }
-
-  /* ============ HERO ============ */
-  .hero {
-    background: radial-gradient(ellipse 60% 50% at 90% 20%, rgba(242,106,33,0.14), transparent 55%),
-                radial-gradient(ellipse 50% 40% at 10% 80%, rgba(92,127,90,0.12), transparent 55%),
-                var(--grad-navy-deep);
-    color: var(--white); padding: 36px 0 64px; position: relative; overflow: hidden;
-  }
-  .breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
-  .breadcrumb a:hover { color: var(--orange-2); }
-  .breadcrumb .current { color: var(--orange-2); }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
-  .hero h1 { color: var(--white); font-size: clamp(40px, 5.5vw, 60px); line-height: 1; margin-bottom: 12px; }
-  .hero-edition { color: var(--orange-2); font-weight: 600; font-size: 15px; letter-spacing: 0.05em; margin-bottom: 18px; position: relative; padding-top: 14px; }
-  .hero-edition::before { content: ''; position: absolute; top: 0; left: 0; width: 48px; height: 3px; background: var(--grad-orange); border-radius: 2px; }
-  .hero-desc { font-size: 17px; color: rgba(255,255,255,0.72); margin-bottom: 28px; max-width: 480px; line-height: 1.55; }
-  .hero-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; max-width: 520px; }
-  .hero-feature { text-align: center; }
-  .hero-feature-icon { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: var(--orange-2); }
-  .hero-feature span { font-size: 11.5px; color: rgba(255,255,255,0.7); line-height: 1.3; display: block; }
-  .hero-cta-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
-  .hero-meta { display: flex; gap: 22px; font-size: 12.5px; color: rgba(255,255,255,0.5); flex-wrap: wrap; }
-  .hero-meta span { display: flex; align-items: center; gap: 6px; }
-
-  .hero-visual { position: relative; }
-  .hero-cover {
-    aspect-ratio: 4/3; border-radius: var(--radius-xl); overflow: hidden;
-    background: linear-gradient(135deg, #4a3c5c, #2e2438);
-    box-shadow: var(--shadow-lg); position: relative; border: 1px solid rgba(255,255,255,0.08);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .hero-cover::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 12px);
-  }
-  .cover-outlook {
-    position: absolute; top: 22px; right: 22px; background: rgba(8,17,28,0.85); backdrop-filter: blur(10px);
-    border: 1px solid rgba(242,106,33,0.2); border-radius: 14px; padding: 18px 22px; text-align: left;
-  }
-  .cover-outlook-label { font-size: 9px; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 6px; }
-  .cover-outlook h4 { color: var(--white); font-size: 18px; margin-bottom: 10px; }
-  .cover-outlook-stat { font-family: var(--font-display); font-size: 32px; font-weight: 800; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
-  .cover-outlook-sub { font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 4px; }
-  .cover-art { position: relative; z-index: 1; color: rgba(255,255,255,0.25); text-align: center; font-size: 12px; }
-  .cover-art svg { width: 60px; height: 60px; margin: 0 auto 8px; }
-  .cover-brand { position: relative; z-index: 1; max-width: 65%; max-height: 75%; width: auto; height: auto; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.35)); }
-
-  /* ============ STATS BAR ============ */
-  .stats-bar { margin-top: -36px; position: relative; z-index: 5; }
-  .stats-inner {
-    background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
-    display: grid; grid-template-columns: repeat(5, 1fr); padding: 8px; border: 1px solid var(--line);
-  }
-  .stat-item { padding: 22px 20px; display: flex; gap: 14px; align-items: center; position: relative; }
-  .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 24%; bottom: 24%; width: 1px; background: var(--line); }
-  .stat-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--stone); display: flex; align-items: center; justify-content: center; color: var(--sage); flex-shrink: 0; }
-  .stat-val { font-family: var(--font-display); font-size: 25px; font-weight: 800; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
-  .stat-label { font-size: 10.5px; color: var(--muted); line-height: 1.35; margin-top: 4px; }
-
-  /* ============ MAIN LAYOUT ============ */
-  .main { padding: 80px 0; }
-  .main-grid { display: grid; grid-template-columns: 1fr 360px; gap: 56px; align-items: start; }
-  .lead-text { font-size: 18px; color: var(--ink); line-height: 1.75; margin-bottom: 40px; font-weight: 400; }
-
-  /* Content cards */
-  .content-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
-  .card-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-family: var(--font-body); }
-
-  .toggle-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .toggle { display: inline-flex; background: var(--stone); border-radius: 8px; padding: 3px; }
-  .toggle button { border: none; background: transparent; padding: 7px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer; font-family: var(--font-body); }
-  .toggle button.active { background: var(--navy); color: var(--white); }
-
-  /* Bar chart */
-  .chart { display: flex; align-items: flex-end; gap: 12px; height: 240px; padding: 24px 0 0; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
-  .chart-bar { flex: 1; border-radius: 5px 5px 0 0; position: relative; min-height: 20px; transition: opacity 0.2s; }
-  .chart-bar .cval { position: absolute; top: -22px; left: 0; right: 0; text-align: center; font-size: 11px; font-weight: 700; color: var(--navy); white-space: nowrap; }
-  .chart-bar .clabel { position: absolute; bottom: -24px; left: 0; right: 0; text-align: center; font-size: 11px; color: var(--muted); }
-  .chart-legend { display: flex; gap: 20px; justify-content: center; font-size: 12px; color: var(--muted); margin-top: 28px; }
-  .chart-legend span { display: flex; align-items: center; gap: 6px; }
-  .ldot { width: 12px; height: 12px; border-radius: 3px; }
-  .source-note { font-size: 11px; color: var(--muted); margin-top: 14px; line-height: 1.5; }
-  .source-note strong { color: var(--ink); }
-
-  h2.section-h { font-size: clamp(26px, 3vw, 34px); margin: 48px 0 8px; }
-  .section-sub-text { color: var(--muted); font-size: 15px; margin-bottom: 24px; max-width: 620px; line-height: 1.6; }
-
-  /* ============ FLIPBOOK ============ */
-  .flipbook-section { background: var(--grad-navy-deep); color: var(--white); padding: 72px 0; position: relative; overflow: hidden; }
-  .flipbook-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-  .flipbook-head { text-align: center; margin-bottom: 40px; position: relative; }
-  .flipbook-eyebrow { font-size: 11px; letter-spacing: 0.24em; color: var(--orange-2); text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
-  .flipbook-head h2 { color: var(--white); font-size: clamp(28px, 4vw, 42px); margin-bottom: 14px; }
-  .flipbook-head h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; }
-  .flipbook-head p { color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto; font-size: 15px; }
-
-  .flipbook-stage { max-width: 860px; margin: 0 auto; position: relative; }
-  .flipbook-mount {
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px; aspect-ratio: 1.5/1; overflow: hidden; position: relative;
-    backdrop-filter: blur(4px); box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-  }
-  .flipbook-placeholder {
-    position: absolute; inset: 0; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 8px; color: rgba(255,255,255,0.4);
-    border: 2px dashed rgba(255,255,255,0.14); border-radius: 16px;
-  }
-  .flipbook-placeholder .fp-title { font-family: var(--font-display); font-size: 18px; color: rgba(255,255,255,0.7); margin-top: 8px; }
-  .flipbook-placeholder .fp-sub { font-size: 12px; }
-  .flipbook-placeholder code { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; color: var(--orange-2); font-size: 11px; }
-  .flipbook-cta { text-align: center; margin-top: 32px; position: relative; }
-
-  /* ============ TOC ============ */
-  .toc-section { background: var(--stone-2); padding: 72px 0; }
-  .toc-head { text-align: center; margin-bottom: 44px; }
-  .toc-head .eyebrow { font-size: 11px; letter-spacing: 0.24em; color: var(--orange); text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
-  .toc-head h2 { font-size: clamp(28px, 4vw, 40px); }
-  .toc-head p { color: var(--muted); margin-top: 12px; }
-  .toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 980px; margin: 0 auto; }
-  .toc-item { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; gap: 14px; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
-  .toc-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  .toc-num { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--orange); line-height: 1; flex-shrink: 0; opacity: 0.5; }
-  .toc-item h4 { font-family: var(--font-body); font-size: 14.5px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-  .toc-item p { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-  /* ============ INSIGHTS CARDS ============ */
-  .insight-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
-  .insight-c { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 24px 20px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
-  .insight-c:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  .insight-c-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--sage-soft); color: var(--sage); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
-  .insight-c h4 { font-family: var(--font-body); font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-  .insight-c p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
-
-  /* donut */
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-  .donut2 { width: 150px; height: 150px; border-radius: 50%; margin: 10px auto 20px; position: relative;
-    background: conic-gradient(var(--sage) 0% 52.0%, var(--navy) 52.0% 78.0%, var(--stone-deep) 78.0% 92.0%, var(--orange-3) 92.0% 100%); }
-  .donut2::after { content: ''; position: absolute; inset: 32px; background: var(--white); border-radius: 50%; }
-  .comp-legend { font-size: 12.5px; }
-  .comp-legend > div { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .comp-legend .pctval { margin-left: auto; color: var(--orange); font-weight: 700; }
-  .comp-factors h4 { font-family: var(--font-body); font-size: 14px; font-weight: 700; margin-bottom: 16px; }
-  .comp-factors ul { list-style: none; }
-  .comp-factors li { display: flex; align-items: center; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; color: var(--ink); }
-  .comp-factors li:last-child { border-bottom: none; }
-  .comp-factors li .cf-ico { color: var(--sage); flex-shrink: 0; }
-
-  /* whats included */
-  .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; }
-  .included-grid li { list-style: none; display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; font-size: 14px; color: var(--ink); }
-  .included-grid li .ck { width: 18px; height: 18px; background: var(--grad-sage); border-radius: 50%; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
-  .included-grid li .hl { color: var(--orange); font-weight: 700; }
-
-  .method-box { background: var(--stone); border-radius: 12px; padding: 26px; margin-top: 24px; }
-  .method-box h4 { font-family: var(--font-body); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
-  .method-box p { font-size: 13px; color: var(--muted); line-height: 1.65; }
-
-  /* ============ SIDEBAR (sticky) ============ */
-  .sidebar { position: sticky; top: 84px; }
-  .buy-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); margin-bottom: 20px; }
-  .buy-cover { aspect-ratio: 3/2.1; background: linear-gradient(135deg, #4a3c5c, #2e2438); position: relative; padding: 24px; color: var(--white); }
-  .buy-cover .bc-label { font-size: 8px; letter-spacing: 0.2em; color: var(--orange-2); text-transform: uppercase; font-weight: 700; }
-  .buy-cover .bc-title { font-family: var(--font-display); font-size: 20px; margin-top: 8px; line-height: 1.1; }
-  .buy-cover .bc-ed { font-size: 9px; color: var(--orange-2); margin-top: 6px; letter-spacing: 0.1em; }
-  .buy-cover .bc-tag { font-size: 9px; color: rgba(255,255,255,0.6); margin-top: 4px; }
-  .buy-body { padding: 22px; }
-  .buy-checks { list-style: none; margin-bottom: 20px; }
-  .buy-checks li { display: flex; align-items: center; gap: 9px; padding: 7px 0; font-size: 13px; color: var(--ink); }
-  .buy-checks li svg { color: var(--sage); flex-shrink: 0; }
-  .buy-divider { border: none; border-top: 1px solid var(--line); margin: 4px 0 18px; }
-
-  .buy-selected-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
-  .buy-selected-name { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--navy); }
-  .buy-price-row { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 4px; }
-  .buy-price { font-family: var(--font-display); font-size: 40px; font-weight: 800; color: var(--navy); line-height: 1; }
-  .buy-price-unit { font-size: 14px; color: var(--muted); font-weight: 500; }
-  .buy-price-note { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
-  #sidebarCityWrap { display: none; margin-bottom: 16px; }
-  #sidebarCityWrap label { font-size: 11px; font-weight: 600; color: var(--navy); display: block; margin-bottom: 6px; }
-  select.city-select { width: 100%; padding: 11px 14px; border: 1px solid var(--line-strong); border-radius: 8px; font-family: var(--font-body); font-size: 13px; color: var(--navy); background: var(--white); cursor: pointer; }
-  .change-plan { display: block; text-align: center; font-size: 12px; color: var(--orange); font-weight: 600; margin-top: 12px; cursor: pointer; }
-  .change-plan:hover { text-decoration: underline; }
-  .buy-trust { text-align: center; font-size: 11px; color: var(--muted); margin-top: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; }
-
-  .sample-pages-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm); }
-  .sample-pages-card h4 { font-family: var(--font-body); font-size: 14px; font-weight: 700; margin-bottom: 14px; }
-  .sample-pages-thumbs { display: flex; gap: 10px; margin-bottom: 16px; }
-  .sp-thumb { flex: 1; aspect-ratio: 3/4; border-radius: 8px; border: 1px solid var(--line); }
-  .sp-thumb.navy { background: linear-gradient(135deg, #4a3c5c, #2e2438); }
-  .sp-thumb.cream { background: var(--stone); }
-
-  /* ============ PURCHASE SELECTOR ============ */
-  .purchase { background: var(--grad-stone-warm); padding: 80px 0; }
-  .purchase-head { text-align: center; margin-bottom: 16px; }
-  .purchase-head .eyebrow { font-size: 11px; letter-spacing: 0.24em; color: var(--orange); text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
-  .purchase-head h2 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 14px; }
-  .purchase-head h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; }
-  .purchase-head p { color: var(--muted); max-width: 580px; margin: 0 auto 12px; font-size: 16px; }
-  .axis-note { display: inline-flex; gap: 8px; align-items: center; font-size: 12.5px; color: var(--muted); background: var(--white); border: 1px solid var(--line); padding: 8px 16px; border-radius: 100px; margin-bottom: 44px; }
-  .axis-note b { color: var(--navy); }
-
-  .options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 36px; align-items: stretch; }
-  .opt-card {
-    background: var(--white); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
-    padding: 30px 24px; cursor: pointer; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-    position: relative; display: flex; flex-direction: column;
-  }
-  .opt-card:hover { border-color: var(--slate-2); transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  .opt-card.selected { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(242,106,33,0.08), var(--shadow-md); }
-  .opt-card.popular { border-color: rgba(242,106,33,0.4); }
-  .opt-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--grad-orange); color: var(--white); font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; padding: 6px 15px; border-radius: 100px; box-shadow: var(--shadow-orange); white-space: nowrap; }
-  .opt-radio { width: 20px; height: 20px; border: 2px solid var(--line-strong); border-radius: 50%; position: absolute; top: 26px; right: 24px; transition: border-color 0.2s; }
-  .opt-card.selected .opt-radio { border-color: var(--orange); background: var(--orange); }
-  .opt-card.selected .opt-radio::after { content: ''; position: absolute; inset: 4px; background: var(--white); border-radius: 50%; }
-  .opt-axis { font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--sage); margin-bottom: 12px; }
-  .opt-name { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--navy); margin-bottom: 14px; padding-right: 24px; line-height: 1.1; }
-  .opt-price { font-family: var(--font-display); font-size: 36px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 3px; letter-spacing: -0.02em; }
-  .opt-price .unit { font-size: 14px; color: var(--muted); font-weight: 500; }
-  .opt-price-sub { font-size: 11.5px; color: var(--muted); margin-bottom: 18px; min-height: 16px; }
-  .opt-compare { font-size: 11px; color: var(--sage); font-weight: 600; margin-bottom: 16px; min-height: 14px; }
-  .opt-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-bottom: 18px; flex: 1; }
-  .opt-list { list-style: none; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); }
-  .opt-list li { font-size: 12.5px; color: var(--ink); padding: 6px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
-  .opt-list li svg { color: var(--sage); flex-shrink: 0; margin-top: 2px; }
-  .opt-list li.muted { color: var(--muted); }
-  .opt-list li.muted svg { color: var(--line-strong); }
-
-  .checkout-bar {
-    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg);
-    padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    box-shadow: var(--shadow-md); flex-wrap: wrap; max-width: 900px; margin: 0 auto;
-  }
-  .checkout-summary { flex: 1; min-width: 260px; }
-  .checkout-summary .cs-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; }
-  .checkout-summary .cs-name { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--navy); margin: 4px 0; }
-  .checkout-summary .cs-detail { font-size: 13px; color: var(--muted); }
-  #checkoutCityWrap { display: none; margin-top: 10px; }
-  #checkoutCityWrap select { padding: 9px 12px; border: 1px solid var(--line-strong); border-radius: 8px; font-family: var(--font-body); font-size: 13px; min-width: 200px; }
-  .checkout-action { text-align: right; }
-  .checkout-price { font-family: var(--font-display); font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 10px; }
-  .checkout-price .unit { font-size: 14px; color: var(--muted); font-weight: 500; }
-
-  /* ============ COMPARISON ============ */
-  .compare { background: var(--white); padding: 80px 0; }
-  .compare-head { text-align: center; margin-bottom: 44px; }
-  .compare-head .eyebrow { font-size: 11px; letter-spacing: 0.24em; color: var(--orange); text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
-  .compare-head h2 { font-size: clamp(28px, 4vw, 42px); }
-  .compare-table { max-width: 900px; margin: 0 auto; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
-  .compare-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; }
-  .compare-row > div { padding: 18px 20px; border-bottom: 1px solid var(--line); font-size: 13.5px; display: flex; align-items: center; }
-  .compare-row:last-child > div { border-bottom: none; }
-  .compare-row.head > div { background: var(--stone); font-weight: 700; color: var(--navy); font-size: 13px; }
-  .compare-row.head .col-sherlock { background: var(--navy); color: var(--white); }
-  .compare-row .col-sherlock { background: rgba(242,106,33,0.05); font-weight: 600; color: var(--navy); }
-  .compare-row .feat { font-weight: 600; color: var(--navy); }
-  .ci-yes { color: var(--sage); } .ci-no { color: #c5483f; } .ci-mid { color: var(--slate); }
-
-  /* ============ WHO FOR ============ */
-  .whofor { background: var(--stone-2); padding: 72px 0; }
-  .whofor-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
-  .who-card { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 26px 22px; }
-  .who-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--grad-navy); color: var(--white); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-  .who-card h4 { font-family: var(--font-body); font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-  .who-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
-
-  /* ============ REVIEWS ============ */
-  .rev { background: var(--white); padding: 72px 0; }
-  .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .rev-card { background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 26px; }
-  .rev-stars { color: var(--orange); letter-spacing: 3px; font-size: 14px; margin-bottom: 12px; }
-  .rev-card h4 { font-family: var(--font-body); font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-  .rev-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
-  .rev-card cite { font-size: 12.5px; font-weight: 600; font-style: normal; color: var(--ink); display: block; padding-top: 14px; border-top: 1px solid var(--line); }
-
-  /* ============ GUARANTEE ============ */
-  .guarantee { background: var(--grad-stone-warm); padding: 64px 0; }
-  .guarantee-inner { max-width: 760px; margin: 0 auto; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 48px; text-align: center; box-shadow: var(--shadow-md); position: relative; }
-  .guarantee-badge { width: 72px; height: 72px; border-radius: 50%; background: var(--grad-sage); color: var(--white); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 12px 28px rgba(92,127,90,0.3); }
-  .guarantee-inner h2 { font-size: 28px; margin-bottom: 14px; }
-  .guarantee-inner p { color: var(--muted); font-size: 15px; line-height: 1.65; max-width: 560px; margin: 0 auto; }
-
-  /* ============ FAQ ============ */
-  .faq { background: var(--white); padding: 80px 0; }
-  .faq h2 { font-size: clamp(28px, 3.6vw, 38px); text-align: center; margin-bottom: 40px; }
-  .faq-list { max-width: 760px; margin: 0 auto; }
-  details { border: 1px solid var(--line); background: var(--grad-card); border-radius: 12px; padding: 20px 24px; margin-bottom: 10px; transition: border-color 0.2s; }
-  details[open] { border-color: var(--orange); }
-  summary { font-size: 15.5px; font-weight: 600; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; list-style: none; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: '+'; color: var(--orange); font-size: 26px; font-weight: 300; flex-shrink: 0; line-height: 1; }
-  details[open] summary::after { content: '−'; }
-  details p { margin-top: 14px; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
-
-  /* ============ FINAL CTA ============ */
-  .final { background: radial-gradient(ellipse 60% 50% at 30% 0%, rgba(242,106,33,0.2), transparent 60%), var(--grad-navy-deep); color: var(--white); padding: 80px 0; position: relative; overflow: hidden; }
-  .final::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; }
-  .final-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; position: relative; }
-  .final h2 { color: var(--white); font-size: clamp(32px, 4.5vw, 52px); line-height: 1.05; margin-bottom: 20px; }
-  .final h2 em { font-style: italic; font-weight: 500; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .final p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 28px; max-width: 460px; }
-  .final-fox { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; }
-  .final-fox img { max-width: 75%; max-height: 90%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); }
-
-  /* ============ FOOTER ============ */
-  footer { background: var(--navy-4); color: rgba(255,255,255,0.6); padding: 56px 0 28px; }
-  .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .footer-brand .logo { color: var(--white); margin-bottom: 14px; }
-  .footer-brand p { font-size: 13px; line-height: 1.6; max-width: 240px; }
-  .footer-col h5 { font-family: var(--font-body); font-size: 11px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; }
-  .footer-col a { display: block; font-size: 13px; margin-bottom: 10px; }
-  .footer-col a:hover { color: var(--orange-2); }
-  .footer-bottom { padding-top: 22px; display: flex; justify-content: space-between; font-size: 12px; flex-wrap: wrap; gap: 12px; }
-  .footer-bottom a:hover { color: var(--orange-2); }
-
-  /* ============ STICKY BUY BAR ============ */
-  .sticky-buy { position: fixed; bottom: 0; left: 0; right: 0; z-index: 60; background: rgba(13,27,42,0.97); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.1); padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); transform: translateY(120%); transition: transform 0.3s ease; }
-  .sticky-buy.show { transform: translateY(0); }
-  .sticky-buy-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .sticky-buy-info { color: var(--white); }
-  .sticky-buy-name { font-family: var(--font-display); font-size: 16px; font-weight: 700; }
-  .sticky-buy-price { font-size: 13px; color: var(--orange-2); font-weight: 600; }
-  .sticky-buy .btn { white-space: nowrap; }
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 1000px) {
-    .main-grid { grid-template-columns: 1fr; }
-    .sidebar { position: static; order: -1; }
-    .options-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-grid, .final-grid, .comp-grid { grid-template-columns: 1fr; }
-    .stats-inner { grid-template-columns: repeat(3, 1fr); }
-    .stat-item:nth-child(3) { border-right: none; }
-    .toc-grid, .insight-cards, .whofor-grid, .rev-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    section, .main, .purchase, .compare, .whofor, .rev, .faq, .final, .toc-section, .flipbook-section { padding: 48px 0; }
-    .hero { padding: 24px 0 56px; }
-    .hero h1 { font-size: 36px; }
-    .hero-features { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .hero-cta-row { flex-direction: column; align-items: stretch; }
-    .hero-cta-row .btn { width: 100%; }
-    .stats-inner { grid-template-columns: 1fr 1fr; }
-    .stat-item { border-right: none !important; border-bottom: 1px solid var(--line); }
-    .options-grid { grid-template-columns: 1fr; }
-    .toc-grid, .insight-cards, .whofor-grid, .rev-grid, .included-grid { grid-template-columns: 1fr; }
-    .compare-row { grid-template-columns: 1.2fr 0.9fr; }
-    .compare-row .col-hide { display: none; }
-    .checkout-bar { flex-direction: column; align-items: stretch; text-align: center; }
-    .checkout-action { text-align: center; }
-    .checkout-action .btn { width: 100%; }
-    .flipbook-frame { aspect-ratio: 1/1.1; }
-    .guarantee-inner { padding: 32px 24px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    body { padding-bottom: 76px; }
-  }
-  @media (max-width: 460px) {
-    .stats-inner { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-  }
-  .logo img.logo-mark{width:42px;height:42px;object-fit:contain;border-radius:0;background:transparent;box-shadow:none;display:block;flex:0 0 auto}
-  .footer-logo{justify-content:center;margin:0 auto 12px}</style>
-<link rel="stylesheet" href="shared/styles.css" />
+</style>
 </head>
 <body data-report-slug="pest-control">
-
-<!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="/" class="logo">
+    <a href="/" class="logo" aria-label="Sherlock Research home">
       <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
-      <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
+      <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
     </a>
     <div class="nav-links">
-      <a href="/#reports">Reports</a>
+      <a href="/reports" style="color:var(--orange-2)">Reports</a>
       <a href="/#how">How It Works</a>
       <a href="/pricing">Pricing</a>
-      <a href="/blog-article">Resources</a>
+      <a href="/sample">Sample</a>
       <a href="/about">About</a>
     </div>
     <div class="nav-right">
-      <a href="#purchase" class="btn btn-primary">Get Your Edge</a>
+      <a href="/reports" class="btn btn-primary">Browse Reports</a>
     </div>
   </div>
 </nav>
-
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="container">
-    <div class="breadcrumb"><a href="/">Home</a> › <a href="/#reports">Report Library</a> › <span class="current">Pest Control Industry Report</span></div>
-    <div class="hero-grid">
-      <div>
-        <h1>Pest Control Industry Report</h1>
-        <div class="hero-edition">2026 EDITION</div>
-        <p class="hero-desc">Comprehensive data and local insights to help pest control operators grow recurring revenue, navigate chemical regulation, and price residential vs commercial confidently.</p>
-        <div class="hero-features">
-          <div class="hero-feature">
-            <div class="hero-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div>
-            <span>Market Size & Growth</span>
+<main>
+  <header class="report-hero report-hero-pro">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg> <a href="/reports">Reports</a> <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg> <span>Pest Control Report</span></nav>
+      <div class="report-hero-grid">
+        <div class="report-hero-copy reveal">
+          <div class="eyebrow">2026 Q2 Edition</div>
+          <h1>Pest Control<br>Industry Report</h1>
+          <p>Sherlock Research Pest Control industry intelligence: market context, local demand signals, operator interviews, pricing pressure, and recommendations for pest control operators, investors, and agencies.</p>
+          <ul class="hero-checks">
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg> National &amp; local market analysis</li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg> Competitor &amp; pricing benchmarks</li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg> Operator interviews &amp; demand signals</li>
+          </ul>
+          <div class="cta-row">
+            <a href="/api/checkout?industry=pest-control&amp;plan=single" class="btn btn-primary btn-lg" data-checkout-plan="single" data-report-slug="pest-control" data-analytics-event="checkout_cta">Get the report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="/assets/sample-landscaping-report.pdf" class="btn btn-outline btn-lg" data-analytics-event="sample_download">View sample pages <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="hero-feature">
-            <div class="hero-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
-            <span>Local Market Insights</span>
-          </div>
-          <div class="hero-feature">
-            <div class="hero-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/></svg></div>
-            <span>Competitive Landscape</span>
-          </div>
-          <div class="hero-feature">
-            <div class="hero-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <span>Trends & Opportunities</span>
-          </div>
+          <div class="hero-trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg> Trusted by 2,600+ business owners</div>
         </div>
-        <div class="hero-cta-row">
-          <a href="#purchase" class="btn btn-primary btn-lg">Get Full Report</a>
-          <a href="#flipbook" class="btn btn-outline btn-lg">Look Inside →</a>
-        </div>
-        <div class="hero-meta">
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Instant download</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Updated May 2026</span>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-cover">
-          <img class="cover-brand" src="assets/sherlock-colorful.png" alt="Sherlock Research — Pest Control report">
-          <div class="cover-outlook">
-            <div class="cover-outlook-label">Industry Outlook</div>
-            <h4>Strong Growth<br>Ahead</h4>
-            <div class="cover-outlook-stat">5.1%</div>
-            <div class="cover-outlook-sub">Projected CAGR 2026&ndash;2030</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- ============ STATS BAR ============ -->
-<div class="stats-bar">
-  <div class="container">
-    <div class="stats-inner">
-      <div class="stat-item">
-        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 110 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg></div>
-        <div><div class="stat-val">$24.8B</div><div class="stat-label">2026 Market Size<br>U.S. Pest Control</div></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <div><div class="stat-val">5.1%</div><div class="stat-label">Projected CAGR<br>2026&ndash;2030</div></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <div><div class="stat-val">3.9%</div><div class="stat-label">Annual Industry<br>Job Growth</div></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div><div class="stat-val">78%</div><div class="stat-label">Recurring<br>Subscription Revenue</div></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
-        <div><div class="stat-val">300+</div><div class="stat-label">Markets & Locations<br>Researched</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ MAIN ============ -->
-<section class="main">
-  <div class="container">
-    <div class="main-grid">
-      <!-- LEFT COLUMN -->
-      <div>
-        <p class="lead-text">Pest control is one of the highest-quality recurring-revenue categories in home services: 78% of revenue comes from subscription plans. Demand is climate-correlated, regulation is tightening, and consolidation is reshaping the competitive landscape.</p>
-
-        <!-- Market chart -->
-        <div class="content-card">
-          <div class="toggle-row">
-            <div class="card-title">Market Size &amp; Growth (U.S. Pest Control Services)</div>
-            <div class="toggle"><button class="active">National</button><button>Local</button></div>
-          </div>
-          <div class="chart">
-            <div class="chart-bar" style="height: 53%; background: linear-gradient(180deg,#1c2f44,#0D1B2A);"><span class="cval">$17.2B</span><span class="clabel">2020</span></div>
-            <div class="chart-bar" style="height: 58%; background: linear-gradient(180deg,#1c2f44,#0D1B2A);"><span class="cval">$18.6B</span><span class="clabel">2021</span></div>
-            <div class="chart-bar" style="height: 62%; background: linear-gradient(180deg,#1c2f44,#0D1B2A);"><span class="cval">$20.1B</span><span class="clabel">2022</span></div>
-            <div class="chart-bar" style="height: 68%; background: linear-gradient(180deg,#1c2f44,#0D1B2A);"><span class="cval">$22.0B</span><span class="clabel">2023</span></div>
-            <div class="chart-bar" style="height: 77%; background: var(--grad-orange); box-shadow: 0 4px 12px rgba(242,106,33,0.3);;"><span class="cval">$24.8B</span><span class="clabel">2024</span></div>
-            <div class="chart-bar" style="height: 80%; background: linear-gradient(180deg,#6E9269,#5C7F5A);"><span class="cval">$25.9B</span><span class="clabel">2025E</span></div>
-            <div class="chart-bar" style="height: 85%; background: linear-gradient(180deg,#6E9269,#5C7F5A);"><span class="cval">$27.4B</span><span class="clabel">2026E</span></div>
-            <div class="chart-bar" style="height: 92%; background: linear-gradient(180deg,#6E9269,#5C7F5A);"><span class="cval">$29.5B</span><span class="clabel">2027E</span></div>
-            <div class="chart-bar" style="height: 100%; background: linear-gradient(180deg,#6E9269,#5C7F5A);"><span class="cval">$31.8B</span><span class="clabel">2028E</span></div>
-          </div>
-          <div class="chart-legend">
-            <span><span class="ldot" style="background:var(--navy);"></span> Actual</span>
-            <span><span class="ldot" style="background:var(--sage);"></span> Projected</span>
-          </div>
-          <p class="source-note"><strong>Sources:</strong> U.S. Census Bureau, BLS, local market datasets, operator interviews, and Sherlock Research field research.</p>
-        </div>
-
-        <h2 class="section-h">Key Industry Insights</h2>
-        <div class="insight-cards">
-          <div class="insight-c">
-            <div class="insight-c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-            <h4>Subscription Dominance</h4>
-            <p>Quarterly or monthly recurring plans drive most category revenue and the highest valuation multiples.</p>
-          </div>
-          <div class="insight-c">
-            <div class="insight-c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="9" y1="9" x2="9" y2="9.01"/><line x1="15" y1="9" x2="15" y2="9.01"/><line x1="9" y1="15" x2="9" y2="15.01"/></svg></div>
-            <h4>Mosquito &amp; Tick Growth</h4>
-            <p>Outdoor service add-ons (mosquito, tick, lawn pests) are the fastest-growing line at 12%+ YoY.</p>
-          </div>
-          <div class="insight-c">
-            <div class="insight-c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg></div>
-            <h4>Regulatory Tightening</h4>
-            <p>EPA chemical reviews and state-level applicator rules are increasing compliance overhead for smaller operators.</p>
-          </div>
-          <div class="insight-c">
-            <div class="insight-c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-            <h4>PE Consolidation</h4>
-            <p>Private equity is rolling up local operators aggressively &mdash; independents need a clear local moat.</p>
-          </div>
-        </div>
-
-        <h2 class="section-h">Competitive Landscape</h2>
-        <p class="section-sub-text">The industry is fragmented, with thousands of small businesses and a mix of regional and national players.</p>
-        <div class="content-card">
-          <div class="comp-grid">
-            <div>
-              <div class="card-title" style="margin-bottom:8px;">Market Share by Business Size</div>
-              <div class="donut2"></div>
-              <div class="comp-legend">
-                <div><span class="ldot" style="background:var(--sage);"></span> Small (1–9 employees) <span class="pctval">52%</span></div>
-                <div><span class="ldot" style="background:var(--navy);"></span> Mid (10–49 employees) <span class="pctval">26%</span></div>
-                <div><span class="ldot" style="background:var(--stone-deep);"></span> Large (50–249) <span class="pctval">14%</span></div>
-                <div><span class="ldot" style="background:var(--orange-3);"></span> Enterprise (250+) <span class="pctval">8%</span></div>
+        <div class="report-hero-visual">
+          <div class="book-wrap reveal">
+            <div class="report-book" style="--accent:#5c6746">
+              <span class="book-spine"></span>
+              <div class="book-face">
+                <img class="book-logo" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+                <div class="book-ed">2026 Q2 Edition</div>
+                <div class="book-name">Pest Control<br>Industry Report</div>
+                <div class="book-tagline">Trends &middot; Benchmarks &middot; Opportunities</div>
               </div>
             </div>
-            <div class="comp-factors">
-              <h4>Top Competitive Factors</h4>
-              <ul>
-                <li><span class="cf-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Quality of Work</li>
-                <li><span class="cf-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Customer Service</li>
-                <li><span class="cf-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Reputation &amp; Reviews</li>
-                <li><span class="cf-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Pricing</li>
-                <li><span class="cf-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Reliability &amp; Timeliness</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <h2 class="section-h">What's Included in This Report</h2>
-        <div class="content-card">
-          <ul class="included-grid">
-            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Market size, growth, and forecast (2020–2028)</li>
-            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Competitive landscape &amp; key players</li>
-            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Local market insights for <span class="hl">300+</span> markets</li>
-            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Pricing benchmarks &amp; service mix analysis</li>
-            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Trends, opportunities, and challenges</li>
-            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Actionable insights to grow your business</li>
-          </ul>
-          <div class="method-box">
-            <h4>Methodology &amp; Sources</h4>
-            <p>Sherlock Research reports combine macro benchmarks with local market research, customer panels, operator interviews, competitor scans, and demand signals. Each report is tagged by industry, quarter and year, access level, and coverage so new PDFs can be swapped into the catalog without rewriting the site.</p>
+            <div class="book-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Emailed after checkout</div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="report-statbar">
+      <div class="container report-statbar-grid">
+        <div class="rstat"><b>6.4/10</b><span>Purchase intent, next 12 months</span></div>
+        <div class="rstat"><b>71.6%</b><span>Bought in the last 12 months</span></div>
+        <div class="rstat"><b>25,000+</b><span>Markets analyzed</span></div>
+        <div class="rstat"><b>2,600+</b><span>Business owners trust us</span></div>
+      </div>
+      <div class="container report-statbar-note">Buyer-intent figures from Sherlock's modeled Pest Control forecast (599 responses).</div>
+    </div>
+  </header>
 
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-        <div class="buy-card">
-          <div class="buy-cover">
-            <div class="bc-label">SHERLOCK RESEARCH</div>
-            <div class="bc-title">Pest Control<br>Industry Report</div>
-            <div class="bc-ed">2026 EDITION</div>
-            <div class="bc-tag">Trends. Benchmarks. Opportunities.</div>
-          </div>
-          <div class="buy-body">
-            <ul class="buy-checks">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 40+ Pages of Data &amp; Insights</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Charts, Graphs &amp; Visual Data</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Local Market Breakdowns</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Competitive Benchmarking</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Instant Download (PDF)</li>
-            </ul>
-            <hr class="buy-divider">
-            <div class="buy-selected-label">Selected plan</div>
-            <div class="buy-selected-name" id="sidebarPlanName">Standard Report</div>
-            <div class="buy-price-row"><span class="buy-price" id="sidebarPrice">$497</span><span class="buy-price-unit" id="sidebarUnit"></span></div>
-            <div class="buy-price-note" id="sidebarNote">One-time · full national report</div>
-            <a href="/contact" class="btn btn-primary btn-block btn-lg" id="sidebarCta" data-checkout-plan="single">Get Standard Report</a>
-            <span class="change-plan" onclick="document.getElementById('purchase').scrollIntoView({behavior:'smooth'})">Compare all 3 options →</span>
-            <div class="buy-trust"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Secure checkout · 30-day money-back guarantee</div>
-          </div>
-        </div>
+  <section class="page-band white">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Report overview</div><h2>What the Pest Control report helps you decide.</h2></div><p>recurring revenue, termite and mosquito demand, churn, route density, training, and account profitability.</p></div>
+      <div class="module-grid">
+        <div class="module-card"><div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div><h3>Market overview</h3><p>Category size, growth context, and demand indicators for pest control and prevention services.</p></div>
+        <div class="module-card"><div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div><h3>Local signal</h3><p>Search demand, competitor density, customer switching pressure, and market-entry implications.</p></div>
+        <div class="module-card"><div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-6"/><path d="M6 9h2M11 5h2M16 10h2"/></svg></div><h3>Operator economics</h3><p>Pricing, margin pressure, labor constraints, retention, and channel recommendations.</p></div>
+        <div class="module-card"><div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3>Customer research</h3><p>Buyer priorities, switching triggers, willingness-to-pay, and trust factors in Pest Control.</p></div>
+        <div class="module-card"><div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div><h3>Competitive playbook</h3><p>Positioning, offers, service bundles, and local go-to-market recommendations.</p></div>
+        <div class="module-card"><div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg></div><h3>Sources and method</h3><p>Survey inputs, operator interviews, macro data, local scans, and source notes.</p></div>
+      </div>
+    </div>
+  </section>
 
-        <div class="sample-pages-card">
-          <h4>Sample Pages</h4>
-          <div class="sample-pages-thumbs">
-            <div class="sp-thumb navy"></div>
-            <div class="sp-thumb cream"></div>
-            <div class="sp-thumb navy"></div>
-          </div>
-          <a href="#flipbook" class="btn btn-outline-dark btn-block">View Sample Report →</a>
+  <section class="page-band teaser-band">
+    <div class="container">
+      <div class="eyebrow">Inside the data</div>
+      <h2>A preview of the Pest Control buyer data inside.</h2>
+      <p class="band-sub">Real demand, pricing, and switching signals from Sherlock's Pest Control research. One cut is open below — the full set unlocks with the report.</p>
+      <div class="teaser-grid">
+        <article class="teaser is-free reveal"><div class="teaser-head"><span class="teaser-chip free">Free preview</span></div><h3>How likely customers are to buy in the next 12 months</h3><div class="teaser-chart"><svg class="bar-chart" viewBox="0 0 470 159" preserveAspectRatio="xMinYMin meet" role="img" aria-hidden="true"><text x="0" y="19" class="bc-label">7-8</text><rect x="150" y="3" width="272" height="24" rx="5" fill="#5c6746"/><text x="431" y="19" class="bc-val">34.1%</text><text x="0" y="62" class="bc-label">4-6</text><rect x="150" y="46" width="250" height="24" rx="5" fill="#5c6746"/><text x="409" y="62" class="bc-val">31.3%</text><text x="0" y="105" class="bc-label">9-10</text><rect x="150" y="89" width="169" height="24" rx="5" fill="#5c6746"/><text x="328" y="105" class="bc-val">21.2%</text><text x="0" y="148" class="bc-label">0-3</text><rect x="150" y="132" width="107" height="24" rx="5" fill="#5c6746"/><text x="266" y="148" class="bc-val">13.4%</text></svg></div></article>
+        <article class="teaser reveal"><div class="teaser-head"><span class="teaser-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Locked</span></div><h3>How customers find a provider</h3><div class="teaser-chart"><div class="teaser-blur"><svg class="bar-chart" viewBox="0 0 470 202" preserveAspectRatio="xMinYMin meet" role="img" aria-hidden="true"><text x="0" y="19" class="bc-label">Referral from friend/fa…</text><rect x="150" y="3" width="272" height="24" rx="5" fill="#5c6746"/><text x="431" y="19" class="bc-val">35.1%</text><text x="0" y="62" class="bc-label">Google search</text><rect x="150" y="46" width="211" height="24" rx="5" fill="#5c6746"/><text x="370" y="62" class="bc-val">27.2%</text><text x="0" y="105" class="bc-label">Neighborhood group/app</text><rect x="150" y="89" width="102" height="24" rx="5" fill="#5c6746"/><text x="261" y="105" class="bc-val">13.1%</text><text x="0" y="148" class="bc-label">Social media</text><rect x="150" y="132" width="63" height="24" rx="5" fill="#5c6746"/><text x="222" y="148" class="bc-val">8.1%</text><text x="0" y="191" class="bc-label">Saw their vehicle or si…</text><rect x="150" y="175" width="56" height="24" rx="5" fill="#5c6746"/><text x="215" y="191" class="bc-val">7.2%</text></svg></div><div class="teaser-veil"><div class="teaser-veil-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Unlock with the full report</b><a href="/api/checkout?industry=pest-control&amp;plan=single" class="btn btn-primary btn-sm" data-checkout-plan="single" data-report-slug="pest-control" data-analytics-event="teaser_unlock">Get the report</a></div></div></div></article>
+        <article class="teaser reveal"><div class="teaser-head"><span class="teaser-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Locked</span></div><h3>How customers react to a 10% price increase</h3><div class="teaser-chart"><div class="teaser-blur"><svg class="bar-chart" viewBox="0 0 470 159" preserveAspectRatio="xMinYMin meet" role="img" aria-hidden="true"><text x="0" y="19" class="bc-label">Shop around</text><rect x="150" y="3" width="272" height="24" rx="5" fill="#5c6746"/><text x="431" y="19" class="bc-val">47%</text><text x="0" y="62" class="bc-label">Switch providers</text><rect x="150" y="46" width="139" height="24" rx="5" fill="#5c6746"/><text x="298" y="62" class="bc-val">24.1%</text><text x="0" y="105" class="bc-label">Stay and pay</text><rect x="150" y="89" width="124" height="24" rx="5" fill="#5c6746"/><text x="283" y="105" class="bc-val">21.5%</text><text x="0" y="148" class="bc-label">Stop the service</text><rect x="150" y="132" width="43" height="24" rx="5" fill="#5c6746"/><text x="202" y="148" class="bc-val">7.4%</text></svg></div><div class="teaser-veil"><div class="teaser-veil-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Unlock with the full report</b><a href="/api/checkout?industry=pest-control&amp;plan=single" class="btn btn-primary btn-sm" data-checkout-plan="single" data-report-slug="pest-control" data-analytics-event="teaser_unlock">Get the report</a></div></div></div></article>
+        <article class="teaser reveal"><div class="teaser-head"><span class="teaser-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Locked</span></div><h3>What customers spend per year</h3><div class="teaser-chart"><div class="teaser-blur"><svg class="bar-chart" viewBox="0 0 470 245" preserveAspectRatio="xMinYMin meet" role="img" aria-hidden="true"><text x="0" y="19" class="bc-label">$750-$1,500</text><rect x="150" y="3" width="272" height="24" rx="5" fill="#5c6746"/><text x="431" y="19" class="bc-val">32.5%</text><text x="0" y="62" class="bc-label">$250-$750</text><rect x="150" y="46" width="223" height="24" rx="5" fill="#5c6746"/><text x="382" y="62" class="bc-val">26.7%</text><text x="0" y="105" class="bc-label">$1,500-$3,000</text><rect x="150" y="89" width="162" height="24" rx="5" fill="#5c6746"/><text x="321" y="105" class="bc-val">19.3%</text><text x="0" y="148" class="bc-label">Under $250</text><rect x="150" y="132" width="92" height="24" rx="5" fill="#5c6746"/><text x="251" y="148" class="bc-val">11%</text><text x="0" y="191" class="bc-label">$3,000-$6,000</text><rect x="150" y="175" width="72" height="24" rx="5" fill="#5c6746"/><text x="231" y="191" class="bc-val">8.6%</text><text x="0" y="234" class="bc-label">$6,000+</text><rect x="150" y="218" width="16" height="24" rx="5" fill="#5c6746"/><text x="175" y="234" class="bc-val">1.9%</text></svg></div><div class="teaser-veil"><div class="teaser-veil-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Unlock with the full report</b><a href="/api/checkout?industry=pest-control&amp;plan=single" class="btn btn-primary btn-sm" data-checkout-plan="single" data-report-slug="pest-control" data-analytics-event="teaser_unlock">Get the report</a></div></div></div></article>
+        <article class="teaser reveal"><div class="teaser-head"><span class="teaser-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Locked</span></div><h3>The #1 reason customers switch providers</h3><div class="teaser-chart"><div class="teaser-blur"><svg class="bar-chart" viewBox="0 0 470 202" preserveAspectRatio="xMinYMin meet" role="img" aria-hidden="true"><text x="0" y="19" class="bc-label">Price</text><rect x="150" y="3" width="272" height="24" rx="5" fill="#5c6746"/><text x="431" y="19" class="bc-val">26%</text><text x="0" y="62" class="bc-label">Reliability/timeliness</text><rect x="150" y="46" width="265" height="24" rx="5" fill="#5c6746"/><text x="424" y="62" class="bc-val">25.3%</text><text x="0" y="105" class="bc-label">Quality of work</text><rect x="150" y="89" width="177" height="24" rx="5" fill="#5c6746"/><text x="336" y="105" class="bc-val">16.9%</text><text x="0" y="148" class="bc-label">Communication</text><rect x="150" y="132" width="144" height="24" rx="5" fill="#5c6746"/><text x="303" y="148" class="bc-val">13.8%</text><text x="0" y="191" class="bc-label">Availability</text><rect x="150" y="175" width="108" height="24" rx="5" fill="#5c6746"/><text x="267" y="191" class="bc-val">10.3%</text></svg></div><div class="teaser-veil"><div class="teaser-veil-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Unlock with the full report</b><a href="/api/checkout?industry=pest-control&amp;plan=single" class="btn btn-primary btn-sm" data-checkout-plan="single" data-report-slug="pest-control" data-analytics-event="teaser_unlock">Get the report</a></div></div></div></article>
+      </div>
+      <p class="teaser-foot">This data is drawn from Sherlock's Pest Control research survey. <a href="https://tally.so/r/PdkZDb" target="_blank" rel="noopener" data-analytics-event="tally_survey">Add your voice &mdash; take the 2-minute survey <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+    </div>
+  </section>
+
+  <section class="page-band white">
+    <div class="container two-col">
+      <aside class="panel checkout-box">
+        <div class="tag available">Active</div>
+        <h2>Standard Report</h2>
+        <div class="price">$497</div>
+        <p>Full national industry report, recommendations, and email confirmation.</p>
+        <div class="cta-row" style="display:grid">
+          <a href="/api/checkout?industry=pest-control&amp;plan=single" class="btn btn-primary btn-lg" data-checkout-plan="single" data-report-slug="pest-control" data-analytics-event="checkout_cta">Get the report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="/pricing" class="btn btn-outline-dark">Compare plans</a>
         </div>
+        <p class="fine" style="margin-top:16px">You'll get an email confirmation right after checkout. If the full report is still being finalized, we'll tell you exactly when to expect it.</p>
+        <p class="fine" style="margin-top:8px">30-day "made a better decision" guarantee. Standard reports are licensed to one operating company.</p>
       </aside>
+      <div class="research-copy">
+        <div class="eyebrow">Why operators rely on Sherlock</div>
+        <h2>Built for teams making market calls.</h2>
+        <div class="why-grid">
+          <div class="why-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg><div><b>Interview-backed</b><span>Operator and buyer interviews, not just scraped data.</span></div></div>
+          <div class="why-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg><div><b>Local precision</b><span>City-level demand and competition, not national averages.</span></div></div>
+          <div class="why-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-6"/><path d="M6 9h2M11 5h2M16 10h2"/></svg><div><b>Operator economics</b><span>Pricing, margin, retention, and channel benchmarks.</span></div></div>
+          <div class="why-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg><div><b>Action-ready</b><span>Every section ends with a clear recommendation.</span></div></div>
+        </div>
+        <div class="delivery-note">The free sample shows exactly what you'll get. Your full report then arrives by email — we only promise what's ready.</div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ LOOK INSIDE — slot for separate flippable book ============ -->
-<section class="flipbook-section" id="flipbook">
-  <div class="container">
-    <div class="flipbook-head">
-      <div class="flipbook-eyebrow">LOOK INSIDE THE REPORT</div>
-      <h2>See the <em>structure and depth</em> before you buy.</h2>
-      <p>Flip through real report pages. The framework and visuals are exactly what you get — only the figures stay locked until you unlock the full report.</p>
-    </div>
-
-    <!-- ===================================================================
-         FLIPPABLE BOOK SLOT
-         Drop your flipbook embed/component inside .flipbook-mount below.
-         The styled frame, caption, and CTA are ready around it.
-    ==================================================================== -->
-    <div class="flipbook-stage">
-      <div class="flipbook-mount" id="flipbookMount">
-        <div class="flipbook-placeholder">
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-          <div class="fp-title">Flippable book embeds here</div>
-          <div class="fp-sub">Replace <code>#flipbookMount</code> with your interactive flipbook</div>
+  <section class="report-final-cta">
+    <div class="container report-final-grid">
+      <div class="reveal">
+        <div class="eyebrow">Available now</div>
+        <h2>Get the full Pest Control Industry Report.</h2>
+        <p>Make smarter decisions with the most complete Pest Control market intelligence we publish.</p>
+        <ul class="final-checks">
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg> 40+ pages of analysis &amp; charts</li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg> Local demand &amp; competition signals</li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg> Pricing &amp; switching benchmarks</li>
+          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg> Operator-ready recommendations</li>
+        </ul>
+        <div class="cta-row"><a href="/api/checkout?industry=pest-control&amp;plan=single" class="btn btn-primary btn-lg" data-checkout-plan="single" data-report-slug="pest-control" data-analytics-event="checkout_cta">Get the report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="/assets/sample-landscaping-report.pdf" class="btn btn-outline btn-lg" data-analytics-event="sample_download">View sample</a></div>
+      </div>
+      <div class="report-final-visual reveal">
+        <div class="report-book report-book-tilt" style="--accent:#5c6746">
+          <span class="book-spine"></span>
+          <div class="book-face">
+            <img class="book-logo" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+            <div class="book-name">Pest Control<br>Industry Report</div>
+            <div class="book-tagline">2026 Q2 Edition</div>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="flipbook-cta">
-      <a href="#purchase" class="btn btn-primary btn-lg">Unlock the Full 42-Page Report →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TOC SECTION ============ -->
-<section class="toc-section">
-  <div class="container">
-    <div class="toc-head">
-      <div class="eyebrow">WHAT'S INSIDE</div>
-      <h2>Eight sections, one clear path to a decision.</h2>
-      <p>Every section ends with a recommended action — not just a chart.</p>
-    </div>
-    <div class="toc-grid">
-      <div class="toc-item"><div class="toc-num">01</div><div><h4>Market Size &amp; Forecast</h4><p>National and projected market through 2030, with segment splits.</p></div></div>
-      <div class="toc-item"><div class="toc-num">02</div><div><h4>Demand Drivers</h4><p>What's fueling growth — residential, commercial, and seasonal demand.</p></div></div>
-      <div class="toc-item"><div class="toc-num">03</div><div><h4>Buyer Behavior</h4><p>Switching intent, price tolerance, and what wins the job.</p></div></div>
-      <div class="toc-item"><div class="toc-num">04</div><div><h4>Competitive Landscape</h4><p>Market share by size, key players, and positioning gaps.</p></div></div>
-      <div class="toc-item"><div class="toc-num">05</div><div><h4>Pricing Benchmarks</h4><p>Service-line pricing spreads and premium-tolerance index.</p></div></div>
-      <div class="toc-item"><div class="toc-num">06</div><div><h4>Local Market Cuts</h4><p>Metro-level demand, competition, and pricing for your market.</p></div></div>
-      <div class="toc-item"><div class="toc-num">07</div><div><h4>Growth Opportunities</h4><p>Highest-odds service lines, segments, and geographies to pursue.</p></div></div>
-      <div class="toc-item"><div class="toc-num">08</div><div><h4>Executive Playbook</h4><p>Specific next moves on pricing, channel, and positioning.</p></div></div>
-      <div class="toc-item" style="border-style:dashed; background:transparent;"><div class="toc-num" style="color:var(--slate);">+</div><div><h4>Appendix &amp; Sources</h4><p>Full methodology, sample sizes, and data vintage.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PURCHASE SELECTOR ============ -->
-<section class="purchase" id="purchase">
-  <div class="container">
-    <div class="purchase-head" style="display:flex; flex-direction:column; align-items:center;">
-      <div class="eyebrow">CHOOSE YOUR ACCESS</div>
-      <h2>One report, or <em>your whole edge</em>.</h2>
-      <p>Pick the option that fits your move. Your selection updates everywhere — so it's always clear exactly what you're buying.</p>
-      <div class="axis-note"><b>Depth</b> = more for this industry &nbsp;·&nbsp; <b>Breadth</b> = every industry report</div>
-    </div>
-
-    <div class="options-grid" id="optionsGrid">
-      <!-- Option 1 -->
-      <div class="opt-card popular selected" data-plan="single">
-        <div class="opt-badge">MOST POPULAR</div>
-        <div class="opt-radio"></div>
-        <div class="opt-axis">Depth · Entry</div>
-        <div class="opt-name">Standard Report</div>
-        <div class="opt-price">$497</div>
-        <div class="opt-price-sub">One-time</div>
-        <div class="opt-compare">The fastest way in</div>
-        <div class="opt-desc">The full Landscaping report at the national level. Best for a one-time read on the industry.</div>
-        <ul class="opt-list">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full 42-page report</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> National data &amp; forecasts</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Instant PDF download</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Local market signals</li>
-        </ul>
-      </div>
-      <!-- Option 3 -->
-      <div class="opt-card" data-plan="quarterly">
-        <div class="opt-badge" style="background:var(--grad-navy);">BEST VALUE</div>
-        <div class="opt-radio"></div>
-        <div class="opt-axis">Depth · Ongoing</div>
-        <div class="opt-name">Quarterly + Coaching</div>
-        <div class="opt-price">$2,000<span class="unit">/yr</span></div>
-        <div class="opt-price-sub">Billed annually</div>
-        <div class="opt-compare">Like a fractional research team</div>
-        <div class="opt-desc">Stay current all year. Four updates plus four 1:1 coaching calls with our team.</div>
-        <ul class="opt-list">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 4 quarterly report updates</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 4 one-on-one coaching calls</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Local data included</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Priority new modules</li>
-        </ul>
-      </div>
-      <!-- Option 4 -->
-      <div class="opt-card" data-plan="all">
-        <div class="opt-badge" style="background:var(--grad-sage);">MACRO + LOCAL</div>
-        <div class="opt-radio"></div>
-        <div class="opt-axis">Breadth · All Industries</div>
-        <div class="opt-name">All-Access Pass</div>
-        <div class="opt-price">$2,997</div>
-        <div class="opt-price-sub">One-time · every report</div>
-        <div class="opt-compare">Best for multi-market research</div>
-        <div class="opt-desc">Every Sherlock industry report, current and future. Best for multi-industry operators, agencies, and investors.</div>
-        <ul class="opt-list">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> All current industry reports</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> New reports as released</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> National data, all verticals</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Best for portfolios</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Confirmation / checkout bar -->
-    <div class="checkout-bar">
-      <div class="checkout-summary">
-        <div class="cs-label">You're getting</div>
-        <div class="cs-name" id="checkoutName">Standard Report</div>
-        <div class="cs-detail" id="checkoutDetail">Pest Control · full national report and forecasts</div>
-      </div>
-      <div class="checkout-action">
-        <div class="checkout-price" id="checkoutPrice">$497</div>
-        <a href="/contact" class="btn btn-primary btn-lg" id="checkoutCta" data-checkout-plan="single">Get Standard Report →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ COMPARISON ============ -->
-<section class="compare">
-  <div class="container">
-    <div class="compare-head">
-      <div class="eyebrow">WHY SHERLOCK</div>
-      <h2>IBISWorld and Statista explain the macro market. Sherlock adds the local evidence.</h2>
-    </div>
-    <div class="compare-table">
-      <div class="compare-row head">
-        <div class="feat">What you get</div>
-        <div class="col-sherlock">Sherlock</div>
-        <div class="col-hide">IBIS / Statista</div>
-        <div class="col-hide">Consultant</div>
-      </div>
-      <div class="compare-row">
-        <div class="feat">Primary interviews</div>
-        <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Included</div>
-        <div class="col-hide"><span class="ci-no">○</span>&nbsp;Limited</div>
-        <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Custom</div>
-      </div>
-      <div class="compare-row">
-        <div class="feat">Local market signals</div>
-        <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Yes</div>
-        <div class="col-hide"><span class="ci-mid">●</span>&nbsp;Mostly macro</div>
-        <div class="col-hide"><span class="ci-mid">●</span>&nbsp;Custom</div>
-      </div>
-      <div class="compare-row">
-        <div class="feat">Recommended actions</div>
-        <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Every section</div>
-        <div class="col-hide"><span class="ci-no">○</span>&nbsp;Reference data</div>
-        <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Yes</div>
-      </div>
-      <div class="compare-row">
-        <div class="feat">Useful for</div>
-        <div class="col-sherlock"><span class="ci-yes">●</span>&nbsp;Specific market moves</div>
-        <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Macro context</div>
-        <div class="col-hide"><span class="ci-yes">●</span>&nbsp;Bespoke projects</div>
-      </div>
-      <div class="compare-row">
-        <div class="feat">Research structure</div>
-        <div class="col-sherlock">Industry | quarter | access | coverage</div>
-        <div class="col-hide">Broad category pages</div>
-        <div class="col-hide">Project-specific scope</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ============ WHO FOR ============ -->
-<section class="whofor">
-  <div class="container">
-    <div class="toc-head" style="text-align:center; margin-bottom:40px;">
-      <div class="eyebrow">WHO IT'S FOR</div>
-      <h2>Built for the people making the call.</h2>
-    </div>
-    <div class="whofor-grid">
-      <div class="who-card">
-        <div class="who-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0112 0v1"/></svg></div>
-        <h4>Solo &amp; owner-operators</h4>
-        <p>Validate a pricing change or new service line before you commit time and money.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
-        <h4>Multi-crew businesses</h4>
-        <p>Benchmark margins and plan expansion into new metros with local data.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h4>Franchises &amp; agencies</h4>
-        <p>Equip locations and clients with consistent, defensible market intelligence.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
-        <h4>Investors &amp; buyers</h4>
-        <p>Diligence a service-business acquisition with fast, credible market data.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ REVIEWS ============ -->
-<section class="rev">
-  <div class="container">
-    <div class="toc-head" style="text-align:center; margin-bottom:40px;">
-      <div class="eyebrow">PEST CONTROL USE CASES</div>
-      <h2>Decisions this report is built to support.</h2>
-    </div>
-    <div class="rev-grid">
-      <div class="rev-card">
-        <div class="rev-stars">RETENTION</div>
-        <h4>Move more customers to recurring plans</h4>
-        <p>Use buyer behavior and local price tolerance to shape quarterly-plan offers without over-discounting one-time treatments.</p>
-        <cite>Best for recurring revenue strategy</cite>
-      </div>
-      <div class="rev-card">
-        <div class="rev-stars">BENCHMARKS</div>
-        <h4>Understand local valuation pressure</h4>
-        <p>Use market growth, consolidation activity, and local competitive density to frame acquisition conversations more clearly.</p>
-        <cite>Best for owners and buyers</cite>
-      </div>
-      <div class="rev-card">
-        <div class="rev-stars">SERVICES</div>
-        <h4>Evaluate mosquito and add-on services</h4>
-        <p>Use local demand, seasonality, and competitor coverage before launching a new add-on or bundling it into recurring plans.</p>
-        <cite>Best for service-line expansion</cite>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ GUARANTEE ============ -->
-<section class="guarantee">
-  <div class="container">
-    <div class="guarantee-inner">
-      <div class="guarantee-badge"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
-      <h2>The 30-day "made a better decision" guarantee.</h2>
-      <p>If the report does not give you at least one insight you can act on, email us within 30 days and we will refund every dollar. The first useful decision should more than justify the cost.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section class="faq">
-  <div class="container">
-    <h2>Questions before you buy.</h2>
-    <div class="faq-list">
-      <details open>
-        <summary>What's the difference between the three options?</summary>
-        <p>Standard ($497) is the full national industry report. Quarterly + Coaching ($2,000/yr) keeps one industry current all year with four updates and four 1:1 calls. All-Access ($2,997, one-time) unlocks every industry report we publish. Choose based on whether you need one report, ongoing updates, or the full library.</p>
-      </details>
-      <details>
-        <summary>Can I upgrade later?</summary>
-        <p>Yes. Any one-time purchase credits toward an upgrade within 30 days. Most buyers start with a single report, then move to Quarterly once they see the value of ongoing data and coaching.</p>
-      </details>
-      <details>
-        <summary>How current is the data?</summary>
-        <p>The 2026 edition reflects the latest available data, refreshed in May 2026. Quarterly subscribers receive an updated edition every quarter, plus a coaching call to apply it.</p>
-      </details>
-      <details>
-        <summary>Is this a real download or a subscription?</summary>
-        <p>Standard and All-Access are instant PDF downloads you own. Quarterly + Coaching is an annual subscription that includes the downloads plus updates and calls.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FINAL CTA ============ -->
-<section class="final">
-  <div class="container">
-    <div class="final-grid">
-      <div>
-        <h2>Better data. Better decisions. <em>More growth.</em></h2>
-        <p>Use Sherlock Research to turn market questions into clearer growth decisions.</p>
-        <a href="#purchase" class="btn btn-primary btn-lg">Get Your Edge Today →</a>
-      </div>
-      <div class="final-fox">
-        <img src="assets/sherlock-colorful.png" alt="Sherlock Research">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
+  </section>
+</main>
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="logo"><img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true"><div class="logo-stack">Sherlock<small>RESEARCH</small></div></a>
-        <p>Actionable market intelligence and local insights for business owners who want to grow with confidence.</p>
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <a href="/" class="logo" aria-label="Sherlock Research home"><img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true"><span class="logo-stack">Sherlock<small>RESEARCH</small></span></a>
+      <p>Industry-specific research and local market intelligence for operators, investors, and agencies.</p>
+      <div class="socials">
+        <a href="mailto:hello@sherlockreports.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        <a href="/contact" aria-label="Contact Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></a>
       </div>
-      <div class="footer-col"><h5>Company</h5><a href="/about">About Us</a><a href="/#how">How It Works</a><a href="mailto:hello@sherlockresearch.com?subject=Careers%20at%20Sherlock%20Research">Careers</a><a href="/contact">Contact Us</a></div>
-      <div class="footer-col"><h5>Services</h5><a href="/pricing">Industry Reports</a><a href="/contact?subject=Custom%20Research">Custom Research</a><a href="/pricing">Market Analysis</a><a href="/sample">Competitive Insights</a></div>
-      <div class="footer-col"><h5>Resources</h5><a href="/blog-article">Blog</a><a href="/sample">Sample Reports</a><a href="/#how">Methodology</a><a href="/faq">FAQ</a></div>
-      <div class="footer-col"><h5>Industries</h5><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a><a href="/pest-control-report">Pest Control</a></div>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 Sherlock Research. All rights reserved.</div>
-      <div style="display:flex; gap:18px;"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a></div>
-    </div>
+    <div class="fcol"><h3>Reports</h3><a href="/reports">Report Library</a><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a></div>
+    <div class="fcol"><h3>Resources</h3><a href="/pricing">Pricing</a><a href="/sample">Sample Report</a><a href="/faq">FAQ</a><a href="/blog-article">Research Note</a></div>
+    <div class="fcol"><h3>Company</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/terms-of-service">Terms</a></div>
+  </div>
+  <div class="container foot-bottom">
+    <span>&copy; <span data-year>2026</span> Sherlock Research. All rights reserved.</span>
+    <span>See the Market. Stay Ahead.</span>
   </div>
 </footer>
-
-<!-- ============ STICKY BUY BAR ============ -->
-<div class="sticky-buy" id="stickyBuy">
-  <div class="container sticky-buy-inner">
-    <div class="sticky-buy-info">
-      <div class="sticky-buy-name" id="stickyName">Standard Report</div>
-      <div class="sticky-buy-price" id="stickyPrice">$497 · one-time</div>
-    </div>
-    <a href="/contact" class="btn btn-primary" id="stickyCta" data-checkout-plan="single">Get This Report →</a>
-  </div>
-</div>
-
 <script src="shared/catalog.js"></script>
 <script src="shared/app.js"></script>
-<script>
-  // ===== PLAN DATA =====
-  var plans = {
-    single:    { name: "Standard Report",       price: "$497",  unit: "",     note: "One-time · national data",            detail: "Pest Control · full national report and forecasts", cta: "Get Standard Report",      city: false },
-    quarterly: { name: "Quarterly + Coaching",   price: "$2,000",unit: "/yr",  note: "Billed annually · updates + 1:1 calls", detail: "Pest Control · 4 quarterly updates + 4 coaching calls",  cta: "Start Quarterly Plan",     city: true  },
-    all:       { name: "All-Access Pass",        price: "$2,997",unit: "",     note: "One-time · every industry report",     detail: "Every Sherlock industry report, not just landscaping",  cta: "Get All-Access Pass",      city: false }
-  };
-  var current = "single";
-
-  function syncCheckoutLinks(key) {
-    if (!window.SherlockCheckout) return;
-    ['sidebarCta', 'checkoutCta', 'stickyCta'].forEach(function(id) {
-      var link = document.getElementById(id);
-      if (link) window.SherlockCheckout.applyLink(link, key);
-    });
-  }
-
-  function applyPlan(key) {
-    current = key;
-    var p = plans[key];
-    document.querySelectorAll('.opt-card').forEach(function(c){
-      c.classList.toggle('selected', c.getAttribute('data-plan') === key);
-    });
-    document.getElementById('sidebarPlanName').textContent = p.name;
-    document.getElementById('sidebarPrice').textContent = p.price;
-    document.getElementById('sidebarUnit').textContent = p.unit;
-    document.getElementById('sidebarNote').textContent = p.note;
-    document.getElementById('sidebarCta').textContent = p.cta;
-    document.getElementById('checkoutName').textContent = p.name;
-    document.getElementById('checkoutPrice').innerHTML = p.price + (p.unit ? '<span class="unit">'+p.unit+'</span>' : '');
-    document.getElementById('checkoutCta').textContent = p.cta + ' →';
-    updateCheckoutDetail();
-    document.getElementById('stickyName').textContent = p.name;
-    document.getElementById('stickyPrice').textContent = p.price + (p.unit ? p.unit : '') + (p.unit ? ' · subscription' : ' · one-time');
-    document.getElementById('stickyCta').textContent = p.cta + ' →';
-    syncCheckoutLinks(key);
-  }
-
-  function updateCheckoutDetail() {
-    document.getElementById('checkoutDetail').textContent = plans[current].detail;
-  }
-
-  document.querySelectorAll('.opt-card').forEach(function(card){
-    card.addEventListener('click', function(){ applyPlan(card.getAttribute('data-plan')); });
-  });
-
-  // ===== STICKY BUY BAR =====
-  var stickyBar = document.getElementById('stickyBuy');
-  var heroEl = document.querySelector('.hero');
-  window.addEventListener('scroll', function(){
-    var past = window.scrollY > (heroEl.offsetHeight + 200);
-    var purchaseEl = document.getElementById('purchase');
-    var rect = purchaseEl.getBoundingClientRect();
-    var inPurchase = rect.top < window.innerHeight && rect.bottom > 0;
-    stickyBar.classList.toggle('show', past && !inPurchase);
-  });
-
-  applyPlan('single');
-</script>
-
 </body>
 </html>

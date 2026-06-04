@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0D1B2A">
+
+<title>Report Library - Sherlock Research</title>
+<meta name="description" content="Browse all 50 Sherlock Research industry report pages with active, presell, and waitlist status.">
+<link rel="canonical" href="https://sherlockreports.com/reports">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Report Library - Sherlock Research">
+<meta property="og:description" content="Browse all 50 Sherlock Research industry report pages with active, presell, and waitlist status.">
+<meta property="og:url" content="https://sherlockreports.com/reports">
+<meta property="og:image" content="https://sherlockreports.com/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/styles.css">
+
+<style>
+  .library-hero,.report-hero,.success-hero,.sample-hero{background:var(--grad-navy-deep);color:#fff;padding:68px 0}
+  .library-hero h1,.report-hero h1,.success-hero h1,.sample-hero h1{color:#fff;font-size:clamp(40px,6vw,68px);max-width:880px;margin-bottom:18px}
+  .hero-copy{max-width:760px}
+  .hero-copy p,.report-hero p,.success-hero p,.sample-hero p{color:rgba(255,255,255,.74);font-size:17px;max-width:720px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--orange-2);margin-bottom:14px}
+  .status-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);border-radius:999px;padding:8px 13px;margin-bottom:20px;color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+  .signal-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px;max-width:780px}
+  .signal-item{display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);border-radius:10px;padding:11px 12px;color:rgba(255,255,255,.82);font-size:12.5px;font-weight:700}
+  .signal-item svg{color:var(--orange-2);flex:0 0 auto}
+  .page-band{padding:70px 0;background:var(--stone-3)}
+  .page-band.white{background:#fff}
+  .two-col{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:34px;align-items:start}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;box-shadow:var(--shadow-sm)}
+  .panel.dark{background:var(--navy);color:#fff;border-color:rgba(255,255,255,.1)}
+  .panel.dark h2,.panel.dark h3{color:#fff}
+  .panel h2{font-size:30px;margin-bottom:12px}
+  .panel h3{font-family:var(--font-body);font-size:15px;letter-spacing:0;margin-bottom:8px}
+  .panel p,.panel li{color:var(--muted);font-size:14.5px}
+  .panel.dark p,.panel.dark li{color:rgba(255,255,255,.72)}
+  .research-copy h2{font-size:30px;margin-bottom:12px}
+  .research-copy p{color:var(--muted);font-size:15px;max-width:850px}
+  .module-grid,.persona-grid,.report-library-grid,.ops-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .module-card,.persona-card,.industry-card,.ops-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;box-shadow:var(--shadow-sm)}
+  .module-card{display:grid;gap:12px;align-content:start}
+  .module-icon,.card-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff3eb;color:var(--orange);border:1px solid #ffd8c3}
+  .industry-card{display:flex;flex-direction:column;gap:14px;min-height:245px}
+  .industry-card .card-icon{background:var(--stone-2);color:var(--navy);border-color:var(--line)}
+  .industry-card h3{font-size:23px}
+  .industry-card p{color:var(--muted);font-size:13.5px;flex:1}
+  .tag-row{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{border:1px solid var(--line);background:var(--stone-2);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+  .tag.available{background:#edf5ed;color:#42673f;border-color:#cbdcca}.tag.presell{background:#fff0e8;color:#b84d15;border-color:#ffd2bc}.tag.waitlist{background:#eef4fa;color:#335b7d;border-color:#c9dae9}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .asset-list{display:grid;gap:12px;margin-top:18px}
+  .asset-row{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);border-radius:10px;padding:14px;background:#fff}
+  .asset-row span{color:var(--muted);font-size:13px}
+  .asset-row b{display:flex;align-items:center;gap:10px}
+  .asset-row svg{color:var(--orange);flex:0 0 auto}
+  .delivery-note{border-left:3px solid var(--orange);padding:12px 14px;background:#fff8f4;color:var(--muted);font-size:13.5px;margin-top:18px}
+  .filters{display:grid;grid-template-columns:1.2fr .6fr .6fr;gap:12px;margin:28px 0 26px}
+  .filters input,.filters select,.lead-form input,.lead-form textarea,.lead-form select{width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}
+  .lead-form{display:grid;gap:12px;margin-top:18px}
+  .lead-form textarea{min-height:110px;resize:vertical}
+  .form-note{font-size:12px;color:var(--muted);min-height:18px}
+  .checkout-box{position:sticky;top:88px}
+  .price{font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--navy);line-height:1;margin:10px 0}
+  .fine{font-size:12px;color:var(--muted)}
+  .ops-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:13px}
+  .ops-table th,.ops-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ops-table th{background:var(--stone);color:var(--navy);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+  .ops-table tr:last-child td{border-bottom:0}
+  .code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:var(--navy)}
+  @media(max-width:900px){.two-col,.module-grid,.persona-grid,.report-library-grid,.ops-grid,.filters,.signal-strip{grid-template-columns:1fr}.checkout-box{position:static}.library-hero,.report-hero,.success-hero,.sample-hero{padding:48px 0}.page-band{padding:48px 0}}
+
+  /* ===== Industry report — premium redesign ===== */
+  .report-hero-pro{padding:0}
+  .report-hero-pro>.container{padding-top:32px;padding-bottom:52px}
+  .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.58);margin-bottom:28px;flex-wrap:wrap}
+  .breadcrumb a{color:rgba(255,255,255,.72)}.breadcrumb a:hover{color:var(--orange-2)}
+  .breadcrumb .chev{width:13px;height:13px;opacity:.5}.breadcrumb span{color:#fff}
+  .report-hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+  .report-hero-copy h1{color:#fff;font-size:clamp(38px,5.2vw,58px);line-height:1.04;letter-spacing:-.02em;margin:14px 0 18px;max-width:none}
+  .report-hero-copy>p{color:rgba(255,255,255,.74);font-size:16.5px;line-height:1.6;max-width:560px;margin-bottom:22px}
+  .hero-checks{list-style:none;display:grid;gap:11px;margin:0 0 26px;padding:0}
+  .hero-checks li{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.9);font-weight:600;font-size:14.5px}
+  .hero-checks .ck{width:20px;height:20px;color:#fff;background:var(--orange);border-radius:50%;padding:4px;flex:0 0 auto}
+  .hero-trust{display:inline-flex;align-items:center;gap:9px;margin-top:22px;color:rgba(255,255,255,.7);font-size:13px;font-weight:600}
+  .hero-trust svg{width:18px;height:18px;color:var(--orange-2)}
+  .report-hero-visual{display:flex;justify-content:center}
+  .book-wrap{position:relative;perspective:1600px}
+  .report-book{position:relative;width:clamp(220px,24vw,288px);aspect-ratio:3/4;transform:rotateY(-22deg) rotateX(3deg);transform-style:preserve-3d;border-radius:3px 7px 7px 3px;box-shadow:-26px 34px 60px -22px rgba(0,0,0,.6),-2px 6px 14px rgba(0,0,0,.4)}
+  .book-face{position:absolute;inset:0;border-radius:3px 7px 7px 3px;padding:30px 26px 26px;color:#fff;display:flex;flex-direction:column;background:linear-gradient(155deg,var(--accent) 0%,#0a2236 58%,#021828 100%);border-left:6px solid rgba(0,0,0,.4);overflow:hidden}
+  .book-face::after{content:"";position:absolute;right:0;top:0;bottom:0;width:8px;background:repeating-linear-gradient(180deg,#e8e3d6,#e8e3d6 1px,#cfc9ba 1px,#cfc9ba 3px)}
+  .book-spine{position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(255,255,255,.06));border-radius:3px 0 0 3px;z-index:2}
+  .book-logo{width:34px;height:34px;object-fit:contain;margin-bottom:auto}
+  .book-ed{color:var(--orange-2);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+  .book-name{font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.12;margin-bottom:12px}
+  .book-tagline{font-size:11px;color:rgba(255,255,255,.66)}
+  .book-badge{position:absolute;right:-6px;bottom:24px;z-index:3;display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--navy);font-size:12px;font-weight:700;padding:9px 13px;border-radius:999px;box-shadow:0 14px 30px rgba(2,24,40,.34)}
+  .book-badge svg{color:var(--orange)}
+  .report-statbar{border-top:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);padding:24px 0 20px}
+  .report-statbar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .rstat{display:flex;flex-direction:column;gap:6px;padding-left:18px;border-left:2px solid rgba(255,255,255,.12)}
+  .rstat:first-child{border-left:0;padding-left:0}
+  .rstat b{font-family:var(--font-display);font-weight:700;color:#fff;font-size:clamp(26px,3vw,34px);line-height:1}
+  .rstat span{color:rgba(255,255,255,.6);font-size:12.5px}
+  .report-statbar-note{margin-top:16px;color:rgba(255,255,255,.42);font-size:11.5px}
+  .teaser-band{background:var(--grad-stone)}
+  .band-sub{color:var(--muted);max-width:640px;margin:10px 0 30px;font-size:15px}
+  .teaser-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .teaser{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:12px;overflow:hidden}
+  .teaser-head{display:flex;align-items:center;justify-content:space-between}
+  .teaser-chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--stone-2);border:1px solid var(--line);border-radius:999px;padding:5px 10px}
+  .teaser-chip svg{width:12px;height:12px}
+  .teaser-chip.free{color:#42673f;background:#edf5ed;border-color:#cbdcca}
+  .teaser h3{font-family:var(--font-body);font-size:15px;line-height:1.3;color:var(--navy);letter-spacing:0;margin:0}
+  .teaser-chart{position:relative;min-height:148px}
+  .bar-chart{width:100%;height:auto}
+  .bc-label{font:600 12px/1 var(--font-body);fill:var(--ink)}
+  .bc-val{font:700 12px/1 var(--font-body);fill:var(--muted)}
+  .teaser-blur{filter:blur(7px);opacity:.92;pointer-events:none;user-select:none}
+  .teaser-veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.7))}
+  .teaser-veil-in{text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px}
+  .teaser-veil-in svg{width:26px;height:26px;color:var(--navy)}
+  .teaser-veil-in b{font-size:13.5px;color:var(--navy)}
+  .teaser-foot{margin-top:24px;color:var(--muted);font-size:13.5px}
+  .teaser-foot a{color:var(--orange);font-weight:700;display:inline-flex;align-items:center;gap:6px}
+  .teaser-foot a svg{width:14px;height:14px}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+  .why-item{display:flex;gap:13px;align-items:flex-start}
+  .why-item svg{width:24px;height:24px;color:var(--orange);flex:0 0 auto;margin-top:2px}
+  .why-item b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:3px}
+  .why-item span{color:var(--muted);font-size:13px;line-height:1.45}
+  .report-final-cta{position:relative;overflow:hidden;background:var(--grad-navy-deep);color:#fff;padding:72px 0}
+  .report-final-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center}
+  .report-final-cta h2{color:#fff;font-size:clamp(30px,4vw,46px);margin:12px 0 14px;max-width:560px}
+  .report-final-cta p{color:rgba(255,255,255,.7);max-width:520px;margin-bottom:20px}
+  .final-checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px;padding:0}
+  .final-checks li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.88);font-size:14px;font-weight:600}
+  .final-checks .ck{width:18px;height:18px;color:#fff;background:var(--orange);border-radius:50%;padding:3px;flex:0 0 auto}
+  .report-final-visual{display:flex;justify-content:center;perspective:1500px}
+  .report-book-tilt{transform:rotateY(18deg) rotateX(4deg)}
+  .btn-sm{min-height:0;padding:9px 15px;font-size:12.5px}
+  @media(max-width:900px){
+    .report-hero-grid{grid-template-columns:1fr;gap:28px}
+    .report-hero-visual{order:-1}
+    .report-statbar-grid{grid-template-columns:1fr 1fr;gap:16px}
+    .teaser-grid{grid-template-columns:1fr 1fr}
+    .why-grid{grid-template-columns:1fr}
+    .report-final-grid{grid-template-columns:1fr}
+    .report-final-visual{display:none}
+  }
+  @media(max-width:560px){
+    .report-statbar-grid,.teaser-grid,.final-checks{grid-template-columns:1fr}
+    .rstat{padding-left:0;border-left:0}
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Sherlock Research home">
+      <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+      <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="/reports" style="color:var(--orange-2)">Reports</a>
+      <a href="/#how">How It Works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/sample">Sample</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="nav-right">
+      <a href="/reports" class="btn btn-primary">Browse Reports</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <header class="library-hero">
+    <div class="container hero-copy">
+      <div class="eyebrow">50-industry library</div>
+      <h1>Every Sherlock report page in one place.</h1>
+      <p>Browse active, presell, and waitlist reports across home services, healthcare, automotive, hospitality, real estate, finance, education, and professional services.</p>
+    </div>
+  </header>
+  <section class="page-band">
+    <div class="container">
+      <div class="filters">
+        <input id="reportSearch" type="search" placeholder="Search industries">
+        <select id="statusFilter" aria-label="Filter by status">
+          <option value="">All statuses</option>
+          <option value="available">Active</option>
+          <option value="presell">Presell</option>
+          <option value="waitlist">Waitlist</option>
+        </select>
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="">All categories</option>
+          <option value="automotive">automotive</option><option value="education">education</option><option value="healthcare">healthcare</option><option value="home-services">home services</option><option value="hospitality">hospitality</option><option value="local-services">local services</option><option value="professional-services">professional services</option><option value="real-estate-finance">real estate finance</option>
+        </select>
+      </div>
+      <div class="report-library-grid" id="reportLibraryGrid">
+        <a class="industry-card" href="/landscaping-report" data-name="landscaping" data-status="available" data-category="home-services">
+  <div class="tag-row"><span class="tag available">Active</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Landscaping</h3>
+  <p>demand, pricing, crew productivity, route density, service mix, and local competition</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/roofing-report" data-name="roofing" data-status="available" data-category="home-services">
+  <div class="tag-row"><span class="tag available">Active</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Roofing</h3>
+  <p>storm demand, retail replacement, insurance mix, lead sources, labor safety, and margin pressure</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/dental-report" data-name="dental" data-status="presell" data-category="healthcare">
+  <div class="tag-row"><span class="tag presell">Presell</span><span class="tag">healthcare</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+  <h3>Dental</h3>
+  <p>patient acquisition, cosmetic demand, payer mix, staffing, capacity, and service-line economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/dermatology-report" data-name="dermatology" data-status="presell" data-category="healthcare">
+  <div class="tag-row"><span class="tag presell">Presell</span><span class="tag">healthcare</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+  <h3>Dermatology</h3>
+  <p>patient access, cosmetic dermatology, payer mix, procedure demand, provider capacity, and competitive positioning</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/hvac-report" data-name="hvac" data-status="available" data-category="home-services">
+  <div class="tag-row"><span class="tag available">Active</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>HVAC</h3>
+  <p>seasonality, service agreements, replacement demand, financing, technician capacity, and local competition</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/pest-control-report" data-name="pest control" data-status="available" data-category="home-services">
+  <div class="tag-row"><span class="tag available">Active</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Pest Control</h3>
+  <p>recurring revenue, termite and mosquito demand, churn, route density, training, and account profitability</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/plumbing-report" data-name="plumbing" data-status="presell" data-category="home-services">
+  <div class="tag-row"><span class="tag presell">Presell</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Plumbing</h3>
+  <p>emergency demand, water heaters, drain services, technician skill gaps, urgency pricing, and repeat/referral mix</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/electrical-report" data-name="electrical" data-status="presell" data-category="home-services">
+  <div class="tag-row"><span class="tag presell">Presell</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Electrical</h3>
+  <p>panel upgrades, EV chargers, generators, licensing capacity, quote conversion, and project profitability</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/med-spa-report" data-name="med spa" data-status="presell" data-category="healthcare">
+  <div class="tag-row"><span class="tag presell">Presell</span><span class="tag">healthcare</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+  <h3>Med Spa</h3>
+  <p>injectables, memberships, laser services, provider trust, certification, and treatment-line margin</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/auto-repair-report" data-name="auto repair" data-status="presell" data-category="automotive">
+  <div class="tag-row"><span class="tag presell">Presell</span><span class="tag">automotive</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-6"/><path d="M6 9h2M11 5h2M16 10h2"/></svg></div>
+  <h3>Auto Repair</h3>
+  <p>diagnostics, maintenance demand, repeat customers, technician skill mix, service bays, and pricing power</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/garage-door-report" data-name="garage door" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Garage Door</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/pool-service-report" data-name="pool service" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Pool Service</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/lawn-care-report" data-name="lawn care" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Lawn Care</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/tree-care-report" data-name="tree care" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Tree Care</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/home-cleaning-report" data-name="home cleaning" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Home Cleaning</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/carpet-cleaning-report" data-name="carpet cleaning" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Carpet Cleaning</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/restoration-report" data-name="restoration" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Restoration</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/painting-report" data-name="painting" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Painting</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/flooring-report" data-name="flooring" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Flooring</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/windows-and-doors-report" data-name="windows and doors" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Windows and Doors</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/kitchen-and-bath-remodeling-report" data-name="kitchen and bath remodeling" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Kitchen and Bath Remodeling</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/general-contracting-report" data-name="general contracting" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>General Contracting</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/solar-installation-report" data-name="solar installation" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Solar Installation</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/security-systems-report" data-name="security systems" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Security Systems</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/moving-report" data-name="moving" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Moving</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/self-storage-report" data-name="self storage" data-status="waitlist" data-category="local-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">local services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+  <h3>Self Storage</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/junk-removal-report" data-name="junk removal" data-status="waitlist" data-category="home-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">home services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+  <h3>Junk Removal</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/car-wash-and-detailing-report" data-name="car wash and detailing" data-status="waitlist" data-category="automotive">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">automotive</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-6"/><path d="M6 9h2M11 5h2M16 10h2"/></svg></div>
+  <h3>Car Wash and Detailing</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/towing-report" data-name="towing" data-status="waitlist" data-category="automotive">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">automotive</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-6"/><path d="M6 9h2M11 5h2M16 10h2"/></svg></div>
+  <h3>Towing</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/veterinary-report" data-name="veterinary" data-status="waitlist" data-category="healthcare">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">healthcare</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+  <h3>Veterinary</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/physical-therapy-report" data-name="physical therapy" data-status="waitlist" data-category="healthcare">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">healthcare</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+  <h3>Physical Therapy</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/chiropractic-report" data-name="chiropractic" data-status="waitlist" data-category="healthcare">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">healthcare</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+  <h3>Chiropractic</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/senior-home-care-report" data-name="senior home care" data-status="waitlist" data-category="healthcare">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">healthcare</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+  <h3>Senior Home Care</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/childcare-report" data-name="childcare" data-status="waitlist" data-category="education">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">education</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg></div>
+  <h3>Childcare</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/fitness-gyms-report" data-name="fitness gyms" data-status="waitlist" data-category="local-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">local services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+  <h3>Fitness Gyms</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/restaurants-report" data-name="restaurants" data-status="waitlist" data-category="hospitality">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">hospitality</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+  <h3>Restaurants</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/coffee-shops-report" data-name="coffee shops" data-status="waitlist" data-category="hospitality">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">hospitality</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+  <h3>Coffee Shops</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/breweries-report" data-name="breweries" data-status="waitlist" data-category="hospitality">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">hospitality</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+  <h3>Breweries</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/hotels-report" data-name="hotels" data-status="waitlist" data-category="hospitality">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">hospitality</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+  <h3>Hotels</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/event-venues-report" data-name="event venues" data-status="waitlist" data-category="hospitality">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">hospitality</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+  <h3>Event Venues</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/property-management-report" data-name="property management" data-status="waitlist" data-category="real-estate-finance">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">real estate finance</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.5 20.5a2 2 0 0 1-2.8 0L3 12.8V4h8.8l7.8 7.8a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></div>
+  <h3>Property Management</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/real-estate-brokerages-report" data-name="real estate brokerages" data-status="waitlist" data-category="real-estate-finance">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">real estate finance</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.5 20.5a2 2 0 0 1-2.8 0L3 12.8V4h8.8l7.8 7.8a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></div>
+  <h3>Real Estate Brokerages</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/mortgage-brokers-report" data-name="mortgage brokers" data-status="waitlist" data-category="real-estate-finance">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">real estate finance</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.5 20.5a2 2 0 0 1-2.8 0L3 12.8V4h8.8l7.8 7.8a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></div>
+  <h3>Mortgage Brokers</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/insurance-agencies-report" data-name="insurance agencies" data-status="waitlist" data-category="professional-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">professional services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+  <h3>Insurance Agencies</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/accounting-and-tax-report" data-name="accounting and tax" data-status="waitlist" data-category="professional-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">professional services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+  <h3>Accounting and Tax</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/legal-services-report" data-name="legal services" data-status="waitlist" data-category="professional-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">professional services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+  <h3>Legal Services</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/it-managed-services-report" data-name="it managed services" data-status="waitlist" data-category="professional-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">professional services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+  <h3>IT Managed Services</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/digital-marketing-agencies-report" data-name="digital marketing agencies" data-status="waitlist" data-category="professional-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">professional services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+  <h3>Digital Marketing Agencies</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/staffing-agencies-report" data-name="staffing agencies" data-status="waitlist" data-category="professional-services">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">professional services</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+  <h3>Staffing Agencies</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+        <a class="industry-card" href="/private-schools-and-tutoring-report" data-name="private schools and tutoring" data-status="waitlist" data-category="education">
+  <div class="tag-row"><span class="tag waitlist">Waitlist</span><span class="tag">education</span></div>
+  <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg></div>
+  <h3>Private Schools and Tutoring</h3>
+  <p>demand, pricing, local competition, hiring pressure, customer switching, channel mix, and operator economics</p>
+  <span class="arrow-link">View report <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <a href="/" class="logo" aria-label="Sherlock Research home"><img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true"><span class="logo-stack">Sherlock<small>RESEARCH</small></span></a>
+      <p>Industry-specific research and local market intelligence for operators, investors, and agencies.</p>
+      <div class="socials">
+        <a href="mailto:hello@sherlockreports.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        <a href="/contact" aria-label="Contact Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></a>
+      </div>
+    </div>
+    <div class="fcol"><h3>Reports</h3><a href="/reports">Report Library</a><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a></div>
+    <div class="fcol"><h3>Resources</h3><a href="/pricing">Pricing</a><a href="/sample">Sample Report</a><a href="/faq">FAQ</a><a href="/blog-article">Research Note</a></div>
+    <div class="fcol"><h3>Company</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/terms-of-service">Terms</a></div>
+  </div>
+  <div class="container foot-bottom">
+    <span>&copy; <span data-year>2026</span> Sherlock Research. All rights reserved.</span>
+    <span>See the Market. Stay Ahead.</span>
+  </div>
+</footer>
+<script src="shared/catalog.js"></script>
+<script src="shared/app.js"></script>
+<script>
+  (function(){
+    var search = document.getElementById('reportSearch');
+    var status = document.getElementById('statusFilter');
+    var category = document.getElementById('categoryFilter');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.industry-card'));
+    function applyFilters(){
+      var q = (search.value || '').toLowerCase().trim();
+      var st = status.value;
+      var cat = category.value;
+      cards.forEach(function(card){
+        var ok = (!q || card.dataset.name.indexOf(q) !== -1) && (!st || card.dataset.status === st) && (!cat || card.dataset.category === cat);
+        card.style.display = ok ? '' : 'none';
+      });
+    }
+    [search,status,category].forEach(function(el){ el.addEventListener('input', applyFilters); el.addEventListener('change', applyFilters); });
+  })();
+</script>
+</body>
+</html>

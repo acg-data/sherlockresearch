@@ -348,6 +348,67 @@
 .hero-ipad .trend svg{display:block;width:100%;height:62px}
 @media (max-width:560px){.hero-ipad .ov{grid-template-columns:1fr}}
 </style>
+<style id="editorial">
+/* ===== Editorial — homepage section choreography (light-led, warm, hairline) ===== */
+body{ background:#faf8f2; }
+
+/* Hero — light editorial wash (flips from dark navy) */
+.hero{ background:linear-gradient(180deg,#fffdf8 0%,#f4efe5 100%); color:var(--ink); border-bottom:1px solid var(--line); }
+.hero::before{ opacity:.5; }
+.hero h1{ color:var(--navy); font-size:clamp(46px,6.6vw,84px); line-height:1.03; letter-spacing:-.025em; }
+.hero-sub{ color:#54636e; font-size:18.5px; line-height:1.7; }
+.hero .btn-outline{ color:var(--navy); border:1px solid rgba(2,24,40,.24); }
+.hero .btn-outline:hover{ background:rgba(2,24,40,.04); border-color:var(--navy); }
+
+/* Features — light hairline band (flips from navy) */
+.features{ background:#fffdf8; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:8px 0; }
+.feature{ color:var(--ink); padding:36px 30px; align-items:flex-start; }
+.feature:not(:first-child){ border-left:1px solid var(--line); }
+.feature svg{ width:28px; height:28px; }
+.feature h3{ font-family:var(--font-display); color:var(--navy); font-size:18px; }
+.feature p{ color:#54636e; font-size:13.5px; }
+
+/* Reports — calm warm wash, softer cards */
+.reports-section{ background:linear-gradient(180deg,#faf8f2,#f1ece1); }
+.report-card{ box-shadow:0 1px 2px rgba(2,24,40,.08),0 22px 44px -30px rgba(2,24,40,.55); }
+.trust-card{ background:#fffdf8; border:1px solid var(--line); }
+.stat{ background:#fffdf8; box-shadow:none; }
+
+/* How — warm hairline + outlined serif step numbers */
+.how{ background:linear-gradient(180deg,#f6f2e9,#efe9dd); }
+.step-num{ background:transparent; border:1.5px solid var(--orange); color:var(--orange); font-family:var(--font-display); font-weight:600; }
+.step-card{ background:#fffdf8; }
+.popular{ background:#fffdf8; }
+.chip{ background:transparent; border-radius:999px; }
+.chip:hover{ border-color:var(--orange); color:var(--orange); }
+
+/* Testimonials + research — paper cards, hairline */
+.testimonials{ background:#f6f2e9; }
+.testimonial-card{ box-shadow:none; }
+.testimonial-quote{ font-weight:500; }
+.article-card{ background:#fffdf8; box-shadow:none; }
+.article-card:hover{ box-shadow:0 22px 44px -28px rgba(2,24,40,.5); }
+.article-kicker{ color:var(--bronze); }
+
+/* Data coverage panel (replaces the crude SVG map) */
+.smart-grid{ grid-template-columns:minmax(0,1fr) minmax(0,1.12fr); gap:48px; align-items:center; }
+.data-panel{ position:relative; overflow:hidden; background:linear-gradient(168deg,#ffffff 0%,#fbf8f1 100%); border:1px solid var(--line); border-radius:22px; padding:24px; box-shadow:0 1px 2px rgba(2,24,40,.06),0 34px 64px -40px rgba(2,24,40,.55); }
+.data-panel-head{ position:relative; z-index:2; display:flex; align-items:center; gap:10px; margin-bottom:20px; }
+.data-panel-head .live-dot{ width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 4px rgba(234,99,16,.16); animation:dataPulse 2.4s ease-in-out infinite; }
+.data-panel-head span{ font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
+.data-map{ position:absolute; inset:0; z-index:0; display:flex; align-items:center; justify-content:center; opacity:.55; pointer-events:none; }
+.data-map svg{ width:112%; height:auto; }
+.data-map .mk-dot{ animation:dataPulse 3s ease-in-out infinite; }
+.data-map .mk-dot:nth-child(2){ animation-delay:.6s } .data-map .mk-dot:nth-child(3){ animation-delay:1.2s } .data-map .mk-dot:nth-child(4){ animation-delay:1.8s }
+.data-stats{ position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.data-stat{ background:rgba(255,255,255,.84); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); border:1px solid var(--line); border-radius:14px; padding:18px 18px 16px; box-shadow:0 1px 2px rgba(2,24,40,.05); }
+.data-stat .ds-icon{ width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background:var(--orange-soft); color:var(--orange); border:1px solid #f6d6c2; margin-bottom:12px; }
+.data-stat .ds-icon svg{ width:18px; height:18px; }
+.data-stat .ds-num{ font-family:var(--font-display); font-weight:700; font-size:30px; line-height:1; color:var(--navy); letter-spacing:-.01em; }
+.data-stat .ds-label{ margin-top:6px; font-size:12.5px; color:var(--muted); font-weight:600; line-height:1.3; }
+@keyframes dataPulse{ 0%,100%{ opacity:1 } 50%{ opacity:.45 } }
+@media(max-width:520px){ .data-stat .ds-num{ font-size:24px } }
+</style>
 </head>
 <body>
 <nav class="nav">
@@ -407,8 +468,8 @@
       <div class="hero-grid">
         <div class="hero-copy reveal">
           <div class="section-eyebrow">Interview-backed local market research</div>
-          <h1>See the Market,<br />Stay <span class="grad-text">Ahead.</span></h1>
-          <p class="hero-sub">IBISWorld and Statista are useful for macro context. Sherlock goes closer to the ground: operator interviews, city-level demand signals, local competition, pricing pressure, and clear next moves for specific industries.</p>
+          <h1>See the Market.<br />Stay <span class="grad-text">Ahead.</span></h1>
+          <p class="hero-sub">Industry research built from the ground up &mdash; operator interviews, city-level demand, local competition, and real pricing signals &mdash; distilled into clear, confident moves for your specific market.</p>
           <div class="hero-cta">
             <a href="#reports" class="btn btn-primary btn-lg">Explore Reports
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -519,53 +580,477 @@
           <div class="section-eyebrow">Featured reports</div>
           <h2>Industry reports built for local strategy.</h2>
         </div>
-        <a href="/pricing" class="arrow-link">View Pricing
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+        <div class="report-actions">
+          <div class="testimonial-controls">
+            <button class="testimonial-btn" type="button" aria-label="Previous reports" data-report-prev>&lsaquo;</button>
+            <button class="testimonial-btn" type="button" aria-label="Next reports" data-report-next>&rsaquo;</button>
+          </div>
+          <a href="/reports" class="arrow-link">View All 50 Reports
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
       </div>
 
-      <div class="report-grid">
-        <a class="report-card landscaping reveal" href="/landscaping-report">
+      <div class="report-grid reveal" data-report-carousel data-total="50" aria-live="polite">
+        <a class="report-card generic" href="/landscaping-report" style="--card-accent:#5C7F5A;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
           <div>
-            <div class="report-edition">2026 edition</div>
-            <h3 class="report-title">Landscaping<br />Industry Report</h3>
-            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c3 4 5 7 5 11a5 5 0 0 1-10 0c0-4 2-7 5-11z"/><path d="M12 14v7M8 17h8"/></svg></div>
+            <div class="report-edition">Active &middot; 2026 Q2</div>
+            <h3 class="report-title">Landscaping<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
           </div>
-          <div class="report-meta"><span>Demand, pricing, labor, channels.</span><span class="report-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <div class="report-meta"><span>demand, pricing, crew productivity.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
 
-        <a class="report-card roofing reveal" href="/roofing-report">
+        <a class="report-card generic" href="/roofing-report" style="--card-accent:#5C7F5A;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
           <div>
-            <div class="report-edition">2026 edition</div>
-            <h3 class="report-title">Roofing<br />Industry Report</h3>
-            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11l8-6 8 6v8H4z"/><path d="M9 19v-6h6v6"/></svg></div>
+            <div class="report-edition">Active &middot; 2026 Q2</div>
+            <h3 class="report-title">Roofing<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
           </div>
-          <div class="report-meta"><span>Storm demand, leads, margins.</span><span class="report-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <div class="report-meta"><span>storm demand, retail replacement, insurance mix.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
 
-        <a class="report-card hvac reveal" href="/hvac-report">
+        <a class="report-card generic" href="/dental-report" style="--card-accent:#F26A21;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
           <div>
-            <div class="report-edition">2026 edition</div>
-            <h3 class="report-title">HVAC<br />Industry Report</h3>
-            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3M7 7l2 2M15 15l2 2M7 17l2-2M15 9l2-2"/></svg></div>
+            <div class="report-edition">Presell &middot; 2026 Q2</div>
+            <h3 class="report-title">Dental<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
           </div>
-          <div class="report-meta"><span>Seasonality, replacement, service mix.</span><span class="report-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <div class="report-meta"><span>patient acquisition, cosmetic demand, payer mix.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
 
-        <a class="report-card pest reveal" href="/pest-control-report">
+        <a class="report-card generic" href="/dermatology-report" style="--card-accent:#F26A21;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
           <div>
-            <div class="report-edition">2026 edition</div>
-            <h3 class="report-title">Pest Control<br />Industry Report</h3>
-            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <div class="report-edition">Presell &middot; 2026 Q2</div>
+            <h3 class="report-title">Dermatology<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
           </div>
-          <div class="report-meta"><span>Recurring revenue, churn, local search.</span><span class="report-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <div class="report-meta"><span>patient access, cosmetic dermatology, payer mix.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
+
+        <a class="report-card generic" href="/hvac-report" style="--card-accent:#5C7F5A;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Active &middot; 2026 Q2</div>
+            <h3 class="report-title">HVAC<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>seasonality, service agreements, replacement demand.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/pest-control-report" style="--card-accent:#5C7F5A;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Active &middot; 2026 Q2</div>
+            <h3 class="report-title">Pest Control<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>recurring revenue, termite and mosquito demand, churn.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/plumbing-report" style="--card-accent:#F26A21;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Presell &middot; 2026 Q2</div>
+            <h3 class="report-title">Plumbing<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>emergency demand, water heaters, drain services.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/electrical-report" style="--card-accent:#F26A21;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Presell &middot; 2026 Q2</div>
+            <h3 class="report-title">Electrical<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>panel upgrades, EV chargers, generators.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/med-spa-report" style="--card-accent:#F26A21;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Presell &middot; 2026 Q2</div>
+            <h3 class="report-title">Med Spa<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          </div>
+          <div class="report-meta"><span>injectables, memberships, laser services.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/auto-repair-report" style="--card-accent:#F26A21;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Presell &middot; 2026 Q2</div>
+            <h3 class="report-title">Auto Repair<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-6"/><path d="M6 9h2M11 5h2M16 10h2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>diagnostics, maintenance demand, repeat customers.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/garage-door-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Garage Door<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/pool-service-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Pool Service<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/lawn-care-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Lawn Care<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/tree-care-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Tree Care<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/home-cleaning-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Home Cleaning<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/carpet-cleaning-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Carpet Cleaning<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/restoration-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Restoration<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/painting-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Painting<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/flooring-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Flooring<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/windows-and-doors-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Windows and Doors<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/kitchen-and-bath-remodeling-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Kitchen and Bath Remodeling<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/general-contracting-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">General Contracting<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/solar-installation-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Solar Installation<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/security-systems-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Security Systems<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/moving-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Moving<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/self-storage-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Self Storage<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/junk-removal-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Junk Removal<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/car-wash-and-detailing-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Car Wash and Detailing<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-6"/><path d="M6 9h2M11 5h2M16 10h2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/towing-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Towing<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-6"/><path d="M6 9h2M11 5h2M16 10h2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/veterinary-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Veterinary<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/physical-therapy-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Physical Therapy<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/chiropractic-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Chiropractic<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/senior-home-care-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Senior Home Care<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/childcare-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Childcare<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/fitness-gyms-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Fitness Gyms<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/restaurants-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Restaurants<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/coffee-shops-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Coffee Shops<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/breweries-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Breweries<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/hotels-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Hotels<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/event-venues-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Event Venues<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-5 4 3 4-7"/><path d="M18 6h2v2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/property-management-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Property Management<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.5 20.5a2 2 0 0 1-2.8 0L3 12.8V4h8.8l7.8 7.8a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/real-estate-brokerages-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Real Estate Brokerages<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.5 20.5a2 2 0 0 1-2.8 0L3 12.8V4h8.8l7.8 7.8a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/mortgage-brokers-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Mortgage Brokers<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.5 20.5a2 2 0 0 1-2.8 0L3 12.8V4h8.8l7.8 7.8a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/insurance-agencies-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Insurance Agencies<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/accounting-and-tax-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Accounting and Tax<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/legal-services-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Legal Services<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/it-managed-services-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">IT Managed Services<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/digital-marketing-agencies-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Digital Marketing Agencies<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/staffing-agencies-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Staffing Agencies<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v16l-7-3-7 3V6a2 2 0 0 1 2-2Z"/><path d="M9 9h6M9 13h6"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="report-card generic" href="/private-schools-and-tutoring-report" style="--card-accent:#60788E;--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
+          <div>
+            <div class="report-edition">Waitlist &middot; 2026 Q2</div>
+            <h3 class="report-title">Private Schools and Tutoring<br>Industry Report</h3>
+            <div class="report-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg></div>
+          </div>
+          <div class="report-meta"><span>demand, pricing, local competition.</span><span class="report-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+      </div>
+      <div class="testimonial-footer report-footer">
+        <span data-report-page-label>Showing 1-4 of 50</span>
+        <div class="testimonial-dots" data-report-dots aria-label="Report pages"></div>
       </div>
 
       <div class="trusted-note reveal">
-        <div class="trust-card"><b>Not just macro</b><span>Macro datasets are useful context. Sherlock adds field research and local buying behavior.</span></div>
-        <div class="trust-card"><b>Built to update</b><span>Reports are structured by industry, quarter and year, access level, and city inclusion.</span></div>
-        <div class="trust-card"><b>Checkout ready</b><span>Use Stripe links now, then swap in Payhip or SendOwl product URLs when the catalog scales.</span></div>
+        <div class="trust-card"><b>Beyond the macro</b><span>National datasets set the context. Sherlock adds the field research and real local buying behavior they miss.</span></div>
+        <div class="trust-card"><b>Always current</b><span>Every report is organized by industry and refreshed each quarter with fresh local data.</span></div>
+        <div class="trust-card"><b>Instant access</b><span>Check out securely, then your report and quarterly updates land straight in your inbox.</span></div>
       </div>
     </div>
   </section>
@@ -574,38 +1059,58 @@
     <div class="container smart-grid">
       <div class="reveal">
         <div class="section-eyebrow">Insights that drive growth</div>
-        <h2>Smarter decisions start with better local evidence.</h2>
-        <p>Use Sherlock when a generic industry report is too broad and a consultant is too slow. The goal is clear market judgment: where to compete, what to price, who to target, and which signals matter.</p>
+        <h2>Smarter decisions start with better data.</h2>
+        <p>Use Sherlock when a generic industry report is too broad and a consultant is too slow. We analyze thousands of local data points to reveal opportunities others miss.</p>
         <ul class="checklist">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Market sizing and growth context</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Local competition and search demand</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Pricing and margin benchmarks</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Operator and buyer interview takeaways</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Actionable recommendations by market</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Market sizing &amp; growth trends</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Competition &amp; market share</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Pricing &amp; profit benchmarks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Local demand &amp; demographic insights</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"/></svg> Actionable recommendations</li>
         </ul>
       </div>
-      <div class="stat-grid reveal">
-        <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V12M10 20V6M16 20v-9M20 20H3"/></svg><strong>Industry</strong><span>Vertical-specific report structure, benchmarks, and playbooks.</span></div>
-        <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg><strong>City</strong><span>Optional metro cuts for local demand and competition.</span></div>
-        <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 18h8M12 3v15M7 8l5-5 5 5"/></svg><strong>Quarter</strong><span>Reports designed to be swapped in as new PDFs are released.</span></div>
-        <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5M15 19c0-2 1-3.5 3-3.5s3 1.5 3 3.5"/></svg><strong>Field</strong><span>Interview-backed findings instead of static data dumps.</span></div>
-      </div>
-      <div class="map-panel reveal">
-        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" aria-label="United States market coverage map">
-          <path d="M40 70 L120 55 L210 50 L300 55 L380 70 L385 120 L360 175 L300 200 L250 215 L210 235 L180 215 L150 205 L120 200 L80 180 L50 150 L38 110 Z" fill="#dcd9d0" stroke="#cbc7bc" stroke-width="1"/>
-          <path d="M20 195 L55 185 L70 215 L45 235 L18 220 Z" fill="#dcd9d0" stroke="#cbc7bc"/>
-          <g fill="#1f4068">
-            <circle cx="90" cy="120" r="2.8"/><circle cx="110" cy="100" r="2.8"/><circle cx="130" cy="140" r="2.8"/><circle cx="150" cy="90" r="2.8"/>
-            <circle cx="170" cy="150" r="2.8"/><circle cx="190" cy="110" r="2.8"/><circle cx="210" cy="160" r="2.8"/><circle cx="230" cy="95" r="2.8"/>
-            <circle cx="250" cy="130" r="2.8"/><circle cx="270" cy="105" r="2.8"/><circle cx="290" cy="150" r="2.8"/><circle cx="310" cy="115" r="2.8"/>
-            <circle cx="330" cy="160" r="2.8"/><circle cx="350" cy="100" r="2.8"/><circle cx="300" cy="185" r="2.8"/><circle cx="260" cy="190" r="2.8"/>
-            <circle cx="200" cy="200" r="2.8"/><circle cx="160" cy="185" r="2.8"/><circle cx="120" cy="170" r="2.8"/><circle cx="340" cy="140" r="2.8"/>
-          </g>
-          <g fill="#F26A21">
-            <circle cx="110" cy="150" r="5"/><circle cx="220" cy="125" r="5"/><circle cx="300" cy="185" r="5"/><circle cx="330" cy="160" r="5"/>
-          </g>
-        </svg>
-        <div class="map-caption">City-level cuts are added where the buying behavior, competition, and operator interviews justify a local view.</div>
+      <div class="data-panel reveal">
+        <div class="data-panel-head"><span class="live-dot"></span><span>Live U.S. market coverage</span></div>
+        <div class="data-map" aria-hidden="true">
+          <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+            <path d="M55,104 L96,92 L150,86 L220,86 L300,82 L380,84 L470,80 L516,88 L536,104 L545,128 L520,134 L506,156 L500,182 L504,206 L490,218 L472,210 L460,230 L452,258 L441,274 L432,250 L426,222 L408,212 L362,210 L322,206 L302,214 L298,238 L286,258 L274,236 L260,214 L210,210 L150,210 L118,216 L92,206 L72,196 L58,168 L49,138 L48,118 Z" fill="#e7e1d4" stroke="#d6cfbf" stroke-width="1.5"/>
+            <g stroke="rgba(234,99,16,.30)" stroke-width="1.4" fill="none">
+              <path d="M188,150 L300,135 M300,135 L420,166 M188,150 L252,160 M252,160 L420,166"/>
+            </g>
+            <g fill="#3a5168">
+              <circle cx="120" cy="142" r="3"/><circle cx="160" cy="120" r="3"/><circle cx="205" cy="152" r="3"/><circle cx="244" cy="116" r="3"/>
+              <circle cx="282" cy="150" r="3"/><circle cx="322" cy="120" r="3"/><circle cx="360" cy="150" r="3"/><circle cx="400" cy="122" r="3"/>
+              <circle cx="440" cy="150" r="3"/><circle cx="150" cy="172" r="3"/><circle cx="300" cy="182" r="3"/><circle cx="380" cy="176" r="3"/>
+              <circle cx="465" cy="138" r="3"/><circle cx="110" cy="162" r="3"/><circle cx="500" cy="118" r="3"/><circle cx="270" cy="200" r="3"/>
+            </g>
+            <g fill="#ea6310">
+              <circle class="mk-dot" cx="188" cy="150" r="5.5"/><circle class="mk-dot" cx="300" cy="135" r="5.5"/>
+              <circle class="mk-dot" cx="420" cy="166" r="5.5"/><circle class="mk-dot" cx="252" cy="160" r="5.5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="data-stats">
+          <div class="data-stat">
+            <div class="ds-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 20V12M10 20V6M16 20v-9M20 20H3"/></svg></div>
+            <div class="ds-num">50+</div>
+            <div class="ds-label">Industries Researched</div>
+          </div>
+          <div class="data-stat">
+            <div class="ds-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+            <div class="ds-num">25,000+</div>
+            <div class="ds-label">Cities Analyzed</div>
+          </div>
+          <div class="data-stat">
+            <div class="ds-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17l9 5 9-5"/></svg></div>
+            <div class="ds-num">2.4M+</div>
+            <div class="ds-label">Data Points Processed</div>
+          </div>
+          <div class="data-stat">
+            <div class="ds-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5M15 19c0-2 1-3.5 3-3.5s3 1.5 3 3.5"/></svg></div>
+            <div class="ds-num">2,600+</div>
+            <div class="ds-label">Business Owners Trust Us</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -622,7 +1127,7 @@
           </div>
           <div class="step">
             <div class="step-num">2</div>
-            <div class="step-card"><h3>Checkout and download</h3><p>Use Stripe links first. As the library grows, product URLs can be swapped to Payhip or SendOwl without rebuilding the site.</p></div>
+            <div class="step-card"><h3>Check out securely</h3><p>Pay by card in seconds. You'll get an email confirming your report and exactly when it's ready.</p></div>
           </div>
           <div class="step">
             <div class="step-num">3</div>
@@ -678,8 +1183,8 @@
     <div class="container">
       <div class="testimonial-top reveal">
         <div>
-          <div class="section-eyebrow">Testimonials</div>
-          <h2>Ten editable testimonial slots, three visible at a time.</h2>
+          <div class="section-eyebrow">Use cases</div>
+          <h2>How teams use Sherlock before making a market move.</h2>
         </div>
         <div class="testimonial-controls">
           <button class="testimonial-btn" type="button" id="testimonialPrev" aria-label="Previous testimonials">&lsaquo;</button>
@@ -725,11 +1230,11 @@
   <section class="cta">
     <div class="container cta-inner reveal">
       <h2>Your next competitive advantage is one report away.</h2>
-      <p>Start with the current report library, then keep swapping in new PDFs by industry, quarter, access level, and city inclusion.</p>
+      <p>Browse the report library, choose your industry, and get the local market intelligence you need to make your next move with confidence.</p>
       <div class="trust-row">
         <span class="trust-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Secure checkout</span>
-        <span class="trust-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v10M8 11l4 4 4-4M5 18h14"/></svg> Instant PDF delivery</span>
-        <span class="trust-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg> Built for repeat updates</span>
+        <span class="trust-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v10M8 11l4 4 4-4M5 18h14"/></svg> Email confirmation</span>
+        <span class="trust-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg> Updated every quarter</span>
         <a href="/pricing" class="btn btn-primary btn-lg">Get Your Edge Today
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -747,7 +1252,7 @@
       </a>
       <p>Industry-specific research and local market intelligence for operators, investors, and teams that need clearer market signal.</p>
       <div class="socials">
-        <a href="mailto:hello@sherlockresearch.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        <a href="mailto:hello@sherlockreports.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
         <a href="/contact" aria-label="Contact Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></a>
       </div>
     </div>
@@ -771,17 +1276,43 @@
 <script>
   (function () {
     var testimonials = [
-      { tag: "Slot 01", quote: "Add approved quote about pricing confidence here. Keep it specific to the decision, market, and result.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 02", quote: "Add approved quote about choosing a city, zip code, or service area here.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 03", quote: "Add approved quote about acquisition, diligence, or investor use here.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 04", quote: "Add approved quote about customer interviews or on-the-ground research here.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 05", quote: "Add approved quote about replacing guesswork with local market evidence here.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 06", quote: "Add approved quote about comparing Sherlock with macro research products here.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 07", quote: "Add approved quote about competitive positioning, channel strategy, or messaging here.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 08", quote: "Add approved quote about quarterly updates or recurring research value here.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 09", quote: "Add approved quote about a vertical-specific report here.", name: "Customer name", role: "Title, company, market", placeholder: true },
-      { tag: "Slot 10", quote: "Add approved quote about the strongest customer outcome here.", name: "Customer name", role: "Title, company, market", placeholder: true }
-    ];
+      {
+            "tag": "Operator",
+            "quote": "Decide which service line deserves the next hire, route expansion, or pricing change.",
+            "name": "Growth planning",
+            "role": "Service mix, staffing, pricing"
+      },
+      {
+            "tag": "Investor",
+            "quote": "Pressure-test a market before acquisition outreach, diligence, or a new roll-up thesis.",
+            "name": "Market diligence",
+            "role": "Demand, fragmentation, margin risk"
+      },
+      {
+            "tag": "Agency",
+            "quote": "Shape vertical-specific positioning, offers, local landing pages, and channel strategy.",
+            "name": "Client strategy",
+            "role": "Messaging, channels, conversion"
+      },
+      {
+            "tag": "Franchise",
+            "quote": "Compare local demand and competition before prioritizing territories or support plays.",
+            "name": "Territory planning",
+            "role": "Market entry, density, local signal"
+      },
+      {
+            "tag": "Founder",
+            "quote": "Replace guesswork with customer interviews, operator benchmarks, and action notes.",
+            "name": "New market read",
+            "role": "Customer signal, competitor scan"
+      },
+      {
+            "tag": "Team",
+            "quote": "Give sales, marketing, and operations one shared view of the market reality.",
+            "name": "Alignment",
+            "role": "Shared context, concrete actions"
+      }
+];
 
     var grid = document.getElementById("testimonialGrid");
     var dots = document.getElementById("testimonialDots");

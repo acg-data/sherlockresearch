@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0D1B2A">
+<meta name="robots" content="noindex,nofollow">
+<title>Launch Dashboard - Sherlock Research</title>
+<meta name="description" content="Internal Sherlock Research 50-industry launch dashboard.">
+<link rel="canonical" href="https://sherlockreports.com/ops-launch-dashboard">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Launch Dashboard - Sherlock Research">
+<meta property="og:description" content="Internal Sherlock Research 50-industry launch dashboard.">
+<meta property="og:url" content="https://sherlockreports.com/ops-launch-dashboard">
+<meta property="og:image" content="https://sherlockreports.com/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/styles.css">
+
+<style>
+  .library-hero,.report-hero,.success-hero,.sample-hero{background:var(--grad-navy-deep);color:#fff;padding:68px 0}
+  .library-hero h1,.report-hero h1,.success-hero h1,.sample-hero h1{color:#fff;font-size:clamp(40px,6vw,68px);max-width:880px;margin-bottom:18px}
+  .hero-copy{max-width:760px}
+  .hero-copy p,.report-hero p,.success-hero p,.sample-hero p{color:rgba(255,255,255,.74);font-size:17px;max-width:720px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--orange-2);margin-bottom:14px}
+  .status-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);border-radius:999px;padding:8px 13px;margin-bottom:20px;color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+  .signal-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px;max-width:780px}
+  .signal-item{display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);border-radius:10px;padding:11px 12px;color:rgba(255,255,255,.82);font-size:12.5px;font-weight:700}
+  .signal-item svg{color:var(--orange-2);flex:0 0 auto}
+  .page-band{padding:70px 0;background:var(--stone-3)}
+  .page-band.white{background:#fff}
+  .two-col{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:34px;align-items:start}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;box-shadow:var(--shadow-sm)}
+  .panel.dark{background:var(--navy);color:#fff;border-color:rgba(255,255,255,.1)}
+  .panel.dark h2,.panel.dark h3{color:#fff}
+  .panel h2{font-size:30px;margin-bottom:12px}
+  .panel h3{font-family:var(--font-body);font-size:15px;letter-spacing:0;margin-bottom:8px}
+  .panel p,.panel li{color:var(--muted);font-size:14.5px}
+  .panel.dark p,.panel.dark li{color:rgba(255,255,255,.72)}
+  .research-copy h2{font-size:30px;margin-bottom:12px}
+  .research-copy p{color:var(--muted);font-size:15px;max-width:850px}
+  .module-grid,.persona-grid,.report-library-grid,.ops-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .module-card,.persona-card,.industry-card,.ops-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;box-shadow:var(--shadow-sm)}
+  .module-card{display:grid;gap:12px;align-content:start}
+  .module-icon,.card-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff3eb;color:var(--orange);border:1px solid #ffd8c3}
+  .industry-card{display:flex;flex-direction:column;gap:14px;min-height:245px}
+  .industry-card .card-icon{background:var(--stone-2);color:var(--navy);border-color:var(--line)}
+  .industry-card h3{font-size:23px}
+  .industry-card p{color:var(--muted);font-size:13.5px;flex:1}
+  .tag-row{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{border:1px solid var(--line);background:var(--stone-2);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+  .tag.available{background:#edf5ed;color:#42673f;border-color:#cbdcca}.tag.presell{background:#fff0e8;color:#b84d15;border-color:#ffd2bc}.tag.waitlist{background:#eef4fa;color:#335b7d;border-color:#c9dae9}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .asset-list{display:grid;gap:12px;margin-top:18px}
+  .asset-row{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);border-radius:10px;padding:14px;background:#fff}
+  .asset-row span{color:var(--muted);font-size:13px}
+  .asset-row b{display:flex;align-items:center;gap:10px}
+  .asset-row svg{color:var(--orange);flex:0 0 auto}
+  .delivery-note{border-left:3px solid var(--orange);padding:12px 14px;background:#fff8f4;color:var(--muted);font-size:13.5px;margin-top:18px}
+  .filters{display:grid;grid-template-columns:1.2fr .6fr .6fr;gap:12px;margin:28px 0 26px}
+  .filters input,.filters select,.lead-form input,.lead-form textarea,.lead-form select{width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}
+  .lead-form{display:grid;gap:12px;margin-top:18px}
+  .lead-form textarea{min-height:110px;resize:vertical}
+  .form-note{font-size:12px;color:var(--muted);min-height:18px}
+  .checkout-box{position:sticky;top:88px}
+  .price{font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--navy);line-height:1;margin:10px 0}
+  .fine{font-size:12px;color:var(--muted)}
+  .ops-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:13px}
+  .ops-table th,.ops-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ops-table th{background:var(--stone);color:var(--navy);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+  .ops-table tr:last-child td{border-bottom:0}
+  .code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:var(--navy)}
+  @media(max-width:900px){.two-col,.module-grid,.persona-grid,.report-library-grid,.ops-grid,.filters,.signal-strip{grid-template-columns:1fr}.checkout-box{position:static}.library-hero,.report-hero,.success-hero,.sample-hero{padding:48px 0}.page-band{padding:48px 0}}
+
+  /* ===== Industry report — premium redesign ===== */
+  .report-hero-pro{padding:0}
+  .report-hero-pro>.container{padding-top:32px;padding-bottom:52px}
+  .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.58);margin-bottom:28px;flex-wrap:wrap}
+  .breadcrumb a{color:rgba(255,255,255,.72)}.breadcrumb a:hover{color:var(--orange-2)}
+  .breadcrumb .chev{width:13px;height:13px;opacity:.5}.breadcrumb span{color:#fff}
+  .report-hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+  .report-hero-copy h1{color:#fff;font-size:clamp(38px,5.2vw,58px);line-height:1.04;letter-spacing:-.02em;margin:14px 0 18px;max-width:none}
+  .report-hero-copy>p{color:rgba(255,255,255,.74);font-size:16.5px;line-height:1.6;max-width:560px;margin-bottom:22px}
+  .hero-checks{list-style:none;display:grid;gap:11px;margin:0 0 26px;padding:0}
+  .hero-checks li{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.9);font-weight:600;font-size:14.5px}
+  .hero-checks .ck{width:20px;height:20px;color:#fff;background:var(--orange);border-radius:50%;padding:4px;flex:0 0 auto}
+  .hero-trust{display:inline-flex;align-items:center;gap:9px;margin-top:22px;color:rgba(255,255,255,.7);font-size:13px;font-weight:600}
+  .hero-trust svg{width:18px;height:18px;color:var(--orange-2)}
+  .report-hero-visual{display:flex;justify-content:center}
+  .book-wrap{position:relative;perspective:1600px}
+  .report-book{position:relative;width:clamp(220px,24vw,288px);aspect-ratio:3/4;transform:rotateY(-22deg) rotateX(3deg);transform-style:preserve-3d;border-radius:3px 7px 7px 3px;box-shadow:-26px 34px 60px -22px rgba(0,0,0,.6),-2px 6px 14px rgba(0,0,0,.4)}
+  .book-face{position:absolute;inset:0;border-radius:3px 7px 7px 3px;padding:30px 26px 26px;color:#fff;display:flex;flex-direction:column;background:linear-gradient(155deg,var(--accent) 0%,#0a2236 58%,#021828 100%);border-left:6px solid rgba(0,0,0,.4);overflow:hidden}
+  .book-face::after{content:"";position:absolute;right:0;top:0;bottom:0;width:8px;background:repeating-linear-gradient(180deg,#e8e3d6,#e8e3d6 1px,#cfc9ba 1px,#cfc9ba 3px)}
+  .book-spine{position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(255,255,255,.06));border-radius:3px 0 0 3px;z-index:2}
+  .book-logo{width:34px;height:34px;object-fit:contain;margin-bottom:auto}
+  .book-ed{color:var(--orange-2);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+  .book-name{font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.12;margin-bottom:12px}
+  .book-tagline{font-size:11px;color:rgba(255,255,255,.66)}
+  .book-badge{position:absolute;right:-6px;bottom:24px;z-index:3;display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--navy);font-size:12px;font-weight:700;padding:9px 13px;border-radius:999px;box-shadow:0 14px 30px rgba(2,24,40,.34)}
+  .book-badge svg{color:var(--orange)}
+  .report-statbar{border-top:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);padding:24px 0 20px}
+  .report-statbar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .rstat{display:flex;flex-direction:column;gap:6px;padding-left:18px;border-left:2px solid rgba(255,255,255,.12)}
+  .rstat:first-child{border-left:0;padding-left:0}
+  .rstat b{font-family:var(--font-display);font-weight:700;color:#fff;font-size:clamp(26px,3vw,34px);line-height:1}
+  .rstat span{color:rgba(255,255,255,.6);font-size:12.5px}
+  .report-statbar-note{margin-top:16px;color:rgba(255,255,255,.42);font-size:11.5px}
+  .teaser-band{background:var(--grad-stone)}
+  .band-sub{color:var(--muted);max-width:640px;margin:10px 0 30px;font-size:15px}
+  .teaser-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .teaser{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:12px;overflow:hidden}
+  .teaser-head{display:flex;align-items:center;justify-content:space-between}
+  .teaser-chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--stone-2);border:1px solid var(--line);border-radius:999px;padding:5px 10px}
+  .teaser-chip svg{width:12px;height:12px}
+  .teaser-chip.free{color:#42673f;background:#edf5ed;border-color:#cbdcca}
+  .teaser h3{font-family:var(--font-body);font-size:15px;line-height:1.3;color:var(--navy);letter-spacing:0;margin:0}
+  .teaser-chart{position:relative;min-height:148px}
+  .bar-chart{width:100%;height:auto}
+  .bc-label{font:600 12px/1 var(--font-body);fill:var(--ink)}
+  .bc-val{font:700 12px/1 var(--font-body);fill:var(--muted)}
+  .teaser-blur{filter:blur(7px);opacity:.92;pointer-events:none;user-select:none}
+  .teaser-veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.7))}
+  .teaser-veil-in{text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px}
+  .teaser-veil-in svg{width:26px;height:26px;color:var(--navy)}
+  .teaser-veil-in b{font-size:13.5px;color:var(--navy)}
+  .teaser-foot{margin-top:24px;color:var(--muted);font-size:13.5px}
+  .teaser-foot a{color:var(--orange);font-weight:700;display:inline-flex;align-items:center;gap:6px}
+  .teaser-foot a svg{width:14px;height:14px}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+  .why-item{display:flex;gap:13px;align-items:flex-start}
+  .why-item svg{width:24px;height:24px;color:var(--orange);flex:0 0 auto;margin-top:2px}
+  .why-item b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:3px}
+  .why-item span{color:var(--muted);font-size:13px;line-height:1.45}
+  .report-final-cta{position:relative;overflow:hidden;background:var(--grad-navy-deep);color:#fff;padding:72px 0}
+  .report-final-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center}
+  .report-final-cta h2{color:#fff;font-size:clamp(30px,4vw,46px);margin:12px 0 14px;max-width:560px}
+  .report-final-cta p{color:rgba(255,255,255,.7);max-width:520px;margin-bottom:20px}
+  .final-checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px;padding:0}
+  .final-checks li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.88);font-size:14px;font-weight:600}
+  .final-checks .ck{width:18px;height:18px;color:#fff;background:var(--orange);border-radius:50%;padding:3px;flex:0 0 auto}
+  .report-final-visual{display:flex;justify-content:center;perspective:1500px}
+  .report-book-tilt{transform:rotateY(18deg) rotateX(4deg)}
+  .btn-sm{min-height:0;padding:9px 15px;font-size:12.5px}
+  @media(max-width:900px){
+    .report-hero-grid{grid-template-columns:1fr;gap:28px}
+    .report-hero-visual{order:-1}
+    .report-statbar-grid{grid-template-columns:1fr 1fr;gap:16px}
+    .teaser-grid{grid-template-columns:1fr 1fr}
+    .why-grid{grid-template-columns:1fr}
+    .report-final-grid{grid-template-columns:1fr}
+    .report-final-visual{display:none}
+  }
+  @media(max-width:560px){
+    .report-statbar-grid,.teaser-grid,.final-checks{grid-template-columns:1fr}
+    .rstat{padding-left:0;border-left:0}
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Sherlock Research home">
+      <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+      <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="/reports" style="color:var(--orange-2)">Reports</a>
+      <a href="/#how">How It Works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/sample">Sample</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="nav-right">
+      <a href="/reports" class="btn btn-primary">Browse Reports</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <header class="library-hero">
+    <div class="container hero-copy">
+      <div class="eyebrow">Internal readiness</div>
+      <h1>50-industry launch dashboard.</h1>
+      <p>Track page status, Tally forms, dynamic Stripe Checkout, Cloudflare email events, and report asset readiness before launch.</p>
+    </div>
+  </header>
+  <section class="page-band">
+    <div class="container">
+      <table class="ops-table">
+        <thead><tr><th>#</th><th>Industry</th><th>Status</th><th>Tally</th><th>Checkout</th><th>Sample PDF</th><th>Full PDF</th><th>Email delivery</th><th>Audit</th></tr></thead>
+        <tbody><tr>
+      <td>1</td>
+      <td><a href="/landscaping-report">Landscaping</a><br><span class="code">landscaping</span></td>
+      <td><span class="tag available">Active</span></td>
+      <td><a href="https://tally.so/r/lbv8qW" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/lbv8qW/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.landscaping</span><br><span class="code">sherlock.report.waitlist.landscaping</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>2</td>
+      <td><a href="/roofing-report">Roofing</a><br><span class="code">roofing</span></td>
+      <td><span class="tag available">Active</span></td>
+      <td><a href="https://tally.so/r/RGkqdJ" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/RGkqdJ/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.roofing</span><br><span class="code">sherlock.report.waitlist.roofing</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>3</td>
+      <td><a href="/dental-report">Dental</a><br><span class="code">dental</span></td>
+      <td><span class="tag presell">Presell</span></td>
+      <td><a href="https://tally.so/r/Gx5OKo" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/Gx5OKo/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.dental</span><br><span class="code">sherlock.report.waitlist.dental</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>4</td>
+      <td><a href="/dermatology-report">Dermatology</a><br><span class="code">dermatology</span></td>
+      <td><span class="tag presell">Presell</span></td>
+      <td><a href="https://tally.so/r/ODkxl8" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/ODkxl8/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.dermatology</span><br><span class="code">sherlock.report.waitlist.dermatology</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>5</td>
+      <td><a href="/hvac-report">HVAC</a><br><span class="code">hvac</span></td>
+      <td><span class="tag available">Active</span></td>
+      <td><a href="https://tally.so/r/VLDWjv" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/VLDWjv/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.hvac</span><br><span class="code">sherlock.report.waitlist.hvac</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>6</td>
+      <td><a href="/pest-control-report">Pest Control</a><br><span class="code">pest-control</span></td>
+      <td><span class="tag available">Active</span></td>
+      <td><a href="https://tally.so/r/PdkZDb" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/PdkZDb/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.pest-control</span><br><span class="code">sherlock.report.waitlist.pest-control</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>7</td>
+      <td><a href="/plumbing-report">Plumbing</a><br><span class="code">plumbing</span></td>
+      <td><span class="tag presell">Presell</span></td>
+      <td><a href="https://tally.so/r/EkMo5N" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/EkMo5N/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.plumbing</span><br><span class="code">sherlock.report.waitlist.plumbing</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>8</td>
+      <td><a href="/electrical-report">Electrical</a><br><span class="code">electrical</span></td>
+      <td><span class="tag presell">Presell</span></td>
+      <td><a href="https://tally.so/r/rjv8Bv" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/rjv8Bv/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.electrical</span><br><span class="code">sherlock.report.waitlist.electrical</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>9</td>
+      <td><a href="/med-spa-report">Med Spa</a><br><span class="code">med-spa</span></td>
+      <td><span class="tag presell">Presell</span></td>
+      <td><a href="https://tally.so/r/44zlBO" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/44zlBO/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.med-spa</span><br><span class="code">sherlock.report.waitlist.med-spa</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>10</td>
+      <td><a href="/auto-repair-report">Auto Repair</a><br><span class="code">auto-repair</span></td>
+      <td><span class="tag presell">Presell</span></td>
+      <td><a href="https://tally.so/r/jav8bE" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/jav8bE/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>dynamic</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.auto-repair</span><br><span class="code">sherlock.report.waitlist.auto-repair</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>11</td>
+      <td><a href="/garage-door-report">Garage Door</a><br><span class="code">garage-door</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/WO1a8J" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/WO1a8J/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.garage-door</span><br><span class="code">sherlock.report.waitlist.garage-door</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>12</td>
+      <td><a href="/pool-service-report">Pool Service</a><br><span class="code">pool-service</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/aQvp29" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/aQvp29/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.pool-service</span><br><span class="code">sherlock.report.waitlist.pool-service</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>13</td>
+      <td><a href="/lawn-care-report">Lawn Care</a><br><span class="code">lawn-care</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/68M6Ze" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/68M6Ze/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.lawn-care</span><br><span class="code">sherlock.report.waitlist.lawn-care</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>14</td>
+      <td><a href="/tree-care-report">Tree Care</a><br><span class="code">tree-care</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/7RM7NL" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/7RM7NL/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.tree-care</span><br><span class="code">sherlock.report.waitlist.tree-care</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>15</td>
+      <td><a href="/home-cleaning-report">Home Cleaning</a><br><span class="code">home-cleaning</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/b5v1We" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/b5v1We/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.home-cleaning</span><br><span class="code">sherlock.report.waitlist.home-cleaning</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>16</td>
+      <td><a href="/carpet-cleaning-report">Carpet Cleaning</a><br><span class="code">carpet-cleaning</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/A7yMBB" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/A7yMBB/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.carpet-cleaning</span><br><span class="code">sherlock.report.waitlist.carpet-cleaning</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>17</td>
+      <td><a href="/restoration-report">Restoration</a><br><span class="code">restoration</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/Bz0Jx7" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/Bz0Jx7/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.restoration</span><br><span class="code">sherlock.report.waitlist.restoration</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>18</td>
+      <td><a href="/painting-report">Painting</a><br><span class="code">painting</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/kdv8N6" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/kdv8N6/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.painting</span><br><span class="code">sherlock.report.waitlist.painting</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>19</td>
+      <td><a href="/flooring-report">Flooring</a><br><span class="code">flooring</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/vGK8PA" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/vGK8PA/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.flooring</span><br><span class="code">sherlock.report.waitlist.flooring</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>20</td>
+      <td><a href="/windows-and-doors-report">Windows and Doors</a><br><span class="code">windows-and-doors</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/KYkrVM" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/KYkrVM/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.windows-and-doors</span><br><span class="code">sherlock.report.waitlist.windows-and-doors</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>21</td>
+      <td><a href="/kitchen-and-bath-remodeling-report">Kitchen and Bath Remodeling</a><br><span class="code">kitchen-and-bath-remodeling</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/LZk4PG" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/LZk4PG/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.kitchen-and-bath-remodeling</span><br><span class="code">sherlock.report.waitlist.kitchen-and-bath-remodeling</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>22</td>
+      <td><a href="/general-contracting-report">General Contracting</a><br><span class="code">general-contracting</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/pbvYDV" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/pbvYDV/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.general-contracting</span><br><span class="code">sherlock.report.waitlist.general-contracting</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>23</td>
+      <td><a href="/solar-installation-report">Solar Installation</a><br><span class="code">solar-installation</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/1A6Q9M" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/1A6Q9M/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.solar-installation</span><br><span class="code">sherlock.report.waitlist.solar-installation</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>24</td>
+      <td><a href="/security-systems-report">Security Systems</a><br><span class="code">security-systems</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/MeMjEY" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/MeMjEY/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.security-systems</span><br><span class="code">sherlock.report.waitlist.security-systems</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>25</td>
+      <td><a href="/moving-report">Moving</a><br><span class="code">moving</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/J9MEOJ" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/J9MEOJ/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.moving</span><br><span class="code">sherlock.report.waitlist.moving</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>26</td>
+      <td><a href="/self-storage-report">Self Storage</a><br><span class="code">self-storage</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/gDv89N" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/gDv89N/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.self-storage</span><br><span class="code">sherlock.report.waitlist.self-storage</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>27</td>
+      <td><a href="/junk-removal-report">Junk Removal</a><br><span class="code">junk-removal</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/yPz8J0" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/yPz8J0/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.junk-removal</span><br><span class="code">sherlock.report.waitlist.junk-removal</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>28</td>
+      <td><a href="/car-wash-and-detailing-report">Car Wash and Detailing</a><br><span class="code">car-wash-and-detailing</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/Xxz64O" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/Xxz64O/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.car-wash-and-detailing</span><br><span class="code">sherlock.report.waitlist.car-wash-and-detailing</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>29</td>
+      <td><a href="/towing-report">Towing</a><br><span class="code">towing</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/81MbZA" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/81MbZA/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.towing</span><br><span class="code">sherlock.report.waitlist.towing</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>30</td>
+      <td><a href="/veterinary-report">Veterinary</a><br><span class="code">veterinary</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/0QaqeZ" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/0QaqeZ/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.veterinary</span><br><span class="code">sherlock.report.waitlist.veterinary</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>31</td>
+      <td><a href="/physical-therapy-report">Physical Therapy</a><br><span class="code">physical-therapy</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/zxL871" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/zxL871/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.physical-therapy</span><br><span class="code">sherlock.report.waitlist.physical-therapy</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>32</td>
+      <td><a href="/chiropractic-report">Chiropractic</a><br><span class="code">chiropractic</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/5BMaZM" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/5BMaZM/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.chiropractic</span><br><span class="code">sherlock.report.waitlist.chiropractic</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>33</td>
+      <td><a href="/senior-home-care-report">Senior Home Care</a><br><span class="code">senior-home-care</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/dWvJ9z" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/dWvJ9z/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.senior-home-care</span><br><span class="code">sherlock.report.waitlist.senior-home-care</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>34</td>
+      <td><a href="/childcare-report">Childcare</a><br><span class="code">childcare</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/Y5k74q" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/Y5k74q/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.childcare</span><br><span class="code">sherlock.report.waitlist.childcare</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>35</td>
+      <td><a href="/fitness-gyms-report">Fitness Gyms</a><br><span class="code">fitness-gyms</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/D4MR7b" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/D4MR7b/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.fitness-gyms</span><br><span class="code">sherlock.report.waitlist.fitness-gyms</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>36</td>
+      <td><a href="/restaurants-report">Restaurants</a><br><span class="code">restaurants</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/lbv865" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/lbv865/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.restaurants</span><br><span class="code">sherlock.report.waitlist.restaurants</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>37</td>
+      <td><a href="/coffee-shops-report">Coffee Shops</a><br><span class="code">coffee-shops</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/RGkqDl" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/RGkqDl/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.coffee-shops</span><br><span class="code">sherlock.report.waitlist.coffee-shops</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>38</td>
+      <td><a href="/breweries-report">Breweries</a><br><span class="code">breweries</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/obv821" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/obv821/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.breweries</span><br><span class="code">sherlock.report.waitlist.breweries</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>39</td>
+      <td><a href="/hotels-report">Hotels</a><br><span class="code">hotels</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/Gx5ORj" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/Gx5ORj/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.hotels</span><br><span class="code">sherlock.report.waitlist.hotels</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>40</td>
+      <td><a href="/event-venues-report">Event Venues</a><br><span class="code">event-venues</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/ODkx7K" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/ODkx7K/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.event-venues</span><br><span class="code">sherlock.report.waitlist.event-venues</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>41</td>
+      <td><a href="/property-management-report">Property Management</a><br><span class="code">property-management</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/VLDWza" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/VLDWza/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.property-management</span><br><span class="code">sherlock.report.waitlist.property-management</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>42</td>
+      <td><a href="/real-estate-brokerages-report">Real Estate Brokerages</a><br><span class="code">real-estate-brokerages</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/PdkZzQ" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/PdkZzQ/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.real-estate-brokerages</span><br><span class="code">sherlock.report.waitlist.real-estate-brokerages</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>43</td>
+      <td><a href="/mortgage-brokers-report">Mortgage Brokers</a><br><span class="code">mortgage-brokers</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/EkMoxo" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/EkMoxo/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.mortgage-brokers</span><br><span class="code">sherlock.report.waitlist.mortgage-brokers</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>44</td>
+      <td><a href="/insurance-agencies-report">Insurance Agencies</a><br><span class="code">insurance-agencies</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/rjv8oM" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/rjv8oM/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.insurance-agencies</span><br><span class="code">sherlock.report.waitlist.insurance-agencies</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>45</td>
+      <td><a href="/accounting-and-tax-report">Accounting and Tax</a><br><span class="code">accounting-and-tax</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/44zlKb" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/44zlKb/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.accounting-and-tax</span><br><span class="code">sherlock.report.waitlist.accounting-and-tax</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>46</td>
+      <td><a href="/legal-services-report">Legal Services</a><br><span class="code">legal-services</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/jav8lR" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/jav8lR/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.legal-services</span><br><span class="code">sherlock.report.waitlist.legal-services</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>47</td>
+      <td><a href="/it-managed-services-report">IT Managed Services</a><br><span class="code">it-managed-services</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/2E79Kp" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/2E79Kp/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.it-managed-services</span><br><span class="code">sherlock.report.waitlist.it-managed-services</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>48</td>
+      <td><a href="/digital-marketing-agencies-report">Digital Marketing Agencies</a><br><span class="code">digital-marketing-agencies</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/xXv8JG" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/xXv8JG/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.digital-marketing-agencies</span><br><span class="code">sherlock.report.waitlist.digital-marketing-agencies</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>49</td>
+      <td><a href="/staffing-agencies-report">Staffing Agencies</a><br><span class="code">staffing-agencies</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/RGkqDp" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/RGkqDp/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.staffing-agencies</span><br><span class="code">sherlock.report.waitlist.staffing-agencies</span></td>
+      <td>template-passed</td>
+    </tr>
+<tr>
+      <td>50</td>
+      <td><a href="/private-schools-and-tutoring-report">Private Schools and Tutoring</a><br><span class="code">private-schools-and-tutoring</span></td>
+      <td><span class="tag waitlist">Waitlist</span></td>
+      <td><a href="https://tally.so/r/obv82X" target="_blank" rel="noopener">public</a> / <a href="https://tally.so/forms/obv82X/edit" target="_blank" rel="noopener">edit</a></td>
+      <td>waitlist</td>
+      <td>ready</td>
+      <td>missing</td>
+      <td>cloudflare-email<br><span class="code">sherlock.report.purchase.private-schools-and-tutoring</span><br><span class="code">sherlock.report.waitlist.private-schools-and-tutoring</span></td>
+      <td>template-passed</td>
+    </tr></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <a href="/" class="logo" aria-label="Sherlock Research home"><img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true"><span class="logo-stack">Sherlock<small>RESEARCH</small></span></a>
+      <p>Industry-specific research and local market intelligence for operators, investors, and agencies.</p>
+      <div class="socials">
+        <a href="mailto:hello@sherlockreports.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        <a href="/contact" aria-label="Contact Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></a>
+      </div>
+    </div>
+    <div class="fcol"><h3>Reports</h3><a href="/reports">Report Library</a><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a></div>
+    <div class="fcol"><h3>Resources</h3><a href="/pricing">Pricing</a><a href="/sample">Sample Report</a><a href="/faq">FAQ</a><a href="/blog-article">Research Note</a></div>
+    <div class="fcol"><h3>Company</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/terms-of-service">Terms</a></div>
+  </div>
+  <div class="container foot-bottom">
+    <span>&copy; <span data-year>2026</span> Sherlock Research. All rights reserved.</span>
+    <span>See the Market. Stay Ahead.</span>
+  </div>
+</footer>
+<script src="shared/app.js"></script>
+</body>
+</html>

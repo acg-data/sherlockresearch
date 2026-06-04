@@ -54,15 +54,22 @@
   .hero p{color:rgba(255,255,255,0.72);font-size:17px;max-width:520px;margin:0 auto}
 
   .contact{padding:64px 0 96px;background:var(--stone-2)}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;max-width:980px;margin:0 auto}
-  .contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-md)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;max-width:980px;margin:0 auto;min-width:0}
+  .contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-md);min-width:0}
   .contact-card h3{font-size:22px;margin-bottom:10px}
   .contact-card p{color:var(--muted);font-size:14.5px;line-height:1.65;margin-bottom:22px}
   .contact-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px}
   .contact-row:first-of-type{border-top:none}
   .contact-row b{color:var(--navy);min-width:90px;font-weight:600}
-  .contact-row a{color:var(--orange);font-weight:600}
+  .contact-row a{color:var(--orange);font-weight:600;overflow-wrap:anywhere}
   .contact-row a:hover{text-decoration:underline}
+  .contact-card.wide{grid-column:1/-1}
+  .lead-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  .lead-form label{display:grid;gap:6px;color:var(--navy);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+  .lead-form input,.lead-form select,.lead-form textarea{width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:13px 14px;font:inherit;color:var(--ink);background:#fff;text-transform:none;letter-spacing:0;font-weight:500}
+  .lead-form textarea{grid-column:1/-1;min-height:110px;resize:vertical}
+  .lead-form .full{grid-column:1/-1}
+  .form-note{font-size:12px;color:var(--muted);min-height:18px}
 
   footer{background:var(--navy-4);color:rgba(255,255,255,0.6);padding:56px 0 28px;text-align:center}
   footer a{color:var(--orange-2);font-weight:600}
@@ -70,7 +77,7 @@
   .footer-links a{color:rgba(255,255,255,0.85);font-weight:500}
   .footer-links a:hover{color:var(--orange-2)}
 
-  @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+  @media(max-width:768px){.contact-grid,.lead-form{grid-template-columns:1fr}.lead-form textarea,.lead-form .full{grid-column:1}}
   .logo img.logo-mark{width:42px;height:42px;object-fit:contain;border-radius:0;background:transparent;box-shadow:none;display:block;flex:0 0 auto}
   .footer-logo{justify-content:center;margin:0 auto 12px}</style>
 <link rel="stylesheet" href="shared/styles.css" />
@@ -106,15 +113,47 @@
       <div class="contact-card">
         <h3>General inquiries</h3>
         <p>For pre-purchase questions, custom-research scoping, or any partnership conversation. We reply within one business day.</p>
-        <div class="contact-row"><b>Email</b><a href="mailto:hello@sherlockresearch.com">hello@sherlockresearch.com</a></div>
+        <div class="contact-row"><b>Email</b><a href="mailto:hello@sherlockreports.com">hello@sherlockreports.com</a></div>
         <div class="contact-row"><b>Response</b><span style="color:var(--muted)">Usually within 4 hours</span></div>
       </div>
 
       <div class="contact-card">
         <h3>Existing customers</h3>
         <p>Already bought a report? Need a different metro, a fresh quarter, or have a quick question? Send the order email and we'll route fast.</p>
-        <div class="contact-row"><b>Support</b><a href="mailto:support@sherlockresearch.com">support@sherlockresearch.com</a></div>
+        <div class="contact-row"><b>Support</b><a href="mailto:support@sherlockreports.com">support@sherlockreports.com</a></div>
         <div class="contact-row"><b>Hours</b><span style="color:var(--muted)">Mon&ndash;Fri, 9am&ndash;6pm ET</span></div>
+      </div>
+
+      <div class="contact-card wide">
+        <h3>Request a report or purchase link</h3>
+        <p>Use this for waitlist, presell, and purchase-link requests. The form carries industry, plan, and status metadata into the Sherlock follow-up flow.</p>
+        <form class="lead-form" data-lead-form>
+          <label>Name
+            <input name="name" autocomplete="name" placeholder="Your name">
+          </label>
+          <label>Email
+            <input name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+          </label>
+          <label>Industry
+            <select name="industry" id="industrySelect" required>
+              <option value="">Choose an industry</option>
+            </select>
+          </label>
+          <label>Plan
+            <select name="plan" id="planSelect">
+              <option value="single">Standard Report</option>
+              <option value="quarterly">Quarterly + Coaching</option>
+              <option value="all">All-Access Pass</option>
+            </select>
+          </label>
+          <input name="status" id="statusInput" type="hidden" value="">
+          <input name="source" type="hidden" value="contact-page">
+          <textarea name="message" placeholder="What are you trying to decide?"></textarea>
+          <div class="full" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <button class="btn btn-primary btn-lg" type="submit">Send request &rarr;</button>
+            <span class="form-note" data-form-note></span>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -143,6 +182,35 @@
   </div>
 </footer>
 
+<script src="shared/catalog.js"></script>
+<script>
+  (function(){
+    var catalog = window.SherlockCatalog || {};
+    var params = new URLSearchParams(window.location.search);
+    var select = document.getElementById('industrySelect');
+    var status = document.getElementById('statusInput');
+    var plan = document.getElementById('planSelect');
+    if (select && catalog.reports) {
+      Object.keys(catalog.reports).sort(function(a,b){
+        return catalog.reports[a].name.localeCompare(catalog.reports[b].name);
+      }).forEach(function(slug){
+        var option = document.createElement('option');
+        option.value = slug;
+        option.textContent = catalog.reports[slug].name + ' (' + (catalog.statuses[catalog.reports[slug].status] || {}).libraryLabel + ')';
+        select.appendChild(option);
+      });
+    }
+    if (select && params.get('industry')) select.value = params.get('industry');
+    if (plan && params.get('plan')) plan.value = params.get('plan');
+    if (status && params.get('status')) status.value = params.get('status');
+    if (select && status && catalog.reports) {
+      select.addEventListener('change', function(){
+        status.value = catalog.reports[select.value] ? catalog.reports[select.value].status : '';
+      });
+      if (!status.value && select.value && catalog.reports[select.value]) status.value = catalog.reports[select.value].status;
+    }
+  })();
+</script>
 <script src="shared/app.js"></script>
 </body>
 </html>
