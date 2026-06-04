@@ -1,0 +1,8 @@
+server.pid
+*.pid
+.DS_Store
+Thumbs.db
+node_modules/
+*.local.md
+BATCH*.md
+IMPLEMENTATION_*.md

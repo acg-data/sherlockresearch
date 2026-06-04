@@ -505,11 +505,51 @@ NOTES:
     .footer-grid { grid-template-columns: 1fr 1fr; }
     body { padding-bottom: 76px; }
   }
+  /* ============ REPORTS DROPDOWN ============ */
+  .nav-item { position: relative; display: inline-flex; align-items: center; }
+  .nav-item > a { display: inline-flex; align-items: center; gap: 6px; }
+  .nav-item .caret { width: 12px; height: 12px; transition: transform 0.2s ease; display: inline-block; margin-left: 4px; }
+  .nav-item:hover .caret { transform: rotate(180deg); }
+  .dropdown { position: absolute; top: calc(100% + 12px); left: -20px; background: rgba(13,27,42,0.98); border: 1px solid var(--line-dark); border-radius: 12px; padding: 12px; min-width: 220px; box-shadow: 0 24px 48px rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; backdrop-filter: blur(10px); z-index: 100; }
+  .nav-item:hover .dropdown { opacity: 1; visibility: visible; }
+  .dropdown a { display: block; padding: 10px 12px; border-radius: 8px; color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; transition: color 0.15s, background 0.15s; }
+  .dropdown a:hover { background: rgba(255,255,255,0.1); color: var(--orange-2); }
+  .dropdown-section { padding: 0; margin: 0; }
+  .dropdown-section-title { padding: 8px 12px 6px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); font-weight: 700; margin-top: 8px; }
+  .dropdown-section:first-child .dropdown-section-title { margin-top: 0; }
+  .dropdown-section a { padding-left: 24px; }
+
   @media (max-width: 460px) {
     .stats-inner { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "HVAC Industry Report — Sherlock Research",
+  "description": "The 2026 HVAC Industry Report: market size, growth forecasts, competitive landscape, and local benchmarks for U.S. HVAC operators. 40+ pages, instant PDF.",
+  "brand": { "@type": "Brand", "name": "Sherlock Research" },
+  "image": "https://sherlockresearch.com/og-default.png",
+  "url": "https://sherlockresearch.com/hvac-report.html",
+  "offers": [
+    {"@type":"Offer","name":"Standard Report","price":"497","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockresearch.com/hvac-report.html"},
+    {"@type":"Offer","name":"City-Specific Report","price":"597","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockresearch.com/hvac-report.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://sherlockresearch.com/"},
+    {"@type":"ListItem","position":2,"name":"Reports","item":"https://sherlockresearch.com/reports.html"},
+    {"@type":"ListItem","position":3,"name":"HVAC Industry Report","item":"https://sherlockresearch.com/hvac-report.html"}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -521,14 +561,27 @@ NOTES:
       <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
     </a>
     <div class="nav-links">
-      <a href="index.html#industries">Industries</a>
-      <a href="index.html#locations">Locations</a>
+      <div class="nav-item">
+        <a href="reports.html">
+          Reports
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <div class="dropdown">
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Industry Reports</div>
+            <a href="roofing-report.html">Roofing</a>
+            <a href="hvac-report.html">HVAC</a>
+            <a href="pest-control-report.html">Pest Control</a>
+            <a href="landscaping-report.html">Landscaping</a>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#how">How It Works</a>
       <a href="pricing.html">Pricing</a>
-      <a href="blog-article.html">Resources</a>
       <a href="about.html">About</a>
     </div>
     <div class="nav-right">
-      <a href="#purchase" class="btn btn-primary">Get Your Edge</a>
+      <a href="#purchase" class="btn btn-primary">See Sample Insights</a>
     </div>
   </div>
 </nav>
@@ -1093,19 +1146,19 @@ NOTES:
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo"><div class="logo-mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></div><div class="logo-stack">Sherlock<small>RESEARCH</small></div></a>
-        <p>Actionable market intelligence and local insights for business owners who want to grow with confidence.</p>
-      </div>
-      <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="index.html#how">How It Works</a><a href="#">Careers</a><a href="#">Contact Us</a></div>
-      <div class="footer-col"><h5>Services</h5><a href="pricing.html">Industry Reports</a><a href="#">Custom Research</a><a href="#">Market Analysis</a><a href="#">Competitive Insights</a></div>
-      <div class="footer-col"><h5>Resources</h5><a href="blog-article.html">Blog</a><a href="#">Sample Reports</a><a href="#">Methodology</a><a href="faq.html">FAQ</a></div>
-      <div class="footer-col"><h5>Industries</h5><a href="landscaping-report.html">Landscaping</a><a href="index.html#industries">Roofing</a><a href="index.html#industries">HVAC</a><a href="index.html#industries">Pest Control</a></div>
+    <div class="footer-top">
+      <a href="index.html" class="logo"><div class="logo-mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></div><div class="logo-stack">Sherlock<small>RESEARCH</small></div></a>
+      <div class="footer-tag">See the Market. Stay Ahead.</div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 Sherlock Research. All rights reserved.</div>
-      <div style="display:flex; gap:18px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      <div>Industry-specific market intelligence for service businesses under $10M. © 2026 Sherlock Research.</div>
+      <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+        <a href="reports.html">Reports</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="mailto:hello@sherlockresearch.com">hello@sherlockresearch.com</a>
+      </div>
     </div>
   </div>
 </footer>

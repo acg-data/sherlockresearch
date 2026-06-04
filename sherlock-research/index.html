@@ -305,6 +305,21 @@
     .price-card.featured:hover { transform: translateY(-4px); }
     .middle-left, .middle-right { padding: 32px 28px; }
   }
+
+  /* ============ REPORTS DROPDOWN ============ */
+  .nav-item { position: relative; display: inline-flex; align-items: center; }
+  .nav-item > a { display: inline-flex; align-items: center; gap: 6px; }
+  .nav-item .caret { width: 12px; height: 12px; transition: transform 0.2s ease; display: inline-block; margin-left: 4px; }
+  .nav-item:hover .caret { transform: rotate(180deg); }
+  .dropdown { position: absolute; top: calc(100% + 12px); left: -20px; background: rgba(13,27,42,0.98); border: 1px solid var(--line-dark); border-radius: 12px; padding: 12px; min-width: 220px; box-shadow: 0 24px 48px rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; backdrop-filter: blur(10px); z-index: 100; }
+  .nav-item:hover .dropdown { opacity: 1; visibility: visible; }
+  .dropdown a { display: block; padding: 10px 12px; border-radius: 8px; color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; transition: color 0.15s, background 0.15s; }
+  .dropdown a:hover { background: rgba(255,255,255,0.1); color: var(--orange-2); }
+  .dropdown-section { padding: 0; margin: 0; }
+  .dropdown-section-title { padding: 8px 12px 6px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); font-weight: 700; margin-top: 8px; }
+  .dropdown-section:first-child .dropdown-section-title { margin-top: 0; }
+  .dropdown-section a { padding-left: 24px; }
+
   @media (max-width: 768px) {
     .container { padding: 0 18px; }
     section { padding: 56px 0; }
@@ -346,7 +361,11 @@
   "url": "https://sherlockresearch.com",
   "logo": "https://sherlockresearch.com/assets/sherlock-colorful.png",
   "description": "Industry-specific market intelligence for owner-led service businesses under $10M. Demand, competition, pricing, and buyer behavior — built for operators.",
-  "sameAs": []
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "hello@sherlockresearch.com",
+    "contactType": "customer service"
+  }
 }
 </script>
 </head>
@@ -364,7 +383,21 @@
       <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
     </a>
     <div class="nav-links">
-      <a href="#reports">Reports</a>
+      <div class="nav-item">
+        <a href="reports.html">
+          Reports
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <div class="dropdown">
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Industry Reports</div>
+            <a href="roofing-report.html">Roofing</a>
+            <a href="hvac-report.html">HVAC</a>
+            <a href="pest-control-report.html">Pest Control</a>
+            <a href="landscaping-report.html">Landscaping</a>
+          </div>
+        </div>
+      </div>
       <a href="#how">How It Works</a>
       <a href="pricing.html">Pricing</a>
       <a href="#methodology">Methodology</a>
@@ -850,8 +883,8 @@
     <div class="footer-bottom">
       <div>Industry-specific market intelligence for service businesses under $10M. © 2026 Sherlock Research.</div>
       <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-        <a href="#reports">Reports</a>
-        <a href="#how">How It Works</a>
+        <a href="reports.html">Reports</a>
+        <a href="index.html#how">How It Works</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="mailto:hello@sherlockresearch.com">hello@sherlockresearch.com</a>

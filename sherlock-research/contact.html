@@ -7,9 +7,12 @@
 <title>Contact — Sherlock Research</title>
 <meta name="description" content="Get in touch with the Sherlock Research team. Custom research, enterprise licenses, and support.">
 <link rel="canonical" href="https://sherlockresearch.com/contact.html">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Contact Sherlock Research">
+<meta property="og:description" content="Get in touch with the Sherlock Research team. Custom research, enterprise licenses, and support.">
 <meta property="og:url" content="https://sherlockresearch.com/contact.html">
 <meta property="og:image" content="https://sherlockresearch.com/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,13 +67,33 @@
   .contact-row a{color:var(--orange);font-weight:600}
   .contact-row a:hover{text-decoration:underline}
 
-  footer{background:var(--navy-4);color:rgba(255,255,255,0.6);padding:56px 0 28px;text-align:center}
-  footer a{color:var(--orange-2);font-weight:600}
-  .footer-links{display:flex;justify-content:center;gap:24px;margin:14px 0;flex-wrap:wrap;font-size:13px}
-  .footer-links a{color:rgba(255,255,255,0.85);font-weight:500}
-  .footer-links a:hover{color:var(--orange-2)}
+  /* ============ REPORTS DROPDOWN ============ */
+  .nav-item{position:relative;display:inline-flex;align-items:center}
+  .nav-item > a{display:inline-flex;align-items:center;gap:6px}
+  .nav-item .caret{width:12px;height:12px;transition:transform 0.2s ease;display:inline-block;margin-left:4px}
+  .nav-item:hover .caret{transform:rotate(180deg)}
+  .dropdown{position:absolute;top:calc(100% + 12px);left:-20px;background:rgba(13,27,42,0.98);border:1px solid var(--line-dark);border-radius:12px;padding:12px;min-width:220px;box-shadow:0 24px 48px rgba(0,0,0,0.4);opacity:0;visibility:hidden;transition:opacity 0.2s,visibility 0.2s;backdrop-filter:blur(10px);z-index:100}
+  .nav-item:hover .dropdown{opacity:1;visibility:visible}
+  .dropdown a{display:block;padding:10px 12px;border-radius:8px;color:rgba(255,255,255,0.85);font-size:13px;font-weight:500;transition:color 0.15s,background 0.15s}
+  .dropdown a:hover{background:rgba(255,255,255,0.1);color:var(--orange-2)}
+  .dropdown-section{padding:0;margin:0}
+  .dropdown-section-title{padding:8px 12px 6px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);font-weight:700;margin-top:8px}
+  .dropdown-section:first-child .dropdown-section-title{margin-top:0}
+  .dropdown-section a{padding-left:24px}
 
-  @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+  footer{background:var(--navy-4);color:rgba(255,255,255,0.6);padding:56px 0 32px;border-top:1px solid rgba(255,255,255,0.05)}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;gap:20px}
+  .footer-top .logo{color:var(--white)}
+  .footer-tag{font-family:var(--font-display);font-style:italic;color:var(--orange-2);font-size:16px}
+  .footer-bottom{padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12.5px;flex-wrap:wrap;gap:12px}
+  .footer-bottom a:hover{color:var(--orange-2)}
+
+  @media(max-width:768px){
+    .contact-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .footer-top{flex-direction:column;align-items:flex-start;gap:16px}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:10px}
+  }
 </style>
 </head>
 <body>
@@ -82,7 +105,21 @@
       <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
     </a>
     <div class="nav-links">
-      <a href="index.html#reports">Reports</a>
+      <div class="nav-item">
+        <a href="reports.html">
+          Reports
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <div class="dropdown">
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Industry Reports</div>
+            <a href="roofing-report.html">Roofing</a>
+            <a href="hvac-report.html">HVAC</a>
+            <a href="pest-control-report.html">Pest Control</a>
+            <a href="landscaping-report.html">Landscaping</a>
+          </div>
+        </div>
+      </div>
       <a href="index.html#how">How It Works</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
@@ -124,16 +161,23 @@
 
 <footer>
   <div class="container">
-    <div style="font-family:var(--font-display);font-style:italic;color:var(--orange-2);font-size:16px;margin-bottom:8px">See the Market. Stay Ahead.</div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="privacy-policy.html">Privacy</a>
-      <a href="terms-of-service.html">Terms</a>
+    <div class="footer-top">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></div>
+        <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
+      </a>
+      <div class="footer-tag">See the Market. Stay Ahead.</div>
     </div>
-    <div style="font-size:12.5px">© 2026 Sherlock Research. All rights reserved.</div>
+    <div class="footer-bottom">
+      <div>Industry-specific market intelligence for service businesses under $10M. © 2026 Sherlock Research.</div>
+      <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+        <a href="reports.html">Reports</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="mailto:hello@sherlockresearch.com">hello@sherlockresearch.com</a>
+      </div>
+    </div>
   </div>
 </footer>
 
