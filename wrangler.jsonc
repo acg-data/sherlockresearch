@@ -15,7 +15,8 @@
   },
   "kv_namespaces": [
     {
-      "binding": "FULFILLMENTS"
+      "binding": "FULFILLMENTS",
+      "id": "bce1d900461642a292124c8cc432bb88"
     }
   ],
   "send_email": [
