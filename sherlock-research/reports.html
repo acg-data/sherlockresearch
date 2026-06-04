@@ -107,6 +107,7 @@
   .rstat:first-child{border-left:0;padding-left:0}
   .rstat b{font-family:var(--font-display);font-weight:700;color:#fff;font-size:clamp(26px,3vw,34px);line-height:1}
   .rstat span{color:rgba(255,255,255,.6);font-size:12.5px}
+  .report-statbar-head{color:var(--orange-2);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
   .report-statbar-note{margin-top:16px;color:rgba(255,255,255,.42);font-size:11.5px}
   .teaser-band{background:var(--grad-stone)}
   .band-sub{color:var(--muted);max-width:640px;margin:10px 0 30px;font-size:15px}
@@ -129,6 +130,25 @@
   .teaser-foot{margin-top:24px;color:var(--muted);font-size:13.5px}
   .teaser-foot a{color:var(--orange);font-weight:700;display:inline-flex;align-items:center;gap:6px}
   .teaser-foot a svg{width:14px;height:14px}
+  /* click-through data tabs */
+  .data-tabs{margin-top:6px}
+  .data-tablist{display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:22px;overflow-x:auto}
+  .data-tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:12px 16px;font:700 14px/1 var(--font-body);color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;transition:color .15s ease,border-color .15s ease}
+  .data-tab svg{width:11px;height:11px;opacity:.55}
+  .data-tab:hover{color:var(--navy)}
+  .data-tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+  .data-tab.active svg{opacity:.85}
+  .data-panel{display:none}
+  .data-panel.active{display:block;animation:dpFade .26s ease}
+  @keyframes dpFade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+  .dp-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .dp-head h3{font-family:var(--font-body);font-size:16px;color:var(--navy);letter-spacing:0;margin:0}
+  .dp-chart{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 28px;box-shadow:var(--shadow-sm);min-height:210px}
+  .dp-chart .bar-chart{max-width:640px}
+  .area-chart{width:100%;height:200px;display:block}
+  .growth-stat{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .growth-stat b{font-family:var(--font-display);font-weight:700;font-size:40px;color:var(--sage);line-height:1}
+  .growth-stat span{color:var(--muted);font-size:13px}
   .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
   .why-item{display:flex;gap:13px;align-items:flex-start}
   .why-item svg{width:24px;height:24px;color:var(--orange);flex:0 0 auto;margin-top:2px}
@@ -163,7 +183,7 @@
 <nav class="nav">
   <div class="container nav-inner">
     <a href="/" class="logo" aria-label="Sherlock Research home">
-      <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+      <img class="logo-mark" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true">
       <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
     </a>
     <div class="nav-links">
@@ -559,7 +579,7 @@
 <footer>
   <div class="container foot-grid">
     <div class="foot-brand">
-      <a href="/" class="logo" aria-label="Sherlock Research home"><img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true"><span class="logo-stack">Sherlock<small>RESEARCH</small></span></a>
+      <a href="/" class="logo" aria-label="Sherlock Research home"><img class="logo-mark" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true"><span class="logo-stack">Sherlock<small>RESEARCH</small></span></a>
       <p>Industry-specific research and local market intelligence for operators, investors, and agencies.</p>
       <div class="socials">
         <a href="mailto:hello@sherlockreports.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>

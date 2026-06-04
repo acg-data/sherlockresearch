@@ -1132,21 +1132,27 @@ function chartBlocks(rows) {
     }
     if (row.row_type !== "forecast" || !row.count || row.answer === "Total completed responses") continue;
     if (!byQuestion.has(key)) byQuestion.set(key, { section: row.section, question: row.question, rows: [] });
-    byQuestion.get(key).rows.push(row);
+    byQuestion.get(key).rows.push({ ...row, percentValue: percentAsDecimal(row.percent) });
   }
   return [...byQuestion.entries()].map(([key, block]) => ({ ...block, metric: metrics.get(key) || "" })).filter((block) => block.rows.length >= 2);
 }
 
+function percentAsDecimal(value) {
+  const parsed = Number(String(value || "").replace("%", "").trim());
+  return Number.isFinite(parsed) ? parsed / 100 : 0;
+}
+
 function addQuestionChart(sheet, block, startRow, chartRow) {
   const title = `${block.question.slice(0, 75)}${block.metric ? ` (${block.metric})` : ""}`;
-  const source = writeMatrix(sheet, startRow, 0, [["Answer", "Count"], ...block.rows.map((r) => [r.answer, Number(r.count)])]);
+  const source = writeMatrix(sheet, startRow, 0, [["Answer", "Percent"], ...block.rows.map((r) => [r.answer, r.percentValue])]);
   styleTable(source);
   sheet.getRangeByIndexes(startRow, 0, block.rows.length + 1, 1).format.columnWidthPx = 220;
+  sheet.getRangeByIndexes(startRow + 1, 1, block.rows.length, 1).format.numberFormat = "0.0%";
   const chart = sheet.charts.add("bar", source);
   chart.title = title;
   chart.hasLegend = false;
   chart.xAxis = { axisType: "textAxis" };
-  chart.yAxis = { numberFormatCode: "#,##0" };
+  chart.yAxis = { numberFormatCode: "0%" };
   chart.setPosition(`D${chartRow}`, `M${chartRow + 15}`);
 }
 
@@ -1170,13 +1176,14 @@ async function writeWorkbook(industryName, rows, outDir, slug, sample, renderPre
   let helperRow = 12;
   const featured = blocks.filter((block) => /consumer, employee|describe that area|purchase|price|challenge|raise prices|paid for/i.test(block.question)).slice(0, 6);
   featured.forEach((block, i) => {
-    const source = writeMatrix(dashboard, helperRow, 0, [["Answer", "Count"], ...block.rows.map((r) => [r.answer, Number(r.count)])]);
+    const source = writeMatrix(dashboard, helperRow, 0, [["Answer", "Percent"], ...block.rows.map((r) => [r.answer, r.percentValue])]);
     styleTable(source);
+    dashboard.getRangeByIndexes(helperRow + 1, 1, block.rows.length, 1).format.numberFormat = "0.0%";
     const chart = dashboard.charts.add("bar", source);
     chart.title = block.question.slice(0, 70);
     chart.hasLegend = false;
     chart.xAxis = { axisType: "textAxis" };
-    chart.yAxis = { numberFormatCode: "#,##0" };
+    chart.yAxis = { numberFormatCode: "0%" };
     const left = i % 2 === 0 ? "E" : "J";
     const right = i % 2 === 0 ? "I" : "N";
     const row = i < 2 ? 4 : i < 4 ? 22 : 40;
@@ -1204,7 +1211,7 @@ async function writeWorkbook(industryName, rows, outDir, slug, sample, renderPre
   for (const [sheetName, sheetBlocks] of grouped.entries()) {
     const sheet = workbook.worksheets.add(safeSheetName(sheetName));
     sheet.showGridLines = false;
-    addTitle(sheet, sheetName, "Each chart plots modeled respondent counts; source mini-tables are shown at left.");
+    addTitle(sheet, sheetName, "Each chart plots modeled respondent percentages; source mini-tables are shown at left.");
     let startRow = 4;
     for (const block of sheetBlocks) {
       addQuestionChart(sheet, block, startRow, startRow + 1);
@@ -1232,7 +1239,8 @@ async function writeWorkbook(industryName, rows, outDir, slug, sample, renderPre
   }
 
   const output = await SpreadsheetFile.exportXlsx(workbook);
-  await output.save(path.join(outDir, `${slug.toUpperCase()}_TALLY_N${sample.total}_FORECAST_CHARTS.xlsx`));
+  const chartsSuffix = process.env.CHARTS_FILENAME_SUFFIX || "";
+  await output.save(path.join(outDir, `${slug.toUpperCase()}_TALLY_N${sample.total}_FORECAST${chartsSuffix}_CHARTS.xlsx`));
 }
 
 function validateRows(rows, industryName, sample) {
@@ -1303,7 +1311,8 @@ async function main() {
     await fs.mkdir(outDir, { recursive: true });
     const mdName = `${slug.toUpperCase()}_TALLY_N${sample.total}_FORECAST.md`;
     const csvName = `${slug.toUpperCase()}_TALLY_N${sample.total}_FORECAST.csv`;
-    const xlsxName = `${slug.toUpperCase()}_TALLY_N${sample.total}_FORECAST_CHARTS.xlsx`;
+    const chartsSuffix = process.env.CHARTS_FILENAME_SUFFIX || "";
+    const xlsxName = `${slug.toUpperCase()}_TALLY_N${sample.total}_FORECAST${chartsSuffix}_CHARTS.xlsx`;
     await fs.writeFile(path.join(outDir, mdName), writeMarkdown(industryName, formId, rows, sample), "utf8");
     await fs.writeFile(path.join(outDir, csvName), toCsv(rows), "utf8");
     await writeWorkbook(industryName, rows, outDir, slug, sample, i === 0 && start === 0);

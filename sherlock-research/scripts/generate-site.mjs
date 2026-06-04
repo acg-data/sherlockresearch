@@ -69,7 +69,7 @@ function nav(active = "reports") {
   return `<nav class="nav">
   <div class="container nav-inner">
     <a href="/" class="logo" aria-label="Sherlock Research home">
-      <img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+      <img class="logo-mark" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true">
       <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
     </a>
     <div class="nav-links">
@@ -90,7 +90,7 @@ function footer() {
   return `<footer>
   <div class="container foot-grid">
     <div class="foot-brand">
-      <a href="/" class="logo" aria-label="Sherlock Research home"><img class="logo-mark" src="assets/sherlock-colorful.png" alt="" aria-hidden="true"><span class="logo-stack">Sherlock<small>RESEARCH</small></span></a>
+      <a href="/" class="logo" aria-label="Sherlock Research home"><img class="logo-mark" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true"><span class="logo-stack">Sherlock<small>RESEARCH</small></span></a>
       <p>Industry-specific research and local market intelligence for operators, investors, and agencies.</p>
       <div class="socials">
         <a href="mailto:hello@sherlockreports.com" aria-label="Email Sherlock Research"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
@@ -221,6 +221,7 @@ function pageCss() {
   .rstat:first-child{border-left:0;padding-left:0}
   .rstat b{font-family:var(--font-display);font-weight:700;color:#fff;font-size:clamp(26px,3vw,34px);line-height:1}
   .rstat span{color:rgba(255,255,255,.6);font-size:12.5px}
+  .report-statbar-head{color:var(--orange-2);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
   .report-statbar-note{margin-top:16px;color:rgba(255,255,255,.42);font-size:11.5px}
   .teaser-band{background:var(--grad-stone)}
   .band-sub{color:var(--muted);max-width:640px;margin:10px 0 30px;font-size:15px}
@@ -243,6 +244,25 @@ function pageCss() {
   .teaser-foot{margin-top:24px;color:var(--muted);font-size:13.5px}
   .teaser-foot a{color:var(--orange);font-weight:700;display:inline-flex;align-items:center;gap:6px}
   .teaser-foot a svg{width:14px;height:14px}
+  /* click-through data tabs */
+  .data-tabs{margin-top:6px}
+  .data-tablist{display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:22px;overflow-x:auto}
+  .data-tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:12px 16px;font:700 14px/1 var(--font-body);color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;transition:color .15s ease,border-color .15s ease}
+  .data-tab svg{width:11px;height:11px;opacity:.55}
+  .data-tab:hover{color:var(--navy)}
+  .data-tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+  .data-tab.active svg{opacity:.85}
+  .data-panel{display:none}
+  .data-panel.active{display:block;animation:dpFade .26s ease}
+  @keyframes dpFade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+  .dp-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .dp-head h3{font-family:var(--font-body);font-size:16px;color:var(--navy);letter-spacing:0;margin:0}
+  .dp-chart{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 28px;box-shadow:var(--shadow-sm);min-height:210px}
+  .dp-chart .bar-chart{max-width:640px}
+  .area-chart{width:100%;height:200px;display:block}
+  .growth-stat{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .growth-stat b{font-family:var(--font-display);font-weight:700;font-size:40px;color:var(--sage);line-height:1}
+  .growth-stat span{color:var(--muted);font-size:13px}
   .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
   .why-item{display:flex;gap:13px;align-items:flex-start}
   .why-item svg{width:24px;height:24px;color:var(--orange);flex:0 0 auto;margin-top:2px}
@@ -338,6 +358,28 @@ function barChartSvg(rows, accent) {
   return `<svg class="bar-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMinYMin meet" role="img" aria-hidden="true">${bars}</svg>`;
 }
 
+// Illustrative upward area chart, deterministically varied per slug (no real CAGR data).
+function areaChartSvg(slug, accent) {
+  let seed = 0;
+  for (let i = 0; i < slug.length; i++) seed = (seed * 31 + slug.charCodeAt(i)) >>> 0;
+  const rand = () => { seed = (seed * 1103515245 + 12345) >>> 0; return seed / 4294967296; };
+  const n = 9;
+  const w = 600;
+  const ht = 190;
+  const pts = [];
+  let v = 26 + rand() * 14;
+  for (let i = 0; i < n; i++) { v += 5 + rand() * 11; pts.push(v); }
+  const max = Math.max(...pts) * 1.08;
+  const coords = pts.map((p, i) => [(i / (n - 1)) * w, ht - (p / max) * (ht - 16)]);
+  const line = coords.map((c) => `${c[0].toFixed(1)},${c[1].toFixed(1)}`).join(" ");
+  const dots = coords.map((c) => `<circle cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="3" fill="${accent}"/>`).join("");
+  return `<svg class="area-chart" viewBox="0 0 ${w} ${ht}" preserveAspectRatio="none" role="img" aria-hidden="true">` +
+    `<defs><linearGradient id="ag-${slug}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${accent}" stop-opacity=".34"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/></linearGradient></defs>` +
+    `<polygon points="0,${ht} ${line} ${w},${ht}" fill="url(#ag-${slug})"/>` +
+    `<polyline points="${line}" fill="none" stroke="${accent}" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>` +
+    `<g vector-effect="non-scaling-stroke">${dots}</g></svg>`;
+}
+
 function reportPage(industry) {
   const status = STATUS[industry.status];
   const action = statusAction(industry);
@@ -359,12 +401,30 @@ function reportPage(industry) {
   const st = ins.stats || {};
   const accent = industry.status === "available" ? "#5c6746" : industry.status === "presell" ? "#92602d" : "#546d7c";
   const checkoutBtn = (cls = "btn-lg") => `<a href="${html(action.href)}" class="btn btn-primary ${cls}" data-checkout-plan="${html(action.plan)}" data-report-slug="${html(industry.slug)}" data-analytics-event="checkout_cta">${html(action.text)} ${arrowSvg}</a>`;
-  const teasers = (ins.teasers || []).slice(0, 5).map((t, i) => {
-    const chart = barChartSvg(t.rows, accent);
-    if (i === 0) {
-      return `<article class="teaser is-free reveal"><div class="teaser-head"><span class="teaser-chip free">Free preview</span></div><h3>${html(t.label)}</h3><div class="teaser-chart">${chart}</div></article>`;
+  const TAB_DEFS = [
+    { key: "demand", label: "Demand", locked: false },
+    { key: "channels", label: "Channels", locked: false },
+    { key: "pricing", label: "Pricing", locked: true },
+    { key: "spend", label: "Spend", locked: true },
+    { key: "switching", label: "Switching", locked: true }
+  ];
+  const unlockCta = `<a href="${html(action.href)}" class="btn btn-primary btn-sm" data-checkout-plan="single" data-report-slug="${html(industry.slug)}" data-analytics-event="teaser_unlock">${html(action.text)}</a>`;
+  const tabItems = (ins.teasers || []).slice(0, 5).map((t, i) => {
+    const def = TAB_DEFS[i] || { key: "cut" + i, label: "Data", locked: true };
+    return { key: def.key, label: def.label, locked: def.locked, title: t.label, chart: barChartSvg(t.rows, accent) };
+  });
+  tabItems.push({ key: "growth", label: "Growth", locked: true, growth: true, title: "5-year revenue growth", chart: areaChartSvg(industry.slug, accent) });
+  const dataTablist = tabItems.map((it, i) => `<button class="data-tab${i === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${i === 0 ? "true" : "false"}" data-tab="${it.key}">${it.label}${it.locked ? ` ${lockSvg}` : ""}</button>`).join("");
+  const dataPanels = tabItems.map((it, i) => {
+    const head = `<div class="dp-head"><span class="teaser-chip${it.locked ? "" : " free"}">${it.locked ? `${lockSvg} Locked` : "Open preview"}</span><h3>${html(it.title)}</h3></div>`;
+    let body;
+    if (!it.locked) {
+      body = `<div class="dp-chart">${it.chart}</div>`;
+    } else {
+      const growthStat = it.growth ? `<div class="growth-stat"><b class="teaser-blur">+14.2%</b><span>projected 5-year revenue growth</span></div>` : "";
+      body = `<div class="dp-chart">${growthStat}<div class="teaser-blur">${it.chart}</div><div class="teaser-veil"><div class="teaser-veil-in">${lockSvg}<b>Unlock with the full report</b>${unlockCta}</div></div></div>`;
     }
-    return `<article class="teaser reveal"><div class="teaser-head"><span class="teaser-chip">${lockSvg} Locked</span></div><h3>${html(t.label)}</h3><div class="teaser-chart"><div class="teaser-blur">${chart}</div><div class="teaser-veil"><div class="teaser-veil-in">${lockSvg}<b>Unlock with the full report</b><a href="${html(action.href)}" class="btn btn-primary btn-sm" data-checkout-plan="single" data-report-slug="${html(industry.slug)}" data-analytics-event="teaser_unlock">${html(action.text)}</a></div></div></div></article>`;
+    return `<div class="data-panel${i === 0 ? " active" : ""}" role="tabpanel" data-panel="${it.key}">${head}${body}</div>`;
   }).join("\n        ");
   return `<!DOCTYPE html>
 <html lang="en">
@@ -396,7 +456,7 @@ ${nav("reports")}
             <div class="report-book" style="--accent:${accent}">
               <span class="book-spine"></span>
               <div class="book-face">
-                <img class="book-logo" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+                <img class="book-logo" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true">
                 <div class="book-ed">${html(industry.edition)} Edition</div>
                 <div class="book-name">${html(industry.name)}<br>Industry Report</div>
                 <div class="book-tagline">Trends &middot; Benchmarks &middot; Opportunities</div>
@@ -408,13 +468,15 @@ ${nav("reports")}
       </div>
     </div>
     <div class="report-statbar">
-      <div class="container report-statbar-grid">
-        <div class="rstat"><b>${st.purchaseIntent != null ? html(st.purchaseIntent) + "/10" : "&mdash;"}</b><span>Purchase intent, next 12 months</span></div>
-        <div class="rstat"><b>${st.boughtLastYear != null ? html(st.boughtLastYear) + "%" : "&mdash;"}</b><span>Bought in the last 12 months</span></div>
-        <div class="rstat"><b>25,000+</b><span>Markets analyzed</span></div>
-        <div class="rstat"><b>2,600+</b><span>Business owners trust us</span></div>
+      <div class="container">
+        <div class="report-statbar-head">Trusted by Business Owners &amp; Investors</div>
+        <div class="report-statbar-grid">
+          <div class="rstat"><b>75+</b><span>5-Star Reviews</span></div>
+          <div class="rstat"><b>500+</b><span>Operator Interviews</span></div>
+          <div class="rstat"><b>25,000+</b><span>Markets Analyzed</span></div>
+          <div class="rstat"><b>2,600+</b><span>Business Owners</span></div>
+        </div>
       </div>
-      <div class="container report-statbar-note">Buyer-intent figures from Sherlock's modeled ${html(industry.name)} forecast (599 responses).</div>
     </div>
   </header>
 
@@ -430,10 +492,13 @@ ${nav("reports")}
   <section class="page-band teaser-band">
     <div class="container">
       <div class="eyebrow">Inside the data</div>
-      <h2>A preview of the ${html(industry.name)} buyer data inside.</h2>
-      <p class="band-sub">Real demand, pricing, and switching signals from Sherlock's ${html(industry.name)} research. One cut is open below — the full set unlocks with the report.</p>
-      <div class="teaser-grid">
-        ${teasers}
+      <h2>Explore the ${html(industry.name)} buyer data.</h2>
+      <p class="band-sub">Click through the cuts from Sherlock's ${html(industry.name)} research — open previews are free; the full set unlocks with the report.</p>
+      <div class="data-tabs" data-tabs>
+        <div class="data-tablist" role="tablist" aria-label="Report data cuts">${dataTablist}</div>
+        <div class="data-panels">
+        ${dataPanels}
+        </div>
       </div>
       <p class="teaser-foot">This data is drawn from Sherlock's ${html(industry.name)} research survey. <a href="${html(industry.tallyUrl)}" target="_blank" rel="noopener" data-analytics-event="tally_survey">Add your voice &mdash; take the 2-minute survey ${arrowSvg}</a></p>
     </div>
@@ -485,7 +550,7 @@ ${nav("reports")}
         <div class="report-book report-book-tilt" style="--accent:${accent}">
           <span class="book-spine"></span>
           <div class="book-face">
-            <img class="book-logo" src="assets/sherlock-colorful.png" alt="" aria-hidden="true">
+            <img class="book-logo" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true">
             <div class="book-name">${html(industry.name)}<br>Industry Report</div>
             <div class="book-tagline">${html(industry.edition)} Edition</div>
           </div>

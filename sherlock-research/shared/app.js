@@ -417,4 +417,24 @@
       }
     });
   });
+
+  /* report.html data tabs (click-through chart explorer) */
+  document.querySelectorAll('[data-tabs]').forEach(group => {
+    const tabs = Array.prototype.slice.call(group.querySelectorAll('[data-tab]'));
+    const panels = Array.prototype.slice.call(group.querySelectorAll('[data-panel]'));
+    function activate(key) {
+      tabs.forEach(t => {
+        const on = t.dataset.tab === key;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === key));
+    }
+    tabs.forEach(t => {
+      t.addEventListener('click', () => activate(t.dataset.tab));
+      t.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(t.dataset.tab); }
+      });
+    });
+  });
 })();

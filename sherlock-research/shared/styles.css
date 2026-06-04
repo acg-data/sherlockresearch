@@ -115,6 +115,8 @@ button, input, select { font:inherit; }
 .nav-item:hover .dropdown, .nav-item:focus-within .dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
 .dropdown a { display:block; padding:9px 11px; border-radius:9px; color:var(--ink); font-size:13.5px; font-weight:700; }
 .dropdown a:hover, .dropdown a:focus { background:var(--orange-soft); color:var(--orange-3); }
+.dropdown-scroll { max-height:300px; overflow-y:auto; min-width:248px; }
+.dropdown-all { margin-top:5px; border-top:1px solid var(--line); padding-top:11px !important; color:var(--orange-3) !important; font-size:12.5px !important; }
 .nav-right { display:flex; align-items:center; gap:12px; }
 .hamburger { display:none; width:42px; height:42px; border:0; background:transparent; cursor:pointer; border-radius:9px; }
 .hamburger span { display:block; width:22px; height:2px; background:var(--white); margin:5px auto; transition:.2s ease; }
