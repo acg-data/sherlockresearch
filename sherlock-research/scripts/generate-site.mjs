@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { INDUSTRIES, PLANS, SITE, STATUS, catalogReports } from "../../src/report-catalog.js";
@@ -7,6 +7,7 @@ import { insightsFor } from "../../src/report-insights.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 const repoRoot = path.resolve(root, "..");
+const COVERS = {}; // slug -> cover filename, auto-detected from assets/covers/ at build time
 
 function html(value) {
   return String(value ?? "")
@@ -215,6 +216,8 @@ function pageCss() {
   .book-tagline{font-size:11px;color:rgba(255,255,255,.66)}
   .book-badge{position:absolute;right:-6px;bottom:24px;z-index:3;display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--navy);font-size:12px;font-weight:700;padding:9px 13px;border-radius:999px;box-shadow:0 14px 30px rgba(2,24,40,.34)}
   .book-badge svg{color:var(--orange)}
+  .report-cover-img{display:block;width:100%;max-width:330px;height:auto;border-radius:10px;box-shadow:0 30px 60px -18px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.32)}
+  .report-cover-img.cover-tilt{transform:perspective(1500px) rotateY(-14deg) rotateX(3deg)}
   .report-statbar{border-top:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);padding:24px 0 20px}
   .report-statbar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   .rstat{display:flex;flex-direction:column;gap:6px;padding-left:18px;border-left:2px solid rgba(255,255,255,.12)}
@@ -393,6 +396,8 @@ function reportPage(industry) {
   const ins = insightsFor(industry.slug);
   const st = ins.stats || {};
   const accent = industry.status === "available" ? "#5c6746" : industry.status === "presell" ? "#92602d" : "#546d7c";
+  const cover = COVERS[industry.slug];
+  const coverImg = cover ? `<img class="report-cover-img" src="assets/covers/${cover}?v=1" alt="${html(industry.name)} report cover" loading="lazy">` : null;
   const checkoutBtn = (cls = "btn-lg") => `<a href="${html(action.href)}" class="btn btn-primary ${cls}" data-checkout-plan="${html(action.plan)}" data-report-slug="${html(industry.slug)}" data-analytics-event="checkout_cta">${html(action.text)} ${arrowSvg}</a>`;
   const TAB_DEFS = [
     { key: "demand", label: "Demand", locked: false },
@@ -446,7 +451,7 @@ ${nav("reports")}
         </div>
         <div class="report-hero-visual">
           <div class="book-wrap reveal">
-            <div class="report-book" style="--accent:${accent}">
+            ${cover ? coverImg : `<div class="report-book" style="--accent:${accent}">
               <span class="book-spine"></span>
               <div class="book-face">
                 <img class="book-logo" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true">
@@ -454,7 +459,7 @@ ${nav("reports")}
                 <div class="book-name">${html(industry.name)}<br>Industry Report</div>
                 <div class="book-tagline">Trends &middot; Benchmarks &middot; Opportunities</div>
               </div>
-            </div>
+            </div>`}
             <div class="book-badge">${iconSvg("delivery", 15)} ${html(deliverySignal)}</div>
           </div>
         </div>
@@ -540,14 +545,14 @@ ${nav("reports")}
         <div class="cta-row">${checkoutBtn()}<a href="${html(industry.sampleAsset)}" class="btn btn-outline btn-lg" data-analytics-event="sample_download">View sample</a></div>
       </div>
       <div class="report-final-visual reveal">
-        <div class="report-book report-book-tilt" style="--accent:${accent}">
+        ${cover ? `<img class="report-cover-img cover-tilt" src="assets/covers/${cover}?v=1" alt="" aria-hidden="true" loading="lazy">` : `<div class="report-book report-book-tilt" style="--accent:${accent}">
           <span class="book-spine"></span>
           <div class="book-face">
             <img class="book-logo" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true">
             <div class="book-name">${html(industry.name)}<br>Industry Report</div>
             <div class="book-tagline">${html(industry.edition)} Edition</div>
           </div>
-        </div>
+        </div>`}
       </div>
     </div>
   </section>
@@ -910,7 +915,17 @@ async function updateHomepage() {
   await writeFile(indexPath, source, "utf8");
 }
 
+async function loadCovers() {
+  try {
+    for (const f of await readdir(path.join(root, "assets", "covers"))) {
+      const m = f.match(/^([a-z0-9-]+)\.(png|jpe?g|webp|avif)$/i);
+      if (m) COVERS[m[1]] = f;
+    }
+  } catch { /* no assets/covers/ yet — every report uses the generated mockup */ }
+}
+
 async function main() {
+  await loadCovers();
   await save("shared/catalog.js", catalogJs());
   await save("reports.html", libraryPage());
   await save("success.html", successPage());
