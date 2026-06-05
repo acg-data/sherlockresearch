@@ -588,7 +588,7 @@ function parseFormGroups(form) {
   for (const block of form.blocks || []) {
     const text = blockText(block);
     if (block.type === "TITLE" && block.groupType === "QUESTION") {
-      if (/In the last 12 months/i.test(text)) branch = "consumer";
+      if (/In the last 12 months/i.test(text) && /paid for/i.test(text)) branch = "consumer";
       if (/What is your role/i.test(text)) branch = "employee";
       if (/approximate annual revenue/i.test(text)) branch = "owner";
       if (/Your email/i.test(text)) branch = "final";
@@ -656,6 +656,13 @@ function binaryWeights(options, yesRate, unsureRate = 0.14) {
   return options.map((option) => /^yes\b/i.test(option) ? yesRate : 1 - yesRate);
 }
 
+function qualifiedRecentUse(prior) {
+  const rareProjectPenalty = prior.spend > 0.80 && prior.frequency < 0.38 ? 0.03 : 0;
+  const emergencyPenalty = prior.category.includes("urgent") && prior.recentUse < 0.35 ? 0.02 : 0;
+  const frequentBoost = prior.frequency * 0.06 + prior.recurring * 0.03;
+  return clamp(0.90 + frequentBoost - rareProjectPenalty - emergencyPenalty, 0.86, 0.98);
+}
+
 function channelWeights(options, prior) {
   return options.map((option) => {
     const o = option.toLowerCase();
@@ -709,6 +716,34 @@ function frequencyWeights(options, prior) {
     else if (/one-time|project|emergency|as needed/.test(o)) weight = 0.14 + (1 - prior.recurring) * 0.32 + prior.urgency * 0.12;
     else weight = 0.11 + i * 0.01;
     return weight;
+  });
+}
+
+function usagePatternWeights(options, prior) {
+  return options.map((option) => {
+    const o = option.toLowerCase();
+    if (/recurring|weekly|bi-weekly|monthly|membership|subscription|managed|monitoring|maintenance agreement|full-time|ongoing|regular|active/.test(o)) {
+      return 0.14 + prior.frequency * 0.34 + prior.recurring * 0.30;
+    }
+    if (/emergency|urgent|repair|breakdown|claim|storm|leak|sick|injury|flare|issue/.test(o)) {
+      return 0.12 + prior.urgency * 0.42 + (1 - prior.recurring) * 0.12;
+    }
+    if (/planned|replacement|project|remodel|install|upgrade|build|whole-home|addition|ready/.test(o)) {
+      return 0.12 + prior.spend * 0.34 + (1 - prior.frequency) * 0.14;
+    }
+    if (/routine|annual|preventive|wellness|tune-up|inspection|tax filing|renewal/.test(o)) {
+      return 0.12 + prior.trust * 0.18 + prior.recurring * 0.24;
+    }
+    if (/quote|shopping|evaluating|comparing|not sure|researching|planning|monitoring/.test(o)) {
+      return 0.12 + (1 - prior.recentUse) * 0.22 + prior.price * 0.10;
+    }
+    if (/commercial|business|fleet|office|corporate|property|investor/.test(o)) {
+      return 0.12 + prior.ownerBias * 0.42 + prior.acv * 0.14;
+    }
+    if (/event|special|seasonal|summer|wedding|travel|occasion/.test(o)) {
+      return 0.12 + prior.season * 0.24 + (1 - prior.recurring) * 0.14;
+    }
+    return 0.14;
   });
 }
 
@@ -821,7 +856,7 @@ function optionWeights(question, options, branch, prior, seedText) {
     const optIn = clamp(0.24 + prior.trust * 0.14 + prior.review * 0.08, 0.24, 0.50);
     return options.map((option) => /leave|provide|yes|email/i.test(option) && !/does not|no/i.test(option) ? optIn : 1 - optIn);
   }
-  if (/last 12 months|paid for/.test(q)) return binaryWeights(options, prior.recentUse);
+  if (/last 12 months/.test(q) && /paid for/.test(q)) return binaryWeights(options, qualifiedRecentUse(prior));
   if (/switched .*last 2 years|have you switched/.test(q)) return binaryWeights(options, clamp(0.16 + prior.switchRisk * 0.44 + prior.price * 0.08 - prior.trust * 0.09, 0.12, 0.58));
   if (/plan to raise prices/.test(q)) return binaryWeights(options, clamp(0.30 + (1 - prior.margin) * 0.24 + prior.price * 0.16 + prior.labor * 0.10, 0.26, 0.74), 0.20);
 
@@ -832,6 +867,7 @@ function optionWeights(question, options, branch, prior, seedText) {
   if (/frequency|how often/.test(q)) return frequencyWeights(options, enrichedPrior);
   if (/what matters|choosing|choose a provider/.test(q)) return differentiationWeights(options, enrichedPrior);
   if (/premium|pay more/.test(q)) return differentiationWeights(options, { ...enrichedPrior, trust: clamp(prior.trust + 0.08, 0, 1) });
+  if (/best describes/.test(q)) return usagePatternWeights(options, enrichedPrior);
   if (/household income/.test(q)) return orderedWeights(options.length, clamp(0.44 + prior.spend * 0.24 - prior.price * 0.07, 0.22, 0.78), 0.28);
   if (/age/.test(q)) return orderedWeights(options.length, clamp(0.42 + prior.trust * 0.10 + enrichedPrior.healthcareBias * 0.12 - (prior.category.includes("discretionary") ? 0.10 : 0), 0.25, 0.72), 0.30);
   if (/spend|spent|annual consumer/.test(q)) return orderedWeights(options.length, clamp(prior.spend, 0.12, 0.92), 0.24);
@@ -902,7 +938,8 @@ function addScaleForecast(rows, sections, branch, group, sample, prior, slug, in
 function addSingleForecast(rows, sections, branch, group, sample, prior, slug, index) {
   const n = sections[branch].n;
   const baseWeights = optionWeights(group.question, group.options, branch, prior, `${slug}:${branch}:${index}`);
-  const weights = jitterWeights(baseWeights, `${slug}:single:${branch}:${index}:${group.question}`, 0.16);
+  const isQualifiedPaidScreener = /last 12 months/i.test(group.question) && /paid for/i.test(group.question);
+  const weights = jitterWeights(baseWeights, `${slug}:single:${branch}:${index}:${group.question}`, isQualifiedPaidScreener ? 0.04 : 0.16);
   const counts = countsFromWeights(weights, n);
   group.options.forEach((answer, i) => addRow(rows, sections[branch].section, group.question, n, answer, counts[i], pct(counts[i], n)));
 }

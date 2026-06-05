@@ -10,9 +10,13 @@
     "prepare-assets": "node scripts/prepare-assets.mjs",
     "visual-smoke": "node sherlock-research/scripts/visual-smoke.mjs",
     "build": "npm run generate && npm run audit && npm run prepare-assets",
+    "qa": "npm run build && npm run visual-smoke",
     "dev": "wrangler dev"
   },
   "dependencies": {
     "wrangler": "^4.98.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
   }
 }

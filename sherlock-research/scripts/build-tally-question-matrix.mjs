@@ -115,7 +115,7 @@ function parseQuestions(form) {
   for (const block of form.blocks || []) {
     const text = blockText(block);
     if (block.type === "TITLE" && block.groupType === "QUESTION") {
-      if (/In the last 12 months/i.test(text)) branch = "consumer";
+      if (/In the last 12 months/i.test(text) && /paid for/i.test(text)) branch = "consumer";
       if (/What is your role/i.test(text)) branch = "employee";
       if (/approximate annual revenue/i.test(text)) branch = "owner";
       if (/Your email/i.test(text)) branch = "final";

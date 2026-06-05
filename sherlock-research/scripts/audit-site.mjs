@@ -1,7 +1,7 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { INDUSTRIES, SITE, STATUS } from "../../src/report-catalog.js";
+import { INDUSTRIES, PLANS, SITE, STATUS } from "../../src/report-catalog.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -88,7 +88,7 @@ async function auditGeneratedPages() {
 
 async function auditPlaceholders() {
   const htmlFiles = await allHtmlFiles();
-  const staleProviders = ["Re" + "send", "Pay" + "hip", "Send" + "Owl"];
+  const staleProviders = ["Re" + "send", "Send" + "Owl"];
   const staleDelivery = [
     "Instant " + "PDF",
     "instant " + "PDF",
@@ -133,9 +133,77 @@ async function auditLinks() {
 }
 
 async function auditTallyPlaybook() {
+  // Gitignored internal doc — absent on a clean clone / CI. Skip gracefully.
+  if (!(await exists("TALLY_MASTER_INDUSTRY_PLAYBOOK.md"))) {
+    warn("TALLY_MASTER_INDUSTRY_PLAYBOOK.md not present (gitignored) — skipping playbook checks");
+    return;
+  }
   const playbook = await read("TALLY_MASTER_INDUSTRY_PLAYBOOK.md");
   if (playbook.includes("Funeral Homes")) error("TALLY_MASTER_INDUSTRY_PLAYBOOK.md still references Funeral Homes");
   if (!playbook.includes("Dermatology")) error("TALLY_MASTER_INDUSTRY_PLAYBOOK.md is missing Dermatology");
+}
+
+async function auditCheckout() {
+  for (const [key, plan] of Object.entries(PLANS)) {
+    const url = plan.checkoutUrl || "";
+    if (!url) { warn(`Plan "${key}" has no checkoutUrl`); continue; }
+    if (/REPLACE|PLACEHOLDER|test_/i.test(url)) warn(`Plan "${key}" checkout link is still a placeholder: ${url}`);
+  }
+}
+
+const CANONICAL_TAGLINE = "See the Market. Stay Ahead.";
+
+// Footer must be identical everywhere; nav should reach /reports.
+async function auditConsistency() {
+  for (const file of await allHtmlFiles()) {
+    if (file === "404.html") continue;
+    const source = await read(file);
+    if (!source.includes("foot-grid")) error(`${file} missing canonical footer (.foot-grid)`);
+    if (/class="(footer-links|footer-grid|footer-col)"/.test(source)) error(`${file} uses old/divergent footer markup`);
+    if (!source.includes(CANONICAL_TAGLINE)) warn(`${file} missing footer tagline "${CANONICAL_TAGLINE}"`);
+    if (!/href="\/reports(#[a-z-]+)?"/.test(source)) warn(`${file} nav/footer does not link to /reports`);
+  }
+}
+
+// No stale numbers or the old domain anywhere.
+async function auditClaims() {
+  const stale = ["2,600", "25,000", "42-page", "42 page", "sherlockresearch.com"];
+  for (const file of await allHtmlFiles()) {
+    const source = await read(file);
+    for (const s of stale) if (source.includes(s)) error(`${file} contains stale claim/domain: "${s}"`);
+  }
+}
+
+// Dev/ops jargon must not leak into customer-visible text.
+async function auditJargon() {
+  const jargon = ["webhook", "Stripe", "Cloudflare Email", "fulfillment", "PDF asset", "metadata"];
+  for (const file of await allHtmlFiles()) {
+    const source = await read(file);
+    const text = source
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ");
+    for (const word of jargon) if (text.includes(word)) warn(`${file} customer text contains dev-jargon: "${word}"`);
+  }
+}
+
+// Every report page must keep its key redesigned components.
+async function auditReportStructure() {
+  const required = [
+    ["report-statbar", "stat bar"],
+    ["data-tablist", "tabbed explorer"],
+    ['data-tab="growth"', "revenue growth tab"],
+    ["area-chart", "revenue area chart"],
+    ["report-final-cta", "final CTA"]
+  ];
+  for (const industry of INDUSTRIES) {
+    const page = await read(industry.page);
+    for (const [marker, label] of required) {
+      if (!page.includes(marker)) error(`${industry.page} missing ${label} (${marker})`);
+    }
+    const panels = (page.match(/data-panel=/g) || []).length;
+    if (panels < 5) error(`${industry.page} has ${panels} data panels (expected >= 5)`);
+  }
 }
 
 async function main() {
@@ -144,6 +212,11 @@ async function main() {
   await auditPlaceholders();
   await auditLinks();
   await auditTallyPlaybook();
+  await auditCheckout();
+  await auditConsistency();
+  await auditClaims();
+  await auditJargon();
+  await auditReportStructure();
 
   for (const warning of warnings) console.warn(`WARN: ${warning}`);
   if (errors.length) {
