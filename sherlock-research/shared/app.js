@@ -80,14 +80,6 @@
 
     if (isCheckoutUrl(url)) return url;
 
-    if (resolvedKey === 'all') {
-      return '/api/checkout?plan=all';
-    }
-
-    if (report && (report.status === 'available' || report.status === 'presell')) {
-      return '/api/checkout?industry=' + encodeURIComponent(reportSlug) + '&plan=' + encodeURIComponent(resolvedKey);
-    }
-
     return contactFallback(plan, report, reportSlug, resolvedKey);
   }
 

@@ -42,7 +42,7 @@
       "price": "$497",
       "unit": "",
       "cadence": "one-time",
-      "checkoutUrl": "https://payhip.com/b/REPLACE-standard",
+      "checkoutUrl": "",
       "description": "Full national industry report, recommendations, and email confirmation."
     },
     "quarterly": {
@@ -50,7 +50,7 @@
       "price": "$2,000",
       "unit": "/yr",
       "cadence": "annual",
-      "checkoutUrl": "https://payhip.com/b/REPLACE-quarterly",
+      "checkoutUrl": "",
       "description": "Four quarterly updates plus four one-on-one coaching calls."
     },
     "all": {
@@ -58,7 +58,7 @@
       "price": "$2,997",
       "unit": "",
       "cadence": "one-time",
-      "checkoutUrl": "https://payhip.com/b/REPLACE-all",
+      "checkoutUrl": "",
       "description": "Every Sherlock industry report, current and future releases."
     }
   },
@@ -88,7 +88,7 @@
         ]
       },
       "stripe": {
-        "paymentLink": "",
+        "paymentLink": "https://payhip.com/b/zPJah",
         "productId": "",
         "priceId": ""
       },
@@ -102,7 +102,7 @@
           "access": "full",
           "cityInclusion": "national",
           "title": "Landscaping Industry Report, Q2 2026, Full National PDF",
-          "checkoutUrl": "",
+          "checkoutUrl": "https://payhip.com/b/zPJah",
           "stripeProductId": "",
           "stripePriceId": ""
         },
@@ -119,7 +119,7 @@
         }
       ],
       "checkout": {
-        "single": "",
+        "single": "https://payhip.com/b/zPJah",
         "quarterly": ""
       }
     },

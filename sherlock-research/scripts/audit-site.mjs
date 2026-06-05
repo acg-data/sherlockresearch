@@ -81,8 +81,7 @@ async function auditGeneratedPages() {
     if (!page.includes(industry.tallyUrl)) error(`${industry.page} missing Tally URL`);
     if (!page.includes(`/${industry.slug}-report`)) error(`${industry.page} missing clean canonical path`);
     if (!page.includes("data-checkout-plan=\"single\"")) error(`${industry.page} missing checkout CTA wiring`);
-    if (industry.status === "waitlist" && page.includes("/api/checkout")) error(`${industry.page} should not offer dynamic checkout while waitlist-only`);
-    if (industry.status !== "waitlist" && !page.includes("/api/checkout")) error(`${industry.page} missing dynamic Stripe checkout link`);
+    if ((industry.status === "available" || industry.status === "presell") && !industry.stripePaymentLink) warn(`${industry.name} (${industry.status}) has no live checkout link yet — CTA routes to contact`);
   }
 }
 
@@ -146,7 +145,6 @@ async function auditTallyPlaybook() {
 async function auditCheckout() {
   for (const [key, plan] of Object.entries(PLANS)) {
     const url = plan.checkoutUrl || "";
-    if (!url) { warn(`Plan "${key}" has no checkoutUrl`); continue; }
     if (/REPLACE|PLACEHOLDER|test_/i.test(url)) warn(`Plan "${key}" checkout link is still a placeholder: ${url}`);
   }
 }

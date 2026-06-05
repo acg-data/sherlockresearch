@@ -13,7 +13,7 @@ export const PLANS = {
     price: "$497",
     unit: "",
     cadence: "one-time",
-    checkoutUrl: "https://payhip.com/b/REPLACE-standard",
+    checkoutUrl: "",
     description: "Full national industry report, recommendations, and email confirmation."
   },
   quarterly: {
@@ -21,7 +21,7 @@ export const PLANS = {
     price: "$2,000",
     unit: "/yr",
     cadence: "annual",
-    checkoutUrl: "https://payhip.com/b/REPLACE-quarterly",
+    checkoutUrl: "",
     description: "Four quarterly updates plus four one-on-one coaching calls."
   },
   all: {
@@ -29,7 +29,7 @@ export const PLANS = {
     price: "$2,997",
     unit: "",
     cadence: "one-time",
-    checkoutUrl: "https://payhip.com/b/REPLACE-all",
+    checkoutUrl: "",
     description: "Every Sherlock industry report, current and future releases."
   }
 };
@@ -166,6 +166,11 @@ const industries = [
   ["Private Schools and Tutoring", "private-schools-and-tutoring", "education", "waitlist"]
 ];
 
+// Per-report checkout links (Payhip product per report). Empty -> CTA routes to contact.
+const paymentLinks = {
+  landscaping: "https://payhip.com/b/zPJah"
+};
+
 export const INDUSTRIES = industries.map(([name, slug, category, status], index) => ({
   id: index + 1,
   name,
@@ -183,7 +188,7 @@ export const INDUSTRIES = industries.map(([name, slug, category, status], index)
   tallyEditUrl: `https://tally.so/forms/${tally[slug]}/edit`,
   sampleAsset: SITE.samplePdf,
   fullReportAsset: "",
-  stripePaymentLink: "",
+  stripePaymentLink: paymentLinks[slug] || "",
   stripeProductId: "",
   stripePriceId: "",
   readiness: {

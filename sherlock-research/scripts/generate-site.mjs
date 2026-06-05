@@ -318,13 +318,6 @@ function reportSchema(industry) {
 function statusAction(industry) {
   const hasCheckout = Boolean(industry.stripePaymentLink);
   if (hasCheckout) return { href: industry.stripePaymentLink, text: STATUS[industry.status].checkoutCta, plan: "single" };
-  if (industry.status === "available" || industry.status === "presell") {
-    return {
-      href: `/api/checkout?industry=${encodeURIComponent(industry.slug)}&plan=single`,
-      text: STATUS[industry.status].checkoutCta,
-      plan: "single"
-    };
-  }
   return {
     href: `/contact?industry=${encodeURIComponent(industry.slug)}&plan=single&status=${encodeURIComponent(industry.status)}`,
     text: STATUS[industry.status].cta,
