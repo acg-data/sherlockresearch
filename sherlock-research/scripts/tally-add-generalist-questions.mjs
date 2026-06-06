@@ -90,6 +90,59 @@ const hospitalityOwnerSegments = new Set(["restaurants", "coffee-shops", "brewer
 const autoOwnerSegments = new Set(["auto-repair", "car-wash-and-detailing", "towing", "moving", "self-storage"]);
 const educationOwnerSegments = new Set(["childcare", "private-schools-and-tutoring"]);
 
+const providerNouns = {
+  "landscaping": "landscaping provider",
+  "roofing": "roofing provider",
+  "dental": "dental care provider",
+  "dermatology": "dermatology provider",
+  "hvac": "HVAC provider",
+  "pest-control": "pest control provider",
+  "plumbing": "plumbing provider",
+  "electrical": "electrical provider",
+  "med-spa": "med spa provider",
+  "auto-repair": "auto repair shop",
+  "garage-door": "garage door provider",
+  "pool-service": "pool service provider",
+  "lawn-care": "lawn care provider",
+  "tree-care": "tree care provider",
+  "home-cleaning": "home cleaning provider",
+  "carpet-cleaning": "carpet cleaning provider",
+  "restoration": "restoration provider",
+  "painting": "painting provider",
+  "flooring": "flooring provider",
+  "windows-and-doors": "window or door provider",
+  "kitchen-and-bath-remodeling": "kitchen or bath remodeling provider",
+  "general-contracting": "general contractor",
+  "solar-installation": "solar installer",
+  "security-systems": "security systems provider",
+  "moving": "moving company",
+  "self-storage": "self-storage facility",
+  "junk-removal": "junk removal provider",
+  "car-wash-and-detailing": "car wash or detailing provider",
+  "towing": "towing provider",
+  "veterinary": "veterinary provider",
+  "physical-therapy": "physical therapy provider",
+  "chiropractic": "chiropractic provider",
+  "senior-home-care": "senior home care provider",
+  "childcare": "childcare provider",
+  "fitness-gyms": "gym or fitness option",
+  "restaurants": "restaurant",
+  "coffee-shops": "coffee shop",
+  "breweries": "brewery",
+  "hotels": "hotel",
+  "event-venues": "event venue",
+  "property-management": "property management provider",
+  "real-estate-brokerages": "real estate brokerage",
+  "mortgage-brokers": "mortgage broker",
+  "insurance-agencies": "insurance agency",
+  "accounting-and-tax": "accounting or tax provider",
+  "legal-services": "legal services provider",
+  "it-managed-services": "IT managed services provider",
+  "digital-marketing-agencies": "digital marketing agency",
+  "staffing-agencies": "staffing agency",
+  "private-schools-and-tutoring": "private school or tutoring provider",
+};
+
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 function requireToken() {
@@ -110,6 +163,15 @@ function serviceLabel(industryName) {
 
 function providerLabel(industryName) {
   return serviceLabel(industryName);
+}
+
+function providerNoun(industryName, slug) {
+  return providerNouns[slug] || `${providerLabel(industryName)} provider`;
+}
+
+function withArticle(noun) {
+  const article = /^(accounting|auto|electrical|event|insurance|it|HVAC)/i.test(noun) ? "an" : "a";
+  return `${article} ${noun}`;
 }
 
 function consumerContextQuestion(industryName, slug) {
@@ -145,21 +207,27 @@ function consumerContextQuestion(industryName, slug) {
 }
 
 function decisionMakerQuestion(industryName, slug) {
-  const service = providerLabel(industryName);
+  const provider = withArticle(providerNoun(industryName, slug));
   if (careSlugs.has(slug)) {
     return {
-      question: `Who usually makes the final decision on choosing a ${service} provider?`,
+      question: `Who usually makes the final decision on choosing ${provider}?`,
       options: ["Me", "Spouse, partner, or family member", "Parent, caregiver, or guardian", "Shared decision", "Insurer, employer, or referring provider"],
     };
   }
   if (professionalSlugs.has(slug)) {
     return {
-      question: `Who usually makes the final decision on hiring a ${service} provider?`,
+      question: `Who usually makes the final decision on hiring ${provider}?`,
       options: ["Me", "Business owner or executive", "Manager or team lead", "Shared committee or team", "Client, advisor, or third party"],
     };
   }
+  if (hospitalitySlugs.has(slug)) {
+    return {
+      question: `Who usually makes the final decision on choosing ${provider}?`,
+      options: ["Me", "Spouse, partner, or family member", "Shared decision", "Employer or business partner", "Event planner, host, or third party"],
+    };
+  }
   return {
-    question: `Who usually makes the final decision on hiring a ${service} provider?`,
+    question: `Who usually makes the final decision on hiring ${provider}?`,
     options: ["Me", "Spouse, partner, or family member", "Shared decision", "Employer or business partner", "Property manager, advisor, or third party"],
   };
 }
@@ -179,9 +247,11 @@ function urgencyQuestion(industryName, slug) {
 }
 
 function valuePreferenceQuestion(industryName) {
+  const [, slug] = forms.find(([name]) => name === industryName) || [];
+  const provider = withArticle(providerNoun(industryName, slug));
   return {
-    question: `Which best describes your value preference when choosing a ${providerLabel(industryName)} provider?`,
-    options: ["Lowest available price", "Slightly lower price", "Balanced price and quality", "Higher quality even if it costs more", "Premium provider with guarantees or standout reputation"],
+    question: `Which best describes your value preference when choosing ${provider}?`,
+    options: ["Lowest available price", "Slightly lower price", "Balanced price and quality", "Higher quality even if it costs more", "Premium option with guarantees or standout reputation"],
   };
 }
 
@@ -421,7 +491,7 @@ function removeExistingAdditions(blocks, additions) {
   const managed = managedQuestionSet(additions);
   const groups = parseQuestionGroups(blocks);
   const removals = groups
-    .filter((group) => managed.has(group.questionText))
+    .filter((group) => managed.has(group.questionText) || /who usually makes the final decision on (hiring|choosing) .+ provider\?$/i.test(group.questionText) || /which best describes your value preference when choosing .+ provider\?$/i.test(group.questionText))
     .sort((a, b) => b.questionBlockIndex - a.questionBlockIndex);
   for (const group of removals) {
     blocks.splice(group.questionBlockIndex, group.endIndex - group.questionBlockIndex + 1);

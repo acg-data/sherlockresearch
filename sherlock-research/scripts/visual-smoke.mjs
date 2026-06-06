@@ -75,7 +75,7 @@ async function main() {
   try {
     await page.locator('.data-tab[data-tab="pricing"]').click();
     if (!(await page.locator('.data-panel[data-panel="pricing"]').isVisible())) failures.push("report: Pricing tab did not reveal its panel");
-    if (!(await page.locator('.data-panel[data-panel="pricing"] .teaser-veil').count())) failures.push("report: locked tab missing unlock veil");
+    if (!(await page.locator('.data-panel[data-panel="pricing"] .redacted-list').count())) failures.push("report: pricing tab missing redacted responses");
   } catch (e) {
     failures.push("report: tab interaction failed -> " + e.message);
   }

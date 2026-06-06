@@ -97,12 +97,24 @@ async function tally(pathname, token) {
         },
       });
       const text = await response.text();
-      const data = text ? JSON.parse(text) : null;
-      if (!response.ok) throw new Error(`GET ${pathname} failed ${response.status}: ${text}`);
+      let data = null;
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch {
+        data = text;
+      }
+      if (!response.ok) {
+        const retryAfter = Number(response.headers.get("retry-after") || "0");
+        if ((response.status === 429 || /too many requests/i.test(text)) && attempt < 3) {
+          await new Promise((resolve) => setTimeout(resolve, Math.max(retryAfter * 1000, attempt * 7000)));
+          continue;
+        }
+        throw new Error(`GET ${pathname} failed ${response.status}: ${text}`);
+      }
       return data;
     } catch (error) {
       lastError = error;
-      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 1500));
+      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 3500));
     }
   }
   throw lastError;

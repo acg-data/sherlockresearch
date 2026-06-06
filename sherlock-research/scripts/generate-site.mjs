@@ -303,6 +303,47 @@ function pageCss() {
   .growth-stat{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
   .growth-stat b{font-family:var(--font-display);font-weight:700;font-size:40px;color:var(--sage);line-height:1}
   .growth-stat span{color:var(--muted);font-size:13px}
+  /* benefit comparison table */
+  .compare-wrap{overflow-x:auto;margin-top:6px}
+  .compare{width:100%;border-collapse:collapse;min-width:600px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .compare th,.compare td{padding:13px 16px;text-align:left;font-size:14px;border-bottom:1px solid var(--line)}
+  .compare tbody tr:last-child td{border-bottom:0}
+  .compare thead th{font-weight:800;color:var(--navy);font-size:12px;letter-spacing:.04em;text-transform:uppercase;background:var(--stone-2)}
+  .compare th.hi,.compare td.hi{background:#fff6ef}
+  .compare thead th.hi{color:var(--orange-3)}
+  .compare td:first-child{color:var(--ink);font-weight:600}
+  .compare td.hi{color:var(--navy);font-weight:700}
+  .compare svg{width:18px;height:18px;vertical-align:middle}
+  .compare .ck{color:#fff;background:var(--orange);border-radius:50%;padding:3px}
+  .compare .xmark{color:#c2c8ce}
+  .compare .cmaybe,.compare .cmuted{color:var(--muted);font-size:12.5px}
+  /* market growth (figures redacted) */
+  .growth-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow-sm);margin-bottom:24px}
+  .growth-figures{display:flex;gap:40px;margin-bottom:14px;flex-wrap:wrap}
+  .gfig{display:flex;flex-direction:column;gap:3px}
+  .gfig span{color:var(--muted);font-size:12.5px}
+  .gfig .ra-val{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--navy);letter-spacing:.04em;line-height:1}
+  .growth-note{color:var(--muted);font-size:12px;margin-top:10px}
+  /* redacted question/answer explorer */
+  .data-explore{margin-top:4px}
+  .de-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .de-head h3{font-family:var(--font-body);font-size:16px;color:var(--navy);margin:0}
+  .dp-q{font-family:var(--font-body);font-size:15px;color:var(--navy);margin:0 0 12px}
+  .redacted-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:560px}
+  .redacted-list li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 13px;background:var(--stone-2);border:1px solid var(--line);border-radius:9px;font-size:14px;color:var(--ink)}
+  .redacted-list .ra-val{color:var(--muted);font-weight:800;letter-spacing:.14em;font-size:13px}
+  .de-cta{display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+  .de-cta span{color:var(--muted);font-size:13px}
+  /* methodology */
+  .method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:6px 0 22px}
+  .method-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow-sm)}
+  .method-card svg{width:24px;height:24px;color:var(--orange);margin-bottom:10px}
+  .method-card b{display:block;color:var(--navy);font-size:16px;margin-bottom:5px}
+  .method-card p{color:var(--muted);font-size:13px;line-height:1.5}
+  .method-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:var(--grad-stone);border:1px solid var(--line);border-radius:14px;padding:20px 24px}
+  .method-cta b{color:var(--navy);font-size:16px}
+  .method-cta p{color:var(--muted);font-size:13.5px;margin-top:3px}
+  @media(max-width:760px){.method-grid{grid-template-columns:1fr 1fr}.method-cta{flex-direction:column;align-items:flex-start}}
   .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
   .why-item{display:flex;gap:13px;align-items:flex-start}
   .why-item svg{width:24px;height:24px;color:var(--orange);flex:0 0 auto;margin-top:2px}
@@ -371,6 +412,7 @@ function statusAction(industry) {
 const lockSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
 const chevSvg = `<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>`;
 const checkSvg = `<svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>`;
+const xSvg = `<svg class="xmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
 const shieldSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`;
 
 // Horizontal bar chart from [[label, percent], ...] — used for the survey teasers.
@@ -444,30 +486,21 @@ function reportPage(industry) {
   const payhipData = payhipKey ? ` data-product="${html(payhipKey)}"` : "";
   const checkoutBtn = (cls = "btn-lg") => `<a href="${html(action.href)}" class="btn btn-primary ${cls}${payhipCls}"${payhipData} data-checkout-plan="${html(action.plan)}" data-report-slug="${html(industry.slug)}" data-analytics-event="checkout_cta">${html(action.text)} ${arrowSvg}</a>`;
   const TAB_DEFS = [
-    { key: "demand", label: "Demand", locked: false },
-    { key: "channels", label: "Channels", locked: false },
-    { key: "pricing", label: "Pricing", locked: true },
-    { key: "spend", label: "Spend", locked: true },
-    { key: "switching", label: "Switching", locked: true }
+    { key: "demand", label: "Demand" },
+    { key: "channels", label: "Channels" },
+    { key: "pricing", label: "Pricing" },
+    { key: "spend", label: "Spend" },
+    { key: "switching", label: "Switching" }
   ];
   const unlockCta = `<a href="${html(action.href)}" class="btn btn-primary btn-sm${payhipCls}"${payhipData} data-checkout-plan="single" data-report-slug="${html(industry.slug)}" data-analytics-event="teaser_unlock">${html(action.text)}</a>`;
+  const redactedList = (rows) => `<ul class="redacted-list">${(rows || []).map(([answer]) => `<li><span>${html(answer)}</span><b class="ra-val">XX%</b></li>`).join("")}</ul>`;
   const tabItems = (ins.teasers || []).slice(0, 5).map((t, i) => {
-    const def = TAB_DEFS[i] || { key: "cut" + i, label: "Data", locked: true };
-    return { key: def.key, label: def.label, locked: def.locked, title: t.label, chart: barChartSvg(t.rows, accent) };
+    const def = TAB_DEFS[i] || { key: "cut" + i, label: "Data" };
+    return { key: def.key, label: def.label, title: t.label, rows: t.rows };
   });
-  tabItems.push({ key: "growth", label: "Growth", locked: true, growth: true, title: "5-year revenue growth", chart: areaChartSvg(industry.slug, accent) });
-  const dataTablist = tabItems.map((it, i) => `<button class="data-tab${i === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${i === 0 ? "true" : "false"}" data-tab="${it.key}">${it.label}${it.locked ? ` ${lockSvg}` : ""}</button>`).join("");
-  const dataPanels = tabItems.map((it, i) => {
-    const head = `<div class="dp-head"><span class="teaser-chip${it.locked ? "" : " free"}">${it.locked ? `${lockSvg} Locked` : "Open preview"}</span><h3>${html(it.title)}</h3></div>`;
-    let body;
-    if (!it.locked) {
-      body = `<div class="dp-chart">${it.chart}</div>`;
-    } else {
-      const growthStat = it.growth ? `<div class="growth-stat"><b class="teaser-blur">+14.2%</b><span>projected 5-year revenue growth</span></div>` : "";
-      body = `<div class="dp-chart">${growthStat}<div class="teaser-blur">${it.chart}</div><div class="teaser-veil"><div class="teaser-veil-in">${lockSvg}<b>Unlock with the full report</b>${unlockCta}</div></div></div>`;
-    }
-    return `<div class="data-panel${i === 0 ? " active" : ""}" role="tabpanel" data-panel="${it.key}">${head}${body}</div>`;
-  }).join("\n        ");
+  const dataTablist = tabItems.map((it, i) => `<button class="data-tab${i === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${i === 0 ? "true" : "false"}" data-tab="${it.key}">${it.label}</button>`).join("");
+  const dataPanels = tabItems.map((it, i) => `<div class="data-panel${i === 0 ? " active" : ""}" role="tabpanel" data-panel="${it.key}"><h3 class="dp-q">${html(it.title)}</h3>${redactedList(it.rows)}</div>`).join("\n        ");
+  const growthChart = areaChartSvg(industry.slug, accent);
   return `<!DOCTYPE html>
 <html lang="en">
 ${head({ title: pageTitle, description: industry.seo.description, canonical, schema: reportSchema(industry) })}
@@ -514,8 +547,8 @@ ${nav("reports")}
         <div class="report-statbar-head">Trusted by Business Owners &amp; Investors</div>
         <div class="report-statbar-grid">
           <div class="rstat"><b>75+</b><span>5-Star Reviews</span></div>
-          <div class="rstat"><b>500+</b><span>Operator Interviews</span></div>
-          <div class="rstat"><b>100+</b><span>Major Markets</span></div>
+          <div class="rstat"><b>500+</b><span>Surveys</span></div>
+          <div class="rstat"><b>100+</b><span>Operator Interviews</span></div>
           <div class="rstat"><b>2,000+</b><span>Business Owners</span></div>
         </div>
       </div>
@@ -531,18 +564,64 @@ ${nav("reports")}
     </div>
   </section>
 
+  <section class="page-band">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Why Sherlock</div><h2>What you get that the alternatives miss.</h2></div><p>Generic databases show the top of the market. Sherlock shows what's happening on the ground in ${html(industry.name)} &mdash; locally, and at the operator level.</p></div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead><tr><th scope="col">What you need</th><th scope="col">Going in blind</th><th scope="col">IBISWorld / Statista</th><th scope="col" class="hi">Sherlock</th></tr></thead>
+          <tbody>
+            <tr><td>City- &amp; metro-level demand</td><td>${xSvg}</td><td>${xSvg}</td><td class="hi">${checkSvg}</td></tr>
+            <tr><td>Operator economics &amp; pricing</td><td>${xSvg}</td><td>${xSvg}</td><td class="hi">${checkSvg}</td></tr>
+            <tr><td>Buyer switching &amp; willingness-to-pay</td><td>${xSvg}</td><td>${xSvg}</td><td class="hi">${checkSvg}</td></tr>
+            <tr><td>Built for ${html(industry.name)} specifically</td><td>${xSvg}</td><td><span class="cmaybe">Partial</span></td><td class="hi">${checkSvg}</td></tr>
+            <tr><td>Action-ready recommendations</td><td>${xSvg}</td><td>${xSvg}</td><td class="hi">${checkSvg}</td></tr>
+            <tr><td>Cost</td><td><span class="cmuted">Costly guesswork</span></td><td><span class="cmuted">$$$ / year</span></td><td class="hi">$497 once</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <section class="page-band teaser-band">
     <div class="container">
       <div class="eyebrow">Inside the data</div>
-      <h2>Explore the ${html(industry.name)} buyer data.</h2>
-      <p class="band-sub">Click through the cuts from Sherlock's ${html(industry.name)} research — open previews are free; the full set unlocks with the report.</p>
-      <div class="data-tabs" data-tabs>
-        <div class="data-tablist" role="tablist" aria-label="Report data cuts">${dataTablist}</div>
-        <div class="data-panels">
-        ${dataPanels}
+      <h2>What's inside the ${html(industry.name)} report.</h2>
+      <p class="band-sub">Market sizing plus the buyer questions behind every recommendation. The exact figures unlock with the report.</p>
+      <div class="growth-panel">
+        <div class="growth-figures">
+          <div class="gfig"><span>Annual market revenue</span><b class="ra-val">$XX.XB</b></div>
+          <div class="gfig"><span>5-year CAGR</span><b class="ra-val">XX%</b></div>
         </div>
+        <div class="growth-chart">${growthChart}</div>
+        <p class="growth-note">${html(industry.name)} market sizing &amp; growth, modeled by Sherlock &mdash; actual figures inside the full report.</p>
       </div>
-      <p class="teaser-foot">This data is drawn from Sherlock's ${html(industry.name)} research survey. <a href="${html(industry.tallyUrl)}" target="_blank" rel="noopener" data-analytics-event="tally_survey">Add your voice &mdash; take the 2-minute survey ${arrowSvg}</a></p>
+      <div class="data-explore">
+        <div class="de-head"><h3>Buyer questions &amp; responses</h3><span class="teaser-chip">${lockSvg} Responses locked</span></div>
+        <div class="data-tabs" data-tabs>
+          <div class="data-tablist" role="tablist" aria-label="Report data cuts">${dataTablist}</div>
+          <div class="data-panels">
+          ${dataPanels}
+          </div>
+        </div>
+        <div class="de-cta">${unlockCta}<span>Unlock every response, the market figures, and the recommendations.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-band white">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">How we built it</div><h2>The ${html(industry.name)} research methodology.</h2></div><p>Every Sherlock report blends large-scale surveys, one-on-one operator interviews, and local market scans &mdash; then models them into clear forecasts.</p></div>
+      <div class="method-grid">
+        <div class="method-card">${iconSvg("customer", 22)}<b>500+ surveys</b><p>Consumer, employee, and owner surveys per industry capture demand, pricing, and switching behavior.</p></div>
+        <div class="method-card">${iconSvg("playbook", 22)}<b>100+ operator interviews</b><p>One-on-one conversations with operators explain the "why" behind the numbers.</p></div>
+        <div class="method-card">${iconSvg("local", 22)}<b>Local market scans</b><p>City- and metro-level demand, competition, and pricing &mdash; not national averages.</p></div>
+        <div class="method-card">${iconSvg("method", 22)}<b>Modeled forecasts</b><p>Inputs are modeled into per-industry forecasts with clear, source-noted assumptions.</p></div>
+      </div>
+      <div class="method-cta">
+        <div><b>Add your voice</b><p>Operators and buyers in ${html(industry.name)}: take the 2-minute survey and help shape the next edition.</p></div>
+        <a href="${html(industry.tallyUrl)}" target="_blank" rel="noopener" class="btn btn-outline-dark" data-analytics-event="tally_survey">Take the ${html(industry.name)} survey ${arrowSvg}</a>
+      </div>
     </div>
   </section>
 

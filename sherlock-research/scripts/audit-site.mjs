@@ -190,7 +190,7 @@ async function auditReportStructure() {
   const required = [
     ["report-statbar", "stat bar"],
     ["data-tablist", "tabbed explorer"],
-    ['data-tab="growth"', "revenue growth tab"],
+    ["growth-panel", "market growth panel"],
     ["area-chart", "revenue area chart"],
     ["report-final-cta", "final CTA"]
   ];

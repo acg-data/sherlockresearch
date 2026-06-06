@@ -5,9 +5,11 @@ import path from "node:path";
 import { SpreadsheetFile, Workbook } from "@oai/artifact-tool";
 
 const API_BASE = "https://api.tally.so";
-const outputRoot = path.join("outputs", "remaining_49_tally_forecasts_variable_n");
+const outputRoot = process.env.TALLY_FORECAST_OUTPUT_ROOT || path.join("outputs", "remaining_49_tally_forecasts_variable_n");
 
-const forms = [
+const landscapingForm = ["Landscaping", "landscaping", "lbv8qW"];
+
+const remainingForms = [
   ["Roofing", "roofing", "RGkqdJ"],
   ["Dental", "dental", "Gx5OKo"],
   ["Dermatology", "dermatology", "ODkxl8"],
@@ -58,6 +60,8 @@ const forms = [
   ["Staffing Agencies", "staffing-agencies", "RGkqDp"],
   ["Private Schools and Tutoring", "private-schools-and-tutoring", "obv82X"],
 ];
+
+const forms = process.env.INCLUDE_LANDSCAPING === "1" ? [landscapingForm, ...remainingForms] : remainingForms;
 
 const presets = {
   highTicketProject: {
@@ -367,6 +371,7 @@ const presets = {
 };
 
 const industryModels = {
+  "landscaping": ["recurringHome", { recentUse: 0.62, futureIntent: 0.66, recurring: 0.78, season: 0.88, spend: 0.48, price: 0.60, labor: 0.76, suburban: 0.66 }],
   "roofing": ["highTicketProject", { recentUse: 0.33, futureIntent: 0.42, urgency: 0.70, season: 0.82, labor: 0.78, margin: 0.48 }],
   "dental": ["healthcareTrust", { recentUse: 0.62, futureIntent: 0.58, recurring: 0.74, price: 0.36, retention: 0.82, season: 0.12 }],
   "dermatology": ["healthcareTrust", { recentUse: 0.44, futureIntent: 0.50, price: 0.44, spend: 0.64, margin: 0.66, urban: 0.43 }],
@@ -468,8 +473,8 @@ function buildSamples() {
   for (const [industryName, slug] of forms) {
     const prior = priorFor(slug);
     const random = rng(`${slug}:variable-sample`);
-    let total = 401 + Math.floor(random() * 449);
-    while (usedTotals.has(total)) total = 401 + ((total - 401 + 23) % 449);
+    let total = 501 + Math.floor(random() * 499);
+    while (usedTotals.has(total)) total = 501 + ((total - 501 + 23) % 499);
     usedTotals.add(total);
 
     let consumerShare = clamp(0.685 - prior.ownerBias * 0.11 + (random() * 2 - 1) * 0.035, 0.62, 0.74);
@@ -1419,7 +1424,7 @@ async function writeWorkbook(industryName, rows, outDir, slug, sample, renderPre
 
 function validateRows(rows, industryName, sample) {
   const issues = [];
-  if (!(sample.total > 400 && sample.total < 850)) issues.push(`${industryName}: sample n out of range: ${sample.total}`);
+  if (!(sample.total > 500 && sample.total < 1000)) issues.push(`${industryName}: sample n out of range: ${sample.total}`);
   if (sample.consumer + sample.employee + sample.owner !== sample.total) issues.push(`${industryName}: branch counts do not sum`);
 
   const groups = new Map();
@@ -1450,7 +1455,7 @@ async function writeIndex(indexRows, samples) {
   const lines = [
     "# Variable-N Tally Forecast Reports",
     "",
-    "Each report models a different completed-response count where n is greater than 400 and less than 850. Each industry starts from a distinct market prior before deterministic bounded random deltas are applied.",
+    "Each report models a different completed-response count where n is greater than 500 and less than 1,000. Each industry starts from a distinct market prior before deterministic bounded random deltas are applied.",
     "",
     "| Industry | Modeled n | Branch split | Public form | Report | Data | Charts |",
     "|---|---:|---|---|---|---|---|",
