@@ -66,6 +66,20 @@ function iconForIndustry(industry) {
   return categoryIcons[industry.category] || "market";
 }
 
+const CATEGORY_LABELS = {
+  "home-services": "Home Services",
+  healthcare: "Healthcare",
+  hospitality: "Hospitality",
+  "professional-services": "Professional Services",
+  automotive: "Automotive",
+  "real-estate-finance": "Real Estate & Finance",
+  education: "Education",
+  "local-services": "Local Services"
+};
+function categoryLabel(slug) {
+  return CATEGORY_LABELS[slug] || String(slug).replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 const CANONICAL_NAV = `<nav class="nav">
   <div class="container nav-inner">
     <a href="/" class="logo" aria-label="Sherlock Research home">
@@ -591,7 +605,7 @@ ${footer()}
 function reportCard(industry) {
   const status = STATUS[industry.status];
   return `<a class="industry-card" href="/${html(industry.slug)}-report" data-name="${html(industry.name.toLowerCase())}" data-status="${html(industry.status)}" data-category="${html(industry.category)}">
-  <div class="tag-row"><span class="tag ${html(industry.status)}">${html(status.libraryLabel)}</span><span class="tag">${html(industry.category.replace(/-/g, " "))}</span></div>
+  <div class="tag-row"><span class="tag ${html(industry.status)}">${html(status.libraryLabel)}</span><span class="tag">${html(categoryLabel(industry.category))}</span></div>
   <div class="card-icon">${iconSvg(iconForIndustry(industry), 22)}</div>
   <h3>${html(industry.name)}</h3>
   <p>${html(industry.focus)}</p>
@@ -630,7 +644,7 @@ ${nav("reports")}
         </select>
         <select id="categoryFilter" aria-label="Filter by category">
           <option value="">All categories</option>
-          ${categories.map((category) => `<option value="${html(category)}">${html(category.replace(/-/g, " "))}</option>`).join("")}
+          ${categories.map((category) => `<option value="${html(category)}">${html(categoryLabel(category))}</option>`).join("")}
         </select>
       </div>
       <div class="report-library-grid" id="reportLibraryGrid">
@@ -658,6 +672,13 @@ ${footer()}
       });
     }
     [search,status,category].forEach(function(el){ el.addEventListener('input', applyFilters); el.addEventListener('change', applyFilters); });
+    function applyHash(){
+      var h = (location.hash || '').replace('#','');
+      if (h && Array.prototype.some.call(category.options, function(o){ return o.value === h; })) { category.value = h; }
+      applyFilters();
+    }
+    applyHash();
+    window.addEventListener('hashchange', applyHash);
   })();
 </script>
 </body>
