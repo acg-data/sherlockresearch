@@ -66,25 +66,48 @@ function iconForIndustry(industry) {
   return categoryIcons[industry.category] || "market";
 }
 
-function nav(active = "reports") {
-  return `<nav class="nav">
+const CANONICAL_NAV = `<nav class="nav">
   <div class="container nav-inner">
     <a href="/" class="logo" aria-label="Sherlock Research home">
       <img class="logo-mark" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true">
       <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
     </a>
-    <div class="nav-links">
-      <a href="/reports"${active === "reports" ? ' style="color:var(--orange-2)"' : ""}>Reports</a>
-      <a href="/#how">How It Works</a>
-      <a href="/pricing"${active === "pricing" ? ' style="color:var(--orange-2)"' : ""}>Pricing</a>
-      <a href="/sample"${active === "sample" ? ' style="color:var(--orange-2)"' : ""}>Sample</a>
-      <a href="/about"${active === "about" ? ' style="color:var(--orange-2)"' : ""}>About</a>
+    <div class="nav-links" aria-label="Primary navigation">
+      <div class="nav-item">
+        <a href="/reports">Reports <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown dropdown-scroll">
+          <a href="/reports#home-services">Home Services</a>
+          <a href="/reports#healthcare">Healthcare</a>
+          <a href="/reports#hospitality">Hospitality</a>
+          <a href="/reports#professional-services">Professional Services</a>
+          <a href="/reports#automotive">Automotive</a>
+          <a href="/reports#real-estate-finance">Real Estate &amp; Finance</a>
+          <a href="/reports#education">Education</a>
+          <a href="/reports#local-services">Local Services</a>
+          <a href="/reports" class="dropdown-all">Browse all 50 reports &rarr;</a>
+        </div>
+      </div>
+      <a href="/sample">Sample</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
     </div>
     <div class="nav-right">
-      <a href="/reports" class="btn btn-primary">Browse Reports</a>
+      <a href="/pricing" class="btn btn-primary">Get Your Edge</a>
+      <button class="hamburger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
     </div>
   </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/reports">Reports</a>
+    <a href="/sample">Sample</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/pricing" class="btn btn-primary">Get Your Edge</a>
+  </div>
 </nav>`;
+
+function nav(active = "reports") {
+  return CANONICAL_NAV;
 }
 
 function footer() {

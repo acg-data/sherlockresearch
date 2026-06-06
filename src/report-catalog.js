@@ -205,7 +205,7 @@ export const INDUSTRIES = industries.map(([name, slug, category, status], index)
   },
   seo: {
     title: `${name} Industry Report - Sherlock Research`,
-    description: `Sherlock Research ${name} industry intelligence: market context, local demand signals, operator interviews, pricing pressure, and recommendations for ${name.toLowerCase()} operators, investors, and agencies.`
+    description: `Sherlock Research ${name} report: market demand, local competition, pricing, and clear recommendations for operators and investors.`
   }
 }));
 

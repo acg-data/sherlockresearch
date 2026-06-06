@@ -101,17 +101,41 @@
 
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="/" class="logo">
+    <a href="/" class="logo" aria-label="Sherlock Research home">
       <img class="logo-mark" src="assets/sherlock-colorful.png?v=2" alt="" aria-hidden="true">
-      <div class="logo-stack">Sherlock<small>RESEARCH</small></div>
+      <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
     </a>
-    <div class="nav-links">
-      <a href="/#reports">Reports</a>
-      <a href="/#how">How It Works</a>
-      <a href="/pricing">Pricing</a>
+    <div class="nav-links" aria-label="Primary navigation">
+      <div class="nav-item">
+        <a href="/reports">Reports <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown dropdown-scroll">
+          <a href="/reports#home-services">Home Services</a>
+          <a href="/reports#healthcare">Healthcare</a>
+          <a href="/reports#hospitality">Hospitality</a>
+          <a href="/reports#professional-services">Professional Services</a>
+          <a href="/reports#automotive">Automotive</a>
+          <a href="/reports#real-estate-finance">Real Estate &amp; Finance</a>
+          <a href="/reports#education">Education</a>
+          <a href="/reports#local-services">Local Services</a>
+          <a href="/reports" class="dropdown-all">Browse all 50 reports &rarr;</a>
+        </div>
+      </div>
+      <a href="/sample">Sample</a>
       <a href="/about">About</a>
+      <a href="/contact">Contact</a>
     </div>
-    <a href="/pricing" class="btn btn-primary">See Sample Insights</a>
+    <div class="nav-right">
+      <a href="/pricing" class="btn btn-primary">Get Your Edge</a>
+      <button class="hamburger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/reports">Reports</a>
+    <a href="/sample">Sample</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/pricing" class="btn btn-primary">Get Your Edge</a>
   </div>
 </nav>
 
