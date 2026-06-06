@@ -318,6 +318,9 @@ function pageCss() {
   .report-final-visual{display:flex;justify-content:center;perspective:1500px}
   .report-book-tilt{transform:rotateY(18deg) rotateX(4deg)}
   .btn-sm{min-height:0;padding:9px 15px;font-size:12.5px}
+  /* keep our brand styling on Payhip overlay buttons (payhip.js injects a green theme) */
+  .btn.payhip-buy-button,.btn.payhip-styled-button{background:var(--orange)!important;color:#fff!important;border:0!important;box-shadow:0 1px 2px rgba(2,24,40,.14)!important;text-shadow:none!important}
+  .btn.payhip-buy-button:hover,.btn.payhip-styled-button:hover{background:var(--orange-3)!important}
   @media(max-width:900px){
     .report-hero-grid{grid-template-columns:1fr;gap:28px}
     .report-hero-visual{order:-1}
@@ -435,7 +438,11 @@ function reportPage(industry) {
   const accent = industry.status === "available" ? "#5c6746" : industry.status === "presell" ? "#92602d" : "#546d7c";
   const cover = COVERS[industry.slug];
   const coverImg = cover ? `<img class="report-cover-img" src="assets/covers/${cover}?v=1" alt="${html(industry.name)} report cover" loading="lazy">` : null;
-  const checkoutBtn = (cls = "btn-lg") => `<a href="${html(action.href)}" class="btn btn-primary ${cls}" data-checkout-plan="${html(action.plan)}" data-report-slug="${html(industry.slug)}" data-analytics-event="checkout_cta">${html(action.text)} ${arrowSvg}</a>`;
+  const payhipMatch = (industry.stripePaymentLink || "").match(/payhip\.com\/b\/([A-Za-z0-9]+)/);
+  const payhipKey = payhipMatch ? payhipMatch[1] : null;
+  const payhipCls = payhipKey ? " payhip-buy-button" : "";
+  const payhipData = payhipKey ? ` data-product="${html(payhipKey)}"` : "";
+  const checkoutBtn = (cls = "btn-lg") => `<a href="${html(action.href)}" class="btn btn-primary ${cls}${payhipCls}"${payhipData} data-checkout-plan="${html(action.plan)}" data-report-slug="${html(industry.slug)}" data-analytics-event="checkout_cta">${html(action.text)} ${arrowSvg}</a>`;
   const TAB_DEFS = [
     { key: "demand", label: "Demand", locked: false },
     { key: "channels", label: "Channels", locked: false },
@@ -443,7 +450,7 @@ function reportPage(industry) {
     { key: "spend", label: "Spend", locked: true },
     { key: "switching", label: "Switching", locked: true }
   ];
-  const unlockCta = `<a href="${html(action.href)}" class="btn btn-primary btn-sm" data-checkout-plan="single" data-report-slug="${html(industry.slug)}" data-analytics-event="teaser_unlock">${html(action.text)}</a>`;
+  const unlockCta = `<a href="${html(action.href)}" class="btn btn-primary btn-sm${payhipCls}"${payhipData} data-checkout-plan="single" data-report-slug="${html(industry.slug)}" data-analytics-event="teaser_unlock">${html(action.text)}</a>`;
   const tabItems = (ins.teasers || []).slice(0, 5).map((t, i) => {
     const def = TAB_DEFS[i] || { key: "cut" + i, label: "Data", locked: true };
     return { key: def.key, label: def.label, locked: def.locked, title: t.label, chart: barChartSvg(t.rows, accent) };
@@ -595,6 +602,7 @@ ${nav("reports")}
   </section>
 </main>
 ${footer()}
+${payhipKey ? '<script src="https://payhip.com/payhip.js"></script>' : ""}
 <script src="shared/catalog.js"></script>
 <script src="shared/app.js"></script>
 </body>

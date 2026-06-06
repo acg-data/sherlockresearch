@@ -166,6 +166,9 @@
   .report-final-visual{display:flex;justify-content:center;perspective:1500px}
   .report-book-tilt{transform:rotateY(18deg) rotateX(4deg)}
   .btn-sm{min-height:0;padding:9px 15px;font-size:12.5px}
+  /* keep our brand styling on Payhip overlay buttons (payhip.js injects a green theme) */
+  .btn.payhip-buy-button,.btn.payhip-styled-button{background:var(--orange)!important;color:#fff!important;border:0!important;box-shadow:0 1px 2px rgba(2,24,40,.14)!important;text-shadow:none!important}
+  .btn.payhip-buy-button:hover,.btn.payhip-styled-button:hover{background:var(--orange-3)!important}
   @media(max-width:900px){
     .report-hero-grid{grid-template-columns:1fr;gap:28px}
     .report-hero-visual{order:-1}

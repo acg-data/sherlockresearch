@@ -95,7 +95,7 @@
     link.href = url;
 
     if (isCheckoutUrl(url)) {
-      if (/^https:\/\//i.test(url)) {
+      if (/^https:\/\//i.test(url) && !link.classList.contains('payhip-buy-button')) {
         link.target = '_blank';
         link.rel = 'noopener';
       } else {
