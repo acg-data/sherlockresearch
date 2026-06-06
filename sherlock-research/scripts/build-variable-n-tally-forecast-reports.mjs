@@ -570,12 +570,24 @@ async function tally(pathname, token) {
         },
       });
       const text = await response.text();
-      const data = text ? JSON.parse(text) : null;
-      if (!response.ok) throw new Error(`GET ${pathname} failed ${response.status}: ${text}`);
+      let data = null;
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch {
+        data = text;
+      }
+      if (!response.ok) {
+        const retryAfter = Number(response.headers.get("retry-after") || "0");
+        if ((response.status === 429 || /too many requests/i.test(text)) && attempt < 3) {
+          await new Promise((resolve) => setTimeout(resolve, Math.max(retryAfter * 1000, attempt * 7000)));
+          continue;
+        }
+        throw new Error(`GET ${pathname} failed ${response.status}: ${text}`);
+      }
       return data;
     } catch (error) {
       lastError = error;
-      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 1500));
+      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 3500));
     }
   }
   throw lastError;
@@ -747,6 +759,117 @@ function usagePatternWeights(options, prior) {
   });
 }
 
+function contextWeights(options, prior) {
+  return options.map((option) => {
+    const o = option.toLowerCase();
+    if (/own|homeowner|personal|myself|household|repeat local|regular local/.test(o)) {
+      return 0.20 + prior.residential * 0.30 + prior.frequency * 0.08;
+    }
+    if (/rent|lease|family|shared|spouse|partner|social/.test(o)) {
+      return 0.12 + prior.urban * 0.16 + prior.price * 0.08;
+    }
+    if (/business|commercial|employer|fleet|work|corporate|own business/.test(o)) {
+      return 0.12 + prior.ownerBias * 0.42 + prior.acv * 0.16;
+    }
+    if (/manage|client|property|parent|dependent|group|event|insurer|organization/.test(o)) {
+      return 0.10 + prior.trust * 0.14 + prior.referral * 0.12 + prior.acv * 0.08;
+    }
+    if (/research|comparing|not applicable/.test(o)) {
+      return 0.08 + prior.price * 0.10 + (1 - prior.recentUse) * 0.12;
+    }
+    return 0.10;
+  });
+}
+
+function decisionMakerWeights(options, prior) {
+  return options.map((option) => {
+    const o = option.toLowerCase();
+    if (/^me$|me\b/.test(o)) return 0.28 + prior.frequency * 0.10 + (1 - prior.acv) * 0.12;
+    if (/spouse|partner|family|shared/.test(o)) return 0.18 + prior.residential * 0.18 + prior.spend * 0.10;
+    if (/owner|executive|manager|team|committee|business/.test(o)) return 0.12 + prior.ownerBias * 0.46 + prior.acv * 0.16;
+    if (/property|advisor|third|client|insurer|referring|caregiver|guardian/.test(o)) return 0.10 + prior.trust * 0.16 + prior.referral * 0.18;
+    return 0.10;
+  });
+}
+
+function urgencyNeedWeights(options, prior) {
+  return options.map((option) => {
+    const o = option.toLowerCase();
+    if (/emergency|same-day|impulse/.test(o)) return 0.10 + prior.urgency * 0.46 + (1 - prior.recurring) * 0.08;
+    if (/within a week/.test(o)) return 0.14 + prior.urgency * 0.24 + prior.frequency * 0.08;
+    if (/within a month|planned outing/.test(o)) return 0.16 + (1 - Math.abs(prior.urgency - 0.45)) * 0.22 + prior.spend * 0.08;
+    if (/longer|special occasion|event/.test(o)) return 0.10 + prior.spend * 0.20 + prior.season * 0.12;
+    if (/browsing|comparing/.test(o)) return 0.10 + prior.price * 0.18 + (1 - prior.recentUse) * 0.10;
+    return 0.10;
+  });
+}
+
+function valuePreferenceWeights(options, prior) {
+  return options.map((option) => {
+    const o = option.toLowerCase();
+    if (/lowest/.test(o)) return 0.10 + prior.price * 0.28 - prior.trust * 0.06;
+    if (/slightly lower/.test(o)) return 0.14 + prior.price * 0.18;
+    if (/balanced/.test(o)) return 0.30 + (1 - Math.abs(prior.price - prior.trust)) * 0.12;
+    if (/higher quality/.test(o)) return 0.16 + prior.trust * 0.22 + prior.review * 0.08;
+    if (/premium|guarantee|reputation/.test(o)) return 0.10 + prior.spend * 0.16 + prior.trust * 0.18 + prior.review * 0.10;
+    return 0.10;
+  });
+}
+
+function schedulePredictabilityWeights(options, prior) {
+  const center = clamp(0.56 + prior.retention * 0.18 + prior.recurring * 0.08 - prior.labor * 0.24 - prior.urgency * 0.08, 0.20, 0.82);
+  return orderedWeights(options.length, center, 0.26);
+}
+
+function promotionPathWeights(options, prior) {
+  const center = clamp(0.46 + prior.growth * 0.18 + prior.training * 0.18 + prior.wage * 0.08 - prior.labor * 0.12, 0.18, 0.82);
+  return orderedWeights(options.length, center, 0.27);
+}
+
+function stayIndustryWeights(options, prior) {
+  const center = clamp(0.58 + prior.retention * 0.16 + prior.wage * 0.12 + prior.benefits * 0.12 - prior.labor * 0.18, 0.22, 0.88);
+  return orderedWeights(options.length, center, 0.27);
+}
+
+function capacityWeights(options, prior) {
+  return options.map((option) => {
+    const o = option.toLowerCase();
+    if (/too slow/.test(o)) return 0.10 + (1 - prior.growth) * 0.22 + prior.competition * 0.08;
+    if (/open capacity/.test(o)) return 0.14 + (1 - prior.growth) * 0.14 + prior.labor * 0.04;
+    if (/about right/.test(o)) return 0.28 + prior.retention * 0.10;
+    if (/slightly overbooked/.test(o)) return 0.14 + prior.growth * 0.18 + prior.labor * 0.10;
+    if (/severely overbooked/.test(o)) return 0.08 + prior.growth * 0.12 + prior.labor * 0.20;
+    return 0.10;
+  });
+}
+
+function priceReviewWeights(options, prior) {
+  const center = clamp(0.42 + (1 - prior.margin) * 0.20 + prior.labor * 0.10 + prior.price * 0.12 + prior.growth * 0.08, 0.16, 0.84);
+  return orderedWeights(options.length, center, 0.28);
+}
+
+function profitableSegmentWeights(options, prior) {
+  return options.map((option) => {
+    const o = option.toLowerCase();
+    if (/repeat|regular|established|recurring|member|membership|contract|retainer|direct-booking|long-term|full-time/.test(o)) {
+      return 0.14 + prior.retention * 0.28 + prior.recurring * 0.28;
+    }
+    if (/commercial|business|corporate|fleet|mid-market|larger|work/.test(o)) {
+      return 0.12 + prior.ownerBias * 0.38 + prior.acv * 0.20;
+    }
+    if (/homeowner|consumer|household|leisure|local|patient|student|family/.test(o)) {
+      return 0.14 + prior.residential * 0.24 + prior.frequency * 0.08;
+    }
+    if (/insurance|warranty|referral|partner|physician|cash-pay|elective|specialty|complex|premium/.test(o)) {
+      return 0.12 + prior.trust * 0.18 + prior.referral * 0.20 + prior.margin * 0.12;
+    }
+    if (/event|group|wedding|catering|emergency|high-urgency|delivery|takeout|summer|enrichment/.test(o)) {
+      return 0.12 + prior.urgency * 0.12 + prior.season * 0.16 + prior.spend * 0.10;
+    }
+    return 0.10;
+  });
+}
+
 function challengeWeights(options, prior) {
   return options.map((option) => {
     const o = option.toLowerCase();
@@ -861,6 +984,10 @@ function optionWeights(question, options, branch, prior, seedText) {
   if (/plan to raise prices/.test(q)) return binaryWeights(options, clamp(0.30 + (1 - prior.margin) * 0.24 + prior.price * 0.16 + prior.labor * 0.10, 0.26, 0.74), 0.20);
 
   if (/how did you find/.test(q)) return channelWeights(options, enrichedPrior);
+  if (/what best describes (the property|the vehicle|who|the occasion|how you use)/.test(q)) return contextWeights(options, enrichedPrior);
+  if (/who usually makes the final decision/.test(q)) return decisionMakerWeights(options, enrichedPrior);
+  if (/how urgent was your most recent|how planned was your most recent/.test(q)) return urgencyNeedWeights(options, enrichedPrior);
+  if (/value preference/.test(q)) return valuePreferenceWeights(options, enrichedPrior);
   if (/#1 reason|reason .*switch|consider switching/.test(q)) return switchReasonWeights(options, enrichedPrior);
   if (/10%/.test(q) && /price|raised/.test(q)) return priceReactionWeights(options, enrichedPrior, 10);
   if (/20%/.test(q) && /price|raised/.test(q)) return priceReactionWeights(options, enrichedPrior, 20);
@@ -876,13 +1003,23 @@ function optionWeights(question, options, branch, prior, seedText) {
   if (/what is your role/.test(q)) return roleWeights(options, enrichedPrior);
   if (/tenure|years.*industry/.test(q)) return orderedWeights(options.length, clamp(0.48 + prior.retention * 0.18 - prior.labor * 0.10, 0.22, 0.78), 0.27);
   if (/reason.*leave|would leave/.test(q)) return challengeWeights(options, { ...enrichedPrior, margin: prior.wage * 0.8, price: prior.price });
+  if (/pay relative to the work/.test(q)) return orderedWeights(options.length, clamp(0.42 + prior.wage * 0.26 + prior.benefits * 0.12 - prior.labor * 0.12, 0.16, 0.84), 0.27);
   if (/hourly wage|wage/.test(q)) return orderedWeights(options.length, clamp(prior.wage, 0.20, 0.86), 0.25);
+  if (/predictable is your schedule/.test(q)) return schedulePredictabilityWeights(options, enrichedPrior);
+  if (/path to higher pay|promotion/.test(q)) return promotionPathWeights(options, enrichedPrior);
+  if (/stay in the .* industry for the next 2 years/.test(q)) return stayIndustryWeights(options, enrichedPrior);
   if (/benefits/.test(q)) return benefitsWeights(options, enrichedPrior);
   if (/improve.*job/.test(q)) return challengeWeights(options, { ...enrichedPrior, margin: prior.wage * 0.8, labor: clamp(prior.labor + 0.08, 0, 1) });
   if (/productivity|peak season|limits/.test(q)) return challengeWeights(options, enrichedPrior);
 
   if (/annual revenue/.test(q)) return orderedWeights(options.length, clamp(prior.revenue, 0.15, 0.92), 0.26);
   if (/employees/.test(q)) return orderedWeights(options.length, clamp(prior.employees, 0.14, 0.88), 0.28);
+  if (/years has your business been operating/.test(q)) return orderedWeights(options.length, clamp(0.50 + prior.retention * 0.18 + prior.revenue * 0.10 - prior.ownerBias * 0.04, 0.18, 0.86), 0.27);
+  if (/current capacity/.test(q)) return capacityWeights(options, enrichedPrior);
+  if (/confident are you in your pricing/.test(q)) return orderedWeights(options.length, clamp(0.48 + prior.margin * 0.16 + prior.retention * 0.08 - prior.price * 0.08, 0.18, 0.84), 0.27);
+  if (/review or adjust prices/.test(q)) return priceReviewWeights(options, enrichedPrior);
+  if (/qualified leads become paying customers/.test(q)) return orderedWeights(options.length, clamp(0.38 + prior.trust * 0.18 + prior.referral * 0.16 + prior.retention * 0.08 - prior.competition * 0.08, 0.14, 0.82), 0.27);
+  if (/customer segment is most profitable/.test(q)) return profitableSegmentWeights(options, enrichedPrior);
   if (/services.*offer|services offered/.test(q)) return servicesWeights(options, enrichedPrior);
   if (/share of revenue.*recurring|contract-based|recurring/.test(q)) return orderedWeights(options.length, clamp(prior.recurring, 0.04, 0.94), 0.26);
   if (/average customer|contract value|average.*value/.test(q)) return orderedWeights(options.length, clamp(prior.acv, 0.10, 0.96), 0.24);

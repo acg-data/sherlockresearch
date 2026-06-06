@@ -316,6 +316,14 @@ async function main() {
       });
     }
     const groups = parseQuestionGroups(form.blocks);
+    if (!applyUpdates) {
+      const currentQ16 = groups.find((item) => item.questionIndex === 16);
+      summary = {
+        before: currentQ16?.questionText || "",
+        after: currentQ16?.questionText || "",
+        optionCount: currentQ16?.options.length || 0,
+      };
+    }
     allRows.push(...auditRows(industryName, formId, groups, applyUpdates ? 16 : -1));
     patchSummary.push(`${industryName}: ${applyUpdates ? "updated" : "reviewed"} q16 (${summary.optionCount || 0} options)`);
     console.log(patchSummary.at(-1));
