@@ -319,8 +319,8 @@ export const INDUSTRIES = [...launchIndustries, ...pipelineIndustries].map(([nam
     tags: [`industry:${slug}`, `category:${category}`]
   },
   seo: {
-    title: `${name} Industry Report - Sherlock Research`,
-    description: `Sherlock Research ${name} report: market demand, local competition, pricing, and clear recommendations for operators and investors.`
+    title: `${name} Industry Report ${SITE.year} — Sherlock Research`,
+    description: `${name} market research for ${SITE.year}: market size, demand drivers, local competition, pricing benchmarks, and clear recommendations for operators and investors.`
   }
   });
 });

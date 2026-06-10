@@ -137,7 +137,7 @@ function footer() {
     </div>
     <div class="fcol"><h3>Reports</h3><a href="/reports">Report Library</a><a href="/landscaping-report">Landscaping</a><a href="/roofing-report">Roofing</a><a href="/hvac-report">HVAC</a></div>
     <div class="fcol"><h3>Resources</h3><a href="/pricing">Pricing</a><a href="/sample">Sample Report</a><a href="/faq">FAQ</a><a href="/blog-article">Research Note</a></div>
-    <div class="fcol"><h3>Company</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/terms-of-service">Terms</a></div>
+    <div class="fcol"><h3>Company</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/terms-of-service">Terms</a><a href="/sitemap">Sitemap</a></div>
   </div>
   <div class="container foot-bottom">
     <span>&copy; <span data-year>2026</span> Sherlock Research. All rights reserved.</span>
@@ -146,7 +146,7 @@ function footer() {
 </footer>`;
 }
 
-function head({ title, description, canonical, noindex = false, schema = "" }) {
+function head({ title, description, canonical, noindex = false, schema = "", image = "/og-default.png" }) {
   return `<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -159,8 +159,11 @@ ${noindex ? '<meta name="robots" content="noindex,nofollow">' : ""}
 <meta property="og:title" content="${html(title)}">
 <meta property="og:description" content="${html(description)}">
 <meta property="og:url" content="${SITE.origin}${canonical}">
-<meta property="og:image" content="${SITE.origin}/og-default.png">
+<meta property="og:image" content="${SITE.origin}${image}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${html(title)}">
+<meta name="twitter:description" content="${html(description)}">
+<meta name="twitter:image" content="${SITE.origin}${image}">
 <link rel="icon" type="image/png" href="assets/sherlock-colorful.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -380,39 +383,43 @@ function pageCss() {
 
 function reportSchema(industry) {
   const status = STATUS[industry.status];
-  if (industry.status === "planned") {
-    const work = {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      name: `${industry.name} Industry Report`,
-      description: industry.seo.description,
-      publisher: { "@type": "Organization", name: "Sherlock Research" },
-      url: `${SITE.origin}/${industry.slug}-report`,
-      isPartOf: {
-        "@type": "CreativeWorkSeries",
-        name: "Sherlock Research Industry Reports"
-      }
-    };
-    return `<script type="application/ld+json">${JSON.stringify(work)}</script>`;
-  }
-
-  const product = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: `${industry.name} Industry Report`,
-    description: industry.seo.description,
-    brand: { "@type": "Brand", name: "Sherlock Research" },
-    image: `${SITE.origin}/og-default.png`,
-    offers: {
-      "@type": "Offer",
-      name: PLANS.single.name,
-      price: "497",
-      priceCurrency: "USD",
-      availability: status.schemaAvailability,
-      url: `${SITE.origin}/${industry.slug}-report`
-    }
+  const reportUrl = `${SITE.origin}/${industry.slug}-report`;
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.origin}/` },
+      { "@type": "ListItem", position: 2, name: "Reports", item: `${SITE.origin}/reports` },
+      { "@type": "ListItem", position: 3, name: `${industry.name} Industry Report`, item: reportUrl }
+    ]
   };
-  return `<script type="application/ld+json">${JSON.stringify(product)}</script>`;
+
+  const primary = industry.status === "planned"
+    ? {
+        "@type": "CreativeWork",
+        name: `${industry.name} Industry Report`,
+        description: industry.seo.description,
+        publisher: { "@type": "Organization", name: "Sherlock Research" },
+        url: reportUrl,
+        isPartOf: { "@type": "CreativeWorkSeries", name: "Sherlock Research Industry Reports" }
+      }
+    : {
+        "@type": "Product",
+        name: `${industry.name} Industry Report`,
+        description: industry.seo.description,
+        brand: { "@type": "Brand", name: "Sherlock Research" },
+        image: `${SITE.origin}/og-default.png`,
+        offers: {
+          "@type": "Offer",
+          name: PLANS.single.name,
+          price: "497",
+          priceCurrency: "USD",
+          availability: status.schemaAvailability,
+          url: reportUrl
+        }
+      };
+
+  const graph = { "@context": "https://schema.org", "@graph": [primary, breadcrumb] };
+  return `<script type="application/ld+json">${JSON.stringify(graph)}</script>`;
 }
 
 function statusAction(industry) {
@@ -753,12 +760,42 @@ function libraryPage() {
   const hasWaitlist = INDUSTRIES.some((industry) => industry.status === "waitlist");
   const statusDescription = hasWaitlist ? "active, presell, waitlist, and planned" : "active, presell, and planned";
   const waitlistOption = hasWaitlist ? '\n          <option value="waitlist">Waitlist</option>' : "";
+  const liveReports = INDUSTRIES.filter((industry) => industry.status !== "planned");
+  const librarySchema = `<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        name: "Sherlock Research Report Library",
+        description: `Every Sherlock Research industry report — ${SITE.launchCohortSize} available now, ${SITE.catalogTarget} on the roadmap.`,
+        url: `${SITE.origin}/reports`
+      },
+      {
+        "@type": "ItemList",
+        numberOfItems: liveReports.length,
+        itemListElement: liveReports.map((industry, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: `${industry.name} Industry Report`,
+          url: `${SITE.origin}/${industry.slug}-report`
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.origin}/` },
+          { "@type": "ListItem", position: 2, name: "Reports", item: `${SITE.origin}/reports` }
+        ]
+      }
+    ]
+  })}</script>`;
   return `<!DOCTYPE html>
 <html lang="en">
 ${head({
-  title: "Report Library - Sherlock Research",
-  description: `Browse the Sherlock Research ${SITE.catalogTarget}-report roadmap with ${statusDescription} status.`,
-  canonical: "/reports"
+  title: "Report Library — Industry Market Research | Sherlock Research",
+  description: `Browse Sherlock Research industry reports: ${SITE.launchCohortSize} available now across home services, healthcare, automotive, hospitality, real estate, and professional services, with ${SITE.catalogTarget} on the roadmap.`,
+  canonical: "/reports",
+  schema: librarySchema
 })}
 <body>
 ${nav("reports")}
@@ -996,6 +1033,7 @@ function sitemapXml() {
     ["/faq", "monthly", "0.7"],
     ["/contact", "yearly", "0.6"],
     ["/blog-article", "weekly", "0.6"],
+    ["/sitemap", "monthly", "0.4"],
     ["/privacy-policy", "yearly", "0.3"],
     ["/terms-of-service", "yearly", "0.3"]
   ];
@@ -1003,11 +1041,83 @@ function sitemapXml() {
     .filter((industry) => industry.status !== "planned")
     .map((industry) => [`/${industry.slug}-report`, "monthly", industry.status === "available" ? "0.9" : "0.75"]);
   const urls = [...top, ...reportUrls];
+  const lastmod = new Date().toISOString().slice(0, 10);
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(([loc, changefreq, priority]) => `  <url><loc>${SITE.origin}${loc}</loc><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`).join("\n")}
+${urls.map(([loc, changefreq, priority]) => `  <url><loc>${SITE.origin}${loc}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`).join("\n")}
 </urlset>
 `;
+}
+
+function sitemapPage() {
+  const categories = [...new Set(INDUSTRIES.map((industry) => industry.category))].sort();
+  const liveReports = INDUSTRIES.filter((industry) => industry.status !== "planned");
+  const reportColumns = categories.map((category) => {
+    const items = liveReports.filter((industry) => industry.category === category);
+    if (!items.length) return "";
+    return `<div class="sitemap-col"><h3>${html(categoryLabel(category))}</h3>${items
+      .map((industry) => `<a href="/${industry.slug}-report">${html(industry.name)}</a>`)
+      .join("")}</div>`;
+  }).filter(Boolean).join("\n        ");
+
+  const extraHead = `<style>
+.sitemap-section{margin:0 0 48px}
+.sitemap-section h2{font-family:var(--font-display);font-size:clamp(24px,3vw,32px);color:var(--navy);margin:0 0 20px}
+.sitemap-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px}
+.sitemap-col h3{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--orange);font-weight:800;margin:0 0 10px}
+.sitemap-col a{display:block;color:var(--navy);text-decoration:none;padding:4px 0;font-size:15px;border-bottom:1px solid transparent}
+.sitemap-col a:hover{color:var(--orange)}
+</style>
+<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.origin}/` },
+      { "@type": "ListItem", position: 2, name: "Sitemap", item: `${SITE.origin}/sitemap` }
+    ]
+  })}</script>`;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+${head({
+  title: "Sitemap — All Pages & Reports | Sherlock Research",
+  description: `Full sitemap of Sherlock Research: every page and all ${SITE.launchCohortSize} available industry market research reports in one place.`,
+  canonical: "/sitemap",
+  schema: extraHead
+})}
+<body>
+${nav("reports")}
+<main>
+  <header class="library-hero">
+    <div class="container hero-copy">
+      <div class="eyebrow">Sitemap</div>
+      <h1>Everything on Sherlock Research.</h1>
+      <p>Every page and report in one place. Prefer the machine-readable version? It's at <a href="/sitemap.xml">/sitemap.xml</a>.</p>
+    </div>
+  </header>
+  <section class="page-band">
+    <div class="container">
+      <div class="sitemap-section">
+        <h2>Main pages</h2>
+        <div class="sitemap-cols">
+          <div class="sitemap-col"><h3>Explore</h3><a href="/">Home</a><a href="/reports">Report Library</a><a href="/pricing">Pricing &amp; Plans</a><a href="/sample">Free Sample</a></div>
+          <div class="sitemap-col"><h3>Company</h3><a href="/about">About</a><a href="/contact">Contact</a><a href="/faq">FAQ</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a></div>
+        </div>
+      </div>
+      <div class="sitemap-section">
+        <h2>Industry reports</h2>
+        <div class="sitemap-cols">
+        ${reportColumns}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+${footer()}
+<script src="shared/catalog.js"></script>
+<script src="shared/app.js"></script>
+</body>
+</html>`;
 }
 
 function redirectsFile() {
@@ -1119,6 +1229,7 @@ async function main() {
   await save("success.html", successPage());
   await save("sample.html", samplePage());
   await save("ops-launch-dashboard.html", launchDashboard());
+  await save("sitemap.html", sitemapPage());
   await save("sitemap.xml", sitemapXml());
   await save("_redirects", redirectsFile());
 
