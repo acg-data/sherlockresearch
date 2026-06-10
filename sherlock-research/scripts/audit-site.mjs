@@ -5,6 +5,7 @@ import { INDUSTRIES, PLANS, SITE, STATUS } from "../../src/report-catalog.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
+const repoRoot = path.resolve(root, "..");
 
 const errors = [];
 const warnings = [];
@@ -15,6 +16,10 @@ function error(message) {
 
 function warn(message) {
   warnings.push(message);
+}
+
+function hasReportDeliveryAsset(industry) {
+  return Boolean(industry.fullReportAsset || industry.readiness?.fullPdf === "payhip-file");
 }
 
 async function exists(relativePath) {
@@ -28,6 +33,10 @@ async function exists(relativePath) {
 
 async function read(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
+}
+
+async function readRepo(relativePath) {
+  return readFile(path.join(repoRoot, relativePath), "utf8");
 }
 
 async function allHtmlFiles() {
@@ -53,20 +62,26 @@ function localPathForUrl(url) {
 
 async function auditCatalog() {
   const slugs = new Set();
+  let launchCount = 0;
+  let pipelineCount = 0;
   for (const industry of INDUSTRIES) {
     if (slugs.has(industry.slug)) error(`Duplicate industry slug: ${industry.slug}`);
     slugs.add(industry.slug);
     if (!industry.name) error(`Missing name for ${industry.slug}`);
     if (!industry.slug) error(`Missing slug for ${industry.name}`);
     if (!STATUS[industry.status]) error(`Invalid status for ${industry.name}: ${industry.status}`);
-    if (!industry.tallyUrl || !industry.tallyId) error(`Missing Tally form for ${industry.name}`);
+    if (industry.stage === "launch") launchCount += 1;
+    if (industry.stage === "pipeline") pipelineCount += 1;
+    if (industry.stage === "launch" && (!industry.tallyUrl || !industry.tallyId)) error(`Missing Tally form for launch report ${industry.name}`);
     if (!industry.seo?.title || !industry.seo?.description) error(`Missing SEO copy for ${industry.name}`);
     if (!industry.focus) error(`Missing focus copy for ${industry.name}`);
-    if (!industry.fullReportAsset) warn(`Full PDF asset missing for ${industry.name}`);
+    if (["available", "presell"].includes(industry.status) && !hasReportDeliveryAsset(industry)) warn(`Full PDF asset missing for ${industry.name}`);
   }
-  if (INDUSTRIES.length !== 50) error(`Expected 50 industries, found ${INDUSTRIES.length}`);
-  if (slugs.has("funeral-homes")) error("Funeral Homes should not be in the 50-industry source of truth");
-  if (!slugs.has("dermatology")) error("Dermatology is missing from the 50-industry source of truth");
+  if (INDUSTRIES.length !== SITE.catalogTarget) error(`Expected ${SITE.catalogTarget} industries, found ${INDUSTRIES.length}`);
+  if (launchCount !== SITE.launchCohortSize) error(`Expected ${SITE.launchCohortSize} launch reports, found ${launchCount}`);
+  if (pipelineCount !== SITE.catalogTarget - SITE.launchCohortSize) error(`Expected ${SITE.catalogTarget - SITE.launchCohortSize} planned pipeline reports, found ${pipelineCount}`);
+  if (slugs.has("funeral-homes")) error("Funeral Homes should not be in the industry source of truth");
+  if (!slugs.has("dermatology")) error("Dermatology is missing from the industry source of truth");
 }
 
 async function auditGeneratedPages() {
@@ -74,14 +89,21 @@ async function auditGeneratedPages() {
   const catalog = await read("shared/catalog.js");
   for (const industry of INDUSTRIES) {
     if (!(await exists(industry.page))) error(`Missing generated report page: ${industry.page}`);
-    if (!sitemap.includes(`${SITE.origin}/${industry.slug}-report`)) error(`Sitemap missing ${industry.slug}-report`);
     if (!catalog.includes(`"${industry.slug}"`)) error(`Catalog missing ${industry.slug}`);
     const page = await read(industry.page);
+    const isPlanned = industry.status === "planned";
+    const inSitemap = sitemap.includes(`${SITE.origin}/${industry.slug}-report`);
+    const isNoindex = page.includes('<meta name="robots" content="noindex,nofollow">');
+    if (isPlanned && inSitemap) error(`Sitemap should not include planned report ${industry.slug}-report`);
+    if (!isPlanned && !inSitemap) error(`Sitemap missing ${industry.slug}-report`);
+    if (isPlanned && !isNoindex) error(`${industry.page} should be noindex until report content is production-ready`);
+    if (!isPlanned && isNoindex) error(`${industry.page} should be indexable`);
     if (!page.includes(`data-report-slug="${industry.slug}"`)) error(`${industry.page} missing body report slug`);
-    if (!page.includes(industry.tallyUrl)) error(`${industry.page} missing Tally URL`);
+    if (industry.tallyUrl && !page.includes(industry.tallyUrl)) error(`${industry.page} missing Tally URL`);
+    if (!industry.tallyUrl && !page.includes("Request priority")) error(`${industry.page} missing priority CTA for planned report`);
     if (!page.includes(`/${industry.slug}-report`)) error(`${industry.page} missing clean canonical path`);
     if (!page.includes("data-checkout-plan=\"single\"")) error(`${industry.page} missing checkout CTA wiring`);
-    if ((industry.status === "available" || industry.status === "presell") && !industry.stripePaymentLink) warn(`${industry.name} (${industry.status}) has no live checkout link yet — CTA routes to contact`);
+    if ((industry.status === "available" || industry.status === "presell") && !industry.checkoutUrl) warn(`${industry.name} (${industry.status}) has no live Payhip checkout link yet - CTA routes to contact`);
   }
 }
 
@@ -131,10 +153,46 @@ async function auditLinks() {
   for (const item of assetMissing) error(`Broken local link: ${item}`);
 }
 
+async function auditAccessibilityBasics() {
+  for (const file of await allHtmlFiles()) {
+    if (file === "404.html") continue;
+    const source = await read(file);
+    const h1Count = (source.match(/<h1\b/gi) || []).length;
+    if (h1Count !== 1) error(`${file} has ${h1Count} h1 elements (expected 1)`);
+
+    const seenIds = new Set();
+    for (const match of source.matchAll(/\sid=["']([^"']+)["']/gi)) {
+      const id = match[1];
+      if (seenIds.has(id)) error(`${file} has duplicate id="${id}"`);
+      seenIds.add(id);
+    }
+
+    for (const match of source.matchAll(/<img\b[^>]*>/gi)) {
+      const tag = match[0];
+      if (!/\salt\s*=/.test(tag)) error(`${file} has image without alt attribute: ${tag.slice(0, 120)}`);
+    }
+
+    for (const match of source.matchAll(/<a\b[^>]*target=["']_blank["'][^>]*>/gi)) {
+      const tag = match[0];
+      if (!/rel=["'][^"']*\bnoopener\b/i.test(tag)) error(`${file} opens a new tab without rel="noopener": ${tag.slice(0, 120)}`);
+    }
+
+    for (const match of source.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)) {
+      const attrs = match[1];
+      const label = match[2]
+        .replace(/<svg[\s\S]*?<\/svg>/gi, "")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&nbsp;/g, " ")
+        .trim();
+      if (!label && !/\baria-label=/.test(attrs)) error(`${file} has button without visible text or aria-label`);
+    }
+  }
+}
+
 async function auditTallyPlaybook() {
-  // Gitignored internal doc — absent on a clean clone / CI. Skip gracefully.
+  // Gitignored internal doc - absent on a clean clone / CI. Skip gracefully.
   if (!(await exists("TALLY_MASTER_INDUSTRY_PLAYBOOK.md"))) {
-    warn("TALLY_MASTER_INDUSTRY_PLAYBOOK.md not present (gitignored) — skipping playbook checks");
+    warn("TALLY_MASTER_INDUSTRY_PLAYBOOK.md not present (gitignored) - skipping playbook checks");
     return;
   }
   const playbook = await read("TALLY_MASTER_INDUSTRY_PLAYBOOK.md");
@@ -185,6 +243,49 @@ async function auditJargon() {
   }
 }
 
+async function auditLaunchCopy() {
+  const waitlistCount = INDUSTRIES.filter((industry) => industry.status === "waitlist").length;
+  if (waitlistCount === 0) {
+    const visibleFiles = ["reports.html", "faq.html", "contact.html"];
+    for (const file of visibleFiles) {
+      const source = await read(file);
+      const text = source
+        .replace(/<script[\s\S]*?<\/script>/gi, " ")
+        .replace(/<style[\s\S]*?<\/style>/gi, " ")
+        .replace(/<[^>]+>/g, " ");
+      if (/\bwaitlist\b/i.test(text)) error(`${file} contains visible waitlist copy even though no reports are waitlist`);
+    }
+  }
+
+  const success = await read("success.html");
+  if (!/Payhip receipt|Payhip sends/i.test(success)) error("success.html must direct buyers to the Payhip receipt/download path");
+
+  const catalog = await read("shared/catalog.js");
+  if (/tallyEditUrl|\/forms\/[^"']+\/edit/.test(catalog)) error("shared/catalog.js exposes Tally edit URLs");
+  if (/waitlistEvent|purchaseEvent|emailDelivery|fullReportAsset/.test(catalog)) error("shared/catalog.js exposes internal fulfillment or automation metadata");
+  if (waitlistCount === 0 && /Join the waitlist|\"waitlist\"\s*:/.test(catalog)) error("shared/catalog.js exposes waitlist metadata even though no reports are waitlist");
+}
+
+async function auditDocs() {
+  const launchRunbook = await readRepo("docs/LAUNCH_RUNBOOK.md");
+  const payhipFulfillment = await readRepo("docs/PAYHIP_FULFILLMENT.md");
+  const requiredSecrets = launchRunbook.match(/Confirm Cloudflare secrets exist:[\s\S]*?Confirm public form abuse posture:/)?.[0] || "";
+  if (/- `PAYHIP_API_KEY`/.test(requiredSecrets)) error("docs/LAUNCH_RUNBOOK.md lists PAYHIP_API_KEY as a launch-required secret");
+  if (/Sherlock confirmation email arrives/.test(payhipFulfillment)) error("docs/PAYHIP_FULFILLMENT.md still requires Sherlock confirmation email for launch");
+}
+
+async function auditPageWeights() {
+  const budgets = new Map([
+    ["index.html", 125 * 1024],
+    ["reports.html", 135 * 1024]
+  ]);
+  for (const file of await allHtmlFiles()) {
+    const source = await read(file);
+    const budget = budgets.get(file) || (file.endsWith("-report.html") ? 65 * 1024 : 90 * 1024);
+    if (Buffer.byteLength(source, "utf8") > budget) warn(`${file} exceeds page weight budget (${Buffer.byteLength(source, "utf8")} > ${budget})`);
+  }
+}
+
 // Every report page must keep its key redesigned components.
 async function auditReportStructure() {
   const required = [
@@ -209,11 +310,15 @@ async function main() {
   await auditGeneratedPages();
   await auditPlaceholders();
   await auditLinks();
+  await auditAccessibilityBasics();
   await auditTallyPlaybook();
   await auditCheckout();
   await auditConsistency();
   await auditClaims();
   await auditJargon();
+  await auditLaunchCopy();
+  await auditDocs();
+  await auditPageWeights();
   await auditReportStructure();
 
   for (const warning of warnings) console.warn(`WARN: ${warning}`);

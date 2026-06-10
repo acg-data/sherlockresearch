@@ -7,10 +7,13 @@
     "extract-insights": "node sherlock-research/scripts/extract-insights.mjs",
     "generate": "node sherlock-research/scripts/generate-site.mjs",
     "audit": "node sherlock-research/scripts/audit-site.mjs",
+    "launch-readiness": "node scripts/launch-readiness.mjs",
     "prepare-assets": "node scripts/prepare-assets.mjs",
     "visual-smoke": "node sherlock-research/scripts/visual-smoke.mjs",
     "build": "npm run generate && npm run audit && npm run prepare-assets",
     "qa": "npm run build && npm run visual-smoke",
+    "check": "npm run qa && npm run launch-readiness",
+    "deploy:dry-run": "wrangler deploy --dry-run",
     "dev": "wrangler dev"
   },
   "dependencies": {

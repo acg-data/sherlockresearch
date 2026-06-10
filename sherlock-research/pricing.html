@@ -202,7 +202,7 @@
   "brand": { "@type": "Brand", "name": "Sherlock Research" },
   "image": "https://sherlockreports.com/og-default.png",
   "offers": [
-    {"@type":"Offer","name":"Standard Report","price":"497","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pricing","description":"Full national industry report purchase with delivery status confirmed by email."},
+    {"@type":"Offer","name":"Standard Report","price":"497","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pricing","description":"Full national industry report purchase with Payhip receipt delivery."},
     {"@type":"Offer","name":"Quarterly + Coaching","price":"2000","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pricing","description":"Four quarterly report updates plus four 1:1 coaching calls per year."},
     {"@type":"Offer","name":"All-Access Pass","price":"2997","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://sherlockreports.com/pricing","description":"Every Sherlock industry report, current and new releases, one-time payment."}
   ]
@@ -288,7 +288,7 @@
         <ul class="opt-list">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full 40+ page report</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> National data &amp; forecasts</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Email delivery status</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Payhip receipt download</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Local market signals</li>
           <li style="font-weight:700;color:var(--navy)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Perfect for a one-time market read</li>
         </ul>
@@ -335,7 +335,7 @@
       <div class="checkout-summary">
         <div class="cs-label">You're getting</div>
         <div class="cs-name" id="checkoutName">Standard Report</div>
-        <div class="cs-detail" id="checkoutDetail">Full national industry report and delivery status</div>
+        <div class="cs-detail" id="checkoutDetail">Full national industry report with Payhip delivery</div>
       </div>
       <div class="checkout-action">
         <div class="checkout-price" id="checkoutPrice">$497</div>
@@ -423,7 +423,7 @@
       </details>
       <details>
         <summary>How does delivery work?</summary>
-        <p>Checkout is handled securely through Payhip. You'll get an email confirmation right away &mdash; with your secure download link if the report is ready, or a clear delivery timeline if it's still being finalized.</p>
+        <p>Checkout is handled securely through Payhip. Available reports are delivered from the Payhip receipt after payment; presell products state the release status before purchase.</p>
       </details>
       <details>
         <summary>How is this different from IBISWorld or Statista?</summary>
@@ -478,7 +478,7 @@
 <script src="shared/app.js"></script>
 <script>
   var plans = {
-    single:    { name: "Standard Report",       price: "$497",  unit: "",     note: "One-time - national data",            detail: "Full national industry report and delivery status", cta: "Get Standard Report" },
+    single:    { name: "Standard Report",       price: "$497",  unit: "",     note: "One-time - national data",            detail: "Full national industry report with Payhip delivery", cta: "Get Standard Report" },
     quarterly: { name: "Quarterly + Coaching",   price: "$2,000",unit: "/yr",  note: "Billed annually · updates + 1:1 calls", detail: "Pick one industry · 4 quarterly updates + 4 coaching calls",  cta: "Start Quarterly Plan" },
     all:       { name: "All-Access Pass",        price: "$2,997",unit: "",     note: "One-time · every industry report",     detail: "Every Sherlock industry report — current and new releases", cta: "Get All-Access Pass" }
   };

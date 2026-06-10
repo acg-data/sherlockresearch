@@ -259,7 +259,35 @@
     }
   }
 
+  function mountTurnstile(form) {
+    const siteKey = catalog && catalog.turnstileSiteKey;
+    if (!siteKey || !form) return;
+
+    let mount = form.querySelector('[data-turnstile]');
+    if (!mount) {
+      mount = document.createElement('div');
+      mount.className = 'full';
+      mount.setAttribute('data-turnstile', '');
+      const submitRow = form.querySelector('.full');
+      form.insertBefore(mount, submitRow || null);
+    }
+
+    mount.classList.add('cf-turnstile');
+    mount.setAttribute('data-sitekey', siteKey);
+    mount.setAttribute('data-theme', 'light');
+
+    if (!document.querySelector('script[data-turnstile-api]')) {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      script.defer = true;
+      script.setAttribute('data-turnstile-api', 'true');
+      document.head.appendChild(script);
+    }
+  }
+
   document.querySelectorAll('[data-lead-form]').forEach(form => {
+    mountTurnstile(form);
     const note = form.querySelector('[data-form-note]');
     const submit = form.querySelector('[type="submit"]');
     form.addEventListener('submit', async (event) => {
@@ -268,7 +296,7 @@
       if (note) note.textContent = 'Sending...';
       if (submit) submit.disabled = true;
       try {
-        const response = await fetch('/api/waitlist', {
+        const response = await fetch('/api/lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)

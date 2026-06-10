@@ -1,0 +1,13 @@
+# Local-only development values. Copy to .dev.vars and fill in real values.
+# Never commit .dev.vars.
+
+# Optional private preview gate. Leave empty/unset to make local preview public.
+PREVIEW_PASSWORD=
+
+# Required for /api/payhip/webhook in production.
+# Payhip signs webhook payloads with sha256(API key), per Payhip webhook docs.
+PAYHIP_API_KEY=
+
+# Optional locally. For production, pair this with SITE.turnstileSiteKey in src/report-catalog.js
+# or explicitly acknowledge the risk with ALLOW_FORMS_WITHOUT_TURNSTILE=1 during readiness checks.
+TURNSTILE_SECRET_KEY=

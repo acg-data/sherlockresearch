@@ -98,7 +98,7 @@ const CANONICAL_NAV = `<nav class="nav">
           <a href="/reports#real-estate-finance">Real Estate &amp; Finance</a>
           <a href="/reports#education">Education</a>
           <a href="/reports#local-services">Local Services</a>
-          <a href="/reports" class="dropdown-all">Browse all 50 reports &rarr;</a>
+          <a href="/reports" class="dropdown-all">Browse all ${SITE.catalogTarget} reports &rarr;</a>
         </div>
       </div>
       <a href="/sample">Sample</a>
@@ -204,7 +204,7 @@ function pageCss() {
   .industry-card p{color:var(--muted);font-size:13.5px;flex:1}
   .tag-row{display:flex;gap:8px;flex-wrap:wrap}
   .tag{border:1px solid var(--line);background:var(--stone-2);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
-  .tag.available{background:#edf5ed;color:#42673f;border-color:#cbdcca}.tag.presell{background:#fff0e8;color:#b84d15;border-color:#ffd2bc}.tag.waitlist{background:#eef4fa;color:#335b7d;border-color:#c9dae9}
+  .tag.available{background:#edf5ed;color:#42673f;border-color:#cbdcca}.tag.presell{background:#fff0e8;color:#b84d15;border-color:#ffd2bc}.tag.waitlist{background:#eef4fa;color:#335b7d;border-color:#c9dae9}.tag.planned{background:#f4f0e7;color:#6a5a3f;border-color:#ded4bd}
   .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
   .asset-list{display:grid;gap:12px;margin-top:18px}
   .asset-row{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);border-radius:10px;padding:14px;background:#fff}
@@ -380,6 +380,22 @@ function pageCss() {
 
 function reportSchema(industry) {
   const status = STATUS[industry.status];
+  if (industry.status === "planned") {
+    const work = {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: `${industry.name} Industry Report`,
+      description: industry.seo.description,
+      publisher: { "@type": "Organization", name: "Sherlock Research" },
+      url: `${SITE.origin}/${industry.slug}-report`,
+      isPartOf: {
+        "@type": "CreativeWorkSeries",
+        name: "Sherlock Research Industry Reports"
+      }
+    };
+    return `<script type="application/ld+json">${JSON.stringify(work)}</script>`;
+  }
+
   const product = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -400,8 +416,8 @@ function reportSchema(industry) {
 }
 
 function statusAction(industry) {
-  const hasCheckout = Boolean(industry.stripePaymentLink);
-  if (hasCheckout) return { href: industry.stripePaymentLink, text: STATUS[industry.status].checkoutCta, plan: "single" };
+  const hasCheckout = Boolean(industry.checkoutUrl);
+  if (hasCheckout) return { href: industry.checkoutUrl, text: STATUS[industry.status].checkoutCta, plan: "single" };
   return {
     href: `/contact?industry=${encodeURIComponent(industry.slug)}&plan=single&status=${encodeURIComponent(industry.status)}`,
     text: STATUS[industry.status].cta,
@@ -461,6 +477,7 @@ function areaChartSvg(slug, accent) {
 function reportPage(industry) {
   const status = STATUS[industry.status];
   const action = statusAction(industry);
+  const isPlanned = industry.status === "planned";
   const canonical = `/${industry.slug}-report`;
   const pageTitle = industry.seo.title;
   const modules = [
@@ -471,16 +488,55 @@ function reportPage(industry) {
     ["playbook", "Competitive playbook", "Positioning, offers, service bundles, and local go-to-market recommendations."],
     ["method", "Sources and method", "Survey inputs, operator interviews, macro data, local scans, and source notes."]
   ];
-  const deliverySignal = industry.status === "available" ? "Emailed after checkout" : industry.status === "presell" ? "Yours at launch" : "Launching soon";
+  const deliverySignal = industry.status === "available" ? "Emailed after checkout" : industry.status === "presell" ? "Yours at launch" : industry.status === "planned" ? "Research queue" : "Launching soon";
+  const statbarHead = isPlanned ? "Planned Sherlock Research Queue" : "Trusted by Business Owners &amp; Investors";
+  const statbarStats = isPlanned
+    ? [["100", "Report Roadmap"], ["50", "Launch Cohort"], ["4", "Active Reports"], ["1", "Priority Request"]]
+    : [["75+", "5-Star Reviews"], ["500+", "Surveys"], ["100+", "Operator Interviews"], ["2,000+", "Business Owners"]];
+  const methodologyIntro = isPlanned
+    ? `This report is in the Sherlock pipeline. Priority requests help decide when the ${industry.name} survey, interviews, and local scans move into production.`
+    : `Every Sherlock report blends large-scale surveys, one-on-one operator interviews, and local market scans &mdash; then models them into clear forecasts.`;
+  const methodCards = isPlanned
+    ? [
+        ["customer", "Survey queue", "Consumer, employee, and owner questions are staged from the launch report template."],
+        ["playbook", "Interview plan", "Operator interviews are queued once enough buyer demand is visible."],
+        ["local", "Market scan", "Search demand, local competition, and pricing checks are planned before publication."],
+        ["method", "Release criteria", "Priority requests, source availability, and buyer demand determine timing."]
+      ]
+    : [
+        ["customer", "500+ surveys", "Consumer, employee, and owner surveys per launch industry capture demand, pricing, and switching behavior."],
+        ["playbook", "100+ operator interviews", "One-on-one conversations with operators explain the why behind the numbers."],
+        ["local", "Local market scans", "City- and metro-level demand, competition, and pricing - not national averages."],
+        ["method", "Modeled forecasts", "Inputs are modeled into per-industry forecasts with clear, source-noted assumptions."]
+      ];
+  const checkoutTitle = isPlanned ? "Priority Request" : PLANS.single.name;
+  const checkoutPrice = isPlanned ? "No charge" : PLANS.single.price;
+  const checkoutDescription = isPlanned ? `Ask Sherlock to prioritize the ${industry.name} report. We use demand to schedule the next build.` : PLANS.single.description;
+  const finalHeading = isPlanned ? `Request the ${industry.name} report.` : `Get the full ${industry.name} Industry Report.`;
+  const finalCopy = isPlanned ? "Tell us this market matters and help move it up the release calendar." : `Make smarter decisions with the most complete ${industry.name} market intelligence we publish.`;
+  const finalChecks = isPlanned
+    ? ["Priority signal logged", "Launch template already mapped", "Survey and interview plan queued", "Email follow-up when scheduled"]
+    : ["40+ pages of analysis & charts", "Local demand & competition signals", "Pricing & switching benchmarks", "Operator-ready recommendations"];
+  const heroChecks = isPlanned
+    ? ["Priority request logged", "Launch template already mapped", "Research queue status"]
+    : ["National & local market analysis", "Competitor & pricing benchmarks", "Operator interviews & demand signals"];
+  const dataIntro = isPlanned
+    ? `Preview the research structure Sherlock will use when ${industry.name} moves into production.`
+    : `Market size, pricing benchmarks, customer survey cuts, and the buyer questions behind every recommendation. Exact figures unlock with the ${industry.name} report.`;
+  const growthNote = isPlanned
+    ? `${industry.name} market sizing and survey cuts are queued for research.`
+    : `${industry.name} market size and growth outlook, modeled by Sherlock - actual figures inside the full report.`;
   const deliveryStatus = industry.fullReportAsset
     ? "Your secure download link is emailed the moment your payment clears."
-    : "The free sample shows exactly what you'll get. Your full report then arrives by email — we only promise what's ready.";
+    : industry.readiness?.fullPdf === "payhip-file"
+      ? "Payhip delivers the report file after checkout. Keep your Payhip receipt email for the download link."
+    : "The free sample shows the report structure. If this report is not yet available, the page will route you to a priority request instead of payment.";
   const ins = insightsFor(industry.slug);
   const st = ins.stats || {};
   const accent = industry.status === "available" ? "#5c6746" : industry.status === "presell" ? "#92602d" : "#546d7c";
   const cover = COVERS[industry.slug];
   const coverImg = cover ? `<img class="report-cover-img" src="assets/covers/${cover}?v=1" alt="${html(industry.name)} report cover" loading="lazy">` : null;
-  const payhipMatch = (industry.stripePaymentLink || "").match(/payhip\.com\/b\/([A-Za-z0-9]+)/);
+  const payhipMatch = (industry.checkoutUrl || "").match(/payhip\.com\/b\/([A-Za-z0-9]+)/);
   const payhipKey = payhipMatch ? payhipMatch[1] : null;
   const payhipCls = payhipKey ? " payhip-buy-button" : "";
   const payhipData = payhipKey ? ` data-product="${html(payhipKey)}"` : "";
@@ -493,6 +549,7 @@ function reportPage(industry) {
     { key: "switching", label: "Switching" }
   ];
   const unlockCta = `<a href="${html(action.href)}" class="btn btn-primary btn-sm${payhipCls}"${payhipData} data-checkout-plan="single" data-report-slug="${html(industry.slug)}" data-analytics-event="teaser_unlock">${html(action.text)}</a>`;
+  const unlockCopy = isPlanned ? "Request this report and help prioritize the research schedule." : "Unlock every response, the market figures, and the recommendations.";
   const redactedList = (rows) => `<ul class="redacted-list">${(rows || []).map(([answer]) => `<li><span>${html(answer)}</span><b class="ra-val">XX%</b></li>`).join("")}</ul>`;
   const tabItems = (ins.teasers || []).slice(0, 5).map((t, i) => {
     const def = TAB_DEFS[i] || { key: "cut" + i, label: "Data" };
@@ -500,10 +557,10 @@ function reportPage(industry) {
   });
   const dataTablist = tabItems.map((it, i) => `<button class="data-tab${i === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${i === 0 ? "true" : "false"}" data-tab="${it.key}">${it.label}</button>`).join("");
   const dataPanels = tabItems.map((it, i) => `<div class="data-panel${i === 0 ? " active" : ""}" role="tabpanel" data-panel="${it.key}"><h3 class="dp-q">${html(it.title)}</h3>${redactedList(it.rows)}</div>`).join("\n        ");
-  const growthChart = areaChartSvg(industry.slug, accent);
+  const growthChart = areaChartSvg("locked-preview", accent);
   return `<!DOCTYPE html>
 <html lang="en">
-${head({ title: pageTitle, description: industry.seo.description, canonical, schema: reportSchema(industry) })}
+${head({ title: pageTitle, description: industry.seo.description, canonical, noindex: isPlanned, schema: reportSchema(industry) })}
 <body data-report-slug="${html(industry.slug)}">
 ${nav("reports")}
 <main>
@@ -516,9 +573,7 @@ ${nav("reports")}
           <h1>${html(industry.name)}<br>Industry Report</h1>
           <p>${html(industry.seo.description)}</p>
           <ul class="hero-checks">
-            <li>${checkSvg} National &amp; local market analysis</li>
-            <li>${checkSvg} Competitor &amp; pricing benchmarks</li>
-            <li>${checkSvg} Operator interviews &amp; demand signals</li>
+            ${heroChecks.map((item) => `<li>${checkSvg} ${html(item)}</li>`).join("\n            ")}
           </ul>
           <div class="cta-row">
             ${checkoutBtn()}
@@ -544,12 +599,9 @@ ${nav("reports")}
     </div>
     <div class="report-statbar">
       <div class="container">
-        <div class="report-statbar-head">Trusted by Business Owners &amp; Investors</div>
+        <div class="report-statbar-head">${statbarHead}</div>
         <div class="report-statbar-grid">
-          <div class="rstat"><b>75+</b><span>5-Star Reviews</span></div>
-          <div class="rstat"><b>500+</b><span>Surveys</span></div>
-          <div class="rstat"><b>100+</b><span>Operator Interviews</span></div>
-          <div class="rstat"><b>2,000+</b><span>Business Owners</span></div>
+          ${statbarStats.map(([value, label]) => `<div class="rstat"><b>${html(value)}</b><span>${html(label)}</span></div>`).join("\n          ")}
         </div>
       </div>
     </div>
@@ -576,7 +628,7 @@ ${nav("reports")}
             <tr><td>Buyer switching &amp; willingness-to-pay</td><td>${xSvg}</td><td>${xSvg}</td><td class="hi">${checkSvg}</td></tr>
             <tr><td>Built for ${html(industry.name)} specifically</td><td>${xSvg}</td><td><span class="cmaybe">Partial</span></td><td class="hi">${checkSvg}</td></tr>
             <tr><td>Action-ready recommendations</td><td>${xSvg}</td><td>${xSvg}</td><td class="hi">${checkSvg}</td></tr>
-            <tr><td>Cost</td><td><span class="cmuted">Costly guesswork</span></td><td><span class="cmuted">$$$ / year</span></td><td class="hi">$497 once</td></tr>
+            <tr><td>Cost</td><td><span class="cmuted">Costly guesswork</span></td><td><span class="cmuted">$$$ / year</span></td><td class="hi">${isPlanned ? "Priority request" : "$497 once"}</td></tr>
           </tbody>
         </table>
       </div>
@@ -587,14 +639,14 @@ ${nav("reports")}
     <div class="container">
       <div class="eyebrow">Inside the data</div>
       <h2>What's inside the ${html(industry.name)} report.</h2>
-      <p class="band-sub">Market sizing plus the buyer questions behind every recommendation. The exact figures unlock with the report.</p>
+      <p class="band-sub">${html(dataIntro)}</p>
       <div class="growth-panel">
         <div class="growth-figures">
           <div class="gfig"><span>Annual market revenue</span><b class="ra-val">$XX.XB</b></div>
           <div class="gfig"><span>5-year CAGR</span><b class="ra-val">XX%</b></div>
         </div>
         <div class="growth-chart">${growthChart}</div>
-        <p class="growth-note">${html(industry.name)} market sizing &amp; growth, modeled by Sherlock &mdash; actual figures inside the full report.</p>
+        <p class="growth-note">${html(growthNote)}</p>
       </div>
       <div class="data-explore">
         <div class="de-head"><h3>Buyer questions &amp; responses</h3><span class="teaser-chip">${lockSvg} Responses locked</span></div>
@@ -604,23 +656,22 @@ ${nav("reports")}
           ${dataPanels}
           </div>
         </div>
-        <div class="de-cta">${unlockCta}<span>Unlock every response, the market figures, and the recommendations.</span></div>
+        <div class="de-cta">${unlockCta}<span>${html(unlockCopy)}</span></div>
       </div>
     </div>
   </section>
 
   <section class="page-band white">
     <div class="container">
-      <div class="section-head"><div><div class="eyebrow">How we built it</div><h2>The ${html(industry.name)} research methodology.</h2></div><p>Every Sherlock report blends large-scale surveys, one-on-one operator interviews, and local market scans &mdash; then models them into clear forecasts.</p></div>
+      <div class="section-head"><div><div class="eyebrow">How we built it</div><h2>The ${html(industry.name)} research methodology.</h2></div><p>${methodologyIntro}</p></div>
       <div class="method-grid">
-        <div class="method-card">${iconSvg("customer", 22)}<b>500+ surveys</b><p>Consumer, employee, and owner surveys per industry capture demand, pricing, and switching behavior.</p></div>
-        <div class="method-card">${iconSvg("playbook", 22)}<b>100+ operator interviews</b><p>One-on-one conversations with operators explain the "why" behind the numbers.</p></div>
-        <div class="method-card">${iconSvg("local", 22)}<b>Local market scans</b><p>City- and metro-level demand, competition, and pricing &mdash; not national averages.</p></div>
-        <div class="method-card">${iconSvg("method", 22)}<b>Modeled forecasts</b><p>Inputs are modeled into per-industry forecasts with clear, source-noted assumptions.</p></div>
+        ${methodCards.map(([icon, title, body]) => `<div class="method-card">${iconSvg(icon, 22)}<b>${html(title)}</b><p>${html(body)}</p></div>`).join("\n        ")}
       </div>
       <div class="method-cta">
         <div><b>Add your voice</b><p>Operators and buyers in ${html(industry.name)}: take the 2-minute survey and help shape the next edition.</p></div>
-        <a href="${html(industry.tallyUrl)}" target="_blank" rel="noopener" class="btn btn-outline-dark" data-analytics-event="tally_survey">Take the ${html(industry.name)} survey ${arrowSvg}</a>
+        ${industry.tallyUrl
+          ? `<a href="${html(industry.tallyUrl)}" target="_blank" rel="noopener" class="btn btn-outline-dark" data-analytics-event="tally_survey">Take the ${html(industry.name)} survey ${arrowSvg}</a>`
+          : `<a href="/contact?industry=${encodeURIComponent(industry.slug)}&status=planned" class="btn btn-outline-dark" data-analytics-event="priority_request">Request priority ${arrowSvg}</a>`}
       </div>
     </div>
   </section>
@@ -629,9 +680,9 @@ ${nav("reports")}
     <div class="container two-col">
       <aside class="panel checkout-box">
         <div class="tag ${html(industry.status)}">${html(status.libraryLabel)}</div>
-        <h2>${html(PLANS.single.name)}</h2>
-        <div class="price">${html(PLANS.single.price)}</div>
-        <p>${html(PLANS.single.description)}</p>
+        <h2>${html(checkoutTitle)}</h2>
+        <div class="price">${html(checkoutPrice)}</div>
+        <p>${html(checkoutDescription)}</p>
         <div class="cta-row" style="display:grid">
           ${checkoutBtn()}
           <a href="/pricing" class="btn btn-outline-dark">Compare plans</a>
@@ -657,13 +708,10 @@ ${nav("reports")}
     <div class="container report-final-grid">
       <div class="reveal">
         <div class="eyebrow">${html(status.label)}</div>
-        <h2>Get the full ${html(industry.name)} Industry Report.</h2>
-        <p>Make smarter decisions with the most complete ${html(industry.name)} market intelligence we publish.</p>
+        <h2>${html(finalHeading)}</h2>
+        <p>${html(finalCopy)}</p>
         <ul class="final-checks">
-          <li>${checkSvg} 40+ pages of analysis &amp; charts</li>
-          <li>${checkSvg} Local demand &amp; competition signals</li>
-          <li>${checkSvg} Pricing &amp; switching benchmarks</li>
-          <li>${checkSvg} Operator-ready recommendations</li>
+          ${finalChecks.map((item) => `<li>${checkSvg} ${html(item)}</li>`).join("\n          ")}
         </ul>
         <div class="cta-row">${checkoutBtn()}<a href="${html(industry.sampleAsset)}" class="btn btn-outline btn-lg" data-analytics-event="sample_download">View sample</a></div>
       </div>
@@ -702,11 +750,14 @@ function reportCard(industry) {
 
 function libraryPage() {
   const categories = [...new Set(INDUSTRIES.map((industry) => industry.category))].sort();
+  const hasWaitlist = INDUSTRIES.some((industry) => industry.status === "waitlist");
+  const statusDescription = hasWaitlist ? "active, presell, waitlist, and planned" : "active, presell, and planned";
+  const waitlistOption = hasWaitlist ? '\n          <option value="waitlist">Waitlist</option>' : "";
   return `<!DOCTYPE html>
 <html lang="en">
 ${head({
   title: "Report Library - Sherlock Research",
-  description: "Browse all 50 Sherlock Research industry report pages with active, presell, and waitlist status.",
+  description: `Browse the Sherlock Research ${SITE.catalogTarget}-report roadmap with ${statusDescription} status.`,
   canonical: "/reports"
 })}
 <body>
@@ -714,9 +765,9 @@ ${nav("reports")}
 <main>
   <header class="library-hero">
     <div class="container hero-copy">
-      <div class="eyebrow">50-industry library</div>
+      <div class="eyebrow">${SITE.catalogTarget}-report roadmap</div>
       <h1>Every Sherlock report page in one place.</h1>
-      <p>Browse active, presell, and waitlist reports across home services, healthcare, automotive, hospitality, real estate, finance, education, and professional services.</p>
+      <p>Browse ${statusDescription} reports across home services, healthcare, automotive, hospitality, real estate, finance, education, and professional services.</p>
     </div>
   </header>
   <section class="page-band">
@@ -726,8 +777,8 @@ ${nav("reports")}
         <select id="statusFilter" aria-label="Filter by status">
           <option value="">All statuses</option>
           <option value="available">Active</option>
-          <option value="presell">Presell</option>
-          <option value="waitlist">Waitlist</option>
+          <option value="presell">Presell</option>${waitlistOption}
+          <option value="planned">Planned</option>
         </select>
         <select id="categoryFilter" aria-label="Filter by category">
           <option value="">All categories</option>
@@ -787,9 +838,9 @@ ${nav("reports")}
 <main>
   <header class="success-hero">
     <div class="container hero-copy">
-      <div class="eyebrow">Checkout received</div>
-      <h1>We are confirming your report access.</h1>
-      <p>Your confirmation email is on its way — check your inbox (and spam folder) over the next few minutes for your order details and report status.</p>
+      <div class="eyebrow">Checkout complete</div>
+      <h1>Check your Payhip receipt for the download.</h1>
+      <p>Payhip sends the report download after checkout. If you do not see the receipt or need a different buyer email, contact Sherlock support and we will help.</p>
       <div class="cta-row">
         <a href="/reports" class="btn btn-primary btn-lg">Browse reports</a>
         <a href="/contact" class="btn btn-outline btn-lg">Contact support</a>
@@ -831,7 +882,8 @@ ${nav("sample")}
       <div class="panel">
         <div class="eyebrow">What is inside</div>
         <h2>Real structure, compressed.</h2>
-        <p>The sample shows the same report pattern used across the 50-industry library: market context, local signal, customer research, operator economics, and action recommendations.</p>
+        <p>The sample shows the same report pattern used across the ${SITE.launchCohortSize}-report launch cohort: market context, local signal, customer research, operator economics, and action recommendations.</p>
+        <img src="/assets/sample-report-blurred-preview.svg" alt="Blurred redacted preview of a Sherlock report page" loading="lazy" style="width:100%;max-width:420px;border:1px solid var(--line);border-radius:10px;margin-top:18px;background:#0D1B2A">
         <div class="module-grid" style="margin-top:22px">
           <div class="module-card"><h3>Market snapshot</h3><p>How the category is framed before local recommendations.</p></div>
           <div class="module-card"><h3>Buyer signal</h3><p>How survey and interview inputs become decisions.</p></div>
@@ -840,7 +892,7 @@ ${nav("sample")}
       </div>
       <div class="panel">
         <h2>Next step</h2>
-        <p>Use the library to choose the industry page you care about, then take the matching survey or request the purchase link.</p>
+        <p>Use the library to choose the industry page you care about. Available reports route to Payhip checkout; planned reports route to a priority request.</p>
         <div class="cta-row" style="display:grid">
           <a href="/reports" class="btn btn-primary btn-lg">Open report library</a>
           <a href="/contact" class="btn btn-outline-dark">Ask a question</a>
@@ -858,7 +910,7 @@ ${footer()}
 
 function launchDashboard() {
   const rows = INDUSTRIES.map((industry) => {
-    const link = industry.readiness?.checkout || (industry.status === "waitlist" ? "waitlist" : "dynamic");
+    const link = industry.readiness?.checkout || (industry.status === "waitlist" ? "waitlist" : "payhip-needed");
     const sample = industry.readiness?.samplePdf || (industry.sampleAsset ? "ready" : "missing");
     const asset = industry.readiness?.fullPdf || (industry.fullReportAsset ? "ready" : "missing");
     const email = industry.readiness?.emailDelivery || "cloudflare-email";
@@ -867,7 +919,7 @@ function launchDashboard() {
       <td>${industry.id}</td>
       <td><a href="/${html(industry.slug)}-report">${html(industry.name)}</a><br><span class="code">${html(industry.slug)}</span></td>
       <td><span class="tag ${html(industry.status)}">${html(STATUS[industry.status].libraryLabel)}</span></td>
-      <td><a href="${html(industry.tallyUrl)}" target="_blank" rel="noopener">public</a> / <a href="${html(industry.tallyEditUrl)}" target="_blank" rel="noopener">edit</a></td>
+      <td>${industry.tallyUrl ? `<a href="${html(industry.tallyUrl)}" target="_blank" rel="noopener">public</a>` : "not scheduled"}</td>
       <td>${link}</td>
       <td>${sample}</td>
       <td>${asset}</td>
@@ -879,7 +931,7 @@ function launchDashboard() {
 <html lang="en">
 ${head({
   title: "Launch Dashboard - Sherlock Research",
-  description: "Internal Sherlock Research 50-industry launch dashboard.",
+  description: `Internal Sherlock Research ${SITE.catalogTarget}-report launch dashboard.`,
   canonical: "/ops-launch-dashboard",
   noindex: true
 })}
@@ -889,8 +941,8 @@ ${nav("reports")}
   <header class="library-hero">
     <div class="container hero-copy">
       <div class="eyebrow">Internal readiness</div>
-      <h1>50-industry launch dashboard.</h1>
-      <p>Track page status, Tally forms, dynamic Stripe Checkout, Cloudflare email events, and report asset readiness before launch.</p>
+      <h1>${SITE.catalogTarget}-report launch dashboard.</h1>
+      <p>Track page status, Tally forms, Payhip checkout links, and report asset readiness before launch. Keep edit URLs and secret data out of public builds.</p>
     </div>
   </header>
   <section class="page-band">
@@ -910,10 +962,13 @@ ${footer()}
 }
 
 function catalogJs() {
+  const hasWaitlist = INDUSTRIES.some((industry) => industry.status === "waitlist");
+  const statuses = Object.fromEntries(Object.entries(STATUS).filter(([key]) => hasWaitlist || key !== "waitlist"));
   const catalog = {
     supportEmail: SITE.supportEmail,
+    turnstileSiteKey: SITE.turnstileSiteKey,
     defaultReportSlug: "landscaping",
-    statuses: STATUS,
+    statuses,
     plans: PLANS,
     reports: catalogReports()
   };
@@ -923,7 +978,7 @@ function catalogJs() {
   /*
     Generated by scripts/generate-site.mjs.
     Keep checkout/API keys out of this file. This file is public frontend code.
-    Checkout is created dynamically through /api/checkout; keep Stripe secrets out of this file.
+    Payhip checkout URLs are public. Keep API keys, webhook secrets, and fulfillment data out of this file.
     Product segmentation: industry | quarter/year | access | cityInclusion.
   */
   window.SherlockCatalog = ${JSON.stringify(catalog, null, 2)};
@@ -944,7 +999,9 @@ function sitemapXml() {
     ["/privacy-policy", "yearly", "0.3"],
     ["/terms-of-service", "yearly", "0.3"]
   ];
-  const reportUrls = INDUSTRIES.map((industry) => [`/${industry.slug}-report`, "monthly", industry.status === "available" ? "0.9" : "0.75"]);
+  const reportUrls = INDUSTRIES
+    .filter((industry) => industry.status !== "planned")
+    .map((industry) => [`/${industry.slug}-report`, "monthly", industry.status === "available" ? "0.9" : "0.75"]);
   const urls = [...top, ...reportUrls];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -965,8 +1022,7 @@ function redirectsFile() {
     ["/success.html", "/success", "301"],
     ["/blog-article.html", "/blog-article", "301"],
     ["/privacy-policy.html", "/privacy-policy", "301"],
-    ["/terms-of-service.html", "/terms-of-service", "301"],
-    ["/ops-launch-dashboard.html", "/ops-launch-dashboard", "301"]
+    ["/terms-of-service.html", "/terms-of-service", "301"]
   ];
   const reports = INDUSTRIES.map((industry) => [`/${industry.slug}-report.html`, `/${industry.slug}-report`, "301"]);
   return `# Legacy .html URLs -> clean URLs (301) for SEO + old bookmarks
@@ -977,7 +1033,8 @@ ${[...base, ...reports].map((row) => row.join(" ")).join("\n")}
 async function updateHomepage() {
   const indexPath = path.join(root, "index.html");
   let source = await readFile(indexPath, "utf8");
-  const featured = INDUSTRIES.map((industry) => {
+  const featuredReports = INDUSTRIES.filter((industry) => industry.stage === "launch");
+  const featured = featuredReports.map((industry) => {
     const color = industry.status === "available" ? "#5C7F5A" : industry.status === "presell" ? "#F26A21" : "#60788E";
     return `<a class="report-card generic" href="/${html(industry.slug)}-report" style="--card-accent:${color};--card-bg-1:#1c2f44;--card-bg-2:#0D1B2A">
           <div>
@@ -990,24 +1047,24 @@ async function updateHomepage() {
   }).join("\n\n        ");
 
   source = source.replace(
-    /(?:<div class="report-actions">\s*<div class="testimonial-controls">[\s\S]*?<\/div>\s*<a href="\/reports" class="arrow-link">[\s\S]*?<\/a>\s*<\/div>|<a href="\/(?:pricing|reports)" class="arrow-link">(?:View Pricing|View All 50 Reports)[\s\S]*?<\/a>)/,
+    /(?:<div class="report-actions">\s*<div class="testimonial-controls">[\s\S]*?<\/div>\s*<a href="\/reports" class="arrow-link">[\s\S]*?<\/a>\s*<\/div>|<a href="\/(?:pricing|reports)" class="arrow-link">(?:View Pricing|View All (?:50|100) Reports)[\s\S]*?<\/a>)/,
     `<div class="report-actions">
           <div class="testimonial-controls">
             <button class="testimonial-btn" type="button" aria-label="Previous reports" data-report-prev>&lsaquo;</button>
             <button class="testimonial-btn" type="button" aria-label="Next reports" data-report-next>&rsaquo;</button>
           </div>
-          <a href="/reports" class="arrow-link">View All 50 Reports
+          <a href="/reports" class="arrow-link">View All ${SITE.catalogTarget} Reports
           ${arrowSvg}
           </a>
         </div>`
   );
   source = source.replace(
     /<div class="report-(?:grid|carousel)[\s\S]*?<div class="trusted-note reveal">/,
-    `<div class="report-grid reveal" data-report-carousel data-total="${INDUSTRIES.length}" aria-live="polite">
+    `<div class="report-grid reveal" data-report-carousel data-total="${featuredReports.length}" aria-live="polite">
         ${featured}
       </div>
       <div class="testimonial-footer report-footer">
-        <span data-report-page-label>Showing 1-4 of ${INDUSTRIES.length}</span>
+        <span data-report-page-label>Showing 1-4 of ${featuredReports.length}</span>
         <div class="testimonial-dots" data-report-dots aria-label="Report pages"></div>
       </div>
 
@@ -1030,12 +1087,12 @@ async function updateHomepage() {
     `var testimonials = ${JSON.stringify(useCases, null, 6)};`
   );
   source = source.replace(
-    /<div class="trust-card"><b>Checkout ready<\/b><span>Use Stripe links now[\s\S]*?<\/span><\/div>/,
-    '<div class="trust-card"><b>Instant access</b><span>Check out securely, then your report and quarterly updates land straight in your inbox.</span></div>'
+    /<div class="trust-card"><b>Checkout ready<\/b><span>Use (?:Stripe|Payhip) links now[\s\S]*?<\/span><\/div>/,
+    '<div class="trust-card"><b>Checkout ready</b><span>Use Payhip links as they arrive, with report files delivered by Payhip.</span></div>'
   );
   source = source.replace(
-    /<div class="step-card"><h3>Checkout and download<\/h3><p>Use Stripe links first[\s\S]*?<\/p><\/div>/,
-    '<div class="step-card"><h3>Check out securely</h3><p>Pay by card in seconds. You\'ll get an email confirming your report and exactly when it\'s ready.</p></div>'
+    /<div class="step-card"><h3>Checkout and (?:download|delivery)<\/h3><p>Use (?:Stripe links first|the active report checkout)[\s\S]*?<\/p><\/div>/,
+    '<div class="step-card"><h3>Checkout and delivery</h3><p>Use the active report checkout, then download from the Payhip receipt after payment.</p></div>'
   );
   source = source.replace(
     /(<span class="trust-point"><svg[\s\S]*?<\/svg>)\s*Instant\s+PDF delivery(<\/span>)/,

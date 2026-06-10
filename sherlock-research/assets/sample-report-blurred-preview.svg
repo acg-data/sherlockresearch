@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1240" viewBox="0 0 960 1240" role="img" aria-labelledby="title desc">
+  <title id="title">Blurred Sherlock sample report preview</title>
+  <desc id="desc">A redacted report preview with blurred chart and table blocks.</desc>
+  <defs>
+    <filter id="softBlur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <linearGradient id="cover" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffaf4"/>
+      <stop offset="1" stop-color="#f0e6d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="1240" fill="#0d1b2a"/>
+  <rect x="72" y="56" width="816" height="1128" rx="18" fill="url(#cover)"/>
+  <rect x="126" y="116" width="220" height="22" rx="11" fill="#f26a21"/>
+  <rect x="126" y="166" width="520" height="38" rx="10" fill="#16283b"/>
+  <rect x="126" y="222" width="650" height="18" rx="9" fill="#7b8175" opacity=".5"/>
+  <rect x="126" y="252" width="590" height="18" rx="9" fill="#7b8175" opacity=".38"/>
+  <g filter="url(#softBlur)" opacity=".78">
+    <rect x="126" y="330" width="708" height="270" rx="18" fill="#ffffff"/>
+    <polyline points="160,540 246,498 332,514 418,442 504,463 590,376 676,400 792,350" fill="none" stroke="#5c6746" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="160" y="362" width="168" height="28" rx="14" fill="#0d1b2a"/>
+    <rect x="160" y="410" width="116" height="64" rx="12" fill="#f26a21"/>
+    <rect x="306" y="410" width="116" height="64" rx="12" fill="#5c6746"/>
+  </g>
+  <g opacity=".82">
+    <rect x="126" y="660" width="708" height="60" rx="14" fill="#ffffff"/>
+    <rect x="156" y="682" width="310" height="16" rx="8" fill="#0d1b2a" opacity=".24"/>
+    <rect x="710" y="682" width="74" height="16" rx="8" fill="#0d1b2a" opacity=".18"/>
+    <rect x="126" y="742" width="708" height="60" rx="14" fill="#ffffff"/>
+    <rect x="156" y="764" width="380" height="16" rx="8" fill="#0d1b2a" opacity=".24"/>
+    <rect x="710" y="764" width="74" height="16" rx="8" fill="#0d1b2a" opacity=".18"/>
+    <rect x="126" y="824" width="708" height="60" rx="14" fill="#ffffff"/>
+    <rect x="156" y="846" width="330" height="16" rx="8" fill="#0d1b2a" opacity=".24"/>
+    <rect x="710" y="846" width="74" height="16" rx="8" fill="#0d1b2a" opacity=".18"/>
+  </g>
+  <rect x="126" y="946" width="300" height="22" rx="11" fill="#16283b"/>
+  <rect x="126" y="996" width="708" height="18" rx="9" fill="#7b8175" opacity=".45"/>
+  <rect x="126" y="1028" width="650" height="18" rx="9" fill="#7b8175" opacity=".36"/>
+  <rect x="126" y="1060" width="690" height="18" rx="9" fill="#7b8175" opacity=".28"/>
+  <rect x="620" y="1122" width="214" height="40" rx="20" fill="#f26a21"/>
+  <text x="480" y="1147" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="700">Redacted preview</text>
+</svg>

@@ -16,17 +16,27 @@ const publicRootFiles = new Set([
   "sitemap.xml"
 ]);
 
+const privateRootFiles = new Set([
+  "ops-launch-dashboard.html"
+]);
+
 const publicDirectories = new Set([
   "assets",
   "shared"
 ]);
 
 function isPublicRootFile(name) {
+  if (privateRootFiles.has(name)) return false;
   return name.endsWith(".html") || publicRootFiles.has(name);
 }
 
 async function main() {
-  await rm(outputRoot, { recursive: true, force: true });
+  try {
+    await rm(outputRoot, { recursive: true, force: true });
+  } catch (error) {
+    if (!["EBUSY", "EPERM"].includes(error?.code)) throw error;
+    console.warn(`WARN: Could not remove ${outputRoot} (${error.code}); copying assets in place.`);
+  }
   await mkdir(outputRoot, { recursive: true });
 
   const entries = await readdir(sourceRoot, { withFileTypes: true });
@@ -36,13 +46,13 @@ async function main() {
 
     if (entry.isDirectory()) {
       if (publicDirectories.has(entry.name)) {
-        await cp(from, to, { recursive: true });
+        await cp(from, to, { recursive: true, force: true });
       }
       continue;
     }
 
     if (entry.isFile() && isPublicRootFile(entry.name)) {
-      await cp(from, to);
+      await cp(from, to, { force: true });
     }
   }
 
