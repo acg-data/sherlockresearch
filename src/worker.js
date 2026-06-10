@@ -596,11 +596,12 @@ function withSecurityHeaders(response) {
   headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
   headers.set("Content-Security-Policy", [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' https://payhip.com https://*.payhip.com https://challenges.cloudflare.com",
+    "script-src 'self' 'unsafe-inline' https://payhip.com https://*.payhip.com https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data: https:",
-    "connect-src 'self' https://payhip.com https://*.payhip.com https://challenges.cloudflare.com",
+    "connect-src 'self' https://payhip.com https://*.payhip.com https://challenges.cloudflare.com https://*.clarity.ms https://c.bing.com",
+    "worker-src 'self' blob:",
     "frame-src https://tally.so https://payhip.com https://*.payhip.com https://challenges.cloudflare.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
