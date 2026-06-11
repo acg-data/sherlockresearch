@@ -390,6 +390,25 @@ function pageCss() {
 </style>`;
 }
 
+const DIGITAL_RETURN_POLICY = {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "US",
+  returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+  merchantReturnDays: 30,
+  returnMethod: "https://schema.org/ReturnByMail",
+  returnFees: "https://schema.org/FreeReturn"
+};
+const DIGITAL_SHIPPING = {
+  "@type": "OfferShippingDetails",
+  shippingRate: { "@type": "MonetaryAmount", value: "0", currency: "USD" },
+  shippingDestination: { "@type": "DefinedRegion", addressCountry: "US" },
+  deliveryTime: {
+    "@type": "ShippingDeliveryTime",
+    handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "DAY" },
+    transitTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "DAY" }
+  }
+};
+
 function reportSchema(industry) {
   const status = STATUS[industry.status];
   const reportUrl = `${SITE.origin}/${industry.slug}-report`;
@@ -423,7 +442,9 @@ function reportSchema(industry) {
           price: "497",
           priceCurrency: "USD",
           availability: status.schemaAvailability,
-          url: reportUrl
+          url: reportUrl,
+          hasMerchantReturnPolicy: DIGITAL_RETURN_POLICY,
+          shippingDetails: DIGITAL_SHIPPING
         }
       };
 
