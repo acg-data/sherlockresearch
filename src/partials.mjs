@@ -9,6 +9,7 @@ export function head(site, { base = '', css = [], js = [] } = {}) {
   return [
     '<meta name="theme-color" content="#0D1B2A">',
     `<link rel="icon" type="image/svg+xml" href="${base}favicon.svg">`,
+    `<link rel="apple-touch-icon" href="${base}apple-touch-icon.png">`,
     `<meta property="og:site_name" content="${esc(site.name)}">`,
     `<meta property="og:image" content="${site.url}/og-default.png">`,
     '<meta property="og:image:width" content="1200">',
@@ -22,15 +23,22 @@ export function head(site, { base = '', css = [], js = [] } = {}) {
     ...css.map((f) => `<link rel="stylesheet" href="${asset(base, 'assets/' + f)}">`),
     `<script src="${asset(base, 'assets/site.js')}" defer></script>`,
     ...js.map((f) => `<script src="${asset(base, 'assets/' + f)}" defer></script>`),
+    ...(site.cloudflareAnalyticsToken
+      ? [`<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='${esc(JSON.stringify({ token: site.cloudflareAnalyticsToken }))}'></script>`]
+      : []),
   ].join('\n');
 }
 
 const link = (href, label, current, base, extra = '') =>
   `<a href="${base}${href}"${href === current ? ' aria-current="page"' : ''}${extra}>${esc(label)}</a>`;
 
+const ddItem = (href, title, meta, icon, current, base) =>
+  `<a class="dd-item" href="${base}${href}"${href === current ? ' aria-current="page"' : ''}>${icon ? `<span class="dd-ic">${icon}</span>` : ''}<span class="dd-text"><span class="dd-name">${esc(title)}</span><span class="dd-meta">${esc(meta)}</span></span></a>`;
+
 export function nav(site, ctx, { current = '', base = '' } = {}) {
-  const reports = ctx.reports.map((r) => link(`${r.slug}-report.html`, r.name, current, base)).join('\n          ');
-  const cities = ctx.cities.map((c) => link(`${c.slug}.html`, `${c.name}, ${c.state}`, current, base)).join('\n          ');
+  const from = `${site.edition} edition · from $${site.plans[0].price}`;
+  const reports = ctx.reports.map((r) => ddItem(`${r.slug}-report.html`, r.name, from, industryIcon(r.slug, 18), current, base)).join('\n            ');
+  const cities = ctx.cities.map((c) => ddItem(`${c.slug}.html`, `${c.name}, ${c.state}`, `${c.stats[0].value} people · local data`, '', current, base)).join('\n            ');
   const cta = current === 'sample.html'
     ? { href: 'reports.html', label: 'Browse reports' }
     : { href: 'sample.html', label: 'Get a free sample' };
@@ -46,11 +54,18 @@ export function nav(site, ctx, { current = '', base = '' } = {}) {
         ${link('reports.html', 'Reports', current, base)}
         <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="navReports" aria-label="Show reports and locations">${icons.caret()}</button>
         <div class="dropdown" id="navReports">
-          <div class="dropdown-title">Industry reports</div>
-          ${reports}
-          <div class="dropdown-title">Local markets</div>
-          ${cities}
-          ${link('reports.html', 'All reports →', current, base, ' class="dropdown-all"')}
+          <div class="dropdown-col">
+            <div class="dropdown-title">Industry reports</div>
+            ${reports}
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-title">Local markets</div>
+            ${cities}
+          </div>
+          <div class="dropdown-foot">
+            ${link('reports.html', 'All reports →', current, base)}
+            <a href="${base}sample.html">Free 2-page sample →</a>
+          </div>
         </div>
       </div>
       ${link('index.html#how', 'How it works', current, base)}
@@ -235,6 +250,18 @@ export function guarantee() {
       <h2>The 30-day "made a better decision" guarantee.</h2>
       <p>If the report doesn't give you at least one insight you can act on, email us within 30 days and we'll refund every dollar. We can offer this because operators rarely ask — the data pays for itself on the first decision.</p>
     </div>`;
+}
+
+// Testimonial card. `cite` is "Name, role" (e.g. "Caleb T., Owner, Bear Power Wash").
+export function quoteCard({ title, text, cite }) {
+  const [name, ...rest] = cite.replace(/^—\s*/, '').split(', ');
+  const initials = name.split(/\s+/).map((w) => w[0]).join('').replace(/[^A-Z]/gi, '').slice(0, 2).toUpperCase();
+  return `<figure class="quote-card">
+        <span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+        <h3 class="quote-card-title">${esc(title)}</h3>
+        <blockquote><p>${esc(text)}</p></blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">${initials}</span><span><span class="who-name">${esc(name)}</span><span class="who-role">${esc(rest.join(', '))}</span></span></figcaption>
+      </figure>`;
 }
 
 // Metro list as prose, for FAQ answers.

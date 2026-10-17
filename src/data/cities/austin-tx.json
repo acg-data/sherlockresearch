@@ -8,18 +8,19 @@
   "intro": "Austin's growth has reshaped every home-service market in the metro. Residential build-out across Williamson, Hays, and east Travis means demand is moving faster than competitor capacity can keep up.",
   "stats": [
     {
-      "value": "2.4M",
+      "value": "2.6M",
       "label": "Metro population"
     },
     {
-      "value": "880K",
+      "value": "1.06M",
       "label": "Households"
     },
     {
       "value": "5,200+",
-      "label": "Home-service businesses"
+      "label": "Home-service businesses (est.)"
     }
   ],
+  "statsSource": "Population and households: U.S. Census Bureau, American Community Survey 2024 1-year estimates for the metro area. Business count: Sherlock Research estimate.",
   "reportsIntro": "Each Sherlock industry report includes a city-specific data cut for Austin — local demand, competitor density, pricing benchmarks, and neighborhood-level demand patterns. One of the fastest-growing metros in the country — service demand is outpacing competitor capacity in most categories.",
   "reportBlurbs": {
     "landscaping": "Residential and commercial landscape services in Austin: demand drivers, top zip codes, pricing tiers, and competitive landscape.",

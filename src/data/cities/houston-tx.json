@@ -8,18 +8,19 @@
   "intro": "Houston's heat and humidity make it one of the highest-recurring-revenue home-services metros in the country. HVAC service plans, mosquito subscriptions, and lawn maintenance contracts attach at rates that operators in cooler markets don't see.",
   "stats": [
     {
-      "value": "7.5M",
+      "value": "7.8M",
       "label": "Metro population"
     },
     {
-      "value": "2.6M",
+      "value": "2.8M",
       "label": "Households"
     },
     {
       "value": "16,800+",
-      "label": "Home-service businesses"
+      "label": "Home-service businesses (est.)"
     }
   ],
+  "statsSource": "Population and households: U.S. Census Bureau, American Community Survey 2024 1-year estimates for the metro area. Business count: Sherlock Research estimate.",
   "reportsIntro": "Each Sherlock industry report includes a city-specific data cut for Houston — local demand, competitor density, pricing benchmarks, and neighborhood-level demand patterns. Houston's climate drives year-round demand for outdoor services and recurring pest, HVAC, and lawn care.",
   "reportBlurbs": {
     "landscaping": "Residential and commercial landscape services in Houston: demand drivers, top zip codes, pricing tiers, and competitive landscape.",

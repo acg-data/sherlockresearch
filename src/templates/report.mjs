@@ -293,9 +293,12 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
           </div>
         </div>
         <div class="sample-card" data-lint-skip>
-          <h3>See it before you buy</h3>
-          <p>Read two real pages from the ${esc(site.edition)} Landscaping report, including a full insight module, free.</p>
-          <a href="sample.html" class="btn btn-outline-dark btn-block">Get the free sample →</a>
+          <img class="sample-thumb" src="assets/sample-page-1.jpg" alt="" width="734" height="950" loading="lazy">
+          <div>
+            <h3>See it before you buy</h3>
+            <p>Two real pages from the ${esc(site.edition)} Landscaping report, including a full insight module. Free PDF.</p>
+            <a href="sample.html" class="sample-link">Get the free sample →</a>
+          </div>
         </div><!-- /lint-skip -->
       </aside>
     </div>
@@ -372,12 +375,7 @@ ${site.flipbookEmbed ? `
       <h2>Used to make real moves.</h2>
     </div>
     <div class="rev-grid">
-      ${r.reviews.map((v) => `<figure class="rev-card">
-        <div class="rev-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-        <h3>${esc(v.title)}</h3>
-        <blockquote><p>${esc(v.text)}</p></blockquote>
-        <figcaption>— ${esc(v.cite)}</figcaption>
-      </figure>`).join('\n      ')}
+      ${r.reviews.map((v) => partials.quoteCard(v)).join('\n      ')}
     </div>
   </div>
 </section>

@@ -13,6 +13,7 @@
 <!-- @head -->
 <meta name="theme-color" content="#0D1B2A">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:site_name" content="Sherlock Research">
 <meta property="og:image" content="https://sherlockresearch.com/og-default.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Playfair+Display:ital,wght@0,400..800;1,400..600&amp;display=swap">
-<link rel="stylesheet" href="assets/site.css?v=018bbdf5">
-<script src="assets/site.js?v=74ac22b9" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=cd2c16bc">
+<script src="assets/site.js?v=0023187e" defer></script>
 <!-- /@head -->
 <style>
   .hero{padding:88px 0 72px;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(242,106,33,0.18),transparent 55%),var(--grad-navy-deep);color:#fff;text-align:center}
@@ -102,17 +103,24 @@
         <a href="reports.html">Reports</a>
         <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="navReports" aria-label="Show reports and locations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown" id="navReports">
-          <div class="dropdown-title">Industry reports</div>
-          <a href="landscaping-report.html">Landscaping</a>
-          <a href="roofing-report.html">Roofing</a>
-          <a href="hvac-report.html">HVAC</a>
-          <a href="pest-control-report.html">Pest Control</a>
-          <div class="dropdown-title">Local markets</div>
-          <a href="austin-tx.html">Austin, TX</a>
-          <a href="dallas-tx.html">Dallas, TX</a>
-          <a href="houston-tx.html">Houston, TX</a>
-          <a href="san-antonio-tx.html">San Antonio, TX</a>
-          <a href="reports.html" class="dropdown-all">All reports →</a>
+          <div class="dropdown-col">
+            <div class="dropdown-title">Industry reports</div>
+            <a class="dd-item" href="landscaping-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span><span class="dd-text"><span class="dd-name">Landscaping</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+            <a class="dd-item" href="roofing-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span><span class="dd-text"><span class="dd-name">Roofing</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+            <a class="dd-item" href="hvac-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2v20"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg></span><span class="dd-text"><span class="dd-name">HVAC</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+            <a class="dd-item" href="pest-control-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></span><span class="dd-text"><span class="dd-name">Pest Control</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-title">Local markets</div>
+            <a class="dd-item" href="austin-tx.html"><span class="dd-text"><span class="dd-name">Austin, TX</span><span class="dd-meta">2.6M people · local data</span></span></a>
+            <a class="dd-item" href="dallas-tx.html"><span class="dd-text"><span class="dd-name">Dallas, TX</span><span class="dd-meta">8.3M people · local data</span></span></a>
+            <a class="dd-item" href="houston-tx.html"><span class="dd-text"><span class="dd-name">Houston, TX</span><span class="dd-meta">7.8M people · local data</span></span></a>
+            <a class="dd-item" href="san-antonio-tx.html"><span class="dd-text"><span class="dd-name">San Antonio, TX</span><span class="dd-meta">2.8M people · local data</span></span></a>
+          </div>
+          <div class="dropdown-foot">
+            <a href="reports.html">All reports →</a>
+            <a href="sample.html">Free 2-page sample →</a>
+          </div>
         </div>
       </div>
       <a href="index.html#how">How it works</a>

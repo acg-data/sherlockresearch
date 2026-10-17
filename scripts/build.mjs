@@ -58,6 +58,10 @@ const regions = {
   'report-cards': () => reportCards(),
   'city-cards': () => cityCards(),
   'library-cards': () => libraryCards(),
+  'home-reviews': () => site.homeReviews.map((v) => '      ' + partials.quoteCard(v)).join('\n'),
+  'finder-industries': () => ctx.reports.map((r) => `<option value="${r.slug}">${esc(r.name)}</option>`).join(''),
+  'finder-metros': () => '<option value="">National (all U.S.)</option>' +
+    site.metros.map((m) => `<option value="${partials.slugify(m)}">${esc(m)}</option>`).join(''),
   'sample-cta': () => sampleCta(),
   'sample-badge': () => (site.samplePdf ? 'Free · 2 pages · Instant PDF download' : 'Free · 2 pages · Emailed within an hour'),
   'sample-copy': () => (site.samplePdf
@@ -112,7 +116,7 @@ function reportCards() {
 function cityCards() {
   return ctx.cities.map((c) => `      <a class="city-card" href="${c.slug}.html">
         <span class="city-name">${esc(c.name)}, ${esc(c.state)}</span>
-        <span class="city-meta">${esc(c.stats[0].value)} people · ${esc(c.stats[2].value)} home-service businesses</span>
+        <span class="city-meta">${esc(c.stats[0].value)} people · ${esc(c.stats[1].value)} households</span>
       </a>`).join('\n');
 }
 
@@ -127,7 +131,7 @@ function libraryCards() {
 
 function sampleCta() {
   if (site.samplePdf) {
-    return `<a href="${esc(site.samplePdf)}" class="btn btn-primary btn-lg" download>Download the sample PDF ↓</a>`;
+    return `<a href="${esc(site.samplePdf)}" class="btn btn-primary btn-lg" download>Download the free sample (PDF) ↓</a>`;
   }
   const subject = encodeURIComponent('Free sample: Landscaping Industry Report');
   const body = encodeURIComponent('Hi Sherlock team,\n\nPlease email me the free 2-page sample.\n\nName:\nBusiness:\n');

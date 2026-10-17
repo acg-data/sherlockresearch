@@ -20,7 +20,10 @@
   },
 
   "_samplePdf": "Path to the free sample PDF inside sherlock-research/ (for example assets/sherlock-landscaping-sample.pdf). Empty means the sample is requested by email.",
-  "samplePdf": "",
+  "samplePdf": "assets/sherlock-landscaping-sample.pdf",
+
+  "_cloudflareAnalyticsToken": "Cloudflare Web Analytics site token (Cloudflare dashboard > Web Analytics). The privacy policy says the site uses it. Leave empty if Cloudflare Pages injects the beacon automatically.",
+  "cloudflareAnalyticsToken": "",
 
   "_flipbookEmbed": "HTML for an interactive flipbook embed. Empty hides the Look Inside section on report pages.",
   "flipbookEmbed": "",
@@ -95,6 +98,19 @@
     }
   ],
   "defaultPlan": "city",
+
+  "homeReviews": [
+    {
+      "title": "Saved me $12K I was about to waste",
+      "text": "I was about to drop $12K on a marketing agency to push residential pressure washing. The city-specific report showed me which zip codes actually pay for premium service and which were a dead end. Cancelled the agency, rerouted my crew, and our close rate doubled in 60 days.",
+      "cite": "Caleb T., Owner, Bear Power Wash"
+    },
+    {
+      "title": "Restructured our pricing in one weekend",
+      "text": "We were stuck debating whether to push our premium epoxy line or stay competitive on price. The Sherlock report showed us exactly which buyer segments would pay more — and which would walk. Rebuilt our pricing tiers that weekend and our average ticket went up 23% in the first quarter.",
+      "cite": "Amir L., Owner, Garage Floor Coating & Epoxy"
+    }
+  ],
 
   "industries": ["landscaping", "roofing", "hvac", "pest-control"],
   "cities": ["austin-tx", "dallas-tx", "houston-tx", "san-antonio-tx"],

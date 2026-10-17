@@ -8,18 +8,19 @@
   "intro": "San Antonio is structurally different from the other Texas metros: slower growth, less competitive churn, and meaningfully higher customer loyalty. Operators who get referral and retention flywheels right here compound for years.",
   "stats": [
     {
-      "value": "2.6M",
+      "value": "2.8M",
       "label": "Metro population"
     },
     {
-      "value": "880K",
+      "value": "1.01M",
       "label": "Households"
     },
     {
       "value": "6,100+",
-      "label": "Home-service businesses"
+      "label": "Home-service businesses (est.)"
     }
   ],
+  "statsSource": "Population and households: U.S. Census Bureau, American Community Survey 2024 1-year estimates for the metro area. Business count: Sherlock Research estimate.",
   "reportsIntro": "Each Sherlock industry report includes a city-specific data cut for San Antonio — local demand, competitor density, pricing benchmarks, and neighborhood-level demand patterns. Steady growth, lower competitive intensity than Austin or Dallas, and one of the most loyal home-service buyer bases in the country.",
   "reportBlurbs": {
     "landscaping": "Residential and commercial landscape services in San Antonio: demand drivers, top zip codes, pricing tiers, and competitive landscape.",

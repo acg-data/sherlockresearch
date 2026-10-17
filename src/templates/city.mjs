@@ -72,6 +72,7 @@ ${partials.nav(site, ctx, { current: `${c.slug}.html` })}
         <ul class="snapshot-stats">
           ${c.stats.map((s) => `<li><div class="v">${esc(s.value)}</div><div class="l">${esc(s.label)}</div></li>`).join('\n          ')}
         </ul>
+        <p class="snapshot-source">${esc(c.statsSource)}</p>
         <div class="snapshot-label">Local data cuts available</div>
         <ul class="snapshot-list">
           ${ctx.reports.map((r) => `<li><a href="${reportHref(r)}"><span class="ic">${partials.industryIcon(r.slug, 18)}</span>${esc(r.name)}<span class="price">${esc(formatPrice(cityPlan))} →</span></a></li>`).join('\n          ')}

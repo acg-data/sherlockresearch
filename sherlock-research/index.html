@@ -13,6 +13,7 @@
 <!-- @head -->
 <meta name="theme-color" content="#0D1B2A">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:site_name" content="Sherlock Research">
 <meta property="og:image" content="https://sherlockresearch.com/og-default.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Playfair+Display:ital,wght@0,400..800;1,400..600&amp;display=swap">
-<link rel="stylesheet" href="assets/site.css?v=018bbdf5">
-<script src="assets/site.js?v=74ac22b9" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=cd2c16bc">
+<script src="assets/site.js?v=0023187e" defer></script>
 <!-- /@head -->
 <style>
   .mobile-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 60; background: rgba(255,255,255,0.96); backdrop-filter: saturate(180%) blur(20px); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); display: none; gap: 10px; align-items: center; }
@@ -39,6 +40,16 @@
   .hero h1 em { font-style: italic; font-weight: 500; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .hero-sub { font-size: 18px; color: rgba(255,255,255,0.72); margin-bottom: 32px; max-width: 560px; line-height: 1.55; }
   .hero-cta-row { display: flex; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
+  .finder { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: end; max-width: 600px; margin-bottom: 14px; padding: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .finder-field { background: var(--white); border-radius: 10px; padding: 8px 12px 6px; position: relative; }
+  .finder-field label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .finder-field select { width: 100%; border: none; background: transparent; font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--navy); padding: 2px 22px 2px 0; appearance: none; cursor: pointer; outline: none; }
+  .finder-field::after { content: ''; position: absolute; right: 14px; bottom: 15px; width: 7px; height: 7px; border-right: 2px solid var(--navy); border-bottom: 2px solid var(--navy); transform: rotate(45deg); pointer-events: none; }
+  .finder-field:focus-within { box-shadow: 0 0 0 3px var(--orange-2); }
+  .finder .btn { height: 100%; min-height: 56px; }
+  .finder-alt { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 36px; }
+  .finder-alt a { color: var(--white); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); text-underline-offset: 3px; }
+  .finder-alt a:hover { text-decoration-color: var(--orange-2); }
   .hero-pills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 560px; }
   .hero-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 16px; backdrop-filter: blur(10px); }
   .hero-pill-num { font-family: var(--font-display); font-size: 22px; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 6px; display: block; }
@@ -59,7 +70,10 @@
   .dash-stat-val.orange { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .dash-stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; font-weight: 600; }
   .dash-chart { padding: 18px 22px; display: flex; align-items: flex-end; gap: 8px; height: 90px; }
-  .dash-bar { flex: 1; border-radius: 3px 3px 0 0; }
+  .dash-bar { flex: 1; border-radius: 3px 3px 0 0; transform-origin: bottom; animation: barUp 0.9s cubic-bezier(.2,.8,.2,1) backwards; }
+  .dash-bar:nth-child(2) { animation-delay: 0.45s; } .dash-bar:nth-child(3) { animation-delay: 0.55s; } .dash-bar:nth-child(4) { animation-delay: 0.65s; } .dash-bar:nth-child(5) { animation-delay: 0.75s; }
+  .dash-bar:nth-child(1) { animation-delay: 0.35s; }
+  @keyframes barUp { from { transform: scaleY(0); } }
   .dash-bar:nth-child(1) { height: 35%; background: #7B92A8; }
   .dash-bar:nth-child(2) { height: 52%; background: #7B92A8; }
   .dash-bar:nth-child(3) { height: 68%; background: #5C7F5A; }
@@ -160,7 +174,7 @@
   .how-step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
   .middle { background: var(--grad-stone-warm); }
-  .middle-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: stretch; }
+  .middle-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
   .middle-left { background: var(--white); border-radius: var(--radius-xl); padding: 44px 40px; border: 1px solid var(--line); box-shadow: var(--shadow-md); }
   .middle-left h2 { font-size: clamp(30px, 4vw, 42px); letter-spacing: -0.02em; line-height: 1.02; margin-bottom: 24px; }
   .middle-left h2 em { font-style: italic; font-weight: 500; }
@@ -170,8 +184,8 @@
   .middle-list .check { width: 22px; height: 22px; background: var(--grad-sage); color: var(--white); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
   .middle-right { background: radial-gradient(ellipse at top right, rgba(242,106,33,0.15), transparent 60%), var(--grad-navy-deep); color: var(--white); border-radius: var(--radius-xl); padding: 44px 40px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
   .middle-right::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
-  .quote-fox { width: 80px; height: 80px; background: var(--grad-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 12px 32px rgba(242,106,33,0.4); position: relative; z-index: 1; }
-  .quote-fox svg { width: 50px; height: 50px; }
+  .quote-fox { width: 60px; height: 60px; background: var(--grad-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 12px 32px rgba(242,106,33,0.4); position: relative; z-index: 1; }
+  .quote-fox svg { width: 36px; height: 36px; }
   .quote-text { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 26px); color: var(--white); line-height: 1.3; margin-bottom: 24px; font-style: italic; position: relative; z-index: 1; letter-spacing: -0.01em; }
   .quote-attr { font-size: 14px; color: rgba(255,255,255,0.7); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; position: relative; z-index: 1; line-height: 1.5; }
 
@@ -208,12 +222,8 @@
   .method-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
 
   .reviews { background: var(--white); }
+  .reviews .section-title { margin-bottom: 48px; }
   .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
-  .review-card { background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; }
-  .review-rating { color: var(--orange-ink); margin-bottom: 14px; font-size: 14px; letter-spacing: 3px; }
-  .review-card h3 { font-family: var(--font-body); font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 12px; line-height: 1.3; letter-spacing: -0.01em; }
-  .review-card p { font-size: 13.5px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
-  .review-card cite { font-size: 12.5px; color: var(--ink); font-style: normal; font-weight: 600; display: block; padding-top: 14px; border-top: 1px solid var(--line); }
 
   .faq { background: var(--white); }
   .faq h2 { font-size: clamp(28px, 3.6vw, 40px); text-align: center; margin-bottom: 16px; letter-spacing: -0.02em; }
@@ -230,7 +240,7 @@
   @keyframes float { 0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-6px) rotate(var(--rot, 0deg)); } }
   .floating-card.top { --rot: 2deg; animation: float 4s ease-in-out infinite; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .hero h1, .hero-sub, .hero-cta-row, .hero-pills, .hero-badge { animation: fadeUp 0.6s ease-out backwards; }
+  .hero h1, .hero-sub, .hero-cta-row, .finder-alt, .hero-pills, .hero-badge { animation: fadeUp 0.6s ease-out backwards; }
   .hero-sub { animation-delay: 0.1s; }
   .hero-cta-row { animation-delay: 0.2s; }
   .hero-pills { animation-delay: 0.3s; }
@@ -252,8 +262,8 @@
     .hero { padding: 32px 0 64px; }
     .hero h1 { font-size: 38px; }
     .hero-sub { font-size: 16px; }
-    .hero-cta-row { flex-direction: column; }
-    .hero-cta-row .btn { width: 100%; }
+    .finder { grid-template-columns: 1fr; }
+    .finder .btn { width: 100%; }
     .dash-stats { grid-template-columns: repeat(2, 1fr); row-gap: 14px; }
     .dash-chart { height: 70px; }
     .hero-pills { grid-template-columns: 1fr; max-width: 100%; gap: 8px; }
@@ -308,17 +318,24 @@
         <a href="reports.html">Reports</a>
         <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="navReports" aria-label="Show reports and locations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown" id="navReports">
-          <div class="dropdown-title">Industry reports</div>
-          <a href="landscaping-report.html">Landscaping</a>
-          <a href="roofing-report.html">Roofing</a>
-          <a href="hvac-report.html">HVAC</a>
-          <a href="pest-control-report.html">Pest Control</a>
-          <div class="dropdown-title">Local markets</div>
-          <a href="austin-tx.html">Austin, TX</a>
-          <a href="dallas-tx.html">Dallas, TX</a>
-          <a href="houston-tx.html">Houston, TX</a>
-          <a href="san-antonio-tx.html">San Antonio, TX</a>
-          <a href="reports.html" class="dropdown-all">All reports →</a>
+          <div class="dropdown-col">
+            <div class="dropdown-title">Industry reports</div>
+            <a class="dd-item" href="landscaping-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span><span class="dd-text"><span class="dd-name">Landscaping</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+            <a class="dd-item" href="roofing-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span><span class="dd-text"><span class="dd-name">Roofing</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+            <a class="dd-item" href="hvac-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2v20"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg></span><span class="dd-text"><span class="dd-name">HVAC</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+            <a class="dd-item" href="pest-control-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></span><span class="dd-text"><span class="dd-name">Pest Control</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-title">Local markets</div>
+            <a class="dd-item" href="austin-tx.html"><span class="dd-text"><span class="dd-name">Austin, TX</span><span class="dd-meta">2.6M people · local data</span></span></a>
+            <a class="dd-item" href="dallas-tx.html"><span class="dd-text"><span class="dd-name">Dallas, TX</span><span class="dd-meta">8.3M people · local data</span></span></a>
+            <a class="dd-item" href="houston-tx.html"><span class="dd-text"><span class="dd-name">Houston, TX</span><span class="dd-meta">7.8M people · local data</span></span></a>
+            <a class="dd-item" href="san-antonio-tx.html"><span class="dd-text"><span class="dd-name">San Antonio, TX</span><span class="dd-meta">2.8M people · local data</span></span></a>
+          </div>
+          <div class="dropdown-foot">
+            <a href="reports.html">All reports →</a>
+            <a href="sample.html">Free 2-page sample →</a>
+          </div>
         </div>
       </div>
       <a href="index.html#how">How it works</a>
@@ -347,14 +364,22 @@
         </div>
         <h1>Know your market before your <em>next move</em>.</h1>
         <p class="hero-sub">Sherlock turns customer demand, local competition, pricing pressure, and buyer behavior into clear decisions for owner-led service businesses.</p>
-        <div class="hero-cta-row">
-          <a href="reports.html" class="btn btn-primary btn-lg">Explore reports →</a>
-          <a href="#sample" class="btn btn-outline btn-lg">View a sample insight</a>
-        </div>
+        <form class="finder hero-cta-row" action="reports.html" data-finder>
+          <div class="finder-field">
+            <label for="finderIndustry">Your industry</label>
+            <select id="finderIndustry" name="industry"><!-- @finder-industries --><option value="landscaping">Landscaping</option><option value="roofing">Roofing</option><option value="hvac">HVAC</option><option value="pest-control">Pest Control</option><!-- /@finder-industries --></select>
+          </div>
+          <div class="finder-field">
+            <label for="finderMetro">Your market</label>
+            <select id="finderMetro" name="metro"><!-- @finder-metros --><option value="">National (all U.S.)</option><option value="atlanta-ga">Atlanta, GA</option><option value="austin-tx">Austin, TX</option><option value="boston-ma">Boston, MA</option><option value="charlotte-nc">Charlotte, NC</option><option value="chicago-il">Chicago, IL</option><option value="dallas-tx">Dallas, TX</option><option value="denver-co">Denver, CO</option><option value="detroit-mi">Detroit, MI</option><option value="houston-tx">Houston, TX</option><option value="los-angeles-ca">Los Angeles, CA</option><option value="miami-fl">Miami, FL</option><option value="minneapolis-mn">Minneapolis, MN</option><option value="new-york-ny">New York, NY</option><option value="philadelphia-pa">Philadelphia, PA</option><option value="phoenix-az">Phoenix, AZ</option><option value="riverside-ca">Riverside, CA</option><option value="san-antonio-tx">San Antonio, TX</option><option value="san-diego-ca">San Diego, CA</option><option value="san-francisco-ca">San Francisco, CA</option><option value="seattle-wa">Seattle, WA</option><option value="tampa-fl">Tampa, FL</option><option value="washington-dc">Washington, DC</option><!-- /@finder-metros --></select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">See my report →</button>
+        </form>
+        <p class="finder-alt">Just looking? <a href="#sample">View a sample insight</a> or <a href="sample.html">get the free 2-page PDF</a>.</p>
         <div class="hero-pills">
           <div class="hero-pill">
             <span class="hero-pill-num">300+</span>
-            <span class="hero-pill-label">Person consumer panel per report</span>
+            <span class="hero-pill-label">Households surveyed per market</span>
           </div>
           <div class="hero-pill">
             <span class="hero-pill-num">4</span>
@@ -657,8 +682,8 @@
         <a href="sample.html" class="btn btn-outline-dark btn-lg" style="width: 100%;">Get a free sample</a>
       </div>
       <div class="price-card featured">
-        <div class="price-badge">BEST FIT</div>
-        <div class="price-eyebrow">MOST POPULAR</div>
+        <div class="price-badge">MOST POPULAR</div>
+        <div class="price-eyebrow">LOCAL DEPTH</div>
         <div class="price-name">City-Specific Report</div>
         <div class="price-value">$597</div>
         <div class="price-tagline">Best for market entry, service launches, local positioning, and competitive moves in a specific MSA.</div>
@@ -726,18 +751,20 @@
     <div class="section-eyebrow section-eyebrow-center">WHAT OPERATORS ARE SAYING</div>
     <h2 class="section-title">Trusted by service businesses making <em>real moves</em>.</h2>
     <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-        <h3>Saved me $12K I was about to waste</h3>
-        <p>I was about to drop $12K on a marketing agency to push residential pressure washing. The city-specific report showed me which zip codes actually pay for premium service and which were a dead end. Cancelled the agency, rerouted my crew, and our close rate doubled in 60 days.</p>
-        <cite>— Caleb T., Owner, Bear Power Wash</cite>
-      </div>
-      <div class="review-card">
-        <div class="review-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-        <h3>Restructured our pricing in one weekend</h3>
-        <p>We were stuck debating whether to push our premium epoxy line or stay competitive on price. The Sherlock report showed us exactly which buyer segments would pay more — and which would walk. Rebuilt our pricing tiers that weekend and our average ticket went up 23% in the first quarter.</p>
-        <cite>— Amir L., Owner, Garage Floor Coating &amp; Epoxy</cite>
-      </div>
+<!-- @home-reviews -->
+      <figure class="quote-card">
+        <span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+        <h3 class="quote-card-title">Saved me $12K I was about to waste</h3>
+        <blockquote><p>I was about to drop $12K on a marketing agency to push residential pressure washing. The city-specific report showed me which zip codes actually pay for premium service and which were a dead end. Cancelled the agency, rerouted my crew, and our close rate doubled in 60 days.</p></blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">CT</span><span><span class="who-name">Caleb T.</span><span class="who-role">Owner, Bear Power Wash</span></span></figcaption>
+      </figure>
+      <figure class="quote-card">
+        <span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+        <h3 class="quote-card-title">Restructured our pricing in one weekend</h3>
+        <blockquote><p>We were stuck debating whether to push our premium epoxy line or stay competitive on price. The Sherlock report showed us exactly which buyer segments would pay more — and which would walk. Rebuilt our pricing tiers that weekend and our average ticket went up 23% in the first quarter.</p></blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">AL</span><span><span class="who-name">Amir L.</span><span class="who-role">Owner, Garage Floor Coating &amp; Epoxy</span></span></figcaption>
+      </figure>
+<!-- /@home-reviews -->
     </div>
   </div>
 </section>

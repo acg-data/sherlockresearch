@@ -13,7 +13,7 @@ sherlock-research/        deploy root (HTML, assets, sitemap, robots.txt)
 src/data/site.json        prices, plans, payment links, metro list, operator count, dates
 src/data/reports/*.json   per-industry report content and market figures
 src/data/cities/*.json    per-city content
-src/templates/*.mjs       report and city page templates
+src/templates/*.mjs       report, city and sample-PDF templates
 src/partials.mjs          shared head, nav, footer, plan picker, comparison table
 scripts/build.mjs         builds the site
 scripts/check.mjs         link, anchor, JSON-LD, heading, metadata and copy checks
@@ -30,7 +30,15 @@ scripts/check.mjs         link, anchor, JSON-LD, heading, metadata and copy chec
 
 Set `checkout.single`, `checkout.city`, `checkout.quarterly` and `checkout.all` in `src/data/site.json` to hosted payment links (Stripe Payment Links or Payhip). Buy buttons append `client_reference_id=<plan>__<industry>__<metro>`. While a link is empty, its button opens a prefilled order email instead, and the build prints a warning.
 
-Optional: `samplePdf` (path to the free sample PDF) switches the sample page from "email me" to a direct download, and `flipbookEmbed` adds a Look Inside section to the report pages.
+Optional settings in `site.json`:
+
+- `samplePdf`: the free sample PDF offered on the sample page (empty switches the page to "email me the sample").
+- `flipbookEmbed`: HTML for an interactive flipbook; adds a Look Inside section to the report pages.
+- `cloudflareAnalyticsToken`: adds the Cloudflare Web Analytics beacon to every page. Leave empty if Cloudflare Pages injects it for you.
+
+## Free sample PDF
+
+`assets/sherlock-landscaping-sample.pdf` and its preview images (`assets/sample-page-*.jpg`) are rendered from `src/templates/sample-pdf.mjs` using the Landscaping data. Re-run `npm run sample-pdf` (needs Playwright) after changing that data or template.
 
 ## Commands
 
@@ -38,6 +46,7 @@ Optional: `samplePdf` (path to the free sample PDF) switches the sample page fro
 npm run build           # regenerate pages and fill shared regions (safe to run repeatedly)
 npm run check           # static checks; exits non-zero on problems
 npm run check:browser   # also loads every page in Chromium at 375px and 1440px (needs Playwright)
+npm run sample-pdf      # re-render the free sample PDF and its previews (needs Playwright)
 npm run serve           # preview at http://localhost:8080
 ```
 
