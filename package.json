@@ -1,7 +1,7 @@
 {
   "name": "sherlock-research-site",
   "private": true,
-  "description": "Static marketing site for Sherlock Research. Deploy root: sherlock-research/",
+  "description": "Sherlock Research marketing site: static pages in sherlock-research/ served by a Cloudflare Worker (src/worker.js).",
   "type": "module",
   "engines": {
     "node": ">=18"
@@ -11,6 +11,8 @@
     "check": "node scripts/check.mjs",
     "check:browser": "node scripts/check.mjs --browser",
     "sample-pdf": "node scripts/sample-pdf.mjs",
-    "serve": "python3 -m http.server 8080 --directory sherlock-research"
+    "serve": "node scripts/serve.mjs",
+    "dev": "npx wrangler@4 dev",
+    "deploy": "npx wrangler@4 deploy"
   }
 }
