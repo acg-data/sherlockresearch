@@ -1,0 +1,108 @@
+{
+  "name": "Sherlock Research",
+  "url": "https://sherlockresearch.com",
+  "email": "hello@sherlockresearch.com",
+  "supportEmail": "support@sherlockresearch.com",
+  "responseTime": "within one business day",
+  "supportHours": "Mon–Fri, 9am–6pm ET",
+  "operatorCount": "240+",
+  "edition": "2026",
+  "dataUpdated": "May 2026",
+  "sitemapLastmod": "2026-10-17",
+  "copyrightYear": "2026",
+
+  "_checkout": "Hosted payment links (Stripe Payment Links or Payhip), one per plan. While a link is empty, the buy buttons open a prefilled order email instead. Stripe receives the chosen plan, industry and metro as client_reference_id.",
+  "checkout": {
+    "single": "",
+    "city": "",
+    "quarterly": "",
+    "all": ""
+  },
+
+  "_samplePdf": "Path to the free sample PDF inside sherlock-research/ (for example assets/sherlock-landscaping-sample.pdf). Empty means the sample is requested by email.",
+  "samplePdf": "",
+
+  "_flipbookEmbed": "HTML for an interactive flipbook embed. Empty hides the Look Inside section on report pages.",
+  "flipbookEmbed": "",
+
+  "plans": [
+    {
+      "key": "single",
+      "name": "Standard Report",
+      "price": 497,
+      "unit": "",
+      "axis": "Depth · Entry",
+      "priceSub": "One-time",
+      "compare": "",
+      "desc": "The full {industry} report at the national level. Best for a one-time read on the market.",
+      "features": ["Full 42-page report", "National data & forecasts", "Instant PDF download"],
+      "missing": ["Local / city data"],
+      "note": "One-time · national data",
+      "cta": "Get Standard Report",
+      "metro": false
+    },
+    {
+      "key": "city",
+      "name": "City-Specific Report",
+      "price": 597,
+      "unit": "",
+      "axis": "Depth · Local",
+      "priceSub": "One-time · pick your metro",
+      "compare": "Only $100 more than national",
+      "desc": "Everything in Standard, plus a local data cut for the metro you choose. Best for real market moves.",
+      "features": ["Everything in Standard", "Your city's local data cut", "Local competitor scan", "Metro pricing benchmarks"],
+      "missing": [],
+      "note": "One-time · this industry + your metro",
+      "cta": "Get City-Specific Report",
+      "metro": true,
+      "badge": "Most popular",
+      "popular": true
+    },
+    {
+      "key": "quarterly",
+      "name": "Quarterly + Coaching",
+      "price": 2000,
+      "unit": "/yr",
+      "axis": "Depth · Ongoing",
+      "priceSub": "Billed annually",
+      "compare": "Like a fractional research team",
+      "desc": "Stay current on one industry all year. Four updates plus four 1:1 coaching calls with our team.",
+      "features": ["4 quarterly report updates", "4 one-on-one coaching calls", "Local data included", "Priority access to new modules"],
+      "missing": [],
+      "note": "Billed annually · updates + 1:1 calls",
+      "cta": "Start Quarterly Plan",
+      "metro": true,
+      "badge": "Best value",
+      "badgeTone": "navy"
+    },
+    {
+      "key": "all",
+      "name": "All-Access Pass",
+      "price": 2997,
+      "unit": "",
+      "axis": "Breadth · All industries",
+      "priceSub": "One-time · every report",
+      "compare": "Pay once — no annual seat fee",
+      "desc": "Every Sherlock industry report in one purchase. Best for multi-industry operators, agencies, and investors.",
+      "features": ["All current industry reports", "New reports as released", "National data, all verticals", "Best for portfolios"],
+      "missing": [],
+      "note": "One-time · every industry report",
+      "cta": "Get All-Access Pass",
+      "metro": false,
+      "allIndustries": true,
+      "badge": "vs $8K at IBISWorld",
+      "badgeTone": "sage"
+    }
+  ],
+  "defaultPlan": "city",
+
+  "industries": ["landscaping", "roofing", "hvac", "pest-control"],
+  "cities": ["austin-tx", "dallas-tx", "houston-tx", "san-antonio-tx"],
+
+  "metros": [
+    "Atlanta, GA", "Austin, TX", "Boston, MA", "Charlotte, NC", "Chicago, IL", "Dallas, TX",
+    "Denver, CO", "Detroit, MI", "Houston, TX", "Los Angeles, CA", "Miami, FL", "Minneapolis, MN",
+    "New York, NY", "Philadelphia, PA", "Phoenix, AZ", "Riverside, CA", "San Antonio, TX",
+    "San Diego, CA", "San Francisco, CA", "Seattle, WA", "Tampa, FL", "Washington, DC"
+  ]
+}

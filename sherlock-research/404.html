@@ -3,55 +3,152 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#0D1B2A" />
 <title>Page not found — Sherlock Research</title>
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- @head -->
+<meta name="theme-color" content="#0D1B2A">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:site_name" content="Sherlock Research">
+<meta property="og:image" content="https://sherlockresearch.com/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sherlock Research — market intelligence for service businesses">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Playfair+Display:ital,wght@0,400..800;1,400..600&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=018bbdf5">
+<script src="/assets/site.js?v=74ac22b9" defer></script>
+<!-- /@head -->
 <style>
-  :root{--navy:#0D1B2A;--orange:#F26A21;--orange-2:#FF8542;--orange-3:#D9551A;--white:#fff;--font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',sans-serif;
-    --grad-orange:linear-gradient(135deg,#FF8542 0%,#F26A21 50%,#D9551A 100%);
-    --grad-navy-deep:radial-gradient(ellipse at top right,#1c2f44 0%,#0D1B2A 60%,#08111c 100%);
-    --grad-text:linear-gradient(135deg,#F26A21 0%,#FF8542 50%,#F26A21 100%);
-    --shadow-orange:0 12px 32px rgba(242,106,33,0.25)}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:var(--font-body);min-height:100vh;display:grid;place-items:center;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(242,106,33,0.18),transparent 55%),radial-gradient(ellipse 50% 40% at 50% 100%,rgba(92,127,90,0.12),transparent 55%),var(--grad-navy-deep);color:#fff;text-align:center;padding:24px;line-height:1.55}
-  body::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-  .wrap{max-width:560px;position:relative}
-  .four-oh-four{font-family:var(--font-display);font-size:clamp(120px,22vw,220px);font-weight:800;line-height:1;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.04em;margin-bottom:8px}
-  h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,4vw,40px);margin-bottom:14px;letter-spacing:-0.02em}
-  h1 em{font-style:italic;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:500}
-  p{color:rgba(255,255,255,0.72);font-size:16px;margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto}
+  .lost{position:relative;padding:88px 0 104px;text-align:center;color:#fff;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(242,106,33,0.18),transparent 55%),radial-gradient(ellipse 50% 40% at 50% 100%,rgba(92,127,90,0.12),transparent 55%),var(--grad-navy-deep);overflow:hidden}
+  .lost::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+  .wrap{max-width:580px;margin:0 auto;padding:0 20px;position:relative}
+  .four-oh-four{font-family:var(--font-display);font-size:clamp(110px,20vw,200px);font-weight:800;line-height:1;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.04em;margin-bottom:8px}
+  .lost h1{color:#fff;font-size:clamp(28px,4vw,40px);margin-bottom:16px}
+  .lost h1 em{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lost p{color:rgba(255,255,255,0.75);font-size:16px;margin:0 auto 32px;max-width:440px}
   .btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;font-family:var(--font-body);font-size:14px;font-weight:600;min-height:44px;transition:transform .2s,filter .2s}
-  .btn-primary{background:var(--grad-orange);color:#fff;box-shadow:var(--shadow-orange);text-decoration:none}
-  .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
-  .btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.25);text-decoration:none}
-  .btn-outline:hover{background:rgba(255,255,255,0.08)}
-  .quick-links{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);font-size:13px;color:rgba(255,255,255,0.55)}
-  .quick-links a{color:var(--orange-2);text-decoration:none;font-weight:600;margin:0 10px;display:inline-block;padding:6px 0}
-  .quick-links a:hover{color:#FF8542;text-decoration:underline}
+  .quick-links{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);font-size:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 20px}
+  .quick-links a{color:var(--orange-2);font-weight:600;padding:6px 0}
+  .quick-links a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="four-oh-four">404</div>
-  <h1>Even <em>Sherlock</em> couldn't find that one.</h1>
-  <p>The page you were looking for has moved, been renamed, or never existed. Head back to the homepage or jump to one of these.</p>
-  <div class="btn-row">
-    <a href="/" class="btn btn-primary">Back to Sherlock Research →</a>
-    <a href="pricing.html" class="btn btn-outline">See pricing</a>
+
+<!-- @nav -->
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary">
+  <div class="container nav-inner">
+    <a href="/index.html" class="logo" aria-label="Sherlock Research home">
+      <span class="logo-mark"><svg viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></span>
+      <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-item">
+        <a href="/reports.html">Reports</a>
+        <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="navReports" aria-label="Show reports and locations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown" id="navReports">
+          <div class="dropdown-title">Industry reports</div>
+          <a href="/landscaping-report.html">Landscaping</a>
+          <a href="/roofing-report.html">Roofing</a>
+          <a href="/hvac-report.html">HVAC</a>
+          <a href="/pest-control-report.html">Pest Control</a>
+          <div class="dropdown-title">Local markets</div>
+          <a href="/austin-tx.html">Austin, TX</a>
+          <a href="/dallas-tx.html">Dallas, TX</a>
+          <a href="/houston-tx.html">Houston, TX</a>
+          <a href="/san-antonio-tx.html">San Antonio, TX</a>
+          <a href="/reports.html" class="dropdown-all">All reports →</a>
+        </div>
+      </div>
+      <a href="/index.html#how">How it works</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/sample.html" class="btn btn-primary nav-mobile-only">Get a free sample</a>
+    </div>
+    <div class="nav-right">
+      <a href="/sample.html" class="btn btn-primary nav-cta">Get a free sample</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
-  <div class="quick-links">
-    <a href="landscaping-report.html">Landscaping</a>·
-    <a href="roofing-report.html">Roofing</a>·
-    <a href="hvac-report.html">HVAC</a>·
-    <a href="pest-control-report.html">Pest Control</a>·
-    <a href="about.html">About</a>·
-    <a href="contact.html">Contact</a>
+</nav>
+<!-- /@nav -->
+
+<main id="main">
+<section class="lost">
+  <div class="wrap">
+    <div class="four-oh-four" aria-hidden="true">404</div>
+    <h1>Even <em>Sherlock</em> couldn't find that one.</h1>
+    <p>The page you were looking for has moved, been renamed, or never existed. Head back to the homepage or jump to one of these.</p>
+    <div class="btn-row">
+      <a href="/" class="btn btn-primary">Back to Sherlock Research →</a>
+      <a href="/pricing.html" class="btn btn-outline">See pricing</a>
+    </div>
+    <nav class="quick-links" aria-label="Popular pages">
+      <a href="/landscaping-report.html">Landscaping</a>
+      <a href="/roofing-report.html">Roofing</a>
+      <a href="/hvac-report.html">HVAC</a>
+      <a href="/pest-control-report.html">Pest Control</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
   </div>
-</div>
+</section>
+</main>
+
+<!-- @footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/index.html" class="logo" aria-label="Sherlock Research home">
+          <span class="logo-mark"><svg viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></span>
+          <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
+        </a>
+        <p class="footer-tag">See the market. Stay ahead.</p>
+        <p>Industry-specific market intelligence for service businesses under $10M.</p>
+        <a class="footer-email" href="mailto:hello@sherlockresearch.com">hello@sherlockresearch.com</a>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-h">Reports</h2>
+        <ul>
+          <li><a href="/landscaping-report.html">Landscaping</a></li>
+          <li><a href="/roofing-report.html">Roofing</a></li>
+          <li><a href="/hvac-report.html">HVAC</a></li>
+          <li><a href="/pest-control-report.html">Pest Control</a></li>
+          <li><a href="/reports.html">All reports</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-h">Local markets</h2>
+        <ul>
+          <li><a href="/austin-tx.html">Austin, TX</a></li>
+          <li><a href="/dallas-tx.html">Dallas, TX</a></li>
+          <li><a href="/houston-tx.html">Houston, TX</a></li>
+          <li><a href="/san-antonio-tx.html">San Antonio, TX</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-h">Company</h2>
+        <ul>
+          <li><a href="/index.html#how">How it works</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+          <li><a href="/sample.html">Free sample</a></li>
+          <li><a href="/blog-article.html">2026 Landscaping Outlook</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sherlock Research. All rights reserved.</span>
+      <span class="footer-legal"><a href="/privacy-policy.html">Privacy</a><a href="/terms-of-service.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+<!-- /@footer -->
 </body>
 </html>

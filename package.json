@@ -1,0 +1,15 @@
+{
+  "name": "sherlock-research-site",
+  "private": true,
+  "description": "Static marketing site for Sherlock Research. Deploy root: sherlock-research/",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "check:browser": "node scripts/check.mjs --browser",
+    "serve": "python3 -m http.server 8080 --directory sherlock-research"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "slug": "landscaping",
+  "name": "Landscaping",
+  "nameLower": "landscaping",
+  "metaDescription": "The 2026 Landscaping Industry Report from Sherlock Research: market size, growth forecasts, competitive landscape, and local benchmarks for U.S. landscaping operators.",
+  "ogDescription": "Market size, growth, competitive landscape, and local benchmarks for the U.S. landscaping services industry. 40+ pages, instant PDF.",
+  "heroDescription": "Comprehensive data and local insights to help landscaping business owners grow with confidence.",
+  "summary": "Landscape and grounds maintenance market analysis. Buyer behavior, service mix trends, pricing strategies, and geographic insights.",
+  "coverGradient": [
+    "#2d4a2c",
+    "#1a2e1a"
+  ],
+  "lead": "The U.S. landscaping services industry continues to experience strong demand driven by residential investment, commercial development, and an increasing focus on outdoor living.",
+  "market": {
+    "label": "U.S. landscaping services",
+    "cagr": 4.2,
+    "actual": {
+      "2020": 38.7,
+      "2021": 42.1,
+      "2022": 45.9,
+      "2023": 50.4,
+      "2024": 67.8
+    },
+    "projectThrough": 2028,
+    "note": "Placeholder estimates pending sourced figures. Projections are computed by the build from the latest actual year and the CAGR, so the chart always matches the stated growth rate."
+  },
+  "stats": [
+    {
+      "value": "5.1%",
+      "label": "Annual Industry Job Growth"
+    },
+    {
+      "value": "62%",
+      "label": "Revenue from Maintenance"
+    }
+  ],
+  "insights": [
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z\"/><polyline points=\"9 22 9 12 15 12 15 22\"/></svg>",
+      "title": "Residential Demand",
+      "text": "Homeowner spending on landscaping and outdoor living remains a top growth driver."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1\"/><line x1=\"9\" y1=\"9\" x2=\"9\" y2=\"9.01\"/><line x1=\"15\" y1=\"9\" x2=\"15\" y2=\"9.01\"/><line x1=\"9\" y1=\"15\" x2=\"9\" y2=\"15.01\"/></svg>",
+      "title": "Commercial Growth",
+      "text": "Businesses are investing more in curb appeal and sustainable landscaping solutions."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z\"/></svg>",
+      "title": "Sustainability Trend",
+      "text": "Eco-friendly practices and water-efficient landscaping are in high demand."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/></svg>",
+      "title": "Labor Challenge",
+      "text": "Finding and retaining skilled labor remains the industry's top challenge."
+    }
+  ],
+  "marketShare": [
+    48,
+    28,
+    16,
+    8
+  ],
+  "reviews": [
+    {
+      "title": "Raised renewals 15% with confidence",
+      "text": "We'd been guessing on maintenance contract pricing for years. The report showed the local rate spread and where the premium tolerance was. Raised prices on renewals and lost almost no one.",
+      "cite": "Marcus R., Owner, 3-crew landscaping company"
+    },
+    {
+      "title": "Won a bid we'd lost twice before",
+      "text": "We used the competitive landscape section to position against the two big players in our metro. Won a commercial property contract we'd lost twice before.",
+      "cite": "Tina G., Operations, regional landscape firm"
+    },
+    {
+      "title": "Cut my CAC in half",
+      "text": "As a newer operator I had no idea where demand actually was. The local insights told me which suburbs to focus my door-hangers and Google spend. Cut my acquisition cost in half.",
+      "cite": "Jared M., Founder, lawn care startup"
+    }
+  ]
+}

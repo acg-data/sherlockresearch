@@ -1,0 +1,44 @@
+{
+  "slug": "dallas-tx",
+  "name": "Dallas",
+  "state": "TX",
+  "stateName": "Texas",
+  "metaDescription": "Industry-specific market reports for Dallas, Texas. Landscaping, roofing, HVAC, and pest control intelligence with local demand, pricing, and competitive data.",
+  "ogDescription": "Local market reports for Dallas operators — demand, competition, pricing, and growth opportunities by industry.",
+  "intro": "Dallas-Fort Worth is the deepest home-services market in Texas. The metro's size means there's room for multiple positioning strategies, but the competitive density also means undifferentiated operators get squeezed.",
+  "stats": [
+    {
+      "value": "8.1M",
+      "label": "Metro population"
+    },
+    {
+      "value": "2.9M",
+      "label": "Households"
+    },
+    {
+      "value": "18,400+",
+      "label": "Home-service businesses"
+    }
+  ],
+  "reportsIntro": "Each Sherlock industry report includes a city-specific data cut for Dallas — local demand, competitor density, pricing benchmarks, and neighborhood-level demand patterns. DFW is the largest home-services market in Texas — high competition, high opportunity, deep buyer pool.",
+  "reportBlurbs": {
+    "landscaping": "Residential and commercial landscape services in Dallas: demand drivers, top zip codes, pricing tiers, and competitive landscape.",
+    "roofing": "Roofing market intelligence for Dallas: storm cycles, insurance dynamics, reroof rates, and local competitor positioning.",
+    "hvac": "HVAC service and install market for Dallas: heat-pump adoption, service-plan pricing, refrigerant transition impact.",
+    "pest-control": "Recurring pest control market in Dallas: subscription rates, residential vs commercial mix, and local consolidation dynamics."
+  },
+  "insights": [
+    {
+      "title": "Multi-MSA dynamics",
+      "text": "Dallas, Fort Worth, Plano, Frisco, and Arlington each behave like distinct sub-markets. Pricing and demand patterns vary 20%+ across them."
+    },
+    {
+      "title": "Storm-cycle exposure",
+      "text": "DFW sits in one of the most active hail corridors in the country — roofing and exterior services see periodic demand spikes that operators can plan around."
+    },
+    {
+      "title": "Hispanic-household majority growth",
+      "text": "Spanish-language marketing and bilingual crew capacity are increasingly the differentiator in competitive segments."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "slug": "hvac",
+  "name": "HVAC",
+  "nameLower": "HVAC",
+  "metaDescription": "The 2026 HVAC Industry Report from Sherlock Research: market size, growth forecasts, competitive landscape, and local benchmarks for U.S. HVAC operators.",
+  "ogDescription": "Market size, growth, competitive landscape, and local benchmarks for the U.S. HVAC services industry. 40+ pages, instant PDF.",
+  "heroDescription": "Comprehensive data and local insights to help HVAC contractors price service plans, plan inventory through the refrigerant transition, and capture heat-pump demand.",
+  "summary": "Heating, ventilation, and air conditioning market intelligence. Demand shifts, pricing pressure, buyer decision drivers, and regional analysis.",
+  "coverGradient": [
+    "#2c4a5c",
+    "#1a2e3c"
+  ],
+  "lead": "The U.S. HVAC industry is in the middle of a generational transition: heat-pump adoption, the R-410A phase-down, and extreme-weather demand are all reshaping the market simultaneously. Operators who modernize quickly are positioned to take share.",
+  "market": {
+    "label": "U.S. HVAC services",
+    "cagr": 5.4,
+    "actual": {
+      "2020": 98.4,
+      "2021": 106.7,
+      "2022": 115.2,
+      "2023": 125.8,
+      "2024": 142.3
+    },
+    "projectThrough": 2028,
+    "note": "Placeholder estimates pending sourced figures. Projections are computed by the build from the latest actual year and the CAGR, so the chart always matches the stated growth rate."
+  },
+  "stats": [
+    {
+      "value": "4.1%",
+      "label": "Annual Industry Job Growth"
+    },
+    {
+      "value": "55%",
+      "label": "Revenue from Service & Maintenance"
+    }
+  ],
+  "insights": [
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z\"/><polyline points=\"9 22 9 12 15 12 15 22\"/></svg>",
+      "title": "Heat Pump Surge",
+      "text": "Residential heat-pump installs grew 25%+ YoY in 2024, driven by IRA tax credits and rising gas prices."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1\"/><line x1=\"9\" y1=\"9\" x2=\"9\" y2=\"9.01\"/><line x1=\"15\" y1=\"9\" x2=\"15\" y2=\"9.01\"/><line x1=\"9\" y1=\"15\" x2=\"9\" y2=\"15.01\"/></svg>",
+      "title": "Refrigerant Transition",
+      "text": "R-410A phase-down accelerates through 2026–2027; A2L refrigerants change training, parts, and pricing."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z\"/></svg>",
+      "title": "Service-Plan Economics",
+      "text": "Recurring maintenance contracts are the highest-margin line and drive 2.4x customer lifetime value."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/></svg>",
+      "title": "Talent Pipeline",
+      "text": "Apprenticeship and EPA-certification programs are the top constraint on crew expansion in 78% of metros."
+    }
+  ],
+  "marketShare": [
+    39,
+    33,
+    20,
+    8
+  ],
+  "reviews": [
+    {
+      "title": "Captured 40% more heat-pump leads",
+      "text": "The buyer-behavior section told us exactly which homeowner segments were open to switching from gas furnaces. We retargeted our ad spend to those zip codes and our heat-pump close rate went from 18% to 31% in one season.",
+      "cite": "Robert P., Owner, full-service HVAC contractor"
+    },
+    {
+      "title": "Priced our service plan correctly",
+      "text": "We'd been selling maintenance plans at $189/year because that's what the competitor down the road charged. The report showed our local market would pay $279–$329 for a slightly tiered offering. Repriced and recurring revenue grew 38%.",
+      "cite": "Lisa M., GM, 5-crew HVAC business"
+    },
+    {
+      "title": "Made the right refrigerant call",
+      "text": "We were going to wait on A2L training and equipment. The report's transition timeline and the competitive scan changed our mind — we got certified ahead of the local pack and now we're the go-to for new installs.",
+      "cite": "Dan W., Owner, residential HVAC"
+    }
+  ]
+}
