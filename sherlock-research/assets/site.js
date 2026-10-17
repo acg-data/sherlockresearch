@@ -93,6 +93,6 @@
     e.preventDefault();
     var industry = form.elements.industry.value;
     var metro = form.elements.metro.value;
-    location.href = industry + '-report.html' + (metro ? '?metro=' + encodeURIComponent(metro) + '#purchase' : '');
+    location.href = '/' + industry + '-report' + (metro ? '?plan=city&metro=' + encodeURIComponent(metro) + '#purchase' : '');
   });
 })();

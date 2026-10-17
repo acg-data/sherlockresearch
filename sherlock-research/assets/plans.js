@@ -15,20 +15,29 @@
 
   // Order summary line shown under the selected plan name.
   function describe(plan, industry, metro) {
-    if (plan.allIndustries) return 'Every Sherlock industry report — current and new releases';
+    if (plan.allIndustries) return 'Every Sherlock industry report, current and new releases';
     var base = industry ? industry.name + ' · ' : '';
     if (plan.key === 'quarterly') return base + '4 quarterly updates + 4 coaching calls, with local data for ' + metro;
     if (plan.metro) return base + 'national report + local data for ' + metro;
-    return base + 'full national report and forecasts (PDF)';
+    return base + (industry && industry.presell ? 'full national report (PDF), emailed on release' : 'full national report and forecasts (PDF)');
   }
 
-  // Hosted payment link when configured; otherwise a prefilled order email.
+  // Button label: presell reports are reserved rather than bought outright.
+  function ctaLabel(plan, industry) {
+    return industry && industry.presell && !plan.allIndustries ? plan.cta.replace(/^(Get|Start)\b/, 'Reserve') : plan.cta;
+  }
+
+  // Checkout link for a plan: a single URL, or (Standard Report) one URL per industry.
+  // Stripe Payment Links also get the order details as client_reference_id; other providers
+  // (Payhip) identify the product by its URL. With no link, a prefilled order email.
   function checkoutHref(cfg, plan, industry, metro) {
     var url = cfg.checkout[plan.key];
+    if (url && typeof url === 'object') url = (industry && url[industry.slug]) || '';
     var parts = [plan.key];
     if (!plan.allIndustries && industry) parts.push(industry.slug);
     if (plan.metro && metro) parts.push(slugify(metro));
     if (url) {
+      if (!/^https:\/\/buy\.stripe\.com\//.test(url)) return url;
       return url + (url.indexOf('?') === -1 ? '?' : '&') + 'client_reference_id=' + encodeURIComponent(parts.join('__'));
     }
     var what = plan.name +
@@ -42,7 +51,7 @@
     return 'mailto:' + cfg.email + '?subject=' + encodeURIComponent('Order: ' + what) + '&body=' + encodeURIComponent(body);
   }
 
-  var api = { slugify: slugify, formatPrice: formatPrice, describe: describe, checkoutHref: checkoutHref };
+  var api ={ slugify: slugify, formatPrice: formatPrice, describe: describe, ctaLabel: ctaLabel, checkoutHref: checkoutHref };
   root.SherlockPlans = api;
 
   if (typeof document === 'undefined') return;
@@ -57,7 +66,7 @@
 
   var state = { plan: cfg.defaultPlan, industry: cfg.industry || cfg.industries[0].slug, metro: cfg.metros[0] };
 
-  // Deep links: ?plan=city&metro=austin-tx (city pages link here).
+  // Deep links: ?plan=city&metro=austin-tx&industry=hvac (city pages and the finder link here).
   var params = new URLSearchParams(location.search);
   if (planByKey[params.get('plan')]) state.plan = params.get('plan');
   var metroParam = params.get('metro');
@@ -87,7 +96,7 @@
     setText('[data-plan-price]', formatPrice(plan));
     setText('[data-plan-note]', plan.note);
     setText('[data-plan-detail]', describe(plan, industry, state.metro));
-    setText('[data-plan-cta]', plan.cta);
+    setText('[data-plan-cta]', ctaLabel(plan, industry));
     setText('[data-plan-term]', formatPrice(plan) + (plan.unit ? ' · subscription' : ' · one-time'));
     all('[data-checkout]').forEach(function (a) { a.href = href; });
   }

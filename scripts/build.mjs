@@ -11,14 +11,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { SITE_DIR, DATA_DIR, readJSON, esc, scriptJSON, billions, marketSeries } from '../src/lib.mjs';
+import { SITE_DIR, DATA_DIR, readJSON, esc, scriptJSON, billions, marketSeries, pageUrl, loadCatalog } from '../src/lib.mjs';
 import * as partials from '../src/partials.mjs';
 import * as reportTemplate from '../src/templates/report.mjs';
 import * as cityTemplate from '../src/templates/city.mjs';
 
 const site = readJSON(path.join(DATA_DIR, 'site.json'));
 const ctx = {
-  reports: site.industries.map((slug) => readJSON(path.join(DATA_DIR, 'reports', `${slug}.json`))),
+  ...loadCatalog(site),
   cities: site.cities.map((slug) => readJSON(path.join(DATA_DIR, 'cities', `${slug}.json`))),
 };
 
@@ -39,20 +39,26 @@ const PAGES = {
   'blog-article.html': {},
   'privacy-policy.html': {},
   'terms-of-service.html': {},
-  '404.html': { base: '/', sitemap: false },
+  '404.html': { sitemap: false },
 };
 const REQUIRED_REGIONS = ['head', 'nav', 'footer'];
 
 // Renderers for <!-- @name --> regions in hand-written pages.
 const regions = {
   head: (page, opts) => partials.head(site, opts),
-  nav: (page, opts) => partials.nav(site, ctx, { current: page, base: opts.base || '' }),
-  footer: (page, opts) => partials.footer(site, ctx, { base: opts.base || '' }),
+  nav: (page) => partials.nav(site, ctx, { current: page }),
+  footer: () => partials.footer(site, ctx),
   plans: () => partials.plans(site, ctx, plansApi, {}),
   compare: () => partials.compareTable(),
   guarantee: () => partials.guarantee(),
   metros: () => esc(partials.metroSentence(site)),
   'metro-count': () => String(site.metros.length),
+  'report-count': () => String(ctx.reports.length),
+  'pipeline-count': () => String(ctx.pipeline.length),
+  'category-chips': () => categoryChips(),
+  'category-links': () => ctx.categories.map((c) => `<a class="cat-link" href="/reports#${c.slug}">${partials.industryIcon(c.slug, 16)}${esc(c.name)}</a>`).join(''),
+  'home-pricing': () => homePricing(),
+  pipeline: () => pipelineList(),
   'operator-count': () => esc(site.operatorCount),
   'rating': () => esc(site.rating),
   'response-time': () => esc(site.responseTime),
@@ -61,7 +67,7 @@ const regions = {
   'library-cards': () => libraryCards(),
   'blog-stat': () => blogStat(),
   'home-reviews': () => site.homeReviews.map((v) => '      ' + partials.quoteCard(v)).join('\n'),
-  'finder-industries': () => ctx.reports.map((r) => `<option value="${r.slug}">${esc(r.name)}</option>`).join(''),
+  'finder-industries': () => partials.industryOptions(ctx),
   'finder-metros': () => '<option value="">National (all U.S.)</option>' +
     site.metros.map((m) => `<option value="${partials.slugify(m)}">${esc(m)}</option>`).join(''),
   'sample-cta': () => sampleCta(),
@@ -74,7 +80,7 @@ const regions = {
 };
 
 function pricingSchema() {
-  const url = `${site.url}/pricing.html`;
+  const url = `${site.url}/pricing`;
   const product = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -102,21 +108,39 @@ function pricingSchema() {
   return `<script type="application/ld+json">\n${scriptJSON(product)}\n</script>`;
 }
 
-// Reports hub: one card per industry report, then one per city page.
+// Reports hub: every industry report, grouped by category (the page filters them client-side).
 function reportCards() {
-  const city = site.plans.find((p) => p.key === 'city');
   const standard = site.plans.find((p) => p.key === 'single');
-  return ctx.reports.map((r, i) => `      <a class="report-card" href="${r.slug}-report.html">
-        <span class="report-icon">${partials.industryIcon(r.slug)}</span>
-        <h3>${esc(r.name)}${i === 0 ? ' <span class="report-badge">Free sample</span>' : ''}</h3>
-        <p>${esc(r.summary)}</p>
-        <span class="report-meta">From $${standard.price} national · $${city.price} with your metro</span>
-        <span class="report-link">View report →</span>
-      </a>`).join('\n');
+  return ctx.categories.map((c) => {
+    const items = ctx.reports.filter((r) => r.category === c.slug);
+    return `      <section class="cat-group" id="${c.slug}" data-cat="${c.slug}">
+        <h2 class="cat-title"><span class="cat-ic">${partials.industryIcon(c.slug, 18)}</span>${esc(c.name)} <span class="cat-count">${items.length}</span></h2>
+        <div class="report-grid">
+${items.map((r) => `          <a class="report-card" href="/${r.slug}-report" data-name="${esc(r.name.toLowerCase())}">
+            <span class="report-icon">${partials.industryIcon(r)}</span>
+            <span class="report-body">
+              <span class="report-name">${esc(r.name)}</span>
+              <span class="report-meta">${r.presell ? '<span class="tag tag-presell">Presell</span>' : `${site.edition} edition`} · from $${standard.price}</span>
+            </span>
+            <span class="report-arrow" aria-hidden="true">→</span>
+          </a>`).join('\n')}
+        </div>
+      </section>`;
+  }).join('\n');
+}
+
+function categoryChips() {
+  return `<button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All <span>${ctx.reports.length}</span></button>` +
+    ctx.categories.map((c) => `<button type="button" class="chip" data-filter="${c.slug}" aria-pressed="false">${esc(c.name)} <span>${ctx.reports.filter((r) => r.category === c.slug).length}</span></button>`).join('');
+}
+
+// Reports in research: names only, with a request link.
+function pipelineList() {
+  return ctx.pipeline.map((p) => `<li>${esc(p.name)}</li>`).join('');
 }
 
 function cityCards() {
-  return ctx.cities.map((c) => `      <a class="city-card" href="${c.slug}.html">
+  return ctx.cities.map((c) => `      <a class="city-card" href="/${c.slug}">
         <span class="city-name">${esc(c.name)}, ${esc(c.state)}</span>
         <span class="city-meta">${esc(c.stats[0].value)} people · ${esc(c.stats[1].value)} households</span>
       </a>`).join('\n');
@@ -137,20 +161,46 @@ function blogStat() {
       </aside>`;
 }
 
-// Homepage report library: live reports first (the sampled one featured), then hand-written "coming soon" cards.
+// Homepage report library: the featured reports, then other reports to show breadth.
 function libraryCards() {
   const from = site.plans.find((p) => p.key === 'single').price;
-  return ctx.reports.map((r, i) => `      <a class="lib-card${i === 0 ? ' featured' : ''}" href="${r.slug}-report.html">
-        <span class="lib-icon">${partials.industryIcon(r.slug, 28)}</span>
-        <div class="lib-title">${esc(r.name)}</div>
-        <div class="lib-meta">${i === 0 ? 'Free sample available' : `${site.edition} edition`}</div>
-        <div class="lib-foot"><span>From $${from}</span><span class="arrow" aria-hidden="true">→</span></div>
+  // Featured reports, then the first available report from each other category (largest first).
+  const others = [...ctx.categories]
+    .sort((a, b) => ctx.reports.filter((r) => r.category === b.slug).length - ctx.reports.filter((r) => r.category === a.slug).length)
+    .map((c) => ctx.reports.find((r) => r.category === c.slug && !r.featured && !r.presell))
+    .filter(Boolean);
+  const picks = [...ctx.reports.filter((r) => r.featured), ...others].slice(0, 8);
+  return picks.map((r) => `      <a class="lib-card" href="/${r.slug}-report">
+        <span class="lib-icon">${partials.industryIcon(r, 22)}</span>
+        <span class="lib-title">${esc(r.name)}</span>
+        <span class="lib-meta">${esc(r.categoryName)}${r.presell ? ' · Presell' : ''}</span>
+        <span class="lib-foot"><span>From $${from}</span><span class="arrow" aria-hidden="true">→</span></span>
       </a>`).join('\n');
+}
+
+// Homepage pricing: the three one-time plans; Quarterly is linked underneath.
+function homePricing() {
+  return ['single', 'city', 'all'].map((key) => {
+    const p = site.plans.find((x) => x.key === key);
+    const href = `/pricing?plan=${p.key}#purchase`;
+    return `      <article class="price-card${p.popular ? ' is-popular' : ''}">
+        <div class="price-top">
+          <h3>${esc(p.name)}</h3>
+          ${p.badge ? `<span class="price-badge">${esc(p.badge)}</span>` : ''}
+        </div>
+        <p class="price-desc">${esc(p.desc.replace('{industry}', 'industry'))}</p>
+        <div class="price-amount"><span class="price-num">$${p.price.toLocaleString('en-US')}</span><span class="price-unit">${esc(p.priceSub)}</span></div>
+        <a href="${href}" class="btn ${p.popular ? 'btn-primary' : 'btn-outline-dark'} btn-block">${esc(p.cta)}</a>
+        <ul class="price-list">
+          ${p.features.map((f) => `<li>${partials.icons.check(15)}${esc(f)}</li>`).join('\n          ')}
+        </ul>
+      </article>`;
+  }).join('\n');
 }
 
 function sampleCta() {
   if (site.samplePdf) {
-    return `<a href="${esc(site.samplePdf)}" class="btn btn-primary btn-lg" download>Download the free sample (PDF) ↓</a>`;
+    return `<a href="/${esc(site.samplePdf)}" class="btn btn-primary btn-lg" download>Download the free sample (PDF) ↓</a>`;
   }
   const subject = encodeURIComponent('Free sample: Landscaping Industry Report');
   const body = encodeURIComponent('Hi Sherlock team,\n\nPlease email me the free 2-page sample.\n\nName:\nBusiness:\n');
@@ -188,11 +238,11 @@ function sitemap() {
     ...Object.entries(PAGES).filter(([, o]) => o.sitemap !== false).map(([f]) => f),
     ...ctx.reports.map((r) => `${r.slug}-report.html`),
     ...ctx.cities.map((c) => `${c.slug}.html`),
-  ].map((f) => (f === 'index.html' ? '' : f));
+  ].map((f) => pageUrl(f));
   return `<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated by scripts/build.mjs. Do not edit by hand. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${site.url}/${u}</loc><lastmod>${site.sitemapLastmod}</lastmod></url>`).join('\n')}
+${urls.map((u) => `  <url><loc>${site.url}${u}</loc><lastmod>${site.sitemapLastmod}</lastmod></url>`).join('\n')}
 </urlset>
 `;
 }
@@ -219,6 +269,10 @@ for (const [file, content] of outputs) {
 console.log(`build: ${outputs.size} files, ${changed} changed`);
 
 const missing = Object.entries(site.checkout).filter(([, url]) => !url).map(([k]) => k);
+const unlinked = ctx.reports.filter((r) => !r.payhip).map((r) => r.slug);
 if (missing.length) {
-  console.warn(`build: no payment link for ${missing.join(', ')}; those buttons open a prefilled order email (set checkout.* in src/data/site.json).`);
+  console.warn(`build: no payment link for plan ${missing.join(', ')} (site.json checkout); those buttons open a prefilled order email.`);
+}
+if (unlinked.length) {
+  console.warn(`build: no Payhip link for ${unlinked.join(', ')} (catalog.json); their Standard Report button opens a prefilled order email.`);
 }

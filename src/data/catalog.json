@@ -1,0 +1,661 @@
+{
+  "_about": "Industry catalog. 'industries' are the published reports (one page each); 'pipeline' lists reports in research. 'payhip' is the Payhip product link for the Standard Report; an empty link makes the buy button open a prefilled order email. 'status' is 'available' (PDF delivered at checkout) or 'presell' (reserved now, delivered on release). 'focus' and 'serviceLabel' are optional; pages fall back to generic wording.",
+  "categories": [
+    {
+      "slug": "home-services",
+      "name": "Home services"
+    },
+    {
+      "slug": "healthcare",
+      "name": "Healthcare"
+    },
+    {
+      "slug": "automotive",
+      "name": "Automotive"
+    },
+    {
+      "slug": "hospitality",
+      "name": "Hospitality"
+    },
+    {
+      "slug": "real-estate-finance",
+      "name": "Real estate & finance"
+    },
+    {
+      "slug": "professional-services",
+      "name": "Professional services"
+    },
+    {
+      "slug": "education",
+      "name": "Education & childcare"
+    },
+    {
+      "slug": "local-services",
+      "name": "Local services"
+    }
+  ],
+  "industries": [
+    {
+      "name": "Landscaping",
+      "slug": "landscaping",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/b6AXM",
+      "focus": "demand, pricing, crew productivity, route density, service mix, and local competition",
+      "serviceLabel": "landscaping and lawn care services"
+    },
+    {
+      "name": "Roofing",
+      "slug": "roofing",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/KHINR",
+      "focus": "storm demand, retail replacement, insurance mix, lead sources, labor safety, and margin pressure",
+      "serviceLabel": "roof repair and replacement services"
+    },
+    {
+      "name": "Dental",
+      "slug": "dental",
+      "category": "healthcare",
+      "status": "presell",
+      "payhip": "https://payhip.com/b/ag3Or",
+      "focus": "patient acquisition, cosmetic demand, payer mix, staffing, capacity, and service-line economics",
+      "serviceLabel": "dental care services"
+    },
+    {
+      "name": "Dermatology",
+      "slug": "dermatology",
+      "category": "healthcare",
+      "status": "presell",
+      "payhip": "https://payhip.com/b/HzqAx",
+      "focus": "patient access, cosmetic dermatology, payer mix, procedure demand, provider capacity, and competitive positioning",
+      "serviceLabel": "dermatology and skin care services"
+    },
+    {
+      "name": "HVAC",
+      "slug": "hvac",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/iL1d4",
+      "focus": "seasonality, service agreements, replacement demand, financing, technician capacity, and local competition",
+      "serviceLabel": "heating, cooling, and indoor air services"
+    },
+    {
+      "name": "Pest Control",
+      "slug": "pest-control",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/mrXjz",
+      "focus": "recurring revenue, termite and mosquito demand, churn, route density, training, and account profitability",
+      "serviceLabel": "pest control and prevention services"
+    },
+    {
+      "name": "Plumbing",
+      "slug": "plumbing",
+      "category": "home-services",
+      "status": "presell",
+      "payhip": "https://payhip.com/b/ln1cC",
+      "focus": "emergency demand, water heaters, drain services, technician skill gaps, urgency pricing, and repeat and referral mix",
+      "serviceLabel": "plumbing repair and installation services"
+    },
+    {
+      "name": "Electrical",
+      "slug": "electrical",
+      "category": "home-services",
+      "status": "presell",
+      "payhip": "https://payhip.com/b/MI7bB",
+      "focus": "panel upgrades, EV chargers, generators, licensing capacity, quote conversion, and project profitability",
+      "serviceLabel": "residential and commercial electrical services"
+    },
+    {
+      "name": "Med Spa",
+      "slug": "med-spa",
+      "category": "healthcare",
+      "status": "presell",
+      "payhip": "https://payhip.com/b/h4QEO",
+      "focus": "injectables, memberships, laser services, provider trust, certification, and treatment-line margin",
+      "serviceLabel": "aesthetic and wellness treatments"
+    },
+    {
+      "name": "Auto Repair",
+      "slug": "auto-repair",
+      "category": "automotive",
+      "status": "presell",
+      "payhip": "https://payhip.com/b/MFpBc",
+      "focus": "diagnostics, maintenance demand, repeat customers, technician skill mix, service bays, and pricing power",
+      "serviceLabel": "auto repair and maintenance services"
+    },
+    {
+      "name": "Garage Door",
+      "slug": "garage-door",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/4Jm8I"
+    },
+    {
+      "name": "Pool Service",
+      "slug": "pool-service",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/FoOQl"
+    },
+    {
+      "name": "Lawn Care",
+      "slug": "lawn-care",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/eTHL3"
+    },
+    {
+      "name": "Tree Care",
+      "slug": "tree-care",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/nL1RC"
+    },
+    {
+      "name": "Home Cleaning",
+      "slug": "home-cleaning",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/2QdjP"
+    },
+    {
+      "name": "Carpet Cleaning",
+      "slug": "carpet-cleaning",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/dPSG0"
+    },
+    {
+      "name": "Restoration",
+      "slug": "restoration",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/f7H6i"
+    },
+    {
+      "name": "Painting",
+      "slug": "painting",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/O2rD7"
+    },
+    {
+      "name": "Flooring",
+      "slug": "flooring",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/GVK8Y"
+    },
+    {
+      "name": "Windows and Doors",
+      "slug": "windows-and-doors",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/dvAbt"
+    },
+    {
+      "name": "Kitchen and Bath Remodeling",
+      "slug": "kitchen-and-bath-remodeling",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/DNjb7"
+    },
+    {
+      "name": "General Contracting",
+      "slug": "general-contracting",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/mMC5h"
+    },
+    {
+      "name": "Solar Installation",
+      "slug": "solar-installation",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/COc9r"
+    },
+    {
+      "name": "Security Systems",
+      "slug": "security-systems",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/Z7r54"
+    },
+    {
+      "name": "Moving",
+      "slug": "moving",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/V9Xyb"
+    },
+    {
+      "name": "Self Storage",
+      "slug": "self-storage",
+      "category": "local-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/IcU0H"
+    },
+    {
+      "name": "Junk Removal",
+      "slug": "junk-removal",
+      "category": "home-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/Q2r9f"
+    },
+    {
+      "name": "Car Wash and Detailing",
+      "slug": "car-wash-and-detailing",
+      "category": "automotive",
+      "status": "available",
+      "payhip": "https://payhip.com/b/d3nLh"
+    },
+    {
+      "name": "Towing",
+      "slug": "towing",
+      "category": "automotive",
+      "status": "available",
+      "payhip": "https://payhip.com/b/KPdLN"
+    },
+    {
+      "name": "Veterinary",
+      "slug": "veterinary",
+      "category": "healthcare",
+      "status": "available",
+      "payhip": "https://payhip.com/b/Uh4Gs"
+    },
+    {
+      "name": "Physical Therapy",
+      "slug": "physical-therapy",
+      "category": "healthcare",
+      "status": "available",
+      "payhip": "https://payhip.com/b/5LiQg"
+    },
+    {
+      "name": "Chiropractic",
+      "slug": "chiropractic",
+      "category": "healthcare",
+      "status": "available",
+      "payhip": "https://payhip.com/b/tYjHG"
+    },
+    {
+      "name": "Senior Home Care",
+      "slug": "senior-home-care",
+      "category": "healthcare",
+      "status": "available",
+      "payhip": "https://payhip.com/b/VNPjx"
+    },
+    {
+      "name": "Childcare",
+      "slug": "childcare",
+      "category": "education",
+      "status": "available",
+      "payhip": "https://payhip.com/b/brpy1"
+    },
+    {
+      "name": "Fitness Gyms",
+      "slug": "fitness-gyms",
+      "category": "local-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/YTosz"
+    },
+    {
+      "name": "Restaurants",
+      "slug": "restaurants",
+      "category": "hospitality",
+      "status": "available",
+      "payhip": "https://payhip.com/b/Ca01I"
+    },
+    {
+      "name": "Coffee Shops",
+      "slug": "coffee-shops",
+      "category": "hospitality",
+      "status": "available",
+      "payhip": "https://payhip.com/b/3DC6Z"
+    },
+    {
+      "name": "Breweries",
+      "slug": "breweries",
+      "category": "hospitality",
+      "status": "available",
+      "payhip": "https://payhip.com/b/OzGVQ"
+    },
+    {
+      "name": "Hotels",
+      "slug": "hotels",
+      "category": "hospitality",
+      "status": "available",
+      "payhip": "https://payhip.com/b/esnhF"
+    },
+    {
+      "name": "Event Venues",
+      "slug": "event-venues",
+      "category": "hospitality",
+      "status": "available",
+      "payhip": "https://payhip.com/b/UWoi8"
+    },
+    {
+      "name": "Property Management",
+      "slug": "property-management",
+      "category": "real-estate-finance",
+      "status": "available",
+      "payhip": "https://payhip.com/b/8GT2k"
+    },
+    {
+      "name": "Real Estate Brokerages",
+      "slug": "real-estate-brokerages",
+      "category": "real-estate-finance",
+      "status": "available",
+      "payhip": "https://payhip.com/b/bBPSh"
+    },
+    {
+      "name": "Mortgage Brokers",
+      "slug": "mortgage-brokers",
+      "category": "real-estate-finance",
+      "status": "available",
+      "payhip": "https://payhip.com/b/lzAbO"
+    },
+    {
+      "name": "Insurance Agencies",
+      "slug": "insurance-agencies",
+      "category": "professional-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/kgm1O"
+    },
+    {
+      "name": "Accounting and Tax",
+      "slug": "accounting-and-tax",
+      "category": "professional-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/QcdJY"
+    },
+    {
+      "name": "Legal Services",
+      "slug": "legal-services",
+      "category": "professional-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/oLr4Y"
+    },
+    {
+      "name": "IT Managed Services",
+      "slug": "it-managed-services",
+      "category": "professional-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/BY6tl"
+    },
+    {
+      "name": "Digital Marketing Agencies",
+      "slug": "digital-marketing-agencies",
+      "category": "professional-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/ZgVKf"
+    },
+    {
+      "name": "Staffing Agencies",
+      "slug": "staffing-agencies",
+      "category": "professional-services",
+      "status": "available",
+      "payhip": "https://payhip.com/b/iK7r0"
+    },
+    {
+      "name": "Private Schools and Tutoring",
+      "slug": "private-schools-and-tutoring",
+      "category": "education",
+      "status": "available",
+      "payhip": "https://payhip.com/b/3qUbN"
+    }
+  ],
+  "pipeline": [
+    {
+      "name": "Appliance Repair",
+      "slug": "appliance-repair",
+      "category": "home-services"
+    },
+    {
+      "name": "Home Inspection",
+      "slug": "home-inspection",
+      "category": "real-estate-finance"
+    },
+    {
+      "name": "Fencing",
+      "slug": "fencing",
+      "category": "home-services"
+    },
+    {
+      "name": "Deck and Patio",
+      "slug": "deck-and-patio",
+      "category": "home-services"
+    },
+    {
+      "name": "Concrete",
+      "slug": "concrete",
+      "category": "home-services"
+    },
+    {
+      "name": "Masonry",
+      "slug": "masonry",
+      "category": "home-services"
+    },
+    {
+      "name": "Gutter Services",
+      "slug": "gutter-services",
+      "category": "home-services"
+    },
+    {
+      "name": "Pressure Washing",
+      "slug": "pressure-washing",
+      "category": "home-services"
+    },
+    {
+      "name": "Septic Services",
+      "slug": "septic-services",
+      "category": "home-services"
+    },
+    {
+      "name": "Locksmiths",
+      "slug": "locksmiths",
+      "category": "local-services"
+    },
+    {
+      "name": "Fire Protection",
+      "slug": "fire-protection",
+      "category": "home-services"
+    },
+    {
+      "name": "Window Cleaning",
+      "slug": "window-cleaning",
+      "category": "home-services"
+    },
+    {
+      "name": "Handyman Services",
+      "slug": "handyman-services",
+      "category": "home-services"
+    },
+    {
+      "name": "Wildlife Removal",
+      "slug": "wildlife-removal",
+      "category": "home-services"
+    },
+    {
+      "name": "Irrigation",
+      "slug": "irrigation",
+      "category": "home-services"
+    },
+    {
+      "name": "Pool Construction",
+      "slug": "pool-construction",
+      "category": "home-services"
+    },
+    {
+      "name": "Duct Cleaning",
+      "slug": "duct-cleaning",
+      "category": "home-services"
+    },
+    {
+      "name": "Chimney Services",
+      "slug": "chimney-services",
+      "category": "home-services"
+    },
+    {
+      "name": "Optometry",
+      "slug": "optometry",
+      "category": "healthcare"
+    },
+    {
+      "name": "Urgent Care",
+      "slug": "urgent-care",
+      "category": "healthcare"
+    },
+    {
+      "name": "Mental Health Clinics",
+      "slug": "mental-health-clinics",
+      "category": "healthcare"
+    },
+    {
+      "name": "Orthodontics",
+      "slug": "orthodontics",
+      "category": "healthcare"
+    },
+    {
+      "name": "Emergency Veterinary",
+      "slug": "emergency-veterinary",
+      "category": "healthcare"
+    },
+    {
+      "name": "Home Health Medical",
+      "slug": "home-health-medical",
+      "category": "healthcare"
+    },
+    {
+      "name": "Nutrition Clinics",
+      "slug": "nutrition-clinics",
+      "category": "healthcare"
+    },
+    {
+      "name": "Bookkeeping",
+      "slug": "bookkeeping",
+      "category": "professional-services"
+    },
+    {
+      "name": "Payroll Services",
+      "slug": "payroll-services",
+      "category": "professional-services"
+    },
+    {
+      "name": "HR Consulting",
+      "slug": "hr-consulting",
+      "category": "professional-services"
+    },
+    {
+      "name": "Business Coaching",
+      "slug": "business-coaching",
+      "category": "professional-services"
+    },
+    {
+      "name": "Architecture Firms",
+      "slug": "architecture-firms",
+      "category": "professional-services"
+    },
+    {
+      "name": "Engineering Firms",
+      "slug": "engineering-firms",
+      "category": "professional-services"
+    },
+    {
+      "name": "Bakeries",
+      "slug": "bakeries",
+      "category": "hospitality"
+    },
+    {
+      "name": "Food Trucks",
+      "slug": "food-trucks",
+      "category": "hospitality"
+    },
+    {
+      "name": "Catering",
+      "slug": "catering",
+      "category": "hospitality"
+    },
+    {
+      "name": "Salons",
+      "slug": "salons",
+      "category": "local-services"
+    },
+    {
+      "name": "Barber Shops",
+      "slug": "barber-shops",
+      "category": "local-services"
+    },
+    {
+      "name": "Nail Salons",
+      "slug": "nail-salons",
+      "category": "local-services"
+    },
+    {
+      "name": "Tattoo Studios",
+      "slug": "tattoo-studios",
+      "category": "local-services"
+    },
+    {
+      "name": "Pet Grooming",
+      "slug": "pet-grooming",
+      "category": "local-services"
+    },
+    {
+      "name": "Pet Boarding",
+      "slug": "pet-boarding",
+      "category": "local-services"
+    },
+    {
+      "name": "Martial Arts Studios",
+      "slug": "martial-arts-studios",
+      "category": "local-services"
+    },
+    {
+      "name": "Yoga Studios",
+      "slug": "yoga-studios",
+      "category": "local-services"
+    },
+    {
+      "name": "Dance Studios",
+      "slug": "dance-studios",
+      "category": "local-services"
+    },
+    {
+      "name": "Title Companies",
+      "slug": "title-companies",
+      "category": "real-estate-finance"
+    },
+    {
+      "name": "Appraisal Firms",
+      "slug": "appraisal-firms",
+      "category": "real-estate-finance"
+    },
+    {
+      "name": "Music Schools",
+      "slug": "music-schools",
+      "category": "education"
+    },
+    {
+      "name": "Test Prep",
+      "slug": "test-prep",
+      "category": "education"
+    },
+    {
+      "name": "Driving Schools",
+      "slug": "driving-schools",
+      "category": "education"
+    },
+    {
+      "name": "Tire Shops",
+      "slug": "tire-shops",
+      "category": "automotive"
+    },
+    {
+      "name": "Auto Body Repair",
+      "slug": "auto-body-repair",
+      "category": "automotive"
+    }
+  ]
+}

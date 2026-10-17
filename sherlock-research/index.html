@@ -4,308 +4,254 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Sherlock Research — Know your market before your next move.</title>
-<meta name="description" content="Sherlock turns customer demand, local competition, pricing pressure, and buyer behavior into clear decisions for owner-led service businesses. From $497.">
-<link rel="canonical" href="https://sherlockresearch.com/">
+<meta name="description" content="Industry reports for owner-led service businesses: customer demand, local competition, pricing and a recommended next move in every section. 50 industries, from $497.">
+<link rel="canonical" href="https://sherlockreports.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sherlock Research — Know your market before your next move.">
 <meta property="og:description" content="Industry-specific market intelligence for service businesses under $10M. Reports priced for operators, not procurement.">
-<meta property="og:url" content="https://sherlockresearch.com/">
+<meta property="og:url" content="https://sherlockreports.com/">
 <!-- @head -->
 <meta name="theme-color" content="#0D1B2A">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:site_name" content="Sherlock Research">
-<meta property="og:image" content="https://sherlockresearch.com/og-default.png">
+<meta property="og:image" content="https://sherlockreports.com/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Sherlock Research — market intelligence for service businesses">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Playfair+Display:ital,wght@0,400..800;1,400..600&amp;display=swap">
-<link rel="stylesheet" href="assets/site.css?v=2d95a0a7">
-<script src="assets/site.js?v=0023187e" defer></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=0d7b8dba">
+<script src="/assets/site.js?v=2fedf9be" defer></script>
 <!-- /@head -->
 <style>
-  .mobile-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 60; background: rgba(255,255,255,0.96); backdrop-filter: saturate(180%) blur(20px); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); display: none; gap: 10px; align-items: center; }
-  .mobile-cta .btn { flex: 1; padding: 14px 16px; font-size: 15px; }
-  @media (max-width: 768px) { .mobile-cta { display: flex; } }
+  /* ---------- Page rhythm ---------- */
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--orange-ink); margin-bottom: 18px; }
+  .eyebrow::before { content: ''; width: 18px; height: 1.5px; background: currentColor; }
+  .sec { padding: 120px 0; }
+  .sec-head { max-width: 720px; margin-bottom: 56px; }
+  .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .sec-head.center .eyebrow::before { display: none; }
+  .sec-head h2 { font-size: clamp(34px, 4.4vw, 52px); line-height: 1.04; }
+  .sec-head p { margin-top: 18px; font-size: 18px; line-height: 1.6; color: var(--muted); }
+  .sec-head h2 em { color: var(--orange-ink); }
 
-  .hero { position: relative; padding: 56px 0 80px; overflow: hidden; background: radial-gradient(ellipse 60% 50% at 10% 30%, rgba(242,106,33,0.18), transparent 55%), radial-gradient(ellipse 50% 40% at 95% 80%, rgba(92,127,90,0.15), transparent 55%), var(--grad-navy-deep); color: var(--white); }
-  .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-  .hero-grid { display: grid; grid-template-columns: 1.08fr 1fr; gap: 56px; align-items: center; position: relative; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.12); padding: 6px 16px 6px 6px; border-radius: 100px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 26px; }
-  .hero-badge .stars-mini { white-space: nowrap; background: var(--grad-orange); border-radius: 100px; padding: 4px 10px; color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
-  .hero h1 { color: var(--white); font-size: clamp(40px, 6.2vw, 76px); line-height: 1; margin-bottom: 22px; letter-spacing: -0.025em; }
-  .hero h1 em { font-style: italic; font-weight: 500; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-sub { font-size: 18px; color: rgba(255,255,255,0.72); margin-bottom: 32px; max-width: 560px; line-height: 1.55; }
-  .hero-cta-row { display: flex; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
-  .finder { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: end; max-width: 600px; margin-bottom: 14px; padding: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-  .finder-field { background: var(--white); border-radius: 10px; padding: 8px 12px 6px; position: relative; }
-  .finder-field label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-  .finder-field select { width: 100%; border: none; background: transparent; font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--navy); padding: 2px 22px 2px 0; appearance: none; cursor: pointer; outline: none; }
-  .finder-field::after { content: ''; position: absolute; right: 14px; bottom: 15px; width: 7px; height: 7px; border-right: 2px solid var(--navy); border-bottom: 2px solid var(--navy); transform: rotate(45deg); pointer-events: none; }
-  .finder-field:focus-within { box-shadow: 0 0 0 3px var(--orange-2); }
-  .finder .btn { height: 100%; min-height: 56px; }
-  .finder-alt { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 36px; }
-  .finder-alt a { color: var(--white); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); text-underline-offset: 3px; }
-  .finder-alt a:hover { text-decoration-color: var(--orange-2); }
-  .hero-pills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 560px; }
-  .hero-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 16px; backdrop-filter: blur(10px); }
-  .hero-pill-num { font-family: var(--font-display); font-size: 22px; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 6px; display: block; }
-  .hero-pill-label { font-size: 11.5px; color: rgba(255,255,255,0.62); line-height: 1.4; }
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: 88px 0 96px; background: linear-gradient(180deg, #fff 0%, var(--stone-3) 100%); overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(13,27,42,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(13,27,42,0.045) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 20%, transparent 75%); pointer-events: none; }
+  .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); gap: 64px; align-items: center; }
+  .hero-pill { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 8px; border: 1px solid rgba(13,27,42,0.12); background: var(--white); border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--navy); box-shadow: var(--shadow-sm); margin-bottom: 28px; }
+  .hero-pill b { background: var(--navy); color: var(--white); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; }
+  .hero h1 { font-size: clamp(46px, 6.4vw, 80px); line-height: 0.98; letter-spacing: -0.03em; margin-bottom: 24px; }
+  .hero h1 em { color: var(--orange-ink); }
+  .hero-sub { font-size: 19px; line-height: 1.6; color: var(--muted); max-width: 560px; margin-bottom: 36px; }
 
-  .hero-visual { position: relative; }
-  .fox-stage { position: relative; aspect-ratio: 1 / 0.86; }
-  .fox-illustration { position: absolute; top: 0; left: 0; width: 34%; z-index: 1; filter: drop-shadow(0 16px 32px rgba(0,0,0,0.35)); }
-  .dashboard-card { position: absolute; top: 22%; right: 0; width: 84%; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg), var(--shadow-glow); overflow: hidden; z-index: 2; border: 1px solid rgba(255,255,255,0.1); transform: rotate(-1.5deg); }
-  .dash-header { background: var(--navy); color: var(--white); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
-  .dash-header-dots { display: flex; gap: 5px; }
-  .dash-header-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); }
-  .dash-header-dots span:first-child { background: var(--orange); }
-  .dash-title { padding: 18px 22px 8px; font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--navy); }
-  .dash-sub { padding: 0 22px 16px; font-size: 11px; color: var(--muted); }
-  .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--stone); padding: 14px 22px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .dash-stat-val { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1; }
-  .dash-stat-val.orange { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .dash-stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; font-weight: 600; }
-  .dash-chart { padding: 18px 22px; display: flex; align-items: flex-end; gap: 8px; height: 90px; }
-  .dash-bar { flex: 1; border-radius: 3px 3px 0 0; transform-origin: bottom; animation: barUp 0.9s cubic-bezier(.2,.8,.2,1) backwards; }
-  .dash-bar:nth-child(2) { animation-delay: 0.45s; } .dash-bar:nth-child(3) { animation-delay: 0.55s; } .dash-bar:nth-child(4) { animation-delay: 0.65s; } .dash-bar:nth-child(5) { animation-delay: 0.75s; }
-  .dash-bar:nth-child(1) { animation-delay: 0.35s; }
-  @keyframes barUp { from { transform: scaleY(0); } }
-  .dash-bar:nth-child(1) { height: 35%; background: #7B92A8; }
-  .dash-bar:nth-child(2) { height: 52%; background: #7B92A8; }
-  .dash-bar:nth-child(3) { height: 68%; background: #5C7F5A; }
-  .dash-bar:nth-child(4) { height: 82%; background: #5C7F5A; }
-  .dash-bar:nth-child(5) { height: 100%; background: var(--grad-orange); box-shadow: 0 4px 12px rgba(242,106,33,0.4); }
-  .floating-card { position: absolute; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); padding: 12px 16px; border-radius: 12px; box-shadow: var(--shadow-lg); font-size: 12px; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 10px; z-index: 3; }
-  .floating-card.top { top: 12%; right: -2%; transform: rotate(2deg); }
-  .pill { background: var(--grad-orange); color: var(--white); padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; }
+  .finder { background: var(--white); border: 1px solid rgba(13,27,42,0.12); border-radius: 16px; padding: 8px; box-shadow: var(--shadow-md); display: grid; grid-template-columns: 1fr 1fr auto; gap: 4px; max-width: 600px; }
+  .finder-field { position: relative; display: flex; flex-direction: column; padding: 10px 14px 10px; border-radius: 10px; transition: background 0.15s; min-width: 0; }
+  .finder-field:hover { background: var(--stone-2); }
+  .finder-field + .finder-field { border-left: 1px solid rgba(13,27,42,0.08); }
+  .finder-field label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .finder-field select { appearance: none; -webkit-appearance: none; border: 0; background: transparent; font: inherit; font-size: 15.5px; font-weight: 600; color: var(--navy); padding: 2px 22px 2px 0; cursor: pointer; width: 100%; text-overflow: ellipsis; }
+  .finder-field::after { content: ''; position: absolute; right: 16px; bottom: 18px; width: 7px; height: 7px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); pointer-events: none; }
+  .finder .btn { align-self: stretch; padding: 0 24px; border-radius: 10px; font-size: 15px; }
+  .finder-alt { margin-top: 16px; font-size: 14px; color: var(--muted); }
+  .finder-alt a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(13,27,42,0.25); text-underline-offset: 3px; }
+  .finder-alt a:hover { text-decoration-color: var(--orange); }
 
-  section { padding: 96px 0; position: relative; }
-  .section-eyebrow { font-size: 11px; letter-spacing: 0.24em; color: var(--orange-ink); text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
-  .section-eyebrow-center { text-align: center; }
-  .section-title { font-size: clamp(32px, 4.4vw, 50px); text-align: center; margin-bottom: 18px; max-width: 780px; margin-left: auto; margin-right: auto; letter-spacing: -0.02em; line-height: 1.05; }
-  .section-title em { font-style: italic; font-weight: 500; }
-  .section-sub { text-align: center; color: var(--muted); max-width: 620px; margin: 0 auto 56px; font-size: 16px; line-height: 1.6; }
+  .hero-trust { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(13,27,42,0.08); font-size: 14px; color: var(--muted); max-width: 600px; }
+  .hero-trust li { display: flex; align-items: center; gap: 8px; list-style: none; }
+  .hero-trust b { color: var(--navy); font-weight: 700; }
+  .hero-trust .stars { color: var(--orange); letter-spacing: 2px; font-size: 14px; }
+  .hero-trust svg { color: var(--sage-ink); }
 
-  .problem { background: var(--grad-stone-warm); }
-  .problem-head { text-align: center; margin-bottom: 56px; }
-  .problem-head h2 { font-size: clamp(32px, 4.4vw, 50px); margin-bottom: 16px; letter-spacing: -0.02em; max-width: 820px; margin-left: auto; margin-right: auto; line-height: 1.05; }
-  .problem-head h2 em { font-style: italic; font-weight: 500; }
-  .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .problem-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; transition: transform 0.25s, box-shadow 0.25s; }
-  .problem-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  .problem-card.highlight { background: var(--grad-orange); color: var(--white); border: none; box-shadow: var(--shadow-orange); }
-  .problem-num { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--orange-ink); margin-bottom: 14px; letter-spacing: 0.05em; }
-  .problem-card.highlight .problem-num { color: var(--white); }
-  .problem-card h3 { font-family: var(--font-body); font-size: 19px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .problem-card.highlight h3 { color: var(--white); }
-  .problem-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-  .problem-card.highlight p { color: var(--white); }
+  /* Product visual: two real pages from the free sample */
+  .hero-visual { position: relative; height: 560px; }
+  .page-shot { position: absolute; width: 330px; border-radius: 6px; background: var(--white); box-shadow: 0 2px 4px rgba(13,27,42,0.06), 0 40px 80px -24px rgba(13,27,42,0.35); overflow: hidden; }
+  .page-shot img { width: 100%; }
+  .page-back { right: 0; top: 54px; rotate: 5deg; opacity: 0.96; }
+  .page-front { left: 24px; top: 0; rotate: -3deg; }
+  .float-card { position: absolute; background: var(--white); border: 1px solid rgba(13,27,42,0.1); border-radius: 14px; box-shadow: var(--shadow-lg); padding: 16px 18px; }
+  .float-report { left: -12px; bottom: 34px; display: flex; align-items: center; gap: 14px; min-width: 300px; }
+  .float-ic { width: 44px; height: 44px; border-radius: 12px; background: var(--navy); color: #FFB38A; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .float-title { display: block; font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--navy); line-height: 1.15; }
+  .float-meta { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  .float-move { right: -8px; bottom: 150px; max-width: 250px; }
+  .float-move-label { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-ink); margin-bottom: 6px; }
+  .float-move p { font-size: 14px; line-height: 1.45; color: var(--navy); font-weight: 600; }
 
-  .modules { background: var(--white); }
-  .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .module { padding: 28px; background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-lg); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; position: relative; overflow: hidden; }
-  .module::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad-orange); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
-  .module:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
-  .module:hover::before { transform: scaleX(1); }
-  .module-icon { width: 44px; height: 44px; background: var(--sage-soft); border-radius: 12px; color: var(--sage); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-  .module-icon.orange { background: var(--orange-soft); color: var(--orange-ink); }
-  .module-icon.navy { background: rgba(13,27,42,0.08); color: var(--navy); }
-  .module h3 { font-family: var(--font-body); font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
-  .module p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+  /* ---------- Proof strip ---------- */
+  .proof { border-top: 1px solid rgba(13,27,42,0.08); border-bottom: 1px solid rgba(13,27,42,0.08); background: var(--white); }
+  .proof ul { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .proof li { padding: 30px 28px; display: flex; flex-direction: column; gap: 4px; }
+  .proof li + li { border-left: 1px solid rgba(13,27,42,0.08); }
+  .proof .num { font-family: var(--font-display); font-size: 40px; font-weight: 500; color: var(--navy); line-height: 1; letter-spacing: -0.02em; }
+  .proof .lbl { font-size: 14px; color: var(--muted); line-height: 1.45; }
 
-  .sample { background: radial-gradient(ellipse 50% 30% at 100% 0%, rgba(242,106,33,0.18), transparent 55%), radial-gradient(ellipse 40% 30% at 0% 100%, rgba(92,127,90,0.12), transparent 55%), var(--grad-navy-deep); color: var(--white); }
-  .sample::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-  .sample-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; position: relative; }
-  .sample-left .section-eyebrow { color: var(--orange-2); }
-  .sample-left h2 { color: var(--white); font-size: clamp(30px, 4vw, 44px); margin-bottom: 22px; letter-spacing: -0.02em; line-height: 1.05; }
-  .sample-left h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; }
-  .sample-left p { color: rgba(255,255,255,0.7); font-size: 15.5px; line-height: 1.65; margin-bottom: 24px; }
-  .sample-disclaimer { background: rgba(255,255,255,0.04); border-left: 3px solid var(--orange); padding: 14px 18px; border-radius: 4px; font-size: 12.5px; color: rgba(255,255,255,0.7); line-height: 1.6; }
-  .sample-panel { background: var(--white); color: var(--ink); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg), 0 0 100px rgba(242,106,33,0.15); }
-  .sample-panel-head { background: var(--stone); padding: 18px 26px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
-  .sample-panel-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
-  .sample-panel-tag { white-space: nowrap; font-size: 10px; background: var(--navy); color: var(--white); padding: 4px 10px; border-radius: 100px; font-weight: 700; letter-spacing: 0.05em; }
-  .sample-stats { display: grid; grid-template-columns: repeat(2, 1fr); padding: 24px; gap: 16px; }
-  .sample-stat { padding: 20px; border-radius: 12px; background: var(--stone-3); border: 1px solid var(--line); }
-  .sample-stat.featured { background: var(--grad-orange); color: var(--white); border: none; }
-  .sample-stat-val { font-family: var(--font-display); font-size: 44px; font-weight: 800; line-height: 1; color: var(--navy); margin-bottom: 8px; letter-spacing: -0.03em; }
-  .sample-stat.featured .sample-stat-val { color: var(--white); }
-  .sample-stat-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 6px; }
-  .sample-stat.featured .sample-stat-label { color: var(--white); }
-  .sample-stat-desc { font-size: 12.5px; color: var(--navy); font-weight: 500; line-height: 1.4; }
-  .sample-stat.featured .sample-stat-desc { color: var(--white); }
-  .sample-bar-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 0 24px 24px; }
-  .sample-bar-block { height: 8px; border-radius: 4px; }
-  .sample-bar-block:nth-child(1) { background: var(--orange); }
-  .sample-bar-block:nth-child(2) { background: var(--sage); }
-  .sample-bar-block:nth-child(3) { background: var(--slate); }
-  .sample-bar-block:nth-child(4) { background: var(--stone-deep); }
+  /* ---------- Library ---------- */
+  .library { background: var(--white); }
+  .library-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 40px; }
+  .library-top .sec-head { margin-bottom: 0; }
+  .cat-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .cat-link { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid rgba(13,27,42,0.12); border-radius: 100px; font-size: 13.5px; font-weight: 600; color: var(--navy); background: var(--white); transition: border-color 0.15s, background 0.15s; }
+  .cat-link svg { color: var(--orange-ink); }
+  .cat-link:hover { border-color: var(--navy); background: var(--stone-3); }
+  .lib-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .lib-card { display: grid; grid-template-rows: auto auto 1fr auto; gap: 4px; padding: 24px; border: 1px solid rgba(13,27,42,0.1); border-radius: 16px; background: var(--white); min-height: 210px; transition: border-color 0.2s, box-shadow 0.2s, translate 0.2s; }
+  .lib-card:hover { border-color: rgba(13,27,42,0.22); box-shadow: var(--shadow-md); translate: 0 -2px; }
+  .lib-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--stone-2); border: 1px solid rgba(13,27,42,0.06); color: var(--navy); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .lib-title { font-family: var(--font-display); font-size: 24px; font-weight: 500; color: var(--navy); line-height: 1.1; letter-spacing: -0.01em; }
+  .lib-meta { font-size: 13.5px; color: var(--muted); }
+  .lib-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; margin-top: 16px; border-top: 1px solid rgba(13,27,42,0.07); font-size: 14px; font-weight: 600; color: var(--navy); }
+  .lib-foot .arrow { color: var(--orange-ink); transition: translate 0.2s; }
+  .lib-card:hover .arrow { translate: 4px 0; }
+  .library-foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; font-size: 15px; color: var(--muted); }
 
-  .library { background: var(--grad-stone-warm); }
-  .library-head { margin-bottom: 48px; max-width: 720px; }
-  .library-head h2 { font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 16px; }
-  .library-head h2 em { font-style: italic; font-weight: 500; }
-  .library-head p { color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 560px; }
-  .library-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .lib-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13.5px; font-weight: 600; color: var(--navy); }
-  .lib-card.featured .lib-foot { color: var(--white); border-top-color: rgba(255,255,255,0.25); }
-  .lib-foot .arrow { transition: transform 0.2s; }
-  .lib-card:hover .lib-foot .arrow { transform: translateX(4px); }
-  .library-soon { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 28px; }
-  .soon-label { font-size: 13px; font-weight: 600; color: var(--muted); margin-right: 4px; }
-  .soon-chip { font-size: 13px; font-weight: 500; color: var(--navy); background: rgba(255,255,255,0.6); border: 1px dashed var(--line-strong); border-radius: 100px; padding: 6px 14px; }
-  .soon-chip.request { border-style: solid; border-color: var(--navy); font-weight: 600; background: var(--white); }
-  .soon-chip.request:hover { background: var(--navy); color: var(--white); }
-  .lib-card { background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; cursor: pointer; position: relative; display: block; }
-  .lib-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--orange); }
-  .lib-card.featured { background: var(--grad-orange); color: var(--white); border: none; box-shadow: var(--shadow-orange); }
-  .lib-icon { display: block; width: 28px; height: 28px; margin-bottom: 12px; color: var(--sage); }
-  .lib-card.featured .lib-icon { color: var(--white); }
-  .lib-title { font-family: var(--font-body); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.01em; }
-  .lib-card.featured .lib-title { color: var(--white); }
-  .lib-meta { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-  .lib-card.featured .lib-meta { color: var(--white); }
+  /* ---------- Why ---------- */
+  .why { background: var(--stone-2); }
+  .why-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 72px; align-items: center; }
+  .why-grid .sec-head { margin-bottom: 0; }
+  .why-points { list-style: none; margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(13,27,42,0.1); display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .why-points li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; font-size: 15.5px; line-height: 1.55; color: var(--muted); }
+  .why-points b { display: block; color: var(--navy); font-size: 16px; margin-bottom: 2px; }
+  .why-points .tick { width: 28px; height: 28px; border-radius: 50%; background: var(--white); border: 1px solid rgba(13,27,42,0.1); color: var(--sage-ink); display: flex; align-items: center; justify-content: center; }
+  .why .compare-scroll { background: var(--white); border: 1px solid rgba(13,27,42,0.1); border-radius: 18px; box-shadow: var(--shadow-md); overflow-x: auto; }
+  .why .compare-table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 540px; }
+  .why .compare-table th, .why .compare-table td { padding: 18px 20px; text-align: left; border-bottom: 1px solid rgba(13,27,42,0.07); }
+  .why .compare-table tbody tr:last-child th, .why .compare-table tbody tr:last-child td { border-bottom: 0; }
+  .why .compare-table thead th { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .why .compare-table tbody th { font-weight: 600; color: var(--navy); }
+  .why .compare-table td { color: var(--muted); }
+  .why .compare-table .col-sherlock { background: rgba(242,106,33,0.06); color: var(--navy); font-weight: 600; }
+  .why .compare-table thead .col-sherlock { color: var(--orange-ink); }
+  .why .ci { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; }
+  .why .ci-yes { background: var(--sage); } .why .ci-no { background: #c4c7cc; } .why .ci-mid { background: #e1a35f; }
+  .why .compare-hint { display: none; font-size: 12.5px; color: var(--muted); margin-top: 10px; text-align: right; }
+  @media (max-width: 640px) { .why .compare-hint { display: block; } }
 
-  .how { background: var(--white); }
-  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .how-step { background: var(--grad-card); border-radius: var(--radius-lg); padding: 32px 28px; border: 1px solid var(--line); transition: transform 0.25s, box-shadow 0.25s; position: relative; }
-  .how-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  .how-num { width: 44px; height: 44px; background: var(--grad-orange); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 18px; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(242,106,33,0.3); }
-  .how-step h3 { font-family: var(--font-body); font-size: 19px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .how-step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  /* ---------- Inside ---------- */
+  .inside { background: var(--white); }
+  .inside-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 80px; align-items: center; }
+  .inside-visual { position: relative; padding: 40px; background: var(--stone-2); border-radius: 24px; border: 1px solid rgba(13,27,42,0.06); }
+  .inside-visual img { width: 100%; border-radius: 4px; box-shadow: 0 2px 4px rgba(13,27,42,0.06), 0 30px 60px -20px rgba(13,27,42,0.35); }
+  .inside-tag { position: absolute; top: 20px; left: 20px; background: var(--navy); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
+  .toc { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; margin: 8px 0 36px; counter-reset: toc; }
+  .toc li { counter-increment: toc; padding: 16px 0; border-bottom: 1px solid rgba(13,27,42,0.08); display: grid; grid-template-columns: 34px 1fr; }
+  .toc li::before { content: counter(toc, decimal-leading-zero); font-family: var(--font-display); font-size: 15px; color: var(--orange-ink); font-weight: 600; padding-top: 1px; }
+  .toc b { display: block; font-size: 15.5px; color: var(--navy); }
+  .toc span { display: block; font-size: 13.5px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+  .inside-cta { display: flex; gap: 12px; flex-wrap: wrap; }
 
-  .middle { background: var(--grad-stone-warm); }
-  .middle-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
-  .middle-left { background: var(--white); border-radius: var(--radius-xl); padding: 44px 40px; border: 1px solid var(--line); box-shadow: var(--shadow-md); }
-  .middle-left h2 { font-size: clamp(30px, 4vw, 42px); letter-spacing: -0.02em; line-height: 1.02; margin-bottom: 24px; }
-  .middle-left h2 em { font-style: italic; font-weight: 500; }
-  .middle-list { list-style: none; margin-top: 28px; }
-  .middle-list li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 14.5px; color: var(--navy); font-weight: 500; line-height: 1.5; }
-  .middle-list li:last-child { border-bottom: 1px solid var(--line); }
-  .middle-list .check { width: 22px; height: 22px; background: var(--grad-sage); color: var(--white); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .middle-right { background: radial-gradient(ellipse at top right, rgba(242,106,33,0.15), transparent 60%), var(--grad-navy-deep); color: var(--white); border-radius: var(--radius-xl); padding: 44px 40px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
-  .middle-right::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
-  .quote-fox { width: 60px; height: 60px; background: var(--grad-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 12px 32px rgba(242,106,33,0.4); position: relative; z-index: 1; }
-  .quote-fox svg { width: 36px; height: 36px; }
-  .quote-text { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 26px); color: var(--white); line-height: 1.3; margin-bottom: 24px; font-style: italic; position: relative; z-index: 1; letter-spacing: -0.01em; }
-  .quote-attr { font-size: 14px; color: rgba(255,255,255,0.7); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; position: relative; z-index: 1; line-height: 1.5; }
+  /* ---------- How ---------- */
+  .how { background: var(--stone-2); }
+  .steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
+  .step { counter-increment: step; position: relative; background: var(--white); border: 1px solid rgba(13,27,42,0.08); border-radius: 18px; padding: 32px 30px 34px; }
+  .step::before { content: counter(step, decimal-leading-zero); display: block; font-family: var(--font-display); font-size: 48px; line-height: 1; color: var(--orange-ink); opacity: 0.35; font-weight: 500; margin-bottom: 24px; }
+  .step h3 { font-family: var(--font-body); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .step p { font-size: 15px; color: var(--muted); line-height: 1.6; }
 
+  /* ---------- Pricing ---------- */
   .pricing { background: var(--white); }
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 12px; }
-  .pricing-more { text-align: center; margin-top: 36px; font-size: 15px; color: var(--muted); }
-  .pricing-more a { color: var(--orange-ink); font-weight: 600; }
-  .price-card { background: var(--grad-card); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 36px 32px; transition: transform 0.25s, box-shadow 0.25s; position: relative; display: flex; flex-direction: column; }
-  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  .price-card.featured { background: radial-gradient(ellipse at top right, rgba(242,106,33,0.15), transparent 60%), var(--grad-navy-deep); color: var(--white); border: none; box-shadow: var(--shadow-lg); transform: scale(1.03); }
-  .price-card.featured:hover { transform: scale(1.03) translateY(-4px); }
-  .price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--grad-orange); color: var(--white); padding: 6px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; box-shadow: var(--shadow-orange); }
-  .price-eyebrow { font-size: 11px; letter-spacing: 0.2em; color: var(--orange-ink); text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
-  .price-card.featured .price-eyebrow { color: var(--orange-2); }
-  .price-name { font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
-  .price-card.featured .price-name { color: var(--white); }
-  .price-value { font-family: var(--font-display); font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1; margin: 18px 0 12px; letter-spacing: -0.03em; }
-  .price-card.featured .price-value { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .price-tagline { font-size: 13.5px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
-  .price-card.featured .price-tagline { color: rgba(255,255,255,0.7); }
-  .price-list { list-style: none; margin-bottom: 28px; flex: 1; }
-  .price-list li { padding: 10px 0; font-size: 13.5px; color: var(--ink); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-  .price-card.featured .price-list li { color: rgba(255,255,255,0.9); }
-  .price-list li::before { content: ''; width: 16px; height: 16px; background-color: var(--sage); border-radius: 50%; flex-shrink: 0; margin-top: 2px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-size: 10px; background-position: center; background-repeat: no-repeat; }
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+  .price-card { display: flex; flex-direction: column; border: 1px solid rgba(13,27,42,0.12); border-radius: 20px; padding: 32px; background: var(--white); }
+  .price-card.is-popular { border: 2px solid var(--navy); padding: 31px; box-shadow: var(--shadow-lg); }
+  .price-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .price-top h3 { font-family: var(--font-body); font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+  .price-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); background: var(--navy); padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
+  .price-desc { font-size: 14.5px; color: var(--muted); line-height: 1.55; min-height: 68px; }
+  .price-amount { display: flex; flex-direction: column; gap: 6px; margin: 22px 0 22px; }
+  .price-num { font-family: var(--font-display); font-size: 52px; font-weight: 500; color: var(--navy); letter-spacing: -0.03em; line-height: 1; }
+  .price-unit { font-size: 13.5px; color: var(--muted); }
+  .price-list { list-style: none; margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(13,27,42,0.08); display: grid; gap: 12px; font-size: 14.5px; color: var(--ink); }
+  .price-list li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: start; }
+  .price-list svg { color: var(--sage-ink); margin-top: 3px; }
+  .pricing-note { margin-top: 28px; text-align: center; font-size: 15px; color: var(--muted); }
+  .pricing-note a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(13,27,42,0.25); text-underline-offset: 3px; }
 
-  .method { background: radial-gradient(ellipse 50% 40% at 50% 0%, rgba(92,127,90,0.08), transparent 60%), var(--grad-stone-warm); }
-  .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
-  .method-card { background: var(--grad-card); padding: 28px 24px; border-radius: var(--radius-lg); border: 1px solid var(--line); text-align: center; }
-  .method-icon { width: 56px; height: 56px; background: var(--grad-sage); border-radius: 16px; color: var(--white); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; box-shadow: 0 8px 20px rgba(92,127,90,0.2); }
-  .method-icon.orange { background: var(--grad-orange); box-shadow: 0 8px 20px rgba(242,106,33,0.25); }
-  .method-icon.navy { background: var(--grad-navy); }
-  .method-icon.slate { background: linear-gradient(135deg, #7B92A8, #60788E); }
-  .method-card h3 { font-family: var(--font-body); font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; letter-spacing: -0.01em; }
-  .method-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  /* ---------- Reviews ---------- */
+  .reviews { background: var(--stone-2); }
+  .reviews-grid { display: grid; grid-template-columns: 0.8fr 1fr 1fr; gap: 20px; align-items: stretch; }
+  .rating-card { background: var(--navy); color: var(--white); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+  .rating-num { font-family: var(--font-display); font-size: 80px; line-height: 0.9; font-weight: 500; letter-spacing: -0.03em; }
+  .rating-num small { font-size: 28px; color: rgba(255,255,255,0.6); }
+  .rating-card .stars { color: #FFB38A; letter-spacing: 3px; margin: 14px 0 8px; }
+  .rating-card p { color: rgba(255,255,255,0.78); font-size: 14.5px; line-height: 1.55; }
+  .rating-card a { color: var(--white); font-weight: 600; font-size: 14.5px; }
+  .rating-card a:hover { color: #FFB38A; }
+  .reviews .quote-card { background: var(--white); }
 
-  .reviews { background: var(--white); }
-  .reviews .section-title { margin-bottom: 48px; }
-  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .rating-card { border-radius: var(--radius-lg); padding: 32px 28px; background: radial-gradient(ellipse at top right, rgba(242,106,33,0.2), transparent 60%), var(--grad-navy-deep); color: var(--white); display: flex; flex-direction: column; }
-  .rating-big { font-family: var(--font-display); font-size: 64px; font-weight: 800; line-height: 1; }
-  .rating-big span { font-size: 24px; font-weight: 500; color: rgba(255,255,255,0.7); }
-  .rating-card .stars { color: var(--orange-2); letter-spacing: 3px; margin: 10px 0 16px; }
-  .rating-card p { color: rgba(255,255,255,0.8); font-size: 14.5px; line-height: 1.6; }
-  .rating-card p + p { margin-top: 10px; }
-  .rating-card a { margin-top: auto; padding-top: 20px; font-weight: 600; color: var(--orange-2); }
-  .rating-card a:hover { text-decoration: underline; }
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--white); }
+  .faq-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 72px; align-items: start; }
+  .faq-grid .sec-head { margin-bottom: 0; }
+  .faq-grid .sec-head a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(13,27,42,0.25); text-underline-offset: 3px; }
 
-  .faq { background: var(--grad-stone); }
-  .faq h2 { font-size: clamp(28px, 3.6vw, 40px); text-align: center; margin-bottom: 16px; letter-spacing: -0.02em; }
-  .faq-sub { text-align: center; color: var(--muted); margin-bottom: 44px; }
-  .faq-list { max-width: 760px; margin: 0 auto; }
+  /* ---------- Final CTA ---------- */
+  .final { padding: 0 0 120px; background: var(--white); }
+  .final-card { position: relative; overflow: hidden; background: var(--navy); color: var(--white); border-radius: 28px; padding: 88px 64px; text-align: center; }
+  .final-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(242,106,33,0.22), transparent 70%); pointer-events: none; }
+  .final-card > * { position: relative; }
+  .final-card h2 { color: var(--white); font-size: clamp(36px, 5vw, 60px); line-height: 1.02; max-width: 760px; margin: 0 auto 18px; }
+  .final-card h2 em { color: #FFB38A; }
+  .final-card p { color: rgba(255,255,255,0.78); font-size: 18px; max-width: 560px; margin: 0 auto 36px; line-height: 1.55; }
+  .final-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
-  .final { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(242,106,33,0.22), transparent 60%), radial-gradient(ellipse 60% 50% at 50% 100%, rgba(92,127,90,0.12), transparent 60%), var(--grad-navy-deep); color: var(--white); text-align: center; overflow: hidden; position: relative; }
-  .final::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-  .final-eyebrow { font-family: var(--font-display); font-style: italic; color: var(--orange-2); font-size: 18px; margin-bottom: 16px; position: relative; }
-  .final h2 { color: var(--white); font-size: clamp(36px, 5vw, 60px); margin-bottom: 32px; max-width: 820px; margin-left: auto; margin-right: auto; line-height: 1.02; letter-spacing: -0.025em; position: relative; }
-  .final h2 em { font-style: italic; font-weight: 500; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .final-cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
-
-  @keyframes float { 0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-6px) rotate(var(--rot, 0deg)); } }
-  .floating-card.top { --rot: 2deg; animation: float 4s ease-in-out infinite; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .hero h1, .hero-sub, .hero-cta-row, .finder-alt, .hero-pills, .hero-badge { animation: fadeUp 0.6s ease-out backwards; }
-  .hero-sub { animation-delay: 0.1s; }
-  .hero-cta-row { animation-delay: 0.2s; }
-  .hero-pills { animation-delay: 0.3s; }
-  .hero-visual { animation: fadeUp 0.8s ease-out 0.2s backwards; }
-
-  @media (max-width: 960px) {
-    .hero-grid, .sample-grid, .middle-grid { grid-template-columns: 1fr; gap: 40px; }
-    .problem-grid, .modules-grid, .how-grid, .pricing-grid, .reviews-grid { grid-template-columns: 1fr; }
-    .library-grid { grid-template-columns: repeat(2, 1fr); }
-    .method-grid { grid-template-columns: repeat(2, 1fr); }
-    section { padding: 64px 0; }
-    .price-card.featured { transform: none; }
-    .price-card.featured:hover { transform: translateY(-4px); }
-    .middle-left, .middle-right { padding: 32px 28px; }
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1100px) {
+    .hero-grid { gap: 40px; }
+    .page-shot { width: 290px; }
+    .float-move { display: none; }
+    .lib-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .rating-card { grid-column: 1 / -1; flex-direction: row; align-items: center; }
   }
-
-  @media (max-width: 768px) {
-    section { padding: 56px 0; }
-    .hero { padding: 32px 0 64px; }
-    .hero h1 { font-size: 38px; }
-    .hero-sub { font-size: 16px; }
-    .finder { grid-template-columns: 1fr; }
-    .finder .btn { width: 100%; }
-    .dash-stats { grid-template-columns: repeat(2, 1fr); row-gap: 14px; }
-    .dash-chart { height: 70px; }
-    .hero-pills { grid-template-columns: 1fr; max-width: 100%; gap: 8px; }
-    .hero-pill { padding: 12px 16px; display: flex; align-items: center; gap: 14px; }
-    .hero-pill-num { margin: 0; font-size: 20px; }
-    .fox-stage { max-width: 460px; margin: 0 auto; }
-    .sample-stats { grid-template-columns: 1fr; }
-    .sample-stat-val { font-size: 36px; }
-    .sample-bar-row { grid-template-columns: repeat(2, 1fr); }
-    .library-grid { grid-template-columns: repeat(2, 1fr); }
-    .method-grid { grid-template-columns: 1fr 1fr; }
-    .price-card { padding: 28px 24px; }
-    .price-value { font-size: 44px; }
-    .final h2 { font-size: 32px; }
-    .final-cta-row { flex-direction: column; }
-    .final-cta-row .btn { width: 100%; }
+  @media (max-width: 900px) {
+    .sec { padding: 88px 0; }
+    .hero { padding: 56px 0 72px; }
+    .hero-grid, .why-grid, .inside-grid, .faq-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+    .why-points { grid-template-columns: 1fr; gap: 22px; margin-top: 40px; padding-top: 32px; }
+    .hero-visual { height: 460px; max-width: 520px; margin: 0 auto; width: 100%; }
+    .proof ul { grid-template-columns: 1fr 1fr; }
+    .proof li:nth-child(3) { border-left: 0; }
+    .proof li:nth-child(n+3) { border-top: 1px solid rgba(13,27,42,0.08); }
+    .library-top { flex-direction: column; align-items: flex-start; }
+    .steps, .price-grid { grid-template-columns: 1fr; }
+    .price-desc { min-height: 0; }
+    .inside-visual { max-width: 520px; }
   }
-  @media (max-width: 600px) {
-    .fox-stage { aspect-ratio: auto; padding-top: 72px; }
-    .dashboard-card { position: relative; top: auto; width: 100%; transform: none; }
-    .fox-illustration { width: 32%; left: 2%; }
-    .floating-card.top { display: none; }
-    .dash-chart { height: 56px; }
-    .module { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; padding: 22px 20px; }
-    .module-icon { grid-row: span 2; margin-bottom: 0; }
-  }
-  @media (max-width: 400px) {
-    .hero h1 { font-size: 34px; }
-    .method-grid { grid-template-columns: 1fr; }
+  @media (max-width: 640px) {
+    .sec { padding: 72px 0; }
+    .sec-head { margin-bottom: 36px; }
+    .sec-head p { font-size: 16.5px; }
+    .hero h1 { font-size: 44px; }
+    .hero-sub { font-size: 17px; }
+    .finder { grid-template-columns: 1fr; padding: 6px; }
+    .finder-field + .finder-field { border-left: 0; border-top: 1px solid rgba(13,27,42,0.08); }
+    .finder .btn { min-height: 52px; }
+    .hero-trust { gap: 10px 20px; }
+    .hero-visual { height: 380px; }
+    .page-shot { width: 220px; }
+    .page-front { left: 0; }
+    .page-back { right: 0; top: 40px; }
+    .float-report { left: 50%; translate: -50% 0; bottom: 0; min-width: 0; width: calc(100% - 24px); max-width: 320px; }
+    .proof li { padding: 22px 16px; }
+    .proof .num { font-size: 32px; }
+    .lib-grid { gap: 10px; }
+    .lib-card { min-height: 0; padding: 16px; border-radius: 14px; }
+    .lib-icon { width: 36px; height: 36px; margin-bottom: 12px; }
+    .lib-title { font-size: 19px; }
+    .lib-meta { font-size: 12.5px; }
+    .lib-foot { font-size: 13px; padding-top: 12px; margin-top: 12px; }
+    .toc { grid-template-columns: 1fr; }
+    .inside-visual { padding: 24px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .rating-card { flex-direction: column; align-items: flex-start; }
+    .price-card { padding: 26px 22px; }
+    .price-card.is-popular { padding: 25px 21px; }
+    .final { padding-bottom: 72px; }
+    .final-card { padding: 64px 22px; border-radius: 20px; }
+    .final-row .btn, .inside-cta .btn { flex: 1 1 100%; }
   }
 </style>
 <script type="application/ld+json">
@@ -313,16 +259,74 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Sherlock Research",
-  "url": "https://sherlockresearch.com",
-  "logo": "https://sherlockresearch.com/assets/sherlock-colorful.png",
+  "url": "https://sherlockreports.com",
+  "logo": "https://sherlockreports.com/assets/sherlock-colorful.png",
   "description": "Industry-specific market intelligence for owner-led service businesses under $10M. Demand, competition, pricing, and buyer behavior — built for operators.",
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "hello@sherlockresearch.com",
+    "email": "hello@sherlockreports.com",
     "contactType": "customer service"
   }
 }
 </script>
+<!-- @faq-schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is Sherlock Research for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Owner-led businesses, franchise teams, local service companies, agencies, and investors who need clear market intelligence without enterprise research overhead. If you're making a pricing, channel, expansion, or acquisition decision in the next 90 days, you're the buyer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's actually in a report?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Eight sections: market size and forecast, demand drivers, buyer behavior, competitive landscape, pricing benchmarks, local market cuts, growth opportunities, and an executive playbook. Each section ends with specific recommended actions, not just data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from IBISWorld, Statista, or a consultant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enterprise research is built for analysts and investors at around $8,000 per seat per year. Consultants run $25K+ for a single project. Sherlock is built for operators at $497 per report, priced and structured to drive specific operational decisions, not committee debate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does the data come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Public datasets (U.S. Census Bureau, Bureau of Labor Statistics, trade associations), customer research, and operator input, combined with our own modeling. Every figure is labelled with its sample size and data vintage and tagged as fielded, benchmarked, or modeled, so you always know what you're looking at."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get the report after I pay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Checkout is handled by Payhip. Available reports download right after payment, and the receipt email includes your download link. Presell reports are emailed the day they're released."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if it isn't useful?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Email us within 30 days and we'll refund every dollar. If the report doesn't give you at least one insight you can act on, you shouldn't pay for it."
+      }
+    }
+  ]
+}
+</script>
+<!-- /@faq-schema -->
 </head>
 <body>
 
@@ -330,43 +334,54 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="nav" aria-label="Primary">
   <div class="container nav-inner">
-    <a href="index.html" class="logo" aria-label="Sherlock Research home">
+    <a href="/" class="logo" aria-label="Sherlock Research home">
       <span class="logo-mark"><svg viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></span>
       <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
     </a>
     <div class="nav-links" id="navLinks">
       <div class="nav-item">
-        <a href="reports.html">Reports</a>
-        <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="navReports" aria-label="Show reports and locations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <a href="/reports">Reports</a>
+        <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="navReports" aria-label="Show report categories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown" id="navReports">
           <div class="dropdown-col">
-            <div class="dropdown-title">Industry reports</div>
-            <a class="dd-item" href="landscaping-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span><span class="dd-text"><span class="dd-name">Landscaping</span><span class="dd-meta">2026 edition · from $497</span></span></a>
-            <a class="dd-item" href="roofing-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span><span class="dd-text"><span class="dd-name">Roofing</span><span class="dd-meta">2026 edition · from $497</span></span></a>
-            <a class="dd-item" href="hvac-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2v20"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg></span><span class="dd-text"><span class="dd-name">HVAC</span><span class="dd-meta">2026 edition · from $497</span></span></a>
-            <a class="dd-item" href="pest-control-report.html"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></span><span class="dd-text"><span class="dd-name">Pest Control</span><span class="dd-meta">2026 edition · from $497</span></span></a>
+            <div class="dropdown-title">Most read</div>
+            <a class="dd-item" href="/landscaping-report"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span><span class="dd-text"><span class="dd-name">Landscaping</span><span class="dd-meta">2026 edition</span></span></a>
+            <a class="dd-item" href="/roofing-report"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span><span class="dd-text"><span class="dd-name">Roofing</span><span class="dd-meta">2026 edition</span></span></a>
+            <a class="dd-item" href="/hvac-report"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2v20"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg></span><span class="dd-text"><span class="dd-name">HVAC</span><span class="dd-meta">2026 edition</span></span></a>
+            <a class="dd-item" href="/pest-control-report"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></span><span class="dd-text"><span class="dd-name">Pest Control</span><span class="dd-meta">2026 edition</span></span></a>
           </div>
           <div class="dropdown-col">
+            <div class="dropdown-title">By category</div>
+            <a class="dd-item" href="/reports#home-services"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="dd-text"><span class="dd-name">Home services</span><span class="dd-meta">22 reports</span></span></a>
+            <a class="dd-item" href="/reports#healthcare"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></span><span class="dd-text"><span class="dd-name">Healthcare</span><span class="dd-meta">7 reports</span></span></a>
+            <a class="dd-item" href="/reports#automotive"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span><span class="dd-text"><span class="dd-name">Automotive</span><span class="dd-meta">3 reports</span></span></a>
+            <a class="dd-item" href="/reports#hospitality"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span><span class="dd-text"><span class="dd-name">Hospitality</span><span class="dd-meta">5 reports</span></span></a>
+            <a class="dd-item" href="/reports#real-estate-finance"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span><span class="dd-text"><span class="dd-name">Real estate &amp; finance</span><span class="dd-meta">3 reports</span></span></a>
+            <a class="dd-item" href="/reports#professional-services"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span><span class="dd-text"><span class="dd-name">Professional services</span><span class="dd-meta">6 reports</span></span></a>
+            <a class="dd-item" href="/reports#education"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="dd-text"><span class="dd-name">Education &amp; childcare</span><span class="dd-meta">2 reports</span></span></a>
+            <a class="dd-item" href="/reports#local-services"><span class="dd-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg></span><span class="dd-text"><span class="dd-name">Local services</span><span class="dd-meta">2 reports</span></span></a>
+          </div>
+          <div class="dropdown-col dropdown-col-narrow">
             <div class="dropdown-title">Local markets</div>
-            <a class="dd-item" href="austin-tx.html"><span class="dd-text"><span class="dd-name">Austin, TX</span><span class="dd-meta">2.6M people · local data</span></span></a>
-            <a class="dd-item" href="dallas-tx.html"><span class="dd-text"><span class="dd-name">Dallas, TX</span><span class="dd-meta">8.3M people · local data</span></span></a>
-            <a class="dd-item" href="houston-tx.html"><span class="dd-text"><span class="dd-name">Houston, TX</span><span class="dd-meta">7.8M people · local data</span></span></a>
-            <a class="dd-item" href="san-antonio-tx.html"><span class="dd-text"><span class="dd-name">San Antonio, TX</span><span class="dd-meta">2.8M people · local data</span></span></a>
+            <a class="dd-item" href="/austin-tx"><span class="dd-text"><span class="dd-name">Austin, TX</span></span></a>
+            <a class="dd-item" href="/dallas-tx"><span class="dd-text"><span class="dd-name">Dallas, TX</span></span></a>
+            <a class="dd-item" href="/houston-tx"><span class="dd-text"><span class="dd-name">Houston, TX</span></span></a>
+            <a class="dd-item" href="/san-antonio-tx"><span class="dd-text"><span class="dd-name">San Antonio, TX</span></span></a>
           </div>
           <div class="dropdown-foot">
-            <a href="reports.html">All reports →</a>
-            <a href="sample.html">Free 2-page sample →</a>
+            <a href="/reports">All 50 reports →</a>
+            <a href="/sample">Free 2-page sample →</a>
           </div>
         </div>
       </div>
-      <a href="index.html#how">How it works</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="sample.html" class="btn btn-primary nav-mobile-only">Get a free sample</a>
+      <a href="/#how">How it works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/sample" class="btn btn-primary nav-mobile-only">Free sample</a>
     </div>
     <div class="nav-right">
-      <a href="sample.html" class="btn btn-primary nav-cta">Get a free sample</a>
+      <a href="/sample" class="btn btn-primary nav-cta">Free sample</a>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -374,386 +389,273 @@
 <!-- /@nav -->
 
 <main id="main">
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-badge">
-          <span class="stars-mini">★ <!-- @rating -->4.9<!-- /@rating --> / 5</span>
-          <span>Trusted by <!-- @operator-count -->240+<!-- /@operator-count --> service-business operators</span>
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-pill"><b>2026</b> New editions for <!-- @report-count -->50<!-- /@report-count --> industries</div>
+      <h1>Know your market before your <em>next move</em>.</h1>
+      <p class="hero-sub">Sherlock reports turn customer demand, local competition and pricing pressure into clear next moves for owner-led service businesses. One report, from $497.</p>
+
+      <form class="finder" action="/reports" data-finder>
+        <div class="finder-field">
+          <label for="finder-industry">Industry</label>
+          <select id="finder-industry" name="industry"><!-- @finder-industries --><optgroup label="Home services"><option value="landscaping">Landscaping</option><option value="roofing">Roofing</option><option value="hvac">HVAC</option><option value="pest-control">Pest Control</option><option value="plumbing">Plumbing</option><option value="electrical">Electrical</option><option value="garage-door">Garage Door</option><option value="pool-service">Pool Service</option><option value="lawn-care">Lawn Care</option><option value="tree-care">Tree Care</option><option value="home-cleaning">Home Cleaning</option><option value="carpet-cleaning">Carpet Cleaning</option><option value="restoration">Restoration</option><option value="painting">Painting</option><option value="flooring">Flooring</option><option value="windows-and-doors">Windows and Doors</option><option value="kitchen-and-bath-remodeling">Kitchen and Bath Remodeling</option><option value="general-contracting">General Contracting</option><option value="solar-installation">Solar Installation</option><option value="security-systems">Security Systems</option><option value="moving">Moving</option><option value="junk-removal">Junk Removal</option></optgroup><optgroup label="Healthcare"><option value="dental">Dental</option><option value="dermatology">Dermatology</option><option value="med-spa">Med Spa</option><option value="veterinary">Veterinary</option><option value="physical-therapy">Physical Therapy</option><option value="chiropractic">Chiropractic</option><option value="senior-home-care">Senior Home Care</option></optgroup><optgroup label="Automotive"><option value="auto-repair">Auto Repair</option><option value="car-wash-and-detailing">Car Wash and Detailing</option><option value="towing">Towing</option></optgroup><optgroup label="Hospitality"><option value="restaurants">Restaurants</option><option value="coffee-shops">Coffee Shops</option><option value="breweries">Breweries</option><option value="hotels">Hotels</option><option value="event-venues">Event Venues</option></optgroup><optgroup label="Real estate &amp; finance"><option value="property-management">Property Management</option><option value="real-estate-brokerages">Real Estate Brokerages</option><option value="mortgage-brokers">Mortgage Brokers</option></optgroup><optgroup label="Professional services"><option value="insurance-agencies">Insurance Agencies</option><option value="accounting-and-tax">Accounting and Tax</option><option value="legal-services">Legal Services</option><option value="it-managed-services">IT Managed Services</option><option value="digital-marketing-agencies">Digital Marketing Agencies</option><option value="staffing-agencies">Staffing Agencies</option></optgroup><optgroup label="Education &amp; childcare"><option value="childcare">Childcare</option><option value="private-schools-and-tutoring">Private Schools and Tutoring</option></optgroup><optgroup label="Local services"><option value="self-storage">Self Storage</option><option value="fitness-gyms">Fitness Gyms</option></optgroup><!-- /@finder-industries --></select>
         </div>
-        <h1>Know your market before your <em>next move</em>.</h1>
-        <p class="hero-sub">Sherlock turns customer demand, local competition, pricing pressure, and buyer behavior into clear decisions for owner-led service businesses.</p>
-        <form class="finder hero-cta-row" action="reports.html" data-finder>
-          <div class="finder-field">
-            <label for="finderIndustry">Your industry</label>
-            <select id="finderIndustry" name="industry"><!-- @finder-industries --><option value="landscaping">Landscaping</option><option value="roofing">Roofing</option><option value="hvac">HVAC</option><option value="pest-control">Pest Control</option><!-- /@finder-industries --></select>
-          </div>
-          <div class="finder-field">
-            <label for="finderMetro">Your market</label>
-            <select id="finderMetro" name="metro"><!-- @finder-metros --><option value="">National (all U.S.)</option><option value="atlanta-ga">Atlanta, GA</option><option value="austin-tx">Austin, TX</option><option value="boston-ma">Boston, MA</option><option value="charlotte-nc">Charlotte, NC</option><option value="chicago-il">Chicago, IL</option><option value="dallas-tx">Dallas, TX</option><option value="denver-co">Denver, CO</option><option value="detroit-mi">Detroit, MI</option><option value="houston-tx">Houston, TX</option><option value="los-angeles-ca">Los Angeles, CA</option><option value="miami-fl">Miami, FL</option><option value="minneapolis-mn">Minneapolis, MN</option><option value="new-york-ny">New York, NY</option><option value="philadelphia-pa">Philadelphia, PA</option><option value="phoenix-az">Phoenix, AZ</option><option value="riverside-ca">Riverside, CA</option><option value="san-antonio-tx">San Antonio, TX</option><option value="san-diego-ca">San Diego, CA</option><option value="san-francisco-ca">San Francisco, CA</option><option value="seattle-wa">Seattle, WA</option><option value="tampa-fl">Tampa, FL</option><option value="washington-dc">Washington, DC</option><!-- /@finder-metros --></select>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg">See my report →</button>
-        </form>
-        <p class="finder-alt">Just looking? <a href="#sample">View a sample insight</a> or <a href="sample.html">get the free 2-page PDF</a>.</p>
-        <div class="hero-pills">
-          <div class="hero-pill">
-            <span class="hero-pill-num">300+</span>
-            <span class="hero-pill-label">Households surveyed per market</span>
-          </div>
-          <div class="hero-pill">
-            <span class="hero-pill-num">4</span>
-            <span class="hero-pill-label">Industry reports live, more coming</span>
-          </div>
-          <div class="hero-pill">
-            <span class="hero-pill-num"><!-- @metro-count -->22<!-- /@metro-count --></span>
-            <span class="hero-pill-label">Metros with local data cuts</span>
-          </div>
+        <div class="finder-field">
+          <label for="finder-metro">Market</label>
+          <select id="finder-metro" name="metro"><!-- @finder-metros --><option value="">National (all U.S.)</option><option value="atlanta-ga">Atlanta, GA</option><option value="austin-tx">Austin, TX</option><option value="boston-ma">Boston, MA</option><option value="charlotte-nc">Charlotte, NC</option><option value="chicago-il">Chicago, IL</option><option value="dallas-tx">Dallas, TX</option><option value="denver-co">Denver, CO</option><option value="detroit-mi">Detroit, MI</option><option value="houston-tx">Houston, TX</option><option value="los-angeles-ca">Los Angeles, CA</option><option value="miami-fl">Miami, FL</option><option value="minneapolis-mn">Minneapolis, MN</option><option value="new-york-ny">New York, NY</option><option value="philadelphia-pa">Philadelphia, PA</option><option value="phoenix-az">Phoenix, AZ</option><option value="riverside-ca">Riverside, CA</option><option value="san-antonio-tx">San Antonio, TX</option><option value="san-diego-ca">San Diego, CA</option><option value="san-francisco-ca">San Francisco, CA</option><option value="seattle-wa">Seattle, WA</option><option value="tampa-fl">Tampa, FL</option><option value="washington-dc">Washington, DC</option><!-- /@finder-metros --></select>
         </div>
+        <button type="submit" class="btn btn-primary">See the report →</button>
+      </form>
+      <p class="finder-alt">Or <a href="/reports">browse all <!-- @report-count -->50<!-- /@report-count --> reports</a>, or <a href="/sample">read a free two-page sample</a>.</p>
+
+      <ul class="hero-trust">
+        <li><span class="stars" aria-hidden="true">★★★★★</span><span><b><!-- @rating -->4.9<!-- /@rating -->/5</b> from operators</span></li>
+        <li><b><!-- @operator-count -->240+<!-- /@operator-count --></b> businesses served</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>30-day money-back guarantee</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="page-shot page-back"><img src="/assets/sample-page-2.jpg" alt="" width="734" height="950"></div>
+      <div class="page-shot page-front"><img src="/assets/sample-page-1.jpg" alt="" width="734" height="950"></div>
+      <div class="float-card float-move">
+        <div class="float-move-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Recommended move</div>
+        <p>Every section ends with an action you can take on Monday.</p>
       </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="fox-stage">
-          <img class="fox-illustration" src="assets/sherlock-fox.svg" alt="" width="200" height="192">
-
-          <div class="floating-card top">
-            <span class="pill">UPDATED</span>
-            <span>Panel data updated May 2026</span>
-          </div>
-
-          <div class="dashboard-card">
-            <div class="dash-header">
-              <div class="dash-header-dots"><span></span><span></span><span></span></div>
-              <span>sherlockresearch.com</span>
-            </div>
-            <div class="dash-title">Landscaping Consumer Panel</div>
-            <div class="dash-sub">2026 panel · 312 service-buying households</div>
-            <div class="dash-stats">
-              <div><div class="dash-stat-val orange">31%</div><div class="dash-stat-label">Considering a switch</div></div>
-              <div><div class="dash-stat-val">52%</div><div class="dash-stat-label">Quality first</div></div>
-              <div><div class="dash-stat-val">57%</div><div class="dash-stat-label">20%+ price risk</div></div>
-              <div><div class="dash-stat-val">$4K</div><div class="dash-stat-label">Avg annual spend</div></div>
-            </div>
-            <div class="dash-chart">
-              <div class="dash-bar"></div><div class="dash-bar"></div><div class="dash-bar"></div><div class="dash-bar"></div><div class="dash-bar"></div>
-            </div>
-          </div>
-        </div>
+      <div class="float-card float-report">
+        <span class="float-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></span>
+        <span><span class="float-title">Landscaping Industry Report</span><span class="float-meta">2026 edition · 8 sections · PDF</span></span>
       </div>
     </div>
   </div>
-</section>
+</header>
 
-<!-- ============ PROBLEM SECTION ============ -->
-<section class="problem">
+<section class="proof" aria-label="Sherlock at a glance">
   <div class="container">
-    <div class="problem-head">
-      <div class="section-eyebrow section-eyebrow-center">THE SHERLOCK ANGLE</div>
-      <h2>Enterprise research is too expensive.<br> Anecdotes cost <em>even more</em>.</h2>
-    </div>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-num">01</div>
-        <h3>$3K reports built for boardrooms, not owners</h3>
-        <p>Most enterprise market research is written for analysts and investors. Operators get 80-page PDFs full of charts and zero recommended action.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-num">02</div>
-        <h3>National data misses the local picture</h3>
-        <p>Industry benchmarks at the country level don't tell you what's happening in your zip code. Local operators need local signals to compete.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-num">03</div>
-        <h3>Anecdotes are the most expensive data</h3>
-        <p>Owners often rely on ad reps, peer chatter, and one-off competitor calls to make pricing and growth decisions. That hidden cost shows up in churn and lost share.</p>
-      </div>
-      <div class="problem-card highlight">
-        <div class="problem-num">04</div>
-        <h3>Reports should answer "what do I do Monday?"</h3>
-        <p>Every Sherlock module ends with a specific recommended move — pricing, channel, positioning — not just a chart. Insights you act on, not just read.</p>
-      </div>
-    </div>
+    <ul>
+      <li><span class="num"><!-- @report-count -->50<!-- /@report-count --></span><span class="lbl">industry reports, one consistent structure</span></li>
+      <li><span class="num"><!-- @metro-count -->22<!-- /@metro-count --></span><span class="lbl">U.S. metros with local data cuts</span></li>
+      <li><span class="num">$497</span><span class="lbl">per report, one-time, no subscription</span></li>
+      <li><span class="num">8</span><span class="lbl">sections, each ending in a recommended move</span></li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ MODULES SECTION ============ -->
-<section class="modules">
+<section class="sec library" id="reports">
   <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">WHAT'S IN EACH REPORT</div>
-    <h2 class="section-title">A report that feels like a <em>strategy sprint</em>.</h2>
-    <p class="section-sub">Each module is designed to answer one commercial question quickly, then point the owner toward a concrete decision.</p>
-    <div class="modules-grid">
-      <div class="module">
-        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div>
-        <h3>Demand &amp; market size</h3>
-        <p>Size the opportunity by category, market, customer segment, and service line.</p>
+    <div class="library-top">
+      <div class="sec-head">
+        <div class="eyebrow">The library</div>
+        <h2>Research for the industries that keep Main Street running.</h2>
+        <p>Every report follows the same eight-section structure, so you can compare markets side by side before you commit time or money.</p>
       </div>
-      <div class="module">
-        <div class="module-icon orange"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
-        <h3>Buyer behavior</h3>
-        <p>Understand satisfaction, switching intent, trust channels, unmet needs, and willingness to pay.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-        <h3>Competitive landscape</h3>
-        <p>Benchmark local providers, offers, ratings, positioning, and service bundles.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon orange"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <h3>Pricing pressure</h3>
-        <p>Spot where customers tolerate premium pricing — and where churn-risk lives.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3>Channel strategy</h3>
-        <p>Prioritize Google, referrals, local groups, review capture, and neighborhood visibility.</p>
-      </div>
-      <div class="module">
-        <div class="module-icon navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <h3>Executive playbook</h3>
-        <p>Turn the data into specific launch plans, messaging, pricing tiers, and next-best moves.</p>
-      </div>
+      <a href="/reports" class="btn btn-outline-dark">Browse all <!-- @report-count -->50<!-- /@report-count --> reports →</a>
     </div>
-  </div>
-</section>
-
-<!-- ============ SAMPLE INSIGHT ============ -->
-<section class="sample" id="sample">
-  <div class="container">
-    <div class="sample-grid">
-      <div class="sample-left">
-        <div class="section-eyebrow">SAMPLE INSIGHT MODULE</div>
-        <h2>What a landscaping operator learns in <em>minutes</em>.</h2>
-        <p>This module draws on a 312-person consumer panel: homeowners who paid for landscaping or lawn care in the last 12 months and were primary or shared decision-makers in their household.</p>
-        <div class="sample-disclaimer">Sample panel illustrated below. Live reports include the full module with field methodology, segment cuts, and recommended Monday-morning actions.</div>
-      </div>
-      <div class="sample-panel">
-        <div class="sample-panel-head">
-          <div class="sample-panel-title">Switching &amp; willingness-to-pay signals</div>
-          <div class="sample-panel-tag">312 SAMPLE</div>
-        </div>
-        <div class="sample-stats">
-          <div class="sample-stat featured">
-            <div class="sample-stat-val">31%</div>
-            <div class="sample-stat-label">Considering Switching</div>
-            <div class="sample-stat-desc">Active or soft-switch candidates</div>
-          </div>
-          <div class="sample-stat">
-            <div class="sample-stat-val">52%</div>
-            <div class="sample-stat-label">Top Choice Driver</div>
-            <div class="sample-stat-desc">Quality + reliability beats price</div>
-          </div>
-          <div class="sample-stat">
-            <div class="sample-stat-val">57%</div>
-            <div class="sample-stat-label">20%+ Price Risk</div>
-            <div class="sample-stat-desc">Would shop, switch, or stop</div>
-          </div>
-          <div class="sample-stat">
-            <div class="sample-stat-val">6%</div>
-            <div class="sample-stat-label">True Price Buyers</div>
-            <div class="sample-stat-desc">Pure cheapest-wins decision makers</div>
-          </div>
-        </div>
-        <div class="sample-bar-row">
-          <div class="sample-bar-block"></div><div class="sample-bar-block"></div><div class="sample-bar-block"></div><div class="sample-bar-block"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ INDUSTRIES LIBRARY ============ -->
-<section class="library" id="reports">
-  <div class="container">
-    <div class="library-head">
-      <div class="section-eyebrow">REPORT LIBRARY</div>
-      <h2>Start with home services. <em>Expand</em> by industry, city, and decision.</h2>
-      <p>Every report covers the same core (market size, buyer behavior, competition, pricing, and growth opportunities), so you can compare industries side by side.</p>
-    </div>
-    <div class="library-grid">
+    <nav class="cat-links" aria-label="Report categories"><!-- @category-links --><a class="cat-link" href="/reports#home-services"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Home services</a><a class="cat-link" href="/reports#healthcare"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>Healthcare</a><a class="cat-link" href="/reports#automotive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>Automotive</a><a class="cat-link" href="/reports#hospitality"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>Hospitality</a><a class="cat-link" href="/reports#real-estate-finance"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>Real estate &amp; finance</a><a class="cat-link" href="/reports#professional-services"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Professional services</a><a class="cat-link" href="/reports#education"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Education &amp; childcare</a><a class="cat-link" href="/reports#local-services"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>Local services</a><!-- /@category-links --></nav>
+    <div class="lib-grid">
 <!-- @library-cards -->
-      <a class="lib-card featured" href="landscaping-report.html">
-        <span class="lib-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span>
-        <div class="lib-title">Landscaping</div>
-        <div class="lib-meta">Free sample available</div>
-        <div class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></div>
+      <a class="lib-card" href="/landscaping-report">
+        <span class="lib-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span>
+        <span class="lib-title">Landscaping</span>
+        <span class="lib-meta">Home services</span>
+        <span class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></span>
       </a>
-      <a class="lib-card" href="roofing-report.html">
-        <span class="lib-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
-        <div class="lib-title">Roofing</div>
-        <div class="lib-meta">2026 edition</div>
-        <div class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></div>
+      <a class="lib-card" href="/roofing-report">
+        <span class="lib-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
+        <span class="lib-title">Roofing</span>
+        <span class="lib-meta">Home services</span>
+        <span class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></span>
       </a>
-      <a class="lib-card" href="hvac-report.html">
-        <span class="lib-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2v20"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg></span>
-        <div class="lib-title">HVAC</div>
-        <div class="lib-meta">2026 edition</div>
-        <div class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></div>
+      <a class="lib-card" href="/hvac-report">
+        <span class="lib-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M12 2v20"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg></span>
+        <span class="lib-title">HVAC</span>
+        <span class="lib-meta">Home services</span>
+        <span class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></span>
       </a>
-      <a class="lib-card" href="pest-control-report.html">
-        <span class="lib-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></span>
-        <div class="lib-title">Pest Control</div>
-        <div class="lib-meta">2026 edition</div>
-        <div class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></div>
+      <a class="lib-card" href="/pest-control-report">
+        <span class="lib-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></span>
+        <span class="lib-title">Pest Control</span>
+        <span class="lib-meta">Home services</span>
+        <span class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a class="lib-card" href="/garage-door-report">
+        <span class="lib-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+        <span class="lib-title">Garage Door</span>
+        <span class="lib-meta">Home services</span>
+        <span class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a class="lib-card" href="/veterinary-report">
+        <span class="lib-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></span>
+        <span class="lib-title">Veterinary</span>
+        <span class="lib-meta">Healthcare</span>
+        <span class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a class="lib-card" href="/insurance-agencies-report">
+        <span class="lib-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+        <span class="lib-title">Insurance Agencies</span>
+        <span class="lib-meta">Professional services</span>
+        <span class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a class="lib-card" href="/restaurants-report">
+        <span class="lib-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
+        <span class="lib-title">Restaurants</span>
+        <span class="lib-meta">Hospitality</span>
+        <span class="lib-foot"><span>From $497</span><span class="arrow" aria-hidden="true">→</span></span>
       </a>
 <!-- /@library-cards -->
     </div>
-    <div class="library-soon">
-      <span class="soon-label">Coming next:</span>
-      <span class="soon-chip">Cleaning</span>
-      <span class="soon-chip">Dentistry</span>
-      <span class="soon-chip">Fitness</span>
-      <span class="soon-chip">Automotive</span>
-      <span class="soon-chip">Accounting</span>
-      <a class="soon-chip request" href="mailto:hello@sherlockresearch.com?subject=Industry%20request">Request an industry →</a>
+    <div class="library-foot">
+      <span><!-- @pipeline-count -->50<!-- /@pipeline-count --> more industries are in research. Need one sooner?</span>
+      <a href="mailto:hello@sherlockreports.com?subject=Report%20request" class="btn btn-outline-dark">Request an industry</a>
     </div>
   </div>
 </section>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section class="how" id="how">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">HOW IT WORKS</div>
-    <h2 class="section-title">From question to decision in one <em>self-serve flow</em>.</h2>
-    <p class="section-sub">No enterprise subscription. No 12-week research project. Choose the market question, get the report, act.</p>
-    <div class="how-grid">
-      <div class="how-step">
-        <div class="how-num">1</div>
-        <h3>Pick your industry and market</h3>
-        <p>Start broad with an industry report or go local with city, region, and service-line modules.</p>
+<section class="sec why" id="why">
+  <div class="container why-grid">
+    <div class="sec-head">
+      <div class="eyebrow">Why Sherlock</div>
+      <h2>Enterprise-grade research, priced for <em>owner-operators</em>.</h2>
+      <p>Industry databases are built for analysts and sold by the seat. Consultants take months. Sherlock focuses on the decisions an owner actually makes this quarter.</p>
+    </div>
+    <div>
+<!-- @compare -->
+<div class="compare-scroll" tabindex="0" role="region" aria-label="Sherlock compared with IBISWorld and consultants">
+      <table class="compare-table">
+        <thead><tr><th scope="col">What you get</th><th scope="col" class="col-sherlock">Sherlock</th><th scope="col">IBISWorld</th><th scope="col">Consultant</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Built for operators</th><td class="col-sherlock"><span class="ci ci-yes" aria-hidden="true"></span>Yes</td><td><span class="ci ci-no" aria-hidden="true"></span>Analysts</td><td><span class="ci ci-mid" aria-hidden="true"></span>Sometimes</td></tr>
+          <tr><th scope="row">Local / city-level data</th><td class="col-sherlock"><span class="ci ci-yes" aria-hidden="true"></span>Yes</td><td><span class="ci ci-no" aria-hidden="true"></span>No</td><td><span class="ci ci-mid" aria-hidden="true"></span>Custom</td></tr>
+          <tr><th scope="row">Recommended actions</th><td class="col-sherlock"><span class="ci ci-yes" aria-hidden="true"></span>Every section</td><td><span class="ci ci-no" aria-hidden="true"></span>No</td><td><span class="ci ci-yes" aria-hidden="true"></span>Yes</td></tr>
+          <tr><th scope="row">Time to answer</th><td class="col-sherlock"><span class="ci ci-yes" aria-hidden="true"></span>Instant</td><td><span class="ci ci-yes" aria-hidden="true"></span>Instant</td><td><span class="ci ci-no" aria-hidden="true"></span>6–12 weeks</td></tr>
+          <tr><th scope="row">Typical cost</th><td class="col-sherlock">$497–$2,997</td><td>$8,000+/yr</td><td>$25,000+</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-hint" aria-hidden="true">Swipe to compare →</p>
+<!-- /@compare -->
+    </div>
+  </div>
+</section>
+
+<section class="sec inside" id="inside">
+  <div class="container inside-grid">
+    <div class="inside-visual">
+      <span class="inside-tag">Free sample</span>
+      <img src="/assets/sample-page-1.jpg" alt="Page one of the free Landscaping sample: a buyer-behavior section with four headline figures and a recommended action" width="734" height="950" loading="lazy">
+    </div>
+    <div>
+      <div class="sec-head">
+        <div class="eyebrow">What's inside</div>
+        <h2>Eight sections. One clear path to a decision.</h2>
       </div>
-      <div class="how-step">
-        <div class="how-num">2</div>
-        <h3>Review the signals</h3>
-        <p>See consumer demand, switching triggers, channel trust, price sensitivity, and competitive positioning.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-num">3</div>
-        <h3>Use the growth playbook</h3>
-        <p>Leave with specific recommendations for messaging, pricing, services, hiring, and expansion.</p>
+      <ol class="toc">
+        <li><span><b>Market size &amp; forecast</b><span>National demand and where it's heading</span></span></li>
+        <li><span><b>Demand drivers</b><span>Residential, commercial and seasonal</span></span></li>
+        <li><span><b>Buyer behavior</b><span>Switching intent and price tolerance</span></span></li>
+        <li><span><b>Competitive landscape</b><span>Who you're up against, and the gaps</span></span></li>
+        <li><span><b>Pricing benchmarks</b><span>Service-line spreads and premiums</span></span></li>
+        <li><span><b>Local market cuts</b><span>Demand and pricing for your metro</span></span></li>
+        <li><span><b>Growth opportunities</b><span>The highest-odds lines and segments</span></span></li>
+        <li><span><b>Executive playbook</b><span>Your next moves, in priority order</span></span></li>
+      </ol>
+      <div class="inside-cta">
+        <!-- @sample-cta --><a href="/assets/sherlock-landscaping-sample.pdf" class="btn btn-primary btn-lg" download>Download the free sample (PDF) ↓</a><!-- /@sample-cta -->
+        <a href="/landscaping-report" class="btn btn-outline-dark btn-lg">See a full report page</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ MIDDLE-TICKET ============ -->
-<section class="middle">
+<section class="sec how" id="how">
   <div class="container">
-    <div class="middle-grid">
-      <div class="middle-left">
-        <div class="section-eyebrow">BUILT FOR THE MIDDLE-TICKET MARKET</div>
-        <h2>Big enough to matter. Small enough to <em>buy today</em>.</h2>
-        <p style="color: var(--muted); font-size: 15px; line-height: 1.65;">Enterprise research is sold through procurement. Sherlock reports are priced and packaged so an owner-operator, agency, or franchise team can buy one today, without a committee.</p>
-        <ul class="middle-list">
-          <li><span class="check" aria-hidden="true">✓</span>Self-serve purchase journey, no procurement call required</li>
-          <li><span class="check" aria-hidden="true">✓</span>Reports by industry and by city, so you start with your exact market</li>
-          <li><span class="check" aria-hidden="true">✓</span>Sample insights before checkout — see the value first</li>
-          <li><span class="check" aria-hidden="true">✓</span>Clear distinction between simulated, benchmarked, and fielded data</li>
-        </ul>
-      </div>
-      <div class="middle-right">
-        <div class="quote-fox" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg>
+    <div class="sec-head center">
+      <div class="eyebrow">How it works</div>
+      <h2>From question to decision in an afternoon.</h2>
+    </div>
+    <ol class="steps">
+      <li class="step"><h3>Pick your industry and market</h3><p>Start with the national report, or add a local data cut for one of <!-- @metro-count -->22<!-- /@metro-count --> metros.</p></li>
+      <li class="step"><h3>Check out in a minute</h3><p>Pay once by card. Your PDF download arrives right after checkout, with a receipt by email.</p></li>
+      <li class="step"><h3>Act on the playbook</h3><p>Use the recommended moves to set prices, pick channels, plan hiring, or test a new market.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec pricing" id="pricing">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="eyebrow">Pricing</div>
+      <h2>Simple, one-time pricing.</h2>
+      <p>No subscription required. Every purchase is covered by our 30-day money-back guarantee.</p>
+    </div>
+    <div class="price-grid">
+<!-- @home-pricing -->
+      <article class="price-card">
+        <div class="price-top">
+          <h3>Standard Report</h3>
+          
         </div>
-        <div class="quote-text">"Show me where demand is moving, what customers are unhappy about, and which growth move has the highest odds."</div>
-        <div class="quote-attr"><strong style="color: var(--white);">The question operators ask us most.</strong><br>Every Sherlock report is built to answer it, before you ever book a call.</div>
-      </div>
+        <p class="price-desc">The full industry report at the national level. Best for a one-time read on the market.</p>
+        <div class="price-amount"><span class="price-num">$497</span><span class="price-unit">One-time</span></div>
+        <a href="/pricing?plan=single#purchase" class="btn btn-outline-dark btn-block">Get Standard Report</a>
+        <ul class="price-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Full report: 8 sections + appendix</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>National data &amp; forecasts</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Instant PDF download</li>
+        </ul>
+      </article>
+      <article class="price-card is-popular">
+        <div class="price-top">
+          <h3>City-Specific Report</h3>
+          <span class="price-badge">Most popular</span>
+        </div>
+        <p class="price-desc">Everything in Standard, plus a local data cut for the metro you choose. Best for real market moves.</p>
+        <div class="price-amount"><span class="price-num">$597</span><span class="price-unit">One-time · pick your metro</span></div>
+        <a href="/pricing?plan=city#purchase" class="btn btn-primary btn-block">Get City-Specific Report</a>
+        <ul class="price-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Everything in Standard</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Your city's local data cut</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Local competitor scan</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Metro pricing benchmarks</li>
+        </ul>
+      </article>
+      <article class="price-card">
+        <div class="price-top">
+          <h3>All-Access Pass</h3>
+          
+        </div>
+        <p class="price-desc">Every Sherlock industry report in one purchase. Best for multi-industry operators, agencies, and investors.</p>
+        <div class="price-amount"><span class="price-num">$2,997</span><span class="price-unit">One-time · every report</span></div>
+        <a href="/pricing?plan=all#purchase" class="btn btn-outline-dark btn-block">Get All-Access Pass</a>
+        <ul class="price-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>All current industry reports</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>New reports as released</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>National data, all verticals</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Best for portfolios</li>
+        </ul>
+      </article>
+<!-- /@home-pricing -->
     </div>
+    <p class="pricing-note">Want ongoing updates and 1:1 coaching? <a href="/pricing?plan=quarterly#purchase">See Quarterly + Coaching</a>.</p>
   </div>
 </section>
 
-<!-- ============ PRICING ============ -->
-<section class="pricing" id="pricing">
+<section class="sec reviews" id="reviews">
   <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">SIMPLE COMMERCIAL MODEL</div>
-    <h2 class="section-title">Research priced for operators, <em>not procurement</em>.</h2>
-    <p class="section-sub">Reports are priced to be an obvious upgrade from guessing — and an obvious bargain compared to a $25K consulting engagement.</p>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-eyebrow">ENTRY</div>
-        <div class="price-name">Standard Report</div>
-        <div class="price-value">$497</div>
-        <div class="price-tagline">Best for owners validating an industry trend, customer pain point, or service expansion idea.</div>
-        <ul class="price-list">
-          <li>Demand &amp; market sizing</li>
-          <li>Buyer behavior modules</li>
-          <li>Competitive landscape</li>
-          <li>Pricing &amp; channel signals</li>
-          <li>Growth recommendations</li>
-        </ul>
-        <a href="sample.html" class="btn btn-outline-dark btn-lg" style="width: 100%;">Get a free sample</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-badge">MOST POPULAR</div>
-        <div class="price-eyebrow">LOCAL DEPTH</div>
-        <div class="price-name">City-Specific Report</div>
-        <div class="price-value">$597</div>
-        <div class="price-tagline">Best for market entry, service launches, local positioning, and competitive moves in a specific MSA.</div>
-        <ul class="price-list">
-          <li>Everything in Standard Report</li>
-          <li>Local competitor scan</li>
-          <li>Market-specific demand signals</li>
-          <li>MSA-level pricing data</li>
-          <li>Decision-ready playbook</li>
-        </ul>
-        <a href="pricing.html?plan=city#purchase" class="btn btn-primary btn-lg" style="width: 100%;">Start with Sherlock →</a>
-      </div>
-      <div class="price-card">
-        <div class="price-eyebrow">ONGOING</div>
-        <div class="price-name">Quarterly + Coaching</div>
-        <div class="price-value">$2,000<span style="font-size: 18px; color: var(--muted); font-weight: 500;">/yr</span></div>
-        <div class="price-tagline">Best for teams treating market intelligence as a continuous capability, not a one-time purchase.</div>
-        <ul class="price-list">
-          <li>4 quarterly report updates</li>
-          <li>4 one-on-one coaching calls</li>
-          <li>Local data included</li>
-          <li>Priority access to new modules</li>
-        </ul>
-        <a href="pricing.html?plan=quarterly#purchase" class="btn btn-outline-dark btn-lg" style="width: 100%;">Reserve your quarter</a>
-      </div>
+    <div class="sec-head">
+      <div class="eyebrow">Customers</div>
+      <h2>Operators use Sherlock to make real moves.</h2>
     </div>
-    <p class="pricing-more">Need every industry? The All-Access Pass is $2,997, one-time. <a href="pricing.html">Compare all four plans →</a></p>
-  </div>
-</section>
-
-<!-- ============ METHODOLOGY ============ -->
-<section class="method" id="methodology">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">HOW WE KNOW WHAT WE KNOW</div>
-    <h2 class="section-title">Built on four data layers&nbsp;— <em>verified, not vibes</em>.</h2>
-    <p class="section-sub">Every Sherlock report combines four independent data sources, with every number tagged as simulated, benchmarked, or fielded.</p>
-    <div class="method-grid">
-      <div class="method-card">
-        <div class="method-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <h3>Consumer panels</h3>
-        <p>300+ verified service-buying households per market, fielded in the last 12 months.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <h3>Operator interviews</h3>
-        <p>Primary conversations with active service-business owners across each industry covered.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-icon slate"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>
-        <h3>Public data anchors</h3>
-        <p>Census, BLS, permit data, and association reports cross-referenced for every market sizing claim.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-icon navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <h3>Demand signals</h3>
-        <p>Search trends, review velocity, ad-spend indicators, and channel data triangulated each quarter.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ REVIEWS ============ -->
-<section class="reviews">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">WHAT OPERATORS ARE SAYING</div>
-    <h2 class="section-title">Trusted by service businesses making <em>real moves</em>.</h2>
     <div class="reviews-grid">
+      <div class="rating-card">
+        <div>
+          <div class="rating-num"><!-- @rating -->4.9<!-- /@rating --><small>/5</small></div>
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p>Average rating from <!-- @operator-count -->240+<!-- /@operator-count --> service-business operators.</p>
+        </div>
+        <a href="/sample">Read the free sample →</a>
+      </div>
 <!-- @home-reviews -->
       <figure class="quote-card">
         <span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
@@ -768,23 +670,17 @@
         <figcaption><span class="avatar" aria-hidden="true">AL</span><span><span class="who-name">Amir L.</span><span class="who-role">Owner, Garage Floor Coating &amp; Epoxy</span></span></figcaption>
       </figure>
 <!-- /@home-reviews -->
-      <div class="rating-card">
-        <div class="rating-big"><!-- @rating -->4.9<!-- /@rating --><span> / 5</span></div>
-        <span class="stars" role="img" aria-label="5 stars">★★★★★</span>
-        <p>Average rating from <!-- @operator-count -->240+<!-- /@operator-count --> service-business operators.</p>
-        <p>Every report is backed by our 30-day "made a better decision" guarantee.</p>
-        <a href="sample.html">Read a free sample first →</a>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="faq">
-  <div class="container">
-    <div class="section-eyebrow section-eyebrow-center">FAQ</div>
-    <h2>Questions buyers ask.</h2>
-    <p class="faq-sub">Straight answers before you buy.</p>
+<section class="sec faq" id="faq">
+  <div class="container faq-grid">
+    <div class="sec-head">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions, answered.</h2>
+      <p>Anything else? Email <a href="mailto:hello@sherlockreports.com">hello@sherlockreports.com</a> and we reply <!-- @response-time -->within one business day<!-- /@response-time -->.</p>
+    </div>
     <div class="faq-list">
       <details open>
         <summary>Who is Sherlock Research for?</summary>
@@ -792,44 +688,40 @@
       </details>
       <details>
         <summary>What's actually in a report?</summary>
-        <p>Six modules: demand and market size, buyer behavior, competitive landscape, pricing pressure, channel strategy, and an executive playbook. Each module ends with specific recommended actions, not just data. Sample insights are shown on the report page before checkout.</p>
+        <p>Eight sections: market size and forecast, demand drivers, buyer behavior, competitive landscape, pricing benchmarks, local market cuts, growth opportunities, and an executive playbook. Each section ends with specific recommended actions, not just data.</p>
       </details>
       <details>
         <summary>How is this different from IBISWorld, Statista, or a consultant?</summary>
-        <p>Enterprise research is built for analysts and investors at around $8,000 per seat per year. Consultants run $25K+ for a single project. Sherlock is built for operators at $497 per report or $2,000/year for ongoing intelligence — priced and structured to drive specific operational decisions, not committee debate.</p>
+        <p>Enterprise research is built for analysts and investors at around $8,000 per seat per year. Consultants run $25K+ for a single project. Sherlock is built for operators at $497 per report, priced and structured to drive specific operational decisions, not committee debate.</p>
       </details>
       <details>
-        <summary>Is the panel data real?</summary>
-        <p>Every Sherlock data point is tagged as simulated, benchmarked, or fielded. Simulated insights, like the sample module on this page, illustrate the structure of a module before you buy. Benchmarked data comes from public sources cross-referenced for accuracy. Fielded data comes from active consumer panels and operator interviews. Live reports are dominated by fielded and benchmarked data.</p>
+        <summary>Where does the data come from?</summary>
+        <p>Public datasets (U.S. Census Bureau, Bureau of Labor Statistics, trade associations), customer research, and operator input, combined with our own modeling. Every figure is labelled with its sample size and data vintage and tagged as fielded, benchmarked, or modeled, so you always know what you're looking at.</p>
       </details>
       <details>
-        <summary>Why not just use Google Trends or a generic industry report?</summary>
-        <p>Google Trends tells you what people search. It doesn't tell you why customers switch, what they'd pay 20% more for, or which growth move has the highest odds in your market. Generic industry reports describe the past. Sherlock reports drive your next decision.</p>
+        <summary>How do I get the report after I pay?</summary>
+        <p>Checkout is handled by Payhip. Available reports download right after payment, and the receipt email includes your download link. Presell reports are emailed the day they're released.</p>
       </details>
       <details>
-        <summary>What's included in Quarterly + Coaching?</summary>
-        <p>Quarterly + Coaching ($2,000/year) includes four quarterly report updates plus four one-on-one coaching calls with the Sherlock team — typically scoped around upcoming launches, pricing decisions, expansion moves, or competitive responses. It's the equivalent of a fractional market intelligence team for less than the cost of a single consulting engagement.</p>
-      </details>
-      <details>
-        <summary>Can I upgrade from a one-time report to Quarterly + Coaching?</summary>
-        <p>Yes. Any one-time purchase credits toward an upgrade to Quarterly + Coaching within 30 days. Most buyers start with a single report and upgrade once they see the value of ongoing market signal.</p>
+        <summary>What if it isn't useful?</summary>
+        <p>Email us within 30 days and we'll refund every dollar. If the report doesn't give you at least one insight you can act on, you shouldn't pay for it.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
 <section class="final">
   <div class="container">
-    <div class="final-eyebrow">See the market. Stay ahead.</div>
-    <h2>Turn market uncertainty into your next <em>growth move</em>.</h2>
-    <div class="final-cta-row">
-      <a href="reports.html" class="btn btn-primary btn-lg">Explore the report library →</a>
-      <a href="#sample" class="btn btn-outline btn-lg">View a sample insight</a>
+    <div class="final-card">
+      <h2>Your next move deserves <em>better data</em>.</h2>
+      <p>Pick your industry and get the report today, or start with the free two-page sample.</p>
+      <div class="final-row">
+        <a href="/reports" class="btn btn-primary btn-lg">Browse all <!-- @report-count -->50<!-- /@report-count --> reports</a>
+        <a href="/sample" class="btn btn-outline btn-lg">Get the free sample</a>
+      </div>
     </div>
   </div>
 </section>
-
 </main>
 
 <!-- @footer -->
@@ -837,57 +729,64 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo" aria-label="Sherlock Research home">
+        <a href="/" class="logo" aria-label="Sherlock Research home">
           <span class="logo-mark"><svg viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></span>
           <span class="logo-stack">Sherlock<small>RESEARCH</small></span>
         </a>
         <p class="footer-tag">See the market. Stay ahead.</p>
         <p>Industry-specific market intelligence for service businesses under $10M.</p>
-        <a class="footer-email" href="mailto:hello@sherlockresearch.com">hello@sherlockresearch.com</a>
+        <a class="footer-email" href="mailto:hello@sherlockreports.com">hello@sherlockreports.com</a>
       </div>
       <div class="footer-col">
         <h2 class="footer-h">Reports</h2>
         <ul>
-          <li><a href="landscaping-report.html">Landscaping</a></li>
-          <li><a href="roofing-report.html">Roofing</a></li>
-          <li><a href="hvac-report.html">HVAC</a></li>
-          <li><a href="pest-control-report.html">Pest Control</a></li>
-          <li><a href="reports.html">All reports</a></li>
+          <li><a href="/reports#home-services">Home services</a></li>
+          <li><a href="/reports#healthcare">Healthcare</a></li>
+          <li><a href="/reports#automotive">Automotive</a></li>
+          <li><a href="/reports#hospitality">Hospitality</a></li>
+          <li><a href="/reports#real-estate-finance">Real estate &amp; finance</a></li>
+          <li><a href="/reports#professional-services">Professional services</a></li>
+          <li><a href="/reports#education">Education &amp; childcare</a></li>
+          <li><a href="/reports#local-services">Local services</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h2 class="footer-h">Local markets</h2>
+        <h2 class="footer-h">Most read</h2>
         <ul>
-          <li><a href="austin-tx.html">Austin, TX</a></li>
-          <li><a href="dallas-tx.html">Dallas, TX</a></li>
-          <li><a href="houston-tx.html">Houston, TX</a></li>
-          <li><a href="san-antonio-tx.html">San Antonio, TX</a></li>
+          <li><a href="/landscaping-report">Landscaping</a></li>
+          <li><a href="/roofing-report">Roofing</a></li>
+          <li><a href="/hvac-report">HVAC</a></li>
+          <li><a href="/pest-control-report">Pest Control</a></li>
+          <li><a href="/reports">All 50 reports</a></li>
+        </ul>
+        <h2 class="footer-h footer-h-gap">Local markets</h2>
+        <ul>
+          <li><a href="/austin-tx">Austin, TX</a></li>
+          <li><a href="/dallas-tx">Dallas, TX</a></li>
+          <li><a href="/houston-tx">Houston, TX</a></li>
+          <li><a href="/san-antonio-tx">San Antonio, TX</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h2 class="footer-h">Company</h2>
         <ul>
-          <li><a href="index.html#how">How it works</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="sample.html">Free sample</a></li>
-          <li><a href="blog-article.html">2026 Landscaping Outlook</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/#how">How it works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/sample">Free sample</a></li>
+          <li><a href="/blog-article">2026 Landscaping Outlook</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Sherlock Research. All rights reserved.</span>
-      <span class="footer-legal"><a href="privacy-policy.html">Privacy</a><a href="terms-of-service.html">Terms</a></span>
+      <span class="footer-legal"><a href="/privacy-policy">Privacy</a><a href="/terms-of-service">Terms</a></span>
     </div>
   </div>
 </footer>
 <!-- /@footer -->
-<!-- ============ STICKY MOBILE CTA ============ -->
-<div class="mobile-cta">
-  <a href="sample.html" class="btn btn-primary">Get a free sample →</a>
-</div>
 
 </body>
 </html>

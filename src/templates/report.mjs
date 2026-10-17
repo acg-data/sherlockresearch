@@ -1,5 +1,7 @@
 // Industry report page: sherlock-research/<slug>-report.html
-// Content comes from src/data/reports/<slug>.json; plans, prices and metros from site.json.
+// Every industry in src/data/catalog.json gets a page. Featured industries also have
+// src/data/reports/<slug>.json, which adds the lead, market chart, insights and reviews.
+// Plans, prices and metros come from site.json.
 import { esc, scriptJSON, billions, marketSeries, icons } from '../lib.mjs';
 import * as partials from '../partials.mjs';
 
@@ -46,28 +48,38 @@ const WHO = [
 ];
 
 export function render(r, site, ctx, plansApi) {
-  const url = `${site.url}/${r.slug}-report.html`;
+  const url = `${site.url}/${r.slug}-report`;
   const title = `${r.name} Industry Report`;
-  const m = marketSeries(r.market);
-  const max = Math.max(...m.series.map((b) => b.value));
-  const period = `${m.latestYear}–${r.market.projectThrough}`;
+  const m = r.market ? marketSeries(r.market) : null;
+  const max = m ? Math.max(...m.series.map((b) => b.value)) : 0;
+  const period = m ? `${m.latestYear}–${r.market.projectThrough}` : '';
+  const through = r.market?.projectThrough || 2028;
   const metroCount = site.metros.length;
+  const topics = r.focus.replace(/,? and /, ', ').split(/,\s*/);
+  const related = ctx.reports.filter((x) => x.category === r.category && x.slug !== r.slug).slice(0, 4);
+  const delivery = r.presell ? 'PDF emailed on release' : 'Instant PDF download';
+  const lead = r.lead || `The ${site.edition} ${r.name} Industry Report gives owners and operators of ${r.serviceLabel} businesses one clear picture of ${r.focus}, and ends every section with a recommended next move.`;
   const start = partials.initialCheckout(site, ctx, plansApi, r.slug);
   const city = site.plans.find((p) => p.key === 'city');
   const standard = site.plans.find((p) => p.key === 'single');
 
   // Donut: conic-gradient stops from the market-share split.
   let acc = 0;
-  const stops = r.marketShare.map((pct, i) => {
+  const stops = (r.marketShare || []).map((pct, i) => {
     const from = acc; acc += pct;
     return `${SHARE_COLORS[i]} ${from}% ${acc}%`;
   }).join(', ');
 
-  const stats = [
+  const stats = m ? [
     { icon: ICON.dollar, value: billions(m.latestValue), label: `U.S. market size, ${m.latestYear}` },
     { icon: ICON.people, value: r.stats[0].value, label: r.stats[0].label },
     { icon: ICON.pie, value: r.stats[1].value, label: r.stats[1].label },
     { icon: ICON.pin, value: String(metroCount), label: 'Metros with local data cuts' },
+  ] : [
+    { icon: ICON.grid, value: '8', label: 'Sections, each ending in an action' },
+    { icon: ICON.pin, value: String(metroCount), label: 'Metros with local data cuts' },
+    { icon: ICON.clock, value: site.dataUpdated, label: 'Data last updated' },
+    { icon: ICON.download, value: 'PDF', label: r.presell ? 'Emailed on release' : 'Instant download' },
   ];
 
   const faqs = [
@@ -79,20 +91,22 @@ export function render(r, site, ctx, plansApi) {
     ['How current is the data?',
       `The ${site.edition} edition reflects the latest available data, refreshed in ${site.dataUpdated}. Quarterly subscribers receive an updated edition every quarter, plus a coaching call to apply it.`],
     ['Is this a download or a subscription?',
-      'Standard, City-Specific, and All-Access are instant PDF downloads, yours to keep and use within your business. Quarterly + Coaching is an annual subscription that includes the downloads plus updates and calls.'],
+      'Standard, City-Specific, and All-Access are PDF reports, yours to keep and use within your business. Quarterly + Coaching is an annual subscription that includes the reports plus updates and calls.'],
+    ...(r.presell ? [['When will the report be ready?',
+      `The ${r.name} report is in final production. Reserve it now at the same price: your receipt confirms the order, and we email the PDF the day it is released. If you change your mind before then, we refund you in full.`]] : []),
   ];
 
   const productLD = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: `${title} — ${site.name}`,
-    description: `The ${site.edition} ${r.name} Industry Report: market size, growth forecasts, competitive landscape, and local benchmarks for U.S. ${r.nameLower} operators. 42 pages, instant PDF.`,
+    description: `The ${site.edition} ${r.name} Industry Report: ${r.focus}, with recommended next moves for U.S. ${r.serviceLabel} operators. PDF report.`,
     brand: { '@type': 'Brand', name: site.name },
     image: `${site.url}/og-default.png`,
     url,
     offers: site.plans.filter((p) => !p.unit && !p.allIndustries).map((p) => ({
       '@type': 'Offer', name: p.name, price: String(p.price), priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock', url,
+      availability: r.presell ? 'https://schema.org/PreOrder' : 'https://schema.org/InStock', url,
     })),
   };
   const breadcrumbLD = {
@@ -100,13 +114,14 @@ export function render(r, site, ctx, plansApi) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
-      { '@type': 'ListItem', position: 2, name: 'Reports', item: `${site.url}/reports.html` },
-      { '@type': 'ListItem', position: 3, name: title, item: url },
+      { '@type': 'ListItem', position: 2, name: 'Reports', item: `${site.url}/reports` },
+      { '@type': 'ListItem', position: 3, name: r.categoryName, item: `${site.url}/reports#${r.category}` },
+      { '@type': 'ListItem', position: 4, name: title, item: url },
     ],
   };
 
   return `<!DOCTYPE html>
-<!-- Generated by scripts/build.mjs from src/templates/report.mjs and src/data/reports/${r.slug}.json. Do not edit by hand. -->
+<!-- Generated by scripts/build.mjs from src/templates/report.mjs and src/data/ (catalog.json${r.lead ? `, reports/${r.slug}.json` : ''}). Do not edit by hand. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -135,15 +150,16 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <ol>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="reports.html">Reports</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/reports">Reports</a></li>
+        <li><a href="/reports#${r.category}">${esc(r.categoryName)}</a></li>
         <li><span aria-current="page">${esc(title)}</span></li>
       </ol>
     </nav>
     <div class="hero-grid">
       <div>
         <h1>${esc(title)}</h1>
-        <div class="hero-edition">${site.edition} EDITION</div>
+        <div class="hero-edition">${site.edition} EDITION${r.presell ? ' <span class="hero-presell">Presell</span>' : ''}</div>
         <p class="hero-desc">${esc(r.heroDescription)}</p>
         <ul class="hero-features">
           <li><span class="hero-feature-icon">${svg(ICON.chart)}</span>Market size &amp; growth</li>
@@ -152,11 +168,11 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
           <li><span class="hero-feature-icon">${svg(ICON.pulse)}</span>Trends &amp; opportunities</li>
         </ul>
         <div class="hero-cta-row">
-          <a href="#purchase" class="btn btn-primary btn-lg">Get the full report</a>
-          <a href="sample.html" class="btn btn-outline btn-lg">See a free sample →</a>
+          <a href="#purchase" class="btn btn-primary btn-lg">${r.presell ? 'Reserve the report' : 'Get the full report'}</a>
+          <a href="/sample" class="btn btn-outline btn-lg">See a free sample →</a>
         </div>
         <ul class="hero-meta">
-          <li>${svg(ICON.download, 14)} Instant PDF download</li>
+          <li>${svg(ICON.download, 14)} ${delivery}</li>
           <li>${svg(ICON.clock, 14)} Data updated ${esc(site.dataUpdated)}</li>
         </ul>
       </div>
@@ -164,14 +180,17 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
         <div class="report-cover" aria-hidden="true">
           <div class="rc-label">Sherlock Research</div>
           <div class="rc-title">${esc(title)}</div>
-          <div class="rc-edition">${site.edition} EDITION · 42 PAGES</div>
-          <div class="rc-bars">${m.series.slice(-5).map((b) => `<span style="height: ${Math.round((b.value / max) * 100)}%"></span>`).join('')}</div>
-          <img class="rc-fox" src="assets/sherlock-fox.svg" alt="" width="360" height="345">
+          <div class="rc-edition">${site.edition} EDITION · ${esc(r.categoryName.toUpperCase())}</div>
+          <div class="rc-icon">${partials.industryIcon(r, 40)}</div>
+          <img class="rc-fox" src="/assets/sherlock-fox.svg" alt="" width="360" height="345">
         </div>
-        <div class="cover-outlook">
+        ${m ? `<div class="cover-outlook">
           <div class="cover-outlook-label">Industry outlook</div>
           <div class="cover-outlook-row"><span class="cover-outlook-stat">${r.market.cagr}%</span><span class="cover-outlook-sub">projected CAGR, ${period}</span></div>
-        </div>
+        </div>` : `<div class="cover-outlook">
+          <div class="cover-outlook-label">Inside the report</div>
+          <div class="cover-outlook-row"><span class="cover-outlook-stat">8</span><span class="cover-outlook-sub">sections + appendix, each ending in a next move</span></div>
+        </div>`}
       </div>
     </div>
   </div>
@@ -192,8 +211,15 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
   <div class="container">
     <div class="main-grid">
       <div>
-        <p class="lead-text">${esc(r.lead)}</p>
+        <p class="lead-text">${esc(lead)}</p>
 
+        <div class="content-card answers-card">
+          <h2 class="card-title">Questions this report answers</h2>
+          <ul class="answers-list">
+            ${topics.map((t) => `<li>${icons.check(16)} <span>${esc(t.charAt(0).toUpperCase() + t.slice(1))}</span></li>`).join('\n            ')}
+          </ul>
+        </div>
+${m ? `
         <figure class="content-card">
           <div class="card-head">
             <figcaption class="card-title">Market size &amp; growth (${esc(r.market.label)})</figcaption>
@@ -216,7 +242,7 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
           </div>
           <p class="source-note"><strong>Sources:</strong> U.S. Census Bureau, Bureau of Labor Statistics, and Sherlock Research operator surveys. Projections apply the ${period} CAGR to the ${m.latestYear} base.</p>
         </figure>
-
+` : ''}${r.insights ? `
         <h2 class="section-h">Key industry insights</h2>
         <div class="insight-cards">
           ${r.insights.map((i) => `<div class="insight-c">
@@ -225,7 +251,7 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
             <p>${esc(i.text)}</p>
           </div>`).join('\n          ')}
         </div>
-
+` : ''}${r.marketShare ? `
         <h2 class="section-h">Competitive landscape</h2>
         <p class="section-sub-text">The industry is fragmented, with thousands of small businesses and a mix of regional and national players.</p>
         <div class="content-card">
@@ -245,14 +271,14 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
             </div>
           </div>
         </div>
-
+` : ''}
         <h2 class="section-h">Methodology &amp; sources</h2>
         <div class="content-card method-card">
-          <p>Sherlock Research reports combine national datasets with local survey data and proprietary modeling. Every figure is labelled with its sample size, data vintage, and geographic coverage, and tagged as fielded, benchmarked, or modeled.</p>
+          <p>Sherlock Research reports combine public datasets, customer research, and operator input with proprietary modeling. Every figure is labelled with its sample size, data vintage, and geographic coverage, and tagged as fielded, benchmarked, or modeled, so you always know what you are looking at.</p>
           <ul class="method-list">
             <li><b>Public data:</b> U.S. Census Bureau, Bureau of Labor Statistics, and trade-association reports</li>
-            <li><b>Consumer panels:</b> 300+ service-buying households per market, fielded in the last 12 months</li>
-            <li><b>Operator interviews:</b> active ${esc(r.nameLower)} business owners across the metros we cover</li>
+            <li><b>Customer research:</b> what ${esc(r.serviceLabel)} buyers value, pay, and switch over</li>
+            <li><b>Operator input:</b> pricing, staffing, and channel benchmarks from active owners</li>
             <li><b>Local cuts:</b> metro-level demand, competition, and pricing for ${metroCount} metros</li>
           </ul>
         </div>
@@ -267,7 +293,7 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
           </div>
           <div class="buy-body">
             <ul class="buy-checks">
-              ${['42 pages of data & insights', 'Charts, graphs & visual data', 'Local market breakdowns', 'Competitive benchmarking', 'Instant download (PDF)']
+              ${['8 sections + appendix', 'Charts, benchmarks & visual data', 'Local market breakdowns', 'A recommended move in every section', delivery]
                 .map((t) => `<li>${icons.check(16)} ${esc(t)}</li>`).join('\n              ')}
             </ul>
             <hr class="buy-divider">
@@ -279,17 +305,17 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
               <label class="field-label" for="sidebar-metro">Your metro</label>
               <select class="select" id="sidebar-metro" data-metro-select>${site.metros.map((x) => `<option value="${esc(x)}">${esc(x)}</option>`).join('')}</select>
             </div>
-            <a href="${esc(start.href)}" class="btn btn-primary btn-block btn-lg" data-checkout><span data-plan-cta>${esc(start.plan.cta)}</span></a>
+            <a href="${esc(start.href)}" class="btn btn-primary btn-block btn-lg" data-checkout><span data-plan-cta>${esc(start.cta)}</span></a>
             <a href="#purchase" class="change-plan">Compare all 4 options →</a>
             <div class="buy-trust">${svg(ICON.lock, 13)} Secure checkout · 30-day money-back guarantee</div>
           </div>
         </div>
         <div class="sample-card" data-lint-skip>
-          <img class="sample-thumb" src="assets/sample-page-1.jpg" alt="" width="734" height="950" loading="lazy">
+          <img class="sample-thumb" src="/assets/sample-page-1.jpg" alt="" width="734" height="950" loading="lazy">
           <div>
-            <h3>See it before you buy</h3>
-            <p>Two real pages from the ${esc(site.edition)} Landscaping report, including a full insight module. Free PDF.</p>
-            <a href="sample.html" class="sample-link">Get the free sample →</a>
+            <h3>See the format first</h3>
+            <p>A free two-page excerpt from the ${esc(site.edition)} Landscaping report shows how every Sherlock report reads.</p>
+            <a href="/sample" class="sample-link">Get the free sample →</a>
           </div>
         </div><!-- /lint-skip -->
       </aside>
@@ -316,7 +342,7 @@ ${site.flipbookEmbed ? `
       <p>Every section ends with a recommended action — not just a chart.</p>
     </div>
     <ol class="toc-grid">
-      ${TOC.map(([h, p], i) => `<li class="toc-item"><span class="toc-num" aria-hidden="true">0${i + 1}</span><div><h3>${esc(h)}</h3><p>${esc(p.replace('{through}', r.market.projectThrough))}</p></div></li>`).join('\n      ')}
+      ${TOC.map(([h, p], i) => `<li class="toc-item"><span class="toc-num" aria-hidden="true">0${i + 1}</span><div><h3>${esc(h)}</h3><p>${esc(p.replace('{through}', through))}</p></div></li>`).join('\n      ')}
       <li class="toc-item appendix"><span class="toc-num" aria-hidden="true">+</span><div><h3>Appendix &amp; sources</h3><p>Full methodology, sample sizes, and data vintage.</p></div></li>
     </ol>
   </div>
@@ -360,7 +386,7 @@ ${site.flipbookEmbed ? `
   </div>
 </section>
 
-<section class="rev">
+${r.reviews ? `<section class="rev">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">From ${esc(r.nameLower)} operators</div>
@@ -371,7 +397,7 @@ ${site.flipbookEmbed ? `
     </div>
   </div>
 </section>
-
+` : ''}
 <section class="guarantee">
   <div class="container">
     ${partials.guarantee()}
@@ -390,6 +416,18 @@ ${site.flipbookEmbed ? `
   </div>
 </section>
 
+${related.length ? `<section class="related" data-lint-skip>
+  <div class="container">
+    <div class="related-head">
+      <h2>More ${esc(r.categoryName.toLowerCase())} reports</h2>
+      <a href="/reports#${r.category}">See all →</a>
+    </div>
+    <div class="related-grid">
+      ${related.map((x) => `<a class="related-card" href="/${x.slug}-report"><span class="related-ic">${partials.industryIcon(x, 20)}</span><span class="related-name">${esc(x.name)}</span><span class="related-meta">${x.presell ? 'Presell' : `${site.edition} edition`}</span></a>`).join('\n      ')}
+    </div>
+  </div>
+</section><!-- /lint-skip -->
+` : ''}
 <section class="final">
   <div class="container">
     <div class="final-grid">
@@ -399,7 +437,7 @@ ${site.flipbookEmbed ? `
         <a href="#purchase" class="btn btn-primary btn-lg">Get your edge today →</a>
       </div>
       <div class="final-fox">
-        <img src="assets/sherlock-fox.svg" alt="" width="300" height="288" loading="lazy">
+        <img src="/assets/sherlock-fox.svg" alt="" width="300" height="288" loading="lazy">
       </div>
     </div>
   </div>
@@ -414,7 +452,7 @@ ${partials.footer(site, ctx)}
       <div class="sticky-buy-name" data-plan-name>${esc(start.plan.name)}</div>
       <div class="sticky-buy-price" data-plan-term>${esc(plansApi.formatPrice(start.plan))} · one-time</div>
     </div>
-    <a href="${esc(start.href)}" class="btn btn-primary" data-checkout><span data-plan-cta>${esc(start.plan.cta)}</span>&nbsp;→</a>
+    <a href="${esc(start.href)}" class="btn btn-primary" data-checkout><span data-plan-cta>${esc(start.cta)}</span>&nbsp;→</a>
   </div>
 </div>
 

@@ -1,8 +1,8 @@
 {
   "name": "Sherlock Research",
-  "url": "https://sherlockresearch.com",
-  "email": "hello@sherlockresearch.com",
-  "supportEmail": "support@sherlockresearch.com",
+  "url": "https://sherlockreports.com",
+  "email": "hello@sherlockreports.com",
+  "supportEmail": "support@sherlockreports.com",
   "responseTime": "within one business day",
   "supportHours": "Mon–Fri, 9am–6pm ET",
   "operatorCount": "240+",
@@ -12,13 +12,13 @@
   "sitemapLastmod": "2026-10-17",
   "copyrightYear": "2026",
 
-  "_checkout": "Hosted payment links (Stripe Payment Links or Payhip), one per plan. While a link is empty, the buy buttons open a prefilled order email instead. Stripe receives the chosen plan, industry and metro as client_reference_id.",
+  "_checkout": "Checkout links. The Standard Report uses each industry's Payhip link in src/data/catalog.json. Set 'all', 'city' and 'quarterly' to a Payhip (or Stripe Payment Link) URL when those products exist; while a link is empty, its buy button opens a prefilled order email. Stripe links also receive the plan, industry and metro as client_reference_id; Payhip ignores extra parameters. 'payhipDirectCheckout' sends buyers straight to Payhip's checkout (payhip.com/buy?link=KEY) instead of the product page.",
   "checkout": {
-    "single": "",
+    "all": "",
     "city": "",
-    "quarterly": "",
-    "all": ""
+    "quarterly": ""
   },
+  "payhipDirectCheckout": true,
 
   "_samplePdf": "Path to the free sample PDF inside sherlock-research/ (for example assets/sherlock-landscaping-sample.pdf). Empty means the sample is requested by email.",
   "samplePdf": "assets/sherlock-landscaping-sample.pdf",
@@ -39,7 +39,7 @@
       "priceSub": "One-time",
       "compare": "The essentials, national view",
       "desc": "The full {industry} report at the national level. Best for a one-time read on the market.",
-      "features": ["Full 42-page report", "National data & forecasts", "Instant PDF download"],
+      "features": ["Full report: 8 sections + appendix", "National data & forecasts", "Instant PDF download"],
       "missing": ["Local / city data"],
       "note": "One-time · national data",
       "cta": "Get Standard Report",
@@ -94,7 +94,7 @@
       "allIndustries": true
     }
   ],
-  "defaultPlan": "city",
+  "defaultPlan": "single",
 
   "homeReviews": [
     {
@@ -109,7 +109,8 @@
     }
   ],
 
-  "industries": ["landscaping", "roofing", "hvac", "pest-control"],
+  "_featured": "Reports shown in the navigation menu, on city pages and first in lists. Each needs src/data/reports/<slug>.json for its richer page content.",
+  "featured": ["landscaping", "roofing", "hvac", "pest-control"],
   "cities": ["austin-tx", "dallas-tx", "houston-tx", "san-antonio-tx"],
 
   "metros": [

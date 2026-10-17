@@ -89,7 +89,7 @@ export function render(r, site) {
   <div class="band">
     <div class="band-row">
       <div class="brand"><span class="mark"><svg viewBox="0 0 32 32" fill="white"><path d="M16 4 L8 10 L6 8 L4 14 L8 16 L8 22 Q16 28 24 22 L24 16 L28 14 L26 8 L24 10 Z M12 14 Q14 13 14 16 Q12 17 12 14 Z M18 14 Q20 13 20 16 Q18 17 18 14 Z M14 19 Q16 21 18 19 Z"/></svg></span><span>Sherlock<small>RESEARCH</small></span></div>
-      <span class="tag">Free sample · 2 of 42 pages</span>
+      <span class="tag">Free sample · 2-page excerpt</span>
     </div>
     <h1>${esc(r.name)} Industry Report <em>${site.edition}</em></h1>
     <p>Two pages from the full report: one buyer-behavior section and the market forecast, each ending in the recommended move we call the Monday-morning action.</p>
@@ -159,7 +159,7 @@ export function render(r, site) {
     </div>
   </div>
   <div class="cta">
-    <div><strong>Get the full 42-page report</strong><span>Eight sections, each ending in a recommended move. Add a local data cut for any of ${site.metros.length} metros.</span></div>
+    <div><strong>Get the full report</strong><span>Eight sections, each ending in a recommended move. Add a local data cut for any of ${site.metros.length} metros.</span></div>
     <div class="price">Standard $${site.plans[0].price} · City-Specific $${site.plans[1].price}<br>${site.url.replace('https://', '')}/${r.slug}-report.html</div>
   </div>
   ${footer(2)}
