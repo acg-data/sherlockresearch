@@ -93,9 +93,9 @@ ${partials.nav(site, ctx, { current: `${c.slug}.html` })}
       ${ctx.reports.map((r) => `<a class="rep-card" href="${reportHref(r)}">
         <div class="ic">${partials.industryIcon(r.slug)}</div>
         <h3>${esc(r.name)} — ${esc(c.name)}</h3>
-        <div class="meta">City-Specific Report · ${esc(formatPrice(cityPlan))}</div>
+        <div class="meta">Local data for ${esc(metro)}</div>
         <p>${esc(c.reportBlurbs[r.slug])}</p>
-        <span class="more">Choose ${esc(c.name)} and buy →</span>
+        <span class="more">See the ${esc(r.name)} report →</span>
       </a>`).join('\n      ')}
     </div>
   </div>

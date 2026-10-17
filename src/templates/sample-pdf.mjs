@@ -92,10 +92,10 @@ export function render(r, site) {
       <span class="tag">Free sample · 2 of 42 pages</span>
     </div>
     <h1>${esc(r.name)} Industry Report <em>${site.edition}</em></h1>
-    <p>Two pages from the full report: one buyer-behavior module and the market forecast, each ending in the recommended move we call the Monday-morning action.</p>
+    <p>Two pages from the full report: one buyer-behavior section and the market forecast, each ending in the recommended move we call the Monday-morning action.</p>
   </div>
   <div class="body">
-    <div class="module">Module 03 · Buyer behavior</div>
+    <div class="module">Section 03 · Buyer behavior</div>
     <h2>Switching &amp; willingness-to-pay signals</h2>
     <p class="lede">Homeowners who paid for landscaping or lawn care in the last 12 months and were the primary or shared decision-maker. The question: who is loyal, who is shopping, and what would make them leave?</p>
     <div class="tiles">
@@ -127,7 +127,7 @@ export function render(r, site) {
 
 <section class="page">
   <div class="body" style="padding-top: 0.6in;">
-    <div class="module">Module 01 · Market size &amp; forecast</div>
+    <div class="module">Section 01 · Market size &amp; forecast</div>
     <h2>${esc(r.market.label.charAt(0).toUpperCase() + r.market.label.slice(1))}, ${m.series[0].year}–${r.market.projectThrough}</h2>
     <p class="lede">${esc(r.lead)}</p>
     <div class="stats">
@@ -159,7 +159,7 @@ export function render(r, site) {
     </div>
   </div>
   <div class="cta">
-    <div><strong>Get the full 42-page report</strong><span>Eight modules, each ending in a recommended move. Add a local data cut for any of ${site.metros.length} metros.</span></div>
+    <div><strong>Get the full 42-page report</strong><span>Eight sections, each ending in a recommended move. Add a local data cut for any of ${site.metros.length} metros.</span></div>
     <div class="price">Standard $${site.plans[0].price} · City-Specific $${site.plans[1].price}<br>${site.url.replace('https://', '')}/${r.slug}-report.html</div>
   </div>
   ${footer(2)}

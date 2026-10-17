@@ -64,8 +64,7 @@ export function render(r, site, ctx, plansApi) {
   }).join(', ');
 
   const stats = [
-    { icon: ICON.dollar, value: billions(m.latestValue), label: `${m.latestYear} market size, ${r.market.label}` },
-    { icon: ICON.trend, value: `${r.market.cagr}%`, label: `Projected CAGR ${period}` },
+    { icon: ICON.dollar, value: billions(m.latestValue), label: `U.S. market size, ${m.latestYear}` },
     { icon: ICON.people, value: r.stats[0].value, label: r.stats[0].label },
     { icon: ICON.pie, value: r.stats[1].value, label: r.stats[1].label },
     { icon: ICON.pin, value: String(metroCount), label: 'Metros with local data cuts' },
@@ -247,22 +246,15 @@ ${partials.nav(site, ctx, { current: `${r.slug}-report.html` })}
           </div>
         </div>
 
-        <h2 class="section-h">What's included in this report</h2>
-        <div class="content-card">
-          <ul class="included-grid">
-            ${[
-              `Market size, growth, and forecast (${m.series[0].year}–${r.market.projectThrough})`,
-              'Competitive landscape & key players',
-              `Local data cuts for ${metroCount} metros`,
-              'Pricing benchmarks & service mix analysis',
-              'Trends, opportunities, and challenges',
-              'A recommended action at the end of every section',
-            ].map((t) => `<li><span class="ck">${icons.check(11, 3)}</span> ${esc(t)}</li>`).join('\n            ')}
+        <h2 class="section-h">Methodology &amp; sources</h2>
+        <div class="content-card method-card">
+          <p>Sherlock Research reports combine national datasets with local survey data and proprietary modeling. Every figure is labelled with its sample size, data vintage, and geographic coverage, and tagged as fielded, benchmarked, or modeled.</p>
+          <ul class="method-list">
+            <li><b>Public data:</b> U.S. Census Bureau, Bureau of Labor Statistics, and trade-association reports</li>
+            <li><b>Consumer panels:</b> 300+ service-buying households per market, fielded in the last 12 months</li>
+            <li><b>Operator interviews:</b> active ${esc(r.nameLower)} business owners across the metros we cover</li>
+            <li><b>Local cuts:</b> metro-level demand, competition, and pricing for ${metroCount} metros</li>
           </ul>
-          <div class="method-box">
-            <h3>Methodology &amp; sources</h3>
-            <p>Sherlock Research reports combine national datasets with local survey data and proprietary modeling. Every figure is labelled with its sample size, data vintage, and geographic coverage. Primary sources include the U.S. Census Bureau, the Bureau of Labor Statistics, trade-association reports, and Sherlock consumer panels and operator interviews.</p>
-          </div>
         </div>
       </div>
 
@@ -337,7 +329,7 @@ ${site.flipbookEmbed ? `
       <h2>One report, or <em>your whole edge</em>.</h2>
       <p>Pick the option that fits your move. Your selection updates the summary below, so it's always clear exactly what you're buying.</p>
     </div>
-    <div style="text-align: center;"><div class="axis-note"><b>Depth</b> = more for this industry · <b>Breadth</b> = every industry report</div></div>
+    <div style="text-align: center;"><div class="axis-note"><span><b>Depth</b> = more for this industry</span><span><b>Breadth</b> = every industry report</span></div></div>
     ${partials.plans(site, ctx, plansApi, { industry: r.slug })}
   </div>
 </section>
@@ -346,7 +338,7 @@ ${site.flipbookEmbed ? `
   <div class="container">
     <div class="compare-head">
       <div class="eyebrow">Why Sherlock</div>
-      <h2>One IBISWorld seat is $8,000 a year. Every Sherlock report is $2,997, once.</h2>
+      <h2>One IBISWorld seat is $8,000 a year.<br> Every Sherlock report is $2,997, once.</h2>
     </div>
     ${partials.compareTable()}
   </div>

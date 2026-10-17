@@ -33,7 +33,9 @@
 .snapshot-list .price { margin-left: auto; font-size: 13px; color: rgba(255,255,255,0.65); }
 
 .reports-section { padding: 80px 0; background: var(--grad-stone-warm); }
-.reports-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 920px; margin: 0 auto; }
+.reports-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.rep-card { display: flex; flex-direction: column; }
+.rep-card p { flex: 1; }
 .rep-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; display: block; }
 .rep-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--orange); }
 .rep-card .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--sage-soft); color: var(--sage); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
@@ -55,8 +57,14 @@
 .cta p { color: rgba(255,255,255,0.75); font-size: 16px; max-width: 520px; margin: 0 auto 28px; }
 .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+@media (max-width: 1000px) { .reports-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .snapshot-stats { grid-template-columns: 1fr; }
+  .snapshot-stats li { display: flex; align-items: baseline; gap: 12px; }
+  .snapshot-stats .v { margin-bottom: 0; min-width: 76px; }
 }
 @media (max-width: 768px) {
   .hero { padding: 28px 0 56px; }

@@ -11,7 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { SITE_DIR, DATA_DIR, readJSON, esc, scriptJSON } from '../src/lib.mjs';
+import { SITE_DIR, DATA_DIR, readJSON, esc, scriptJSON, billions, marketSeries } from '../src/lib.mjs';
 import * as partials from '../src/partials.mjs';
 import * as reportTemplate from '../src/templates/report.mjs';
 import * as cityTemplate from '../src/templates/city.mjs';
@@ -54,10 +54,12 @@ const regions = {
   metros: () => esc(partials.metroSentence(site)),
   'metro-count': () => String(site.metros.length),
   'operator-count': () => esc(site.operatorCount),
+  'rating': () => esc(site.rating),
   'response-time': () => esc(site.responseTime),
   'report-cards': () => reportCards(),
   'city-cards': () => cityCards(),
   'library-cards': () => libraryCards(),
+  'blog-stat': () => blogStat(),
   'home-reviews': () => site.homeReviews.map((v) => '      ' + partials.quoteCard(v)).join('\n'),
   'finder-industries': () => ctx.reports.map((r) => `<option value="${r.slug}">${esc(r.name)}</option>`).join(''),
   'finder-metros': () => '<option value="">National (all U.S.)</option>' +
@@ -120,12 +122,29 @@ function cityCards() {
       </a>`).join('\n');
 }
 
+// Pull-stat for the landscaping outlook article, from the same data as the report page.
+function blogStat() {
+  const r = ctx.reports.find((x) => x.slug === 'landscaping');
+  const m = marketSeries(r.market);
+  const max = Math.max(...m.series.map((b) => b.value));
+  const last = m.series[m.series.length - 1];
+  return `      <aside class="pull-stat">
+        <div>
+          <div class="pull-stat-num">${billions(m.latestValue)}</div>
+          <p class="pull-stat-cap">U.S. landscaping services market in ${m.latestYear}, projected to grow about ${r.market.cagr}% a year to ${billions(last.value)} by ${r.market.projectThrough}.<span>Source: ${esc(site.name)} ${site.edition} Landscaping Industry Report.</span></p>
+        </div>
+        <div class="pull-stat-bars" aria-hidden="true">${m.series.map((b) => `<i class="${b.kind}" style="height: ${Math.round((b.value / max) * 100)}%"></i>`).join('')}</div>
+      </aside>`;
+}
+
 // Homepage report library: live reports first (the sampled one featured), then hand-written "coming soon" cards.
 function libraryCards() {
+  const from = site.plans.find((p) => p.key === 'single').price;
   return ctx.reports.map((r, i) => `      <a class="lib-card${i === 0 ? ' featured' : ''}" href="${r.slug}-report.html">
         <span class="lib-icon">${partials.industryIcon(r.slug, 28)}</span>
         <div class="lib-title">${esc(r.name)}</div>
-        <div class="lib-meta">${i === 0 ? 'Free sample available' : 'Market report'}</div>
+        <div class="lib-meta">${i === 0 ? 'Free sample available' : `${site.edition} edition`}</div>
+        <div class="lib-foot"><span>From $${from}</span><span class="arrow" aria-hidden="true">→</span></div>
       </a>`).join('\n');
 }
 

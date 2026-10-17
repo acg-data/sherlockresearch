@@ -6,6 +6,7 @@
   "responseTime": "within one business day",
   "supportHours": "Mon–Fri, 9am–6pm ET",
   "operatorCount": "240+",
+  "rating": "4.9",
   "edition": "2026",
   "dataUpdated": "May 2026",
   "sitemapLastmod": "2026-10-17",
@@ -36,7 +37,7 @@
       "unit": "",
       "axis": "Depth · Entry",
       "priceSub": "One-time",
-      "compare": "",
+      "compare": "The essentials, national view",
       "desc": "The full {industry} report at the national level. Best for a one-time read on the market.",
       "features": ["Full 42-page report", "National data & forecasts", "Instant PDF download"],
       "missing": ["Local / city data"],
@@ -74,9 +75,7 @@
       "missing": [],
       "note": "Billed annually · updates + 1:1 calls",
       "cta": "Start Quarterly Plan",
-      "metro": true,
-      "badge": "Best value",
-      "badgeTone": "navy"
+      "metro": true
     },
     {
       "key": "all",
@@ -85,16 +84,14 @@
       "unit": "",
       "axis": "Breadth · All industries",
       "priceSub": "One-time · every report",
-      "compare": "Pay once — no annual seat fee",
+      "compare": "vs $8K/yr for one IBISWorld seat",
       "desc": "Every Sherlock industry report in one purchase. Best for multi-industry operators, agencies, and investors.",
       "features": ["All current industry reports", "New reports as released", "National data, all verticals", "Best for portfolios"],
       "missing": [],
       "note": "One-time · every industry report",
       "cta": "Get All-Access Pass",
       "metro": false,
-      "allIndustries": true,
-      "badge": "vs $8K at IBISWorld",
-      "badgeTone": "sage"
+      "allIndustries": true
     }
   ],
   "defaultPlan": "city",

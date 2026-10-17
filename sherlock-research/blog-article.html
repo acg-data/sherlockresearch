@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Playfair+Display:ital,wght@0,400..800;1,400..600&amp;display=swap">
-<link rel="stylesheet" href="assets/site.css?v=cd2c16bc">
+<link rel="stylesheet" href="assets/site.css?v=2d95a0a7">
 <script src="assets/site.js?v=0023187e" defer></script>
 <!-- /@head -->
 <style>
@@ -49,12 +49,19 @@
   .article-content li{margin-bottom:10px;line-height:1.7}
   .article-content strong{color:var(--navy);font-weight:700}
   .article-content blockquote{margin:28px 0;padding:20px 26px;background:var(--stone-2);border-left:4px solid var(--orange);border-radius:6px;font-size:17px;font-style:italic;color:var(--navy)}
-  .article-image{margin:36px 0;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(135deg,#2d4a2c,#1a2e1a);aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.9);font-family:var(--font-display);font-style:italic;font-size:clamp(20px,2.6vw,28px);line-height:1.25;text-align:center;padding:0 12%;position:relative;border:1px solid var(--line)}
-  .article-image::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0 2px,transparent 2px 12px)}
+  .pull-stat{margin:40px 0;padding:32px 36px;border-radius:var(--radius-lg);background:radial-gradient(ellipse at top right,rgba(242,106,33,0.18),transparent 60%),linear-gradient(135deg,#2d4a2c,#1a2e1a);color:#fff;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+  .pull-stat-num{font-family:var(--font-display);font-size:clamp(44px,6vw,64px);font-weight:800;line-height:1;margin-bottom:12px}
+  .pull-stat .pull-stat-cap{color:rgba(255,255,255,0.85);font-size:15px;line-height:1.6;max-width:420px}
+  .pull-stat .pull-stat-cap span{display:block;margin-top:8px;font-size:12.5px;color:rgba(255,255,255,0.65)}
+  .pull-stat-bars{display:flex;align-items:flex-end;gap:6px;height:110px}
+  .pull-stat-bars i{display:block;width:16px;border-radius:3px 3px 0 0;background:rgba(255,255,255,0.28)}
+  .pull-stat-bars i.latest{background:var(--grad-orange-bright)}
+  .pull-stat-bars i.projected{background:rgba(255,255,255,0.55)}
+  @media(max-width:600px){.pull-stat{grid-template-columns:1fr;padding:26px 22px}.pull-stat-bars{height:70px}}
 
   .inline-cta{margin:40px 0;padding:32px 28px;background:radial-gradient(ellipse at top right,rgba(242,106,33,0.15),transparent 60%),var(--grad-navy-deep);color:#fff;border-radius:var(--radius-lg);position:relative;overflow:hidden}
   .inline-cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
-  .inline-cta h3{color:#fff;font-size:22px;margin-bottom:8px;position:relative}
+  .inline-cta h3{color:#fff;font-family:var(--font-display);font-size:26px;font-weight:700;margin-bottom:8px;position:relative}
   .inline-cta h3 em{font-style:italic;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:500}
   .inline-cta p{color:rgba(255,255,255,0.72);font-size:14.5px;margin-bottom:18px;position:relative}
   .inline-cta .btn{position:relative}
@@ -167,11 +174,19 @@
       <ul>
         <li>Persistent demand for outdoor living areas and hardscaping</li>
         <li>Continued investment in sustainable, water-efficient landscaping</li>
-        <li>Growing commercial landscaping opportunities as commercial property reopens</li>
+        <li>Growing commercial landscaping opportunities as property owners invest in curb appeal</li>
         <li>Increased professionalization of the industry</li>
       </ul>
 
-      <div class="article-image">Outdoor living spaces driving residential demand</div>
+<!-- @blog-stat -->
+      <aside class="pull-stat">
+        <div>
+          <div class="pull-stat-num">$67.8B</div>
+          <p class="pull-stat-cap">U.S. landscaping services market in 2024, projected to grow about 4.2% a year to $79.9B by 2028.<span>Source: Sherlock Research 2026 Landscaping Industry Report.</span></p>
+        </div>
+        <div class="pull-stat-bars" aria-hidden="true"><i class="actual" style="height: 48%"></i><i class="actual" style="height: 53%"></i><i class="actual" style="height: 57%"></i><i class="actual" style="height: 63%"></i><i class="latest" style="height: 85%"></i><i class="projected" style="height: 88%"></i><i class="projected" style="height: 92%"></i><i class="projected" style="height: 96%"></i><i class="projected" style="height: 100%"></i></div>
+      </aside>
+<!-- /@blog-stat -->
 
       <h2>Emerging trends and opportunities</h2>
       <h3>1. Sustainability and eco-friendly design</h3>
