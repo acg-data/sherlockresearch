@@ -1,0 +1,45 @@
+{
+  "slug": "houston-tx",
+  "name": "Houston",
+  "state": "TX",
+  "stateName": "Texas",
+  "metaDescription": "Industry-specific market reports for Houston, Texas. Landscaping, roofing, HVAC, and pest control intelligence with local demand, pricing, and competitive data.",
+  "ogDescription": "Local market reports for Houston operators — demand, competition, pricing, and growth opportunities by industry.",
+  "intro": "Houston's heat and humidity make it one of the highest-recurring-revenue home-services metros in the country. HVAC service plans, mosquito subscriptions, and lawn maintenance contracts attach at rates that operators in cooler markets don't see.",
+  "stats": [
+    {
+      "value": "7.8M",
+      "label": "Metro population"
+    },
+    {
+      "value": "2.8M",
+      "label": "Households"
+    },
+    {
+      "value": "16,800+",
+      "label": "Home-service businesses (est.)"
+    }
+  ],
+  "statsSource": "Population and households: U.S. Census Bureau, American Community Survey 2024 1-year estimates for the metro area. Business count: Sherlock Research estimate.",
+  "reportsIntro": "Each Sherlock industry report includes a city-specific data cut for Houston — local demand, competitor density, pricing benchmarks, and neighborhood-level demand patterns. Houston's climate drives year-round demand for outdoor services and recurring pest, HVAC, and lawn care.",
+  "reportBlurbs": {
+    "landscaping": "Residential and commercial landscape services in Houston: demand drivers, top zip codes, pricing tiers, and competitive landscape.",
+    "roofing": "Roofing market intelligence for Houston: storm cycles, insurance dynamics, reroof rates, and local competitor positioning.",
+    "hvac": "HVAC service and install market for Houston: heat-pump adoption, service-plan pricing, refrigerant transition impact.",
+    "pest-control": "Recurring pest control market in Houston: subscription rates, residential vs commercial mix, and local consolidation dynamics."
+  },
+  "insights": [
+    {
+      "title": "Year-round service demand",
+      "text": "Mild winters mean lawn care, pest, and HVAC service plans run 12 months — not 8 like in the north. Recurring revenue mix here is 15%+ higher than the national average."
+    },
+    {
+      "title": "Hurricane & storm prep",
+      "text": "Annual hurricane season creates predictable demand for roofing inspections, tree services, and generator installs from May through October."
+    },
+    {
+      "title": "Energy-sector economic cycles",
+      "text": "Houston's economy still tracks oil prices — the high end of the market expands and contracts faster than other Texas metros."
+    }
+  ]
+}

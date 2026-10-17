@@ -1,0 +1,45 @@
+{
+  "slug": "austin-tx",
+  "name": "Austin",
+  "state": "TX",
+  "stateName": "Texas",
+  "metaDescription": "Industry-specific market reports for Austin, Texas. Landscaping, roofing, HVAC, and pest control intelligence with local demand, pricing, and competitive data.",
+  "ogDescription": "Local market reports for Austin operators — demand, competition, pricing, and growth opportunities by industry.",
+  "intro": "Austin's growth has reshaped every home-service market in the metro. Residential build-out across Williamson, Hays, and east Travis means demand is moving faster than competitor capacity can keep up.",
+  "stats": [
+    {
+      "value": "2.6M",
+      "label": "Metro population"
+    },
+    {
+      "value": "1.06M",
+      "label": "Households"
+    },
+    {
+      "value": "5,200+",
+      "label": "Home-service businesses (est.)"
+    }
+  ],
+  "statsSource": "Population and households: U.S. Census Bureau, American Community Survey 2024 1-year estimates for the metro area. Business count: Sherlock Research estimate.",
+  "reportsIntro": "Each Sherlock industry report includes a city-specific data cut for Austin — local demand, competitor density, pricing benchmarks, and neighborhood-level demand patterns. One of the fastest-growing metros in the country — service demand is outpacing competitor capacity in most categories.",
+  "reportBlurbs": {
+    "landscaping": "Residential and commercial landscape services in Austin: demand drivers, top zip codes, pricing tiers, and competitive landscape.",
+    "roofing": "Roofing market intelligence for Austin: storm cycles, insurance dynamics, reroof rates, and local competitor positioning.",
+    "hvac": "HVAC service and install market for Austin: heat-pump adoption, service-plan pricing, refrigerant transition impact.",
+    "pest-control": "Recurring pest control market in Austin: subscription rates, residential vs commercial mix, and local consolidation dynamics."
+  },
+  "insights": [
+    {
+      "title": "Suburban build-out",
+      "text": "Pflugerville, Leander, Kyle, Buda, and Manor are absorbing most new residential demand. Most established operators haven't reorganized routes yet."
+    },
+    {
+      "title": "Premium service tolerance",
+      "text": "Median household income above $90K supports premium pricing for differentiated service offerings — especially in central neighborhoods."
+    },
+    {
+      "title": "Tech-employer churn",
+      "text": "Tech-sector layoffs softened the very top of the market. Premium demand is recovering unevenly by neighborhood, so price premium tiers street by street, not metro-wide."
+    }
+  ]
+}

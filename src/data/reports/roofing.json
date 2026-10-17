@@ -1,0 +1,82 @@
+{
+  "slug": "roofing",
+  "name": "Roofing",
+  "nameLower": "roofing",
+  "metaDescription": "The 2026 Roofing Industry Report from Sherlock Research: market size, growth forecasts, competitive landscape, and local benchmarks for U.S. roofing operators.",
+  "ogDescription": "Market size, growth, competitive landscape, and local benchmarks for the U.S. roofing services industry. 40+ pages, instant PDF.",
+  "heroDescription": "Comprehensive data and local insights to help roofing contractors win more bids, price storm work confidently, and grow with the cycle.",
+  "summary": "Market size, growth forecasts, competitive landscape, and local benchmarks for U.S. roofing contractors and service companies.",
+  "coverGradient": [
+    "#3a4a5c",
+    "#1f2a36"
+  ],
+  "lead": "The U.S. roofing industry continues to grow on the back of aging housing stock, intensifying weather events, and a steady reroofing cycle. Operators who navigate insurance, materials inflation, and labor shortages well are taking outsized share.",
+  "market": {
+    "label": "U.S. roofing services",
+    "cagr": 3.8,
+    "actual": {
+      "2020": 40.1,
+      "2021": 43.2,
+      "2022": 46,
+      "2023": 49.5,
+      "2024": 58.4
+    },
+    "projectThrough": 2028,
+    "note": "Placeholder estimates pending sourced figures. Projections are computed by the build from the latest actual year and the CAGR, so the chart always matches the stated growth rate."
+  },
+  "stats": [
+    {
+      "value": "3.2%",
+      "label": "Annual industry job growth"
+    },
+    {
+      "value": "41%",
+      "label": "Revenue from storm & reroof"
+    }
+  ],
+  "insights": [
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z\"/><polyline points=\"9 22 9 12 15 12 15 22\"/></svg>",
+      "title": "Storm Cycles",
+      "text": "Hail and wind events drive emergency reroofing demand on rolling 5–10 year cycles per market."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1\"/><line x1=\"9\" y1=\"9\" x2=\"9\" y2=\"9.01\"/><line x1=\"15\" y1=\"9\" x2=\"15\" y2=\"9.01\"/><line x1=\"9\" y1=\"15\" x2=\"9\" y2=\"15.01\"/></svg>",
+      "title": "Insurance Complexity",
+      "text": "Carriers are tightening adjuster oversight; contractors with documentation systems win more approved claims."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z\"/></svg>",
+      "title": "Solar Integration",
+      "text": "Roof-mounted solar attaches to ~12% of new residential roofs and is reshaping product mix."
+    },
+    {
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/></svg>",
+      "title": "Labor Crunch",
+      "text": "Skilled crew availability is the #1 constraint on growth across nearly every metro surveyed."
+    }
+  ],
+  "marketShare": [
+    44,
+    31,
+    18,
+    7
+  ],
+  "reviews": [
+    {
+      "title": "Won a contested neighborhood after hail",
+      "text": "After a major hail event we used the Sherlock report to figure out exactly which suburbs had the highest reroof intent and lowest competitor density. We routed our door-knockers there first and locked in 38 jobs in a week.",
+      "cite": "James K., Owner, regional roofing contractor"
+    },
+    {
+      "title": "Restructured pricing after the report",
+      "text": "The pricing benchmarks showed we were under-billing on architectural shingle upgrades by 15–20%. Adjusted the proposal template the same week and average ticket on residential reroofs jumped immediately.",
+      "cite": "Maria R., Operations, multi-crew roofer"
+    },
+    {
+      "title": "Made the metal-roof decision",
+      "text": "We'd been debating adding standing-seam metal as a service line. The local demand data plus the competitive scan made it obvious there was room. Launched a metal division and it's now 22% of revenue.",
+      "cite": "Tony S., Owner, growing residential roofer"
+    }
+  ]
+}
